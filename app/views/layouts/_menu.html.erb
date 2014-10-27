@@ -1,0 +1,7 @@
+<ul class="top_nav">
+  <% @menu.each do |m| %>
+      <% @class = (request.path == m.altlink or request.path == "/"+m.altlink ) ? "active" : "" %>
+  <li class="<%= @class %>"><%= link_to m.name, m.altlink %></li>
+  <% end %>
+</ul><!-- END top_nav -->
+

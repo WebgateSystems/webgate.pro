@@ -1,0 +1,95 @@
+<%= render "layouts/header" %>
+  <body>
+    <div class="header">
+      <%= render 'layouts/lang' %>
+      <h1><a href="#"><span></span>Webgate Systems</a></h1>
+      <%= render 'layouts/menu' %>
+    </div><!-- END header -->
+    <div class="wrapper">
+      <div class="tabs_block">
+        <div class="competences">
+          <div class="slideshow">
+            <div class="slide" data-nav="first">
+              <%= image_tag "img1.jpg", width: 412, height: 292, alt: "img1" %>
+              <h2>Aplikacje sieciowe</h2>
+              <p>Alsacréations imagine et construit des sites utilisables et attractifs qui mettent l'accent sur la lisibilité, la rapidité et l'accessibilité grâce aux standards web</p>
+              <a class="more" href="/creation.html">envie d'un site web</a>
+              <div class="clear"></div>
+            </div><!-- END slide -->
+            <div class="slide" data-nav="second">
+              <%= image_tag "hosting.gif", width: 324, height: 325, alt: "hosting" %>
+              <h2>Hosting</h2>
+              <p>Le web c'est aussi de nouvelles applications en HTML5 pour plus d'interactivité et d'usages communiquants en temps réel.</p>
+              <a class="more" href="/applications-web-cms.html">prenez le contrôle</a>
+              <div class="clear"></div>
+            </div><!-- END slide -->
+            <div class="slide" data-nav="third">
+              <%= image_tag "seo.png", width: 350, height: 336, alt: "seo" %>
+              <h2>Pozycjonowanie</h2>
+              <p>Spécialistes reconnus de l'accessibilité numérique pour le web, nous avons à coeur de rendre les sites utilisables par tout un chacun, quel que soit le handicap.</p>
+              <a class="more" href="/accessibilite.html">soyez accessible</a>
+              <div class="clear"></div>
+            </div><!-- END slide -->
+            <div class="slide" data-nav="fourth">
+              <%= image_tag "thinclient.jpg", width: 412, height: 280, alt: "thinclient" %>
+              <h2>Terminale</h2>
+              <p>Nous maîtrisons les technologies dynamiques pour des résultats professionnels et originaux avec AJAX, jQuery et Flash.</p>
+              <a class="more" href="/flash.html">animez vos sites</a>
+              <div class="clear"></div>
+            </div><!-- END slide -->
+            <div class="slide" data-nav="fifth">
+              <%= image_tag "szkolenie.jpg", width: 406, height: 296, alt: "img1" %>
+              <h2>Szkolenia</h2>
+              <p>Durant nos sessions ou en régie, nous vous formons à HTML/CSS, jQuery, WordPress et l'accessibilité avec des programmes de qualité constamment mis à jour.</p>
+              <a class="more" href="http://formations.alsacreations.fr/">dates et tarifs</a>
+              <div class="clear"></div>
+            </div><!-- END slide -->
+            <div class="slide" data-nav="sixth">
+              <%= image_tag "fem.png", width: 412, height: 241, alt: "fem" %>
+              <h2>Obliczenia numeryczne</h2>
+              <p>Durant nos sessions ou en régie, nous vous formons à HTML/CSS, jQuery, WordPress et l'accessibilité avec des programmes de qualité constamment mis à jour.</p>
+              <a class="more" href="http://formations.alsacreations.fr/">dates et tarifs</a>
+              <div class="clear"></div>
+            </div><!-- END slide -->
+          </div><!-- /slideshow -->
+          <%= render 'layouts/slider' %>
+        </div><!-- END competences -->
+      </div><!-- END tabs_block -->
+      <div class="carousel">
+        <div class="carousel_content">
+          <h2>Ostatnie realizacje:</h2>
+          <a href="#" class="carousel_more">zobacz więcej realizacji &raquo;</a>
+          <div class="carousel_block">
+            <ul>
+              <li>
+                <a href="#"><%= image_tag "img2.jpg", width: 182, height: 114, alt: "img2" %></a>
+                <a href="#" class="sitename">www.elmax.org</a>
+              </li>
+              <li>
+                <a href="#"><%= image_tag "img2.jpg", width: 182, height: 114, alt: "img2" %></a>
+                <a href="#" class="sitename">www.elmax.org</a>
+              </li>
+              <li>
+                <a href="#"><%= image_tag "img2.jpg", width: 182, height: 114, alt: "img2" %></a>
+                <a href="#" class="sitename">www.elmax.org</a>
+              </li>
+              <li>
+                <a href="#"><%= image_tag "img2.jpg", width: 182, height: 114, alt: "img2" %></a>
+                <a href="#" class="sitename">www.elmax.org</a>
+              </li>
+              <li>
+                <a href="#"><%= image_tag "img2.jpg", width: 182, height: 114, alt: "img2" %></a>
+                <a href="#" class="sitename">www.elmax.org</a>
+              </li>
+              <li>
+                <a href="#"><%= image_tag "img2.jpg", width: 182, height: 114, alt: "img2" %></a>
+                <a href="#" class="sitename">www.elmax.org</a>
+              </li>
+            </ul><!-- END carousel_block -->
+          </div>
+        </div><!-- END carousel_content -->
+      </div><!-- END carousel -->
+    </div><!-- END wrapper -->
+    <%= render "layouts/footer" %>
+  </body>
+</html>

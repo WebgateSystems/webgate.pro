@@ -1,0 +1,20 @@
+<div style="text-align: center; vertical-align: middle; line-height: 150px;">
+  <%= image_tag('ws-logo.png', alt: "Logotype", width: 350, style: "vertical-align: middle;") %>
+</div>
+<div style="width: 300px; margin: 0 auto;">
+<%= form_tag sessions_path :id => 'login' do %>
+    <div class="field">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, params[:email] %>
+    </div>
+    <div class="field">
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </div>
+    <div class="field">
+      <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+      <%= label_tag :remember_me %>
+    </div>
+    <div class="actions" style="text-align: center"><%= submit_tag "Log in", class: "button radius" %></div>
+<% end %>
+</div>
