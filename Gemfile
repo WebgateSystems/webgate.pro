@@ -59,7 +59,8 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'hpricot'
   gem 'ruby_parser'
-  gem 'debugger'
+  #gem 'debugger'
+  gem 'byebug'
 end
 
 # Use ActiveModel has_secure_password
