@@ -35,7 +35,7 @@ feature 'Access the admin panel' do
     fill_in 'Password', with: 'wrong_password'
     click_button 'Log in'
     visit '/admin'
-    current_path.should eq login_path
+    expect(current_path).to eq login_path
   end
 
   scenario 'displays dashboard after correct login' do
@@ -44,12 +44,12 @@ feature 'Access the admin panel' do
     fill_in 'Password', with: 'correct_password'
     click_button 'Log in'
     visit '/admin'
-    current_path.should eq '/admin'
+    expect(current_path).to eq '/admin'
     within 'h1' do
-      page.should have_content 'Webgate Systems'
+      expect(page).to have_content 'Webgate Systems'
     end
-    page.should have_content 'Users'
-    page.should have_content 'Pages'
+    expect(page).to have_content 'Users'
+    expect(page).to have_content 'Pages'
   end
 
 end

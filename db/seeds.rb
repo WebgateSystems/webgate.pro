@@ -8,18 +8,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 if User.count == 0
-  User.create :email => "admin@webgate.pro", :password => "admin789", :password_confirmation => "admin789"
+  User.create email: "admin@webgate.pro", password: "admin789", password_confirmation: "admin789"
 end
 
 if Category.count == 0
   I18n.locale = 'pl'
-  Category.create :name => "Główna", :altlink => "/", :position => 1
-  Category.create :name => "O nas", :altlink => "o-nas", :position => 2
-  Category.create :name => "Portfolio", :altlink => "portfolio", :position => 3
-  Category.create :name => "Zespół", :altlink => "zespół", :position => 4
-  Category.create :name => "Praca", :altlink => "praca", :position => 5
-  Category.create :name => "Kontakt", :altlink => "#footer", :position => 6
-
+  Category.create name: "Główna", :altlink => "/", position: 1
+  Category.create name: "O nas", altlink: "o-nas", position: 2
+  Category.create name: "Portfolio", altlink: "portfolio", position: 3
+  Category.create name: "Zespół", altlink: "zespół", position: 4
+  Category.create name: "Praca", altlink: "praca", position: 5
+  Category.create name: "Kontakt", altlink: "#footer", position: 6
 
   I18n.locale = 'en'
   c = Category.find 1
