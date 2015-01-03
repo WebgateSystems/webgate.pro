@@ -2,22 +2,14 @@ require 'rails_helper'
 
 feature 'Change language' do
 
-  scenario 'User change to PL language' do
-    visit root_path
-    click_link('pl') unless I18n.locale.to_s == 'pl'
-    expect(page).to have_text 'Zmień język'
-  end
-
-  scenario 'User change to EN language' do
-    visit root_path   
-    click_link('en') unless I18n.locale.to_s == 'en'
-    expect(page).to have_text 'Change language'
-  end
-
-  scenario 'User change to RU language' do
-    visit root_path
-    click_link('ru') unless I18n.locale.to_s == 'ru'
-    expect(page).to have_text 'Изменить язык'
+  ['pl', 'en', 'ru'].each do |lang|
+    scenario "User change to #{lang} language" do
+      visit root_path
+      click_link(lang) unless I18n.locale.to_s == lang
+      expect(page).to have_text 'Zmień język'     if lang == 'pl'
+      expect(page).to have_text 'Change language' if lang == 'en'
+      expect(page).to have_text 'Изменить язык'   if lang == 'ru'
+    end
   end
 
 end
