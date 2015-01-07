@@ -4,6 +4,12 @@ WebgatePro::Application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :categories do
+      collection do
+        post 'sort'
+      end
+    end
+    resources :pages
     root :to => "home#index"
   end
 

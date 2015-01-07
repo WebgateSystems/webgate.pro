@@ -1,0 +1,29 @@
+div class=("block")
+  div class=("secondary-navigation")
+    ul
+      li class=("first active")
+        = link_to t("web_app_theme.list"), admin_pages_path
+      li= link_to t("web_app_theme.new"), new_admin_page_path
+  div class=("content")
+    h2 class=("title")
+      = t("web_app_theme.pages")
+    div class=("inner")
+      - if @pages.any?
+        table class=("table")
+          tr             
+            th class=("first")
+              = t("activerecord.id")
+            th= t("activerecord.page.title")
+            th= t("activerecord.created_at")
+            th class=("last")
+          - @pages.each do |page|
+            tr class=("#{cycle("odd", "even")}")
+              td= page.id
+              td= link_to page.title, admin_page_path(page)
+              td= page.created_at
+              td class=("last")
+                = link_to t("web_app_theme.show") + ' | ', admin_page_path(page)
+                = link_to t("web_app_theme.edit") + ' | ', edit_admin_page_path(page)
+                = link_to t("web_app_theme.delete"), admin_page_path(page), method: :delete, confirm: "#{t("web_app_theme.confirm")}"
+      div class=("actions-bar wat-cf")
+        div class=("actions")
