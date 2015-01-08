@@ -13,6 +13,7 @@ gem 'russian'
 gem 'globalize'
 gem 'rails-translate-routes'
 gem 'exception_notification'
+gem 'unicorn'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 #gem 'jbuilder', '~> 1.2'
@@ -35,12 +36,18 @@ end
 
 group :development do
   gem 'thin'
-  gem 'capistrano'
+  # Deploy with Capistrano
+  gem 'capistrano', '2.15.5'
+  gem 'cape'                                                                
+  gem 'capistrano-unicorn'                                                  
+  gem 'capistrano-ext'                                                      
+  gem 'capistrano_colors'                                                   
+  gem 'rvm-capistrano'
 end
 
 group :test do
   gem 'capybara'
-  # gem 'database_cleaner'
+  gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'email_spec'
   gem 'timecop'

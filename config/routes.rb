@@ -14,10 +14,10 @@ WebgatePro::Application.routes.draw do
   end
 
   get "home/index", as: 'main'
-  get "logout" => "sessions#destroy", :as => "logout"
-  get "login" => "sessions#new", :as => "login"
+  get "logout" => "sessions#destroy", as: "logout"
+  get "login" => "sessions#new", as: "login"
 
-  match "not-found" => "pages#not_found", via: [:get, :post], :as => :not_found
+  match "not-found" => "pages#not_found", via: [:get, :post], as: :not_found
   match ":shortlink" => "pages#showbyshortlink", via: [:get, :post]
   root 'home#index'
 end
