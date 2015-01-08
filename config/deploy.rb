@@ -9,7 +9,7 @@ set :rvm_type, :user
 set :rvm_ruby_string, :release_path
 
 set :stages, [:staging, :production]
-set :default_stage, :production
+set :default_stage, :staging
 
 set :rails_env, "staging"
 set :user, "webgate"
