@@ -1,24 +1,44 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
   change_language: "Change language"
+
+  web_app_theme:
+    save: "Save"
+    or: "or"
+    cancel: "Cancel"
+    main: "Main"
+    categories: "Menus"
+    subcategories: "Submenus"
+    pages: "Pages"
+    logout: "Logout"
+    list: "List"
+    new: "New"
+    edit: "Edit"
+    show: "Show"
+    delete: "Delete"
+    category: "menu"
+    image_catalog: "image catalog"
+    page: "page"
+    subcategory: "submenu"
+    confirm: "Are you sure?"
+  activerecord:
+    id: "ID"
+    created_at: "Created at"
+    category:
+      name: "Name"
+      altlink: "Altlink"
+      description: "Description"
+    page:
+      shortlink: "Shortlink"
+      title: "Title"
+      description: "Description"
+      keywords: "Keywords"
+      content: "Content"
+      tooltip: "Tooltip"
+      category_id: "Menu items page belongs to"
+      category_id_main: "Main menu"
+      subcategory_id: "Submenu"
+    subcategory:
+      name: "Name"
+      altlink: "Altlink"
+      description: "Description"
+      category_id: "Category"

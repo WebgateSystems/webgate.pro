@@ -24,12 +24,20 @@
         <li class="divider"></li>
         <li><%= link_to "Users", admin_users_path %></li>
         <li class="divider"></li>
-        <li><%= link_to "Pages" %></li>
+        <li><%= link_to "Categories", admin_categories_path %></li>
+        <li class="divider"></li>
+        <li><%= link_to "Pages", admin_pages_path %></li>
         <li class="divider"></li>
         <li class="has-dropdown">
-          <a href="#">Dropdown</a>
+          <%= link_to locale.upcase, 'javascript:;' %>
+
+
           <ul class="dropdown">
-            <li><a href="#">First link in dropdown</a></li>
+            <% other_langs.each do |l|  %>
+              <li>
+                <%= current_page?(admin_root_path) ? link_to(l, admin_root_path(lang: l)) : link_to(l.upcase, lang: l) %>
+              </li>
+            <% end %>
           </ul>
         </li>
         <li class="divider"></li>
@@ -38,6 +46,15 @@
       </div>
   </nav>
   </div>
+
+  <div class="flash">
+    <% flash.each do |type, message| %>
+      <div class="message <%= type %>">
+        <p><%= message %></p>
+      </div>
+    <% end %>
+  </div>
+
   <div class="row">
     <div class="large-8 columns">
       <%= yield %>

@@ -1,0 +1,14 @@
+div class=("block")
+  div class=("secondary-navigation")
+    ul
+      li class=("first")
+        = link_to t("web_app_theme.list"), admin_categories_path
+      li= link_to t("web_app_theme.new"), new_admin_category_path
+      li class=("active")
+        = link_to t("web_app_theme.edit"), edit_admin_category_path
+  div class=("content")            
+    h2 class=("title")
+      = t("web_app_theme.edit") + " "
+      = t("web_app_theme.category")
+    div class=("inner")
+      = render 'form'
