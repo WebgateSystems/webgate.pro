@@ -1,14 +1,14 @@
-div class=("block")
-  div class=("secondary-navigation")
+.block
+  .secondary-navigation
     ul
-      li class=("first")
-        = link_to t("web_app_theme.list"), admin_pages_path
-      li= link_to t("web_app_theme.new"), new_admin_page_path
-      li class=("active")
-        = link_to t("web_app_theme.edit"), edit_admin_page_path
-  div class=("content")
-    h2 class=("title")
-      = t("web_app_theme.edit") + " "
-      = t("web_app_theme.page")
-    div class=("inner")
+      li.first
+        = link_to t('web_app_theme.list'), admin_pages_path
+      li= link_to t('web_app_theme.new'), new_admin_page_path
+      li.active
+        = link_to t('web_app_theme.edit'), edit_admin_page_path
+  .content
+    h2.title
+      = t('web_app_theme.edit') + ' '
+      = t('web_app_theme.page')
+    .inner
       = render 'form'

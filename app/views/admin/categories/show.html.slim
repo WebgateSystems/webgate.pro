@@ -1,21 +1,21 @@
 .block
   .secondary-navigation
     ul
-      li class=("first")
-        = link_to t("web_app_theme.list"), admin_categories_path
-      li= link_to t("web_app_theme.new"), new_admin_category_path
-      li class=("active")
-        = link_to t("web_app_theme.show"), admin_category_path
+      li.first
+        = link_to t('web_app_theme.list'), admin_categories_path
+      li= link_to t('web_app_theme.new'), new_admin_category_path
+      li.active
+        = link_to t('web_app_theme.show'), admin_category_path
     
-  div class=("content")
-    div class=("inner")
+  .content
+    .inner
       p
-        b= t("activerecord.category.name") + ": "
+        b= t('activerecord.category.name') + ': '
         = @category.name
       p
-        b= t("activerecord.category.description") + ": "
+        b= t('activerecord.category.description') + ': '
         = @category.description
       
       div
-        = link_to image_tag("web-app-theme/icons/application_edit.png") + " " + t("web_app_theme.edit"), edit_admin_category_path(@category), class: :button
-        = link_to image_tag("web-app-theme/icons/cross.png") + " " + t("web_app_theme.delete"), admin_category_path(@category), method: 'delete', class: 'button', confirm: "#{t("web_app_theme.confirm")}"
+        = link_to image_tag('web-app-theme/icons/application_edit.png') + ' ' + t('web_app_theme.edit'), edit_admin_category_path(@category), class: :button
+        = link_to image_tag('web-app-theme/icons/cross.png') + ' ' + t('web_app_theme.delete'), admin_category_path(@category), method: 'delete', class: 'button', confirm: "#{t('web_app_theme.confirm')}"

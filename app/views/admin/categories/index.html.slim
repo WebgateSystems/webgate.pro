@@ -1,0 +1,26 @@
+.block
+  .secondary-navigation
+    ul
+      li.first.active= link_to t('web_app_theme.list'), admin_categories_path
+      li= link_to t('web_app_theme.new'), new_admin_category_path
+  .content          
+    h2.title= t('web_app_theme.categories')
+    .inner
+      - if @categories.any?
+        table.table
+          thead
+          tr             
+            th.first= t('activerecord.id')
+            th= t('activerecord.category.name')
+            th= t('activerecord.created_at')
+            th.last
+          tbody#categories
+          - @categories.each do |category|
+            tr id="category-#{category.id}" class="#{cycle('odd', 'even')}"
+              td= category.id
+              td= link_to category.name, admin_category_path(category)
+              td= category.created_at
+              td.last
+                = link_to t('web_app_theme.show') + ' | ', admin_category_path(category)
+                = link_to t('web_app_theme.edit') + ' | ', edit_admin_category_path(category)
+                = link_to t('web_app_theme.delete'), admin_category_path(category), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
