@@ -13,4 +13,6 @@
     = f.label :password, class: 'label'
     = f.text_field :password, class: 'text_field'
   .actions
-    = f.submit 'Save', class: 'button'
+    = f.submit t('web_app_theme.save'), class: 'button success'
+    = ' ' + t('web_app_theme.or') + ' '
+    = link_to t('web_app_theme.cancel'), admin_users_path

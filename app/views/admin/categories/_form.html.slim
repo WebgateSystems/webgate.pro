@@ -11,10 +11,9 @@
     = f.label :description, t('activerecord.category.description'), class: :label
     = f.text_area :description, class: :text_area
           
-  .group.navform
-    button.button type=('submit')
-      = image_tag('web-app-theme/icons/tick.png')
-      = t('web_app_theme.save')
-    span.text_button_padding
-      = t('web_app_theme.or') + ' '
-  	= link_to t('web_app_theme.cancel'), admin_categories_path, class: 'text_button_padding link_button'
+  .actions
+    = f.submit t('web_app_theme.save'), class: 'button success'
+    = ' ' + t('web_app_theme.or') + ' '
+    = link_to t('web_app_theme.cancel'), admin_categories_path
+
+  

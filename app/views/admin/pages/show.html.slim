@@ -1,11 +1,13 @@
 .block
   .secondary-navigation
-    ul
+    ul.button-group.radius
       li.first
-        = link_to t('web_app_theme.list'), admin_pages_path
-      li= link_to t('web_app_theme.new'), new_admin_page_path
+        = link_to t('web_app_theme.list'), admin_pages_path, class: 'button'
+      li= link_to t('web_app_theme.new'), new_admin_page_path, class: 'button'
+      li= link_to t('web_app_theme.edit'), edit_admin_page_path(@page), class: 'button success'
+      li= link_to t('web_app_theme.delete'), admin_page_path(@page), method: :delete, data: {confirm: "#{t('web_app_theme.confirm')}"}, class: 'button alert'
       li.active
-        = link_to t('web_app_theme.show'), admin_page_path
+        = link_to t('web_app_theme.show'), admin_page_path, class: 'button'
   .content
     .inner
       p
@@ -24,7 +26,3 @@
         b= t('activerecord.page.content') + ': '
         br
         = @page.content.html_safe
-      
-      div
-        = link_to image_tag('web-app-theme/icons/application_edit.png') + ' ' + t('web_app_theme.edit'), edit_admin_page_path(@page), class: :button 
-        = link_to image_tag('web-app-theme/icons/cross.png') + ' ' + t('web_app_theme.delete'), admin_page_path(@page), method: 'delete', class: :button, confirm: "#{t('web_app_theme.confirm')}"
