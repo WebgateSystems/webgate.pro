@@ -1,0 +1,5 @@
+.nested-fields
+  = link_to_remove_association 'remove', f
+  .group
+    = f.collection_select(:taggable, Technology.all, :id, :title)
+  

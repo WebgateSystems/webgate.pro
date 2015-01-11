@@ -11,6 +11,15 @@ if User.count == 0
   User.create email: "admin@webgate.pro", password: "admin789", password_confirmation: "admin789"
 end
 
+if TechnologyGroup.count == 0
+  TechnologyGroup.create title: 'Admining', description: 'Admin technologies'
+end
+
+if Technology.count == 0
+  Technology.create title: 'SQL', description: 'SQL - structured query language', technology_group_id: 1, logo: ''
+end
+
+
 if Category.count == 0
   I18n.locale = 'pl'
   Category.create name: "Główna", :altlink => "/", position: 1

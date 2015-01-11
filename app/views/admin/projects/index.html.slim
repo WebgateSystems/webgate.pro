@@ -1,0 +1,27 @@
+.block
+  .secondary-navigation
+    ul.button-group.radius
+      li.first.active
+        = link_to t('web_app_theme.list'), admin_projects_path, class: 'button'
+      li= link_to t('web_app_theme.new'), new_admin_project_path, class: 'button'
+  .content
+    h2.title
+      = t('web_app_theme.projects')
+    .inner
+      - if @projects.any?
+        table.table
+          tr             
+            th.first
+              = t('activerecord.id')
+            th= t('activerecord.project.title')
+            th= t('activerecord.created_at')
+            th.last
+          - @projects.each do |project|
+            tr class=("#{cycle('odd', 'even')}")
+              td= project.id
+              td= link_to project.title, admin_project_path(project)
+              td= project.created_at
+              td.last
+                = link_to t('web_app_theme.show') + ' | ', admin_project_path(project)
+                = link_to t('web_app_theme.edit') + ' | ', edit_admin_project_path(project)
+                = link_to t('web_app_theme.delete'), admin_project_path(project), method: :delete, confirm: "#{t('web_app_theme.confirm')}"

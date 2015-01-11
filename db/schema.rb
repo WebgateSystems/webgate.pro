@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112003900) do
+ActiveRecord::Schema.define(version: 20150110201513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,76 @@ ActiveRecord::Schema.define(version: 20140112003900) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "project_translations", force: true do |t|
+    t.integer  "project_id",  null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.string   "shortlink"
+    t.text     "description"
+    t.text     "keywords"
+    t.text     "content"
+  end
+
+  add_index "project_translations", ["locale"], name: "index_project_translations_on_locale", using: :btree
+  add_index "project_translations", ["project_id"], name: "index_project_translations_on_project_id", using: :btree
+
+  create_table "projects", force: true do |t|
+    t.string   "shortlink"
+    t.string   "title"
+    t.text     "description"
+    t.text     "keywords"
+    t.text     "content"
+    t.string   "screenshot1"
+    t.string   "screenshot2"
+    t.string   "screenshot3"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "technologies", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "technology_group_id"
+    t.string   "logo"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "technology_group_translations", force: true do |t|
+    t.integer  "technology_group_id", null: false
+    t.string   "locale",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+  end
+
+  add_index "technology_group_translations", ["locale"], name: "index_technology_group_translations_on_locale", using: :btree
+  add_index "technology_group_translations", ["technology_group_id"], name: "index_technology_group_translations_on_technology_group_id", using: :btree
+
+  create_table "technology_groups", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "technology_translations", force: true do |t|
+    t.integer  "technology_id", null: false
+    t.string   "locale",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+  end
+
+  add_index "technology_translations", ["locale"], name: "index_technology_translations_on_locale", using: :btree
+  add_index "technology_translations", ["technology_id"], name: "index_technology_translations_on_technology_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                                    null: false

@@ -1,0 +1,44 @@
+= form_for [:admin, @project], html: { class: :form, multipart: true } do |f|
+  .group
+    = f.label :shortlink, t('activerecord.project.shortlink'), class: :label
+    = f.text_field :shortlink, class: :text_field
+
+  .group
+    = f.label :title, t('activerecord.project.title'), class: :label
+    = f.text_field :title, class: :text_field
+
+  .group
+    = f.label :description, t('activerecord.project.description'), class: :label
+    = f.text_field :description, class: :text_field
+
+  .group
+    = f.label :keywords, t('activerecord.project.keywords'), class: :label
+    = f.text_area :keywords, class: :text_area
+
+  .group
+    = f.label :content, t('activerecord.project.content'), class: :label
+    = f.text_area :content, :value=>@project.content.try(:html_safe), class: 'redactor'
+    .bolderror
+      = @project.errors['content'].first
+  .group
+    = f.label :screenshot1, t('activerecord.project.screenshot1'), class: :label
+    = f.file_field :screenshot1, class: :file_field
+  .group
+    = f.label :screenshot2, t('activerecord.project.screenshot2'), class: :label
+    = f.file_field :screenshot2, class: :file_field
+  .group
+    = f.label :screenshot3, t('activerecord.project.screenshot3'), class: :label
+    = f.file_field :screenshot3, class: :file_field
+
+  h3
+    |Technologies
+    #technologies
+      = f.fields_for :technologies do |t|
+        = render 'technology_fields', f: t
+      .links
+        = link_to_add_association 'Add', f, :technologies
+  
+  .actions
+    = f.submit t('web_app_theme.save'), class: 'button success'
+    = ' ' + t('web_app_theme.or') + ' '
+    = link_to t('web_app_theme.cancel'), admin_projects_path

@@ -10,6 +10,10 @@ WebgatePro::Application.routes.draw do
       end
     end
     resources :pages
+    resources :projects
+    resources :technology_groups do
+      resources :technologies
+    end
     root :to => "home#index"
   end
 
