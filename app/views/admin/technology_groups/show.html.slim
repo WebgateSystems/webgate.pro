@@ -1,0 +1,40 @@
+.block
+  .secondary-navigation
+    ul.button-group.radius
+      li.first
+        = link_to t('web_app_theme.list'), admin_technology_groups_path, class: 'button'
+      li= link_to t('web_app_theme.new'), new_admin_technology_group_path, class: 'button'
+      li= link_to t('web_app_theme.edit'), edit_admin_technology_group_path(@technology_group), class: 'button success'
+      li= link_to t('web_app_theme.delete'), admin_technology_group_path(@technology_group), method: :delete, data: {confirm: "#{t('web_app_theme.confirm')}"}, class: 'button alert'
+      li.active
+        = link_to t('web_app_theme.show'), admin_technology_group_path, class: 'button'
+  .content
+    .inner
+      p
+        b= t('activerecord.technology_group.title') + ': '
+        = @technology_group.title
+      p
+        b= t('activerecord.technology_group.description') + ': '
+        = @technology_group.description
+      p
+        b Technologies:
+      - if @technology_group.technologies.any?
+        table.table
+          tr             
+            th.first
+              = t('activerecord.id')
+            th= t('activerecord.technology.title')
+            th= t('activerecord.created_at')
+            th.last
+          - @technology_group.technologies.each do |technology|
+            tr class=("#{cycle('odd', 'even')}")
+              td= technology.id
+              td= link_to technology.title, admin_technology_path(technology)
+              td= technology.created_at
+              td.last
+                = link_to t('web_app_theme.show') + ' | ', admin_technology_path(technology)
+                = link_to t('web_app_theme.edit') + ' | ', edit_admin_technology_path(technology)
+                = link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+      - else
+        |...nothing...
+    = link_to t('web_app_theme.add_technology'), new_admin_technology_group_technology_path(@technology_group), class: 'button small'

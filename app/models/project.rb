@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
 
   translates :title, :shortlink, :description, :keywords, :content
 
-  #mount_uploader :screenshot1, :screenshot2, :screenshot3 LogoUploader
+  #mount_uploader :screenshot1, :screenshot2, :screenshot3 ScreenshotUploader
 
   private
   

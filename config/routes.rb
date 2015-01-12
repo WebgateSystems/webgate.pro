@@ -11,6 +11,7 @@ WebgatePro::Application.routes.draw do
     end
     resources :pages
     resources :projects
+    resources :technologies
     resources :technology_groups do
       resources :technologies
     end

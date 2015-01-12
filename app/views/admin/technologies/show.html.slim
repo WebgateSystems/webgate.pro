@@ -1,0 +1,22 @@
+.block
+  .secondary-navigation
+    ul.button-group.radius
+      li.first
+        = link_to t('web_app_theme.list'), admin_technologies_path, class: 'button'
+      li= link_to t('web_app_theme.new'), new_admin_technology_path, class: 'button'
+      li= link_to t('web_app_theme.edit'), edit_admin_technology_path(@technology), class: 'button success'
+      li= link_to t('web_app_theme.delete'), admin_technology_path(@technology), method: :delete, data: {confirm: "#{t('web_app_theme.confirm')}"}, class: 'button alert'
+      li.active
+        = link_to t('web_app_theme.show'), admin_technology_path, class: 'button'
+  .content
+    .inner
+      p
+        b= t('activerecord.technology_group') + ' ' + t('activerecord.technology_group.title') + ': '
+        = @technology.technology_group.title
+      p
+        b= t('activerecord.technology.title') + ': '
+        = @technology.title
+      p
+        b= t('activerecord.technology.description') + ': '
+        = @technology.description
+      // todo logo for technology
