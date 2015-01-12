@@ -1,30 +1,28 @@
-div class=("block")
-  div class=("secondary-navigation")
-    ul
-      li class=("first")
-        = link_to t("web_app_theme.list"), admin_pages_path
-      li= link_to t("web_app_theme.new"), new_admin_page_path
-      li class=("active")
-        = link_to t("web_app_theme.show"), admin_page_path
-  div class=("content")
-    div class=("inner")
+.block
+  .secondary-navigation
+    ul.button-group.radius
+      li.first
+        = link_to t('web_app_theme.list'), admin_pages_path, class: 'button'
+      li= link_to t('web_app_theme.new'), new_admin_page_path, class: 'button'
+      li= link_to t('web_app_theme.edit'), edit_admin_page_path(@page), class: 'button success'
+      li= link_to t('web_app_theme.delete'), admin_page_path(@page), method: :delete, data: {confirm: "#{t('web_app_theme.confirm')}"}, class: 'button alert'
+      li.active
+        = link_to t('web_app_theme.show'), admin_page_path, class: 'button'
+  .content
+    .inner
       p
-        b= t("activerecord.page.shortlink") + ': '
+        b= t('activerecord.page.shortlink') + ': '
         = @page.shortlink
       p
-        b= t("activerecord.page.title") + ': '
+        b= t('activerecord.page.title') + ': '
         = @page.title
       p
-        b= t("activerecord.page.description") + ': '
+        b= t('activerecord.page.description') + ': '
         = @page.description
       p
-        b= t("activerecord.page.keywords") + ': '
+        b= t('activerecord.page.keywords') + ': '
         = @page.keywords
       p
-        b= t("activerecord.page.content") + ': '
+        b= t('activerecord.page.content') + ': '
         br
         = @page.content.html_safe
-      
-      div
-        = link_to image_tag("web-app-theme/icons/application_edit.png") + " " + t("web_app_theme.edit"), edit_admin_page_path(@page), class: :button 
-        = link_to image_tag("web-app-theme/icons/cross.png") + " " + t("web_app_theme.delete"), admin_page_path(@page), method: "delete", class: :button, confirm: "#{t("web_app_theme.confirm")}"

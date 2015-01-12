@@ -1,15 +1,18 @@
 = form_for [:admin, @user] do |f|
   - if @user.errors.any?
     #error_explanation
-      h2 = "#{pluralize(@user.errors.count, "error")} prohibited this admin_user from being saved:"
+      h2 = "#{pluralize(@user.errors.count, 'error')} prohibited this admin_user from being saved:"
       ul
         - @user.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :password
-    = f.text_field :password
-  .actions = f.submit 'Save'
+  .group
+    = f.label :email, class: 'label'
+    = f.text_field :email, class: 'text_field'
+  .group
+    = f.label :password, class: 'label'
+    = f.text_field :password, class: 'text_field'
+  .actions
+    = f.submit t('web_app_theme.save'), class: 'button success'
+    = ' ' + t('web_app_theme.or') + ' '
+    = link_to t('web_app_theme.cancel'), admin_users_path
