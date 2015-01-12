@@ -42,3 +42,5 @@ pl:
       altlink: "Alternatywny link"
       description: "Opis"
       category_id: "Kategoria"
+  technologies: "Technologie"
+  technology_groups: "Grupy technologii"

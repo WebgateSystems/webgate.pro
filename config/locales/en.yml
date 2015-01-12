@@ -44,3 +44,5 @@ en:
       altlink: "Altlink"
       description: "Description"
       category_id: "Category"
+  technologies: "Technologies"
+  technology_groups: "Technology groups"

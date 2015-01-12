@@ -42,3 +42,5 @@ ru:
       altlink: "Альтернативный линк"
       description: "Описание"
       category_id: "Меню"
+  technologies: "Технологии"
+  technology_groups: "Группы технологий"
