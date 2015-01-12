@@ -1,13 +1,13 @@
-div class=("block")
-  div class=("secondary-navigation")
-    ul
-      li class=("first")
-        = link_to t("web_app_theme.list"), admin_pages_path
-      li class=("active")
-        = link_to t("web_app_theme.new"), new_admin_page_path
-  div class=("content")
-    h2 class=("title")
-      = t("web_app_theme.new") + " "
-      = t("web_app_theme.page")
-    div class=("inner")
+.block
+  .secondary-navigation
+    ul.button-group.radius
+      li.first
+        = link_to t('web_app_theme.list'), admin_pages_path, class: 'button'
+      li.active
+        = link_to t('web_app_theme.new'), new_admin_page_path, class: 'button'
+  .content
+    h2.title
+      = t('web_app_theme.new') + ' '
+      = t('web_app_theme.page')
+    .inner
       = render 'form'
