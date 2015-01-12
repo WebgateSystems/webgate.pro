@@ -10,6 +10,7 @@ class Admin::TechnologiesController < Admin::HomeController
 
   def new
     @technology = Technology.new
+    @technology.technology_group_id = params[:technology_group_id]
   end
 
   def create
@@ -44,7 +45,7 @@ class Admin::TechnologiesController < Admin::HomeController
   end
 
   def technology_params
-    params.require(:technology).permit(:title, :description, :technology_group_id, :logo)
+    params.require(:technology).permit(:title, :description, :technology_group_id, :logo, :logo_cache)
   end
 
 end

@@ -26,4 +26,36 @@
         b= t('activerecord.project.content') + ': '
         br
         = @project.content.html_safe
-      // todo 3 screenshots
+      p
+        b= t('activerecord.project.screenshot1') + ': '
+        br
+        = image_tag @project.screenshot1.url
+      p
+        b= t('activerecord.project.screenshot2') + ': '
+        br
+        = image_tag @project.screenshot2.url
+      p
+        b= t('activerecord.project.screenshot3') + ': '
+        br
+        = image_tag @project.screenshot3.url
+      p
+        b Technologies:
+      - if @project.technologies.any?
+        table.table
+          tr             
+            th.first
+              = t('activerecord.id')
+            th= t('activerecord.technology.title')
+            th= t('activerecord.created_at')
+            th.last
+          - @project.technologies.each do |technology|
+            tr class=("#{cycle('odd', 'even')}")
+              td= technology.id
+              td= link_to technology.title, admin_technology_path(technology)
+              td= technology.created_at
+              td.last
+                = link_to t('web_app_theme.show') + ' | ', admin_technology_path(technology)
+                = link_to t('web_app_theme.edit') + ' | ', edit_admin_technology_path(technology)
+                = link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+      - else
+        |...nothing...

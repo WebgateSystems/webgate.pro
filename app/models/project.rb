@@ -1,4 +1,4 @@
-#require 'carrierwave/orm/activerecord'
+require 'carrierwave/orm/activerecord'
 
 class Project < ActiveRecord::Base
 
@@ -13,7 +13,9 @@ class Project < ActiveRecord::Base
 
   translates :title, :shortlink, :description, :keywords, :content
 
-  #mount_uploader :screenshot1, :screenshot2, :screenshot3 ScreenshotUploader
+  mount_uploader :screenshot1, ScreenshotUploader
+  mount_uploader :screenshot2, ScreenshotUploader
+  mount_uploader :screenshot3, ScreenshotUploader
 
   private
   

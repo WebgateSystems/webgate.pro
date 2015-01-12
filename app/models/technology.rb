@@ -1,4 +1,4 @@
-#require 'carrierwave/orm/activerecord'
+require 'carrierwave/orm/activerecord'
 
 class Technology < ActiveRecord::Base
 
@@ -11,6 +11,6 @@ class Technology < ActiveRecord::Base
 
   translates :description
 
-  #mount_uploader :logo, LogoUploader
+  mount_uploader :logo, LogoUploader
 
 end

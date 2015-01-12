@@ -1,6 +1,11 @@
 = form_for [:admin, @technology], html: { class: :form, multipart: true } do |f|
+  - if @technology.errors.any?
+    #error_explanation
+      ul
+        - @technology.errors.full_messages.each do |message|
+          li = message
   .group
-    = f.collection_select(:technology_group_id, TechnologyGroup.all, :id, :title, selected: params[:technology_group_id]) 
+    = f.collection_select(:technology_group_id, TechnologyGroup.all, :id, :title)
 
   .group
     = f.label :title, t('activerecord.technology.title'), class: :label
@@ -13,6 +18,7 @@
   .group
     = f.label :logo, t('activerecord.technology.logo'), class: :label
     = f.file_field :logo, class: :file_field
+    = f.hidden_field :logo_cache
   
   .actions
     = f.submit t('web_app_theme.save'), class: 'button success'

@@ -1,4 +1,9 @@
 = form_for [:admin, @project], html: { class: :form, multipart: true } do |f|
+  - if @project.errors.any?
+    #error_explanation
+      ul
+        - @project.errors.full_messages.each do |message|
+          li = message
   .group
     = f.label :shortlink, t('activerecord.project.shortlink'), class: :label
     = f.text_field :shortlink, class: :text_field
@@ -23,12 +28,15 @@
   .group
     = f.label :screenshot1, t('activerecord.project.screenshot1'), class: :label
     = f.file_field :screenshot1, class: :file_field
+    = f.hidden_field :screenshot1_cache
   .group
     = f.label :screenshot2, t('activerecord.project.screenshot2'), class: :label
     = f.file_field :screenshot2, class: :file_field
+    = f.hidden_field :screenshot2_cache
   .group
     = f.label :screenshot3, t('activerecord.project.screenshot3'), class: :label
     = f.file_field :screenshot3, class: :file_field
+    = f.hidden_field :screenshot3_cache
 
   h3
     |Technologies
