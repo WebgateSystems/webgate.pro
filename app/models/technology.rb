@@ -9,7 +9,7 @@ class Technology < ActiveRecord::Base
   validates_associated :technology_group
   validates_associated :taggable
 
-  translates :title, :description
+  translates :description
 
   #mount_uploader :logo, LogoUploader
 

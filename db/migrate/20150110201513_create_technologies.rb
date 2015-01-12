@@ -10,7 +10,7 @@ class CreateTechnologies < ActiveRecord::Migration
 
       t.timestamps
     end
-    Technology.create_translation_table! title: :string, description: :text
+    Technology.create_translation_table! description: :text
   end
 
   def self.down

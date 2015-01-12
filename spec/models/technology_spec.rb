@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-describe TechnologyGroup do
+describe Technology do
   
 end
