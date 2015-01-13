@@ -52,12 +52,13 @@ end
 if Technology.count == 0
   I18n.locale = 'en'
   Technology.create title: 'Oracle Database', description: 'Oracle Database', technology_group_id: 1, logo: ''
-  Technology.create title: 'Microsoft SQL Server', description: 'Microsoft SQL Server', technology_group_id: 1, logo: ''
   Technology.create title: 'Firebird', description: 'Firebird', technology_group_id: 1, logo: ''
   Technology.create title: 'PostgreSQL', description: 'PostgreSQL', technology_group_id: 1, logo: ''
   Technology.create title: 'MySQL', description: 'MySQL', technology_group_id: 1, logo: ''
   Technology.create title: 'SQLite', description: 'SQLite', technology_group_id: 1, logo: ''
   Technology.create title: 'MongoDB', description: 'MongoDB', technology_group_id: 1, logo: ''
+  Technology.create title: 'riak', description: 'Riak', technology_group_id: 1, logo: ''
+  Technology.create title: 'Cassandra', description: 'Cassandra', technology_group_id: 1, logo: ''
 
   I18n.locale = 'pl'
   #todo
