@@ -62,7 +62,8 @@ ru:
       screenshot1: "Первый скриншот"
       screenshot2: "Второй скриншот"
       screenshot3: "Третий скриншот"
-
+      livelink: "Ссылка на проект"
+      publish: "Опубликован"
   users: "Пользователи"
   categories: "Меню"
   pages: "Страницы"

@@ -15,12 +15,14 @@
               = t('activerecord.id')
             th= t('activerecord.project.title')
             th= t('activerecord.created_at')
+            th= t('activerecord.project.publish')
             th.last
           - @projects.each do |project|
             tr class=("#{cycle('odd', 'even')}")
               td= project.id
               td= link_to project.title, admin_project_path(project)
               td= project.created_at
+              td= project.publish
               td.last
                 = link_to t('web_app_theme.show') + ' | ', admin_project_path(project)
                 = link_to t('web_app_theme.edit') + ' | ', edit_admin_project_path(project)

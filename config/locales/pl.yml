@@ -60,6 +60,8 @@ pl:
       screenshot1: "Pierwszy zrzut ekranu"
       screenshot2: "Drugi zrzut ekranu"
       screenshot3: "Trzeci zrzut ekranu"
+      livelink: "Link na żywo"
+      publish: "Publikować"
   users: "Użytkownicy"
   categories: "Menu"
   pages: "Strony"

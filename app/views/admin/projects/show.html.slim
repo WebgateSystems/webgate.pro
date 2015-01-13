@@ -11,6 +11,9 @@
   .content
     .inner
       p
+        b= t('activerecord.project.publish') + ': '
+        = @project.publish
+      p
         b= t('activerecord.project.shortlink') + ': '
         = @project.shortlink
       p
@@ -38,6 +41,10 @@
         b= t('activerecord.project.screenshot3') + ': '
         br
         = image_tag @project.screenshot3.url
+      p
+        b= t('activerecord.project.livelink') + ': '
+        br
+        = @project.livelink
       p
         b = t('technologies') + ':'
       - if @project.technologies.any?

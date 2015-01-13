@@ -2,6 +2,7 @@ require 'carrierwave/orm/activerecord'
 
 class Project < ActiveRecord::Base
 
+  before_save :check_for_publish
   before_save :remove_translation_link
   after_save  :add_translation_link
 
@@ -25,6 +26,10 @@ class Project < ActiveRecord::Base
 
   def add_translation_link
     LinkTranslation.create(link: self.shortlink, locale: I18n.locale.to_s, link_type: 'project')
+  end
+
+  def check_for_publish
+    self.publish = false if self.screenshot1.url.nil? || self.screenshot2.url.nil? || self.screenshot3.url.nil?
   end
 
 end

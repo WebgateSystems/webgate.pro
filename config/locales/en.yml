@@ -63,6 +63,8 @@ en:
       screenshot1: "First screenshot"
       screenshot2: "Second screenshot"
       screenshot3: "Third screenshot"
+      livelink: "Live link"
+      publish: "Publish"
   users: "Users"
   categories: "Menu"
   pages: "Pages"
