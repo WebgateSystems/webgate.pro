@@ -54,10 +54,10 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
         c.compose "Over"
         c.geometry "+86+0"
       end
-      result = background.composite(result) do |c|
-        c.compose "Over"
-        c.geometry "+51+13"
-      end
+      # result = background.composite(result) do |c|
+      #   c.compose "Over"
+      #   c.geometry "+51+13"
+      # end
       result
     end
   end
