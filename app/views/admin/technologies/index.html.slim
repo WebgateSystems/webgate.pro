@@ -16,7 +16,7 @@
             th= t(:technology_group_title)
             th= t('activerecord.technology.title')
             th= t('activerecord.created_at')
-            th.last
+            th.last= t(:actions)
           - @technologies.each do |technology|
             tr class=("#{cycle('odd', 'even')}")
               td= technology.id
