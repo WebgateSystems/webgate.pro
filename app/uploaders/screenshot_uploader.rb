@@ -32,9 +32,51 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :resize_to_fit => [50, 50]
-  # end
+  version :thumb do
+    process :make_thumb
+  end
+
+  version :large do
+    process :make_large
+  end
+
+  version :air do
+    process :make_air
+  end
+
+  def make_air
+    manipulate! do |source|
+      background = MiniMagick::Image.new("/home/dobrik/Sites/webgate/app/assets/images/carousel_block.png")
+      upper_layer = MiniMagick::Image.new("/home/dobrik/Sites/webgate/app/assets/images/layer4.png")
+      source.resize "182"
+      source.crop("182x114+0+0")
+      result = source.composite(upper_layer) do |c|
+        c.compose "Over"
+        c.geometry "+86+0"
+      end
+      result = background.composite(result) do |c|
+        c.compose "Over"
+        c.geometry "+51+13"
+      end
+      result
+    end
+  end
+
+  def make_thumb
+    manipulate! do |source|
+      source.resize "182"
+      source.crop("182x114+0+0")
+      source
+    end
+  end
+
+  def make_large
+    manipulate! do |source|
+      # source.crop("x1720+0+0")
+      source.resize "x1720"
+      source
+    end
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
