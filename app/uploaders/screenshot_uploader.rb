@@ -46,8 +46,8 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
 
   def make_air
     manipulate! do |source|
-      background = MiniMagick::Image.new("/home/dobrik/Sites/webgate/app/assets/images/carousel_block.png")
-      upper_layer = MiniMagick::Image.new("/home/dobrik/Sites/webgate/app/assets/images/layer4.png")
+      background = MiniMagick::Image.new("app/assets/images/carousel_block.png")
+      upper_layer = MiniMagick::Image.new("app/assets/images/layer4.png")
       source.resize "182"
       source.crop("182x114+0+0")
       result = source.composite(upper_layer) do |c|
