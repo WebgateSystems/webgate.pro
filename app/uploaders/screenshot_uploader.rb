@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class ScreenshotUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -46,7 +45,6 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
 
   def make_air
     manipulate! do |source|
-      background = MiniMagick::Image.new("app/assets/images/carousel_block.png")
       upper_layer = MiniMagick::Image.new("app/assets/images/layer4.png")
       source.resize "182"
       source.crop("182x114+0+0")
@@ -54,10 +52,8 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
         c.compose "Over"
         c.geometry "+86+0"
       end
-      # result = background.composite(result) do |c|
-      #   c.compose "Over"
-      #   c.geometry "+51+13"
-      # end
+      #  if needed air background added "+51+13"
+      result.format("jpg")
       result
     end
   end
@@ -66,6 +62,7 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
     manipulate! do |source|
       source.resize "182"
       source.crop("182x114+0+0")
+      source.format("jpg")
       source
     end
   end
@@ -74,6 +71,7 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
     manipulate! do |source|
       # source.crop("x1720+0+0")
       source.resize "x1720"
+      source.format("jpg")
       source
     end
   end
