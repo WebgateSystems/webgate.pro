@@ -20,17 +20,17 @@ html lang="en"
     section.top-bar-section
       ul.right
         li.divider
-        li= link_to 'Users', admin_users_path
+        li= link_to t(:users), admin_users_path
         li.divider
-        li= link_to 'Categories', admin_categories_path
+        li= link_to t(:categories), admin_categories_path
         li.divider
-        li= link_to 'Pages', admin_pages_path
+        li= link_to t(:pages), admin_pages_path
         li.divider
         li= link_to t(:technology_groups), admin_technology_groups_path
         li.divider
         li= link_to t(:technologies), admin_technologies_path
         li.divider
-        li= link_to 'Projects', admin_projects_path
+        li= link_to t(:projects), admin_projects_path
         li.divider
         li.has-dropdown
           = link_to locale.upcase, 'javascript:;'
@@ -39,7 +39,7 @@ html lang="en"
               li= current_page?(admin_root_path) ? link_to(l.upcase, admin_root_path(lang: l)) : link_to(l.upcase, lang: l)
           
         li.divider
-        li= link_to 'Logout', logout_path
+        li= link_to t('web_app_theme.logout'), logout_path
 
   .flash
     - flash.each do |type, message|

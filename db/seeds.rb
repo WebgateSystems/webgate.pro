@@ -12,11 +12,58 @@ if User.count == 0
 end
 
 if TechnologyGroup.count == 0
-  TechnologyGroup.create title: 'Admining', description: 'Admin technologies'
+  I18n.locale = 'en'
+  TechnologyGroup.create title: 'Administration', description: 'Administartion technologies'
+  TechnologyGroup.create title: 'Design', description: 'Design technologies'
+  TechnologyGroup.create title: 'Frontend', description: 'Frontend technologies'
+  TechnologyGroup.create title: 'Backend', description: 'Backend technologies'
+  TechnologyGroup.create title: 'Mobile platforms', description: 'Mobile technologies'
+
+  I18n.locale = 'pl'
+  #todo
+
+  I18n.locale = 'ru'
+  t = TechnologyGroup.find 1
+  t.title = "Администрирование"
+  t.description = "Группа административных технологий"
+  t.save
+
+  t = TechnologyGroup.find 2
+  t.title = "Дизайн"
+  t.description = "Группа технологий дизайна"
+  t.save
+
+  t = TechnologyGroup.find 3
+  t.title = "Фронтенд"
+  t.description = "Группа фронтенд технологий"
+  t.save
+
+  t = TechnologyGroup.find 4
+  t.title = "Бэкенд"
+  t.description = "Группа бэкенд технологий"
+  t.save
+
+  t = TechnologyGroup.find 5
+  t.title = "Мобильные платформы"
+  t.description = "Мобильные технологии"
+  t.save
 end
 
 if Technology.count == 0
-  Technology.create title: 'SQL', description: 'SQL - structured query language', technology_group_id: 1, logo: ''
+  I18n.locale = 'en'
+  Technology.create title: 'Oracle Database', description: 'Oracle Database', technology_group_id: 1, logo: ''
+  Technology.create title: 'Microsoft SQL Server', description: 'Microsoft SQL Server', technology_group_id: 1, logo: ''
+  Technology.create title: 'Firebird', description: 'Firebird', technology_group_id: 1, logo: ''
+  Technology.create title: 'PostgreSQL', description: 'PostgreSQL', technology_group_id: 1, logo: ''
+  Technology.create title: 'MySQL', description: 'MySQL', technology_group_id: 1, logo: ''
+  Technology.create title: 'SQLite', description: 'SQLite', technology_group_id: 1, logo: ''
+  Technology.create title: 'MongoDB', description: 'MongoDB', technology_group_id: 1, logo: ''
+
+  I18n.locale = 'pl'
+  #todo
+
+  I18n.locale = 'ru'
+  #todo
 end
 
 

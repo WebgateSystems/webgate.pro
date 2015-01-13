@@ -5,8 +5,8 @@ class Technology < ActiveRecord::Base
   belongs_to :technology_group
   belongs_to :taggable, polymorphic: true
 
-  validates :title, :description, presence: true
-  validates_associated :technology_group
+  validates_presence_of :title
+  validates_uniqueness_of :title, case_sensitive: false
   validates_associated :taggable
 
   translates :description

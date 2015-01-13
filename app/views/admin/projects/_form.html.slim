@@ -1,52 +1,20 @@
-= form_for [:admin, @project], html: { class: :form, multipart: true } do |f|
-  - if @project.errors.any?
-    #error_explanation
-      ul
-        - @project.errors.full_messages.each do |message|
-          li = message
-  .group
-    = f.label :shortlink, t('activerecord.project.shortlink'), class: :label
-    = f.text_field :shortlink, class: :text_field
-
-  .group
-    = f.label :title, t('activerecord.project.title'), class: :label
-    = f.text_field :title, class: :text_field
-
-  .group
-    = f.label :description, t('activerecord.project.description'), class: :label
-    = f.text_field :description, class: :text_field
-
-  .group
-    = f.label :keywords, t('activerecord.project.keywords'), class: :label
-    = f.text_area :keywords, class: :text_area
-
-  .group
-    = f.label :content, t('activerecord.project.content'), class: :label
-    = f.text_area :content, :value=>@project.content.try(:html_safe), class: 'redactor'
-    .bolderror
-      = @project.errors['content'].first
-  .group
-    = f.label :screenshot1, t('activerecord.project.screenshot1'), class: :label
-    = f.file_field :screenshot1, class: :file_field
-    = f.hidden_field :screenshot1_cache
-  .group
-    = f.label :screenshot2, t('activerecord.project.screenshot2'), class: :label
-    = f.file_field :screenshot2, class: :file_field
-    = f.hidden_field :screenshot2_cache
-  .group
-    = f.label :screenshot3, t('activerecord.project.screenshot3'), class: :label
-    = f.file_field :screenshot3, class: :file_field
-    = f.hidden_field :screenshot3_cache
-
-  h3
-    |Technologies
-    #technologies
-      = f.fields_for :technologies do |t|
-        = render 'technology_fields', f: t
-      .links
-        = link_to_add_association 'Add', f, :technologies
+= simple_form_for [:admin, @project], html: { class: :form, multipart: true } do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: { class: 'label' }
+    = f.input :title, label: t('activerecord.project.title'), label_html: { class: 'label' }
+    = f.input :description, label: t('activerecord.project.description'), label_html: { class: 'label' }
+    = f.input :keywords, label: t('activerecord.project.keywords'), label_html: { class: 'label' }
+    = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
+    = f.input :screenshot1, label: t('activerecord.project.screenshot1'), label_html: { class: 'label' }
+    = f.input :screenshot2, label: t('activerecord.project.screenshot2'), label_html: { class: 'label' }
+    = f.input :screenshot3, label: t('activerecord.project.screenshot3'), label_html: { class: 'label' }
+    h3
+      = t('technologies') + ':'
+      #technologies
+        // todo field with autocomplete for technologies
   
-  .actions
+  .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '
     = link_to t('web_app_theme.cancel'), admin_projects_path

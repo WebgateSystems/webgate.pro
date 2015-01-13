@@ -20,7 +20,7 @@ gem 'unicorn'
 gem 'json'
 gem 'sorcery'
 gem 'foundation-rails'
-gem 'cocoon'
+gem 'simple_form'
 
 group :assets do
 # Use SCSS for stylesheets

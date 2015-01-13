@@ -1,26 +1,13 @@
-= form_for [:admin, @technology], html: { class: :form, multipart: true } do |f|
-  - if @technology.errors.any?
-    #error_explanation
-      ul
-        - @technology.errors.full_messages.each do |message|
-          li = message
-  .group
-    = f.collection_select(:technology_group_id, TechnologyGroup.all, :id, :title)
-
-  .group
-    = f.label :title, t('activerecord.technology.title'), class: :label
-    = f.text_field :title, class: :text_field
-
-  .group
-    = f.label :description, t('activerecord.technology.description'), class: :label
-    = f.text_field :description, class: :text_field
-
-  .group
-    = f.label :logo, t('activerecord.technology.logo'), class: :label
-    = f.file_field :logo, class: :file_field
-    = f.hidden_field :logo_cache
+= simple_form_for [:admin, @technology], html: { class: :form, multipart: true } do |f|
+  = f.error_notification
+  .form-inputs
+    .label = t('activerecord.technology_group')
+    = f.collection_select :technology_group_id, TechnologyGroup.all, :id, :title
+    = f.input :title, label: t('activerecord.technology.title'), label_html: { class: 'label' }
+    = f.input :description, label: t('activerecord.technology.description'), label_html: { class: 'label' }
+    = f.input :logo, label: t('activerecord.technology.logo'), label_html: { class: 'label' }
   
-  .actions
+  .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '
     = link_to t('web_app_theme.cancel'), admin_technologies_path

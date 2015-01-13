@@ -6,7 +6,7 @@
       li= link_to t('web_app_theme.new'), new_admin_technology_group_path, class: 'button'
   .content
     h2.title
-      = t('web_app_theme.technology_groups')
+      = t('technology_groups')
     .inner
       - if @technology_groups.any?
         table.table
@@ -25,3 +25,5 @@
                 = link_to t('web_app_theme.show') + ' | ', admin_technology_group_path(technology_group)
                 = link_to t('web_app_theme.edit') + ' | ', edit_admin_technology_group_path(technology_group)
                 = link_to t('web_app_theme.delete'), admin_technology_group_path(technology_group), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+      - else
+        = t('web_app_theme.nothing')

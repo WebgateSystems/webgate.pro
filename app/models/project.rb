@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
   has_many :technologies, as: :taggable, dependent: :destroy
   accepts_nested_attributes_for :technologies, reject_if: :all_blank, allow_destroy: true
 
-  validates :title, :shortlink, :description, :keywords, :content, presence: true
+  validates_presence_of :title, :shortlink, :description, :keywords, :content
   validates_uniqueness_of :shortlink
 
   translates :title, :shortlink, :description, :keywords, :content

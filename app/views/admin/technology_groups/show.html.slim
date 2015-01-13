@@ -17,7 +17,7 @@
         b= t('activerecord.technology_group.description') + ': '
         = @technology_group.description
       p
-        b Technologies:
+        b = t('technologies') + ':'
       - if @technology_group.technologies.any?
         table.table
           tr             
@@ -36,5 +36,5 @@
                 = link_to t('web_app_theme.edit') + ' | ', edit_admin_technology_path(technology)
                 = link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
       - else
-        |...nothing...
+        = t('web_app_theme.nothing')
     = link_to t('web_app_theme.add_technology'), new_admin_technology_group_technology_path(@technology_group), class: 'button small'

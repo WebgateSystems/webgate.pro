@@ -47,8 +47,7 @@ class Admin::ProjectsController < Admin::HomeController
   def project_params
     params.require(:project).permit(:shortlink, :title, :description, :keywords, :content,
                                     :screenshot1, :screenshot2, :screenshot3,
-                                    :screenshot1_cache, :screenshot2_cache, :screenshot3_cache,
-                                    technologies_attributes: [:id, :title, :description, :technology_group_id, :_destroy])
+                                    technologies_attributes: [:id, :title, :technology_group_id, :_destroy])
   end
 
 end

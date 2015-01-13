@@ -25,7 +25,7 @@
       p
         b= t('activerecord.project.content') + ': '
         br
-        = @project.content.html_safe
+        = @project.content.try(:html_safe)
       p
         b= t('activerecord.project.screenshot1') + ': '
         br
@@ -39,7 +39,7 @@
         br
         = image_tag @project.screenshot3.url
       p
-        b Technologies:
+        b = t('technologies') + ':'
       - if @project.technologies.any?
         table.table
           tr             
@@ -58,4 +58,4 @@
                 = link_to t('web_app_theme.edit') + ' | ', edit_admin_technology_path(technology)
                 = link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
       - else
-        |...nothing...
+        = t('web_app_theme.nothing')

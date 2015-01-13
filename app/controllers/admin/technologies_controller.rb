@@ -45,7 +45,7 @@ class Admin::TechnologiesController < Admin::HomeController
   end
 
   def technology_params
-    params.require(:technology).permit(:title, :description, :technology_group_id, :logo, :logo_cache)
+    params.require(:technology).permit(:title, :description, :technology_group_id, :logo)
   end
 
 end
