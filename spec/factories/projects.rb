@@ -7,5 +7,7 @@ FactoryGirl.define do
     description 'first project'
     keywords 'first project'
     content 'first project content'
+    # added for uploader tests
+    screenshot1 Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/projects/tested.jpg')))
   end
 end
