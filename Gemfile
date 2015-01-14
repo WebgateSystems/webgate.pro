@@ -56,9 +56,6 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
 
-  gem 'cucumber-rails', :require => false
-  gem 'cucumber'
-
   #gem 'mocha'
 end
 
