@@ -33,14 +33,26 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process :make_thumb
+    process :convert => 'jpg'
+    def full_filename(for_file)
+      "thumb.jpg"
+    end
   end
 
   version :large do
     process :make_large
+    process :convert => 'jpg'
+    def full_filename(for_file)
+      "large.jpg"
+    end
   end
 
   version :air do
     process :make_air
+    process :convert => 'jpg'
+    def full_filename(for_file)
+      "air.jpg"
+    end
   end
 
   def make_air
@@ -53,7 +65,6 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
         c.geometry "+86+0"
       end
       #  if needed air background added "+51+13"
-      result.format("jpg")
       result
     end
   end
@@ -62,7 +73,6 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
     manipulate! do |source|
       source.resize "182"
       source.crop("182x114+0+0")
-      source.format("jpg")
       source
     end
   end
@@ -71,7 +81,6 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
     manipulate! do |source|
       # source.crop("x1720+0+0")
       source.resize "x1720"
-      source.format("jpg")
       source
     end
   end
@@ -84,8 +93,8 @@ class ScreenshotUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+      "original.#{file.extension}" if original_filename
+  end
 
 end
