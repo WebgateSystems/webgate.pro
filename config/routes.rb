@@ -11,6 +11,7 @@ WebgatePro::Application.routes.draw do
     end
     resources :pages
     resources :projects
+    resources :screenshots, only: [:create]
     resources :technologies
     resources :technology_groups do
       resources :technologies

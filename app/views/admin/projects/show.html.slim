@@ -29,18 +29,12 @@
         b= t('activerecord.project.content') + ': '
         br
         = @project.content.try(:html_safe)
-      p
-        b= t('activerecord.project.screenshot1') + ': '
-        br
-        = image_tag @project.screenshot1.url.try(:thumb)
-      p
-        b= t('activerecord.project.screenshot2') + ': '
-        br
-        = image_tag @project.screenshot2.url.try(:thumb)
-      p
-        b= t('activerecord.project.screenshot3') + ': '
-        br
-        = image_tag @project.screenshot3.url.try(:thumb)
+      #screenshots
+        = t(:screenshots)
+        - @project.screenshots.each do |screenshot|
+          p
+            br
+            = image_tag screenshot.url(:thumb) if screenshot
       p
         b= t('activerecord.project.livelink') + ': '
         br

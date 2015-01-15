@@ -21,6 +21,7 @@ gem 'json'
 gem 'sorcery'
 gem 'foundation-rails'
 gem 'simple_form'
+gem 'dropzonejs-rails'
 
 group :assets do
 # Use SCSS for stylesheets

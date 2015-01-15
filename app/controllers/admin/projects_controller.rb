@@ -11,6 +11,7 @@ class Admin::ProjectsController < Admin::HomeController
   def new
     @project = Project.new
     @project.technologies.build
+    @project.screenshots.build
   end
 
   def create
@@ -45,12 +46,9 @@ class Admin::ProjectsController < Admin::HomeController
   end
 
   def project_params
-    params.require(:project).permit(:shortlink, :title, :description, :keywords, :content,
-                                    :screenshot1, :screenshot2, :screenshot3,
-                                    :screenshot1_cache, :screenshot2_cache, :screenshot3_cache,
-                                    :remove_screenshot1, :remove_screenshot2, :remove_screenshot3,
-                                    :livelink, :publish,
-                                    technologies_attributes: [:id, :title, :technology_group_id, :_destroy])
+    params.require(:project).permit(:shortlink, :title, :description, :keywords, :content, :livelink, :publish,
+                                    technologies_attributes: [:id, :title, :technology_group_id, :_destroy],
+                                    screenshots_attributes: [:id, :file])
   end
 
 end

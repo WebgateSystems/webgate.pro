@@ -8,15 +8,13 @@ class Project < ActiveRecord::Base
 
   has_many :technologies, as: :taggable, dependent: :destroy
   accepts_nested_attributes_for :technologies, reject_if: :all_blank, allow_destroy: true
+  has_many :screenshots, dependent: :destroy
+  accepts_nested_attributes_for :screenshots, allow_destroy: true
 
   validates_presence_of :title, :shortlink, :description, :keywords, :content
   validates_uniqueness_of :shortlink
 
   translates :title, :shortlink, :description, :keywords, :content
-
-  mount_uploader :screenshot1, ScreenshotUploader
-  mount_uploader :screenshot2, ScreenshotUploader
-  mount_uploader :screenshot3, ScreenshotUploader
 
   private
   
@@ -29,7 +27,7 @@ class Project < ActiveRecord::Base
   end
 
   def check_for_publish
-    self.publish = false if self.screenshot1.url.nil? || self.screenshot2.url.nil? || self.screenshot3.url.nil?
+    self.publish = false if self.screenshots.count < 3
   end
 
 end

@@ -13,5 +13,24 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require dropzone
 
 $(function(){ $(document).foundation(); });
+
+$(document).ready(function(){
+  // disable auto discover
+  Dropzone.autoDiscover = false;
+ 
+  var dropzone = new Dropzone (".dropzone", {
+    maxFilesize: 8, // Set the maximum file size to 8 MB
+    paramName: "screenshot[file]", // Rails expects the file upload to be something like model[field_name]
+    addRemoveLinks: true // Show remove links on dropzone itself.
+    previewsContainer: ".dropzone-previews"
+    autoProcessQueue: false
+  }); 
+
+  dropzone.on("success", function(file) {
+    this.removeFile(file)
+    $.getScript("/images")
+  })
+});

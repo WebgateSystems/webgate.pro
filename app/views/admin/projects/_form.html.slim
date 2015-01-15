@@ -7,25 +7,13 @@
     = f.input :keywords, label: t('activerecord.project.keywords'), label_html: { class: 'label' }
     = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
     = f.input :livelink, label: t('activerecord.project.livelink'), label_html: { class: 'label' }
-    = f.input :screenshot1, label: t('activerecord.project.screenshot1'), label_html: { class: 'label' }
-    = f.input :screenshot1_cache, as: :hidden
-    = image_tag @project.screenshot1.url.try(:thumb) if @project.screenshot1?
-    p
-      = f.input :remove_screenshot1, as: :boolean, label: t('activerecord.project.remove_screenshot1'), label_html: { class: 'label' } if @project.screenshot1?
-    = f.input :screenshot2, label: t('activerecord.project.screenshot2'), label_html: { class: 'label' }
-    = f.input :screenshot2_cache, as: :hidden
-    = image_tag @project.screenshot2.url.try(:thumb) if @project.screenshot2?
-    p
-      = f.input :remove_screenshot2, as: :boolean, label: t('activerecord.project.remove_screenshot2'), label_html: { class: 'label' } if @project.screenshot2?
-    = f.input :screenshot3, label: t('activerecord.project.screenshot3'), label_html: { class: 'label' }
-    = f.input :screenshot3_cache, as: :hidden
-    = image_tag @project.screenshot3.url.try(:thumb) if @project.screenshot3?
-    p
-      = f.input :remove_screenshot3, as: :boolean, label: t('activerecord.project.remove_screenshot3'), label_html: { class: 'label' } if @project.screenshot3?
-
     = f.input :publish, label: t('activerecord.project.publish'), label_html: { class: 'label' }
-    h3
-      = t('technologies') + ':'
+    h3 = t(:screenshots)   
+    //= f.simple_fields_for :screenshots, @project.screenshots.build do |screenshot|
+    //  .dropzone
+    //  = screenshot.input :file
+    //  .dropzone-previews
+    h3 = t(:technologies)
       #technologies
         // todo field with autocomplete for technologies
   
