@@ -1,0 +1,82 @@
+﻿= render "layouts/header"
+
+body
+  .header
+    = render 'layouts/lang'
+    h1
+      a href="#"
+        span
+        | Webgate Systems
+    = render 'layouts/menu'
+  /! END header
+  .wrapper
+	.tabs_block
+	  .competences
+		.content
+		  h2 Portfolio:
+		  .site_desc
+			.portfolio_carousel_block
+			  ul.portfolio_carousel
+				li
+                  =image_tag "img2.jpg", width:182, height:114
+				li
+                  =image_tag "img2.jpg", width:182, height:114
+				li
+                  =image_tag "img2.jpg", width:182, height:114
+			  /-- END portfolio_carousel
+			  h3
+                |Sprawdź on-line:
+                a href="#" www.elmax.org
+			/-- END portfolio_carousel_block
+			.desc_text
+			  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at aliquet nibh. Sed tincidunt dolor sed elit suscipit eu dictum metus vestibulum. Mauris consequat cursus diam id congue. Integer ipsum ante, adipiscing non cursus sed, commodo sed elit. Vestibulum est massa, lobortis nec malesuada et, scelerisque eu dui. In in felis ut lacus tincidunt commodo. Curabitur et enim eros, ac fringilla dui. Proin accumsan suscipit nisl
+			  .portfolio_column
+			    h4 Użyte technologie:
+				ul
+				  li - xHTML, CSS, PHP
+				  li - jQuery
+			  /-- END portfolio_column
+			  .portfolio_column
+				h4 Użyte technologie:
+				ul
+				  li - Pocięcie .PSD
+				  li - Zakodowanie grafiki
+			  /-- END portfolio_column
+			/-- END desc_text
+		  /-- END site_desc
+		  .site_desc
+			.portfolio_carousel_block
+			  ul.portfolio_carousel
+                li
+                  =image_tag "img2.jpg", width:182, height:114
+                li
+                  =image_tag "img2.jpg", width:182, height:114
+                li
+                  =image_tag "img2.jpg", width:182, height:114
+              /-- END portfolio_carousel
+			  h3
+                |Sprawdź on-line:
+                a href="#" www.elmax.org
+			/-- END portfolio_carousel_block
+            .desc_text
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at aliquet nibh. Sed tincidunt dolor sed elit suscipit eu dictum metus vestibulum. Mauris consequat cursus diam id congue. Integer ipsum ante, adipiscing non cursus sed, commodo sed elit. Vestibulum est massa, lobortis nec malesuada et, scelerisque eu dui. In in felis ut lacus tincidunt commodo. Curabitur et enim eros, ac fringilla dui. Proin accumsan suscipit nisl
+              .portfolio_column
+                h4 Użyte technologie:
+                ul
+                  li - xHTML, CSS, PHP
+                  li - jQuery
+              /-- END portfolio_column
+              .portfolio_column
+                h4 Użyte technologie:
+                ul
+                  li - Pocięcie .PSD
+                  li - Zakodowanie grafiki
+              /-- END portfolio_column
+            /-- END desc_text
+          /-- END site_desc
+	    /-- END content
+    	= render "layouts/slider"
+      /-- END competences -->
+	/-- END tabs_block -->
+  /-- END wrapper -->
+  = render "layouts/footer"

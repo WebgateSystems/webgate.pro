@@ -1,0 +1,6 @@
+ul.top_nav
+  - @menu.each do |m|
+    - (request.path == m.altlink or request.path == "/"+m.altlink ) ? @class = "active" : @class = ""
+    li class="#{ @class }"
+      = link_to m.name, m.altlink
+
