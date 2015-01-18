@@ -27,7 +27,7 @@ $(document).ready(function(){
     addRemoveLinks: true, // Show remove links on dropzone itself.
     previewsContainer: ".dropzone-previews",
     acceptedFiles: ".png, .jpg",
-    autoProcessQueue: false,
+    autoProcessQueue: true,
     uploadMultiple: true,
     forceFallback: false,
     parallelUploads: 10,
