@@ -29,16 +29,16 @@
         b= t('activerecord.project.content') + ': '
         br
         = @project.content.try(:html_safe)
-      #screenshots
-        = t(:screenshots)
-        - @project.screenshots.each do |screenshot|
-          p
-            br
-            = image_tag screenshot.url(:thumb) if screenshot
       p
         b= t('activerecord.project.livelink') + ': '
         br
         = @project.livelink
+      p
+        b = t(:screenshots)
+        - @project.screenshots.each do |screenshot|
+          p
+            br
+            = image_tag screenshot.file.url(:thumb) if screenshot
       p
         b = t('technologies') + ':'
       - if @project.technologies.any?

@@ -10,16 +10,21 @@ class Admin::ProjectsController < Admin::HomeController
 
   def new
     @project = Project.new
-    @project.technologies.build
+    @project.technologies.build 
     @project.screenshots.build
   end
 
   def create
     @project = Project.new(project_params)
-    if @project.save
-      redirect_to [:admin, @project], notice: 'Successfully created admin/project.'
-    else
-      render 'new'
+    respond_to do |format|
+      if @project.save
+        params[:screenshots]['file'].each do |s|
+          @screenshots = @project.screenshots.create!(file: s, project_id: @project.id)
+        end
+        format.html { redirect_to [:admin, @project], notice: 'Successfully created admin/project.' }
+      else
+        format.html { render 'new' }
+      end
     end
   end
 
@@ -48,7 +53,7 @@ class Admin::ProjectsController < Admin::HomeController
   def project_params
     params.require(:project).permit(:shortlink, :title, :description, :keywords, :content, :livelink, :publish,
                                     technologies_attributes: [:id, :title, :technology_group_id, :_destroy],
-                                    screenshots_attributes: [:id, :file])
+                                    screenshots_attributes: [:id, :file, :project_id, :position, :_destroy])
   end
 
 end

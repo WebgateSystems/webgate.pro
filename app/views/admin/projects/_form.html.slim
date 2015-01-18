@@ -1,4 +1,4 @@
-= simple_form_for [:admin, @project], html: { class: :form, multipart: true } do |f|
+= simple_form_for [:admin, @project], html: { class: 'form dropzone', multipart: true } do |f|
   = f.error_notification
   .form-inputs
     = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: { class: 'label' }
@@ -8,14 +8,18 @@
     = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
     = f.input :livelink, label: t('activerecord.project.livelink'), label_html: { class: 'label' }
     = f.input :publish, label: t('activerecord.project.publish'), label_html: { class: 'label' }
-    h3 = t(:screenshots)   
-    //= f.simple_fields_for :screenshots, @project.screenshots.build do |screenshot|
-    //  .dropzone
-    //  = screenshot.input :file
-    //  .dropzone-previews
+    h3 = t(:screenshots)
+    = f.simple_fields_for :screenshots, @project.screenshots.build do |s|
+      .dropzone
+        .dz-message.dz-clickable  
+          center = image_tag 'dropzone.png'
+        .dropzone-previews
+        .fallback
+          = s.input :file, multiple: true, name: "screenshots[file][]"
+       
     h3 = t(:technologies)
-      #technologies
-        // todo field with autocomplete for technologies
+    #technologies
+      // todo field with autocomplete for technologies
   
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
