@@ -1,0 +1,2 @@
+module Admin::TeammateHelper
+end

@@ -1,0 +1,27 @@
+.block
+  .secondary-navigation
+    ul.button-group.radius
+      li.first.active
+        = link_to t('web_app_theme.list'), admin_teammates_path, class: 'button'
+      li= link_to t('web_app_theme.new'), new_admin_teammate_path, class: 'button'
+  .content
+    h2.title
+      = t('teammates')
+    .inner
+      - if @teammate.any?
+        table.table
+          tr             
+            th.first
+              = t('activerecord.id')
+            th= t('activerecord.teammate.name')
+            th= t('activerecord.created_at')
+            th.last= t('actions')
+          - @teammate.each do |teammate|
+            tr class=("#{cycle('odd', 'even')}")
+              td= teammate.id
+              td= link_to teammate.name, admin_teammates_path(teammate)
+              td= teammate.created_at
+              td.last
+                = link_to t('web_app_theme.show') + ' | ', admin_teammate_path(teammate)
+                = link_to t('web_app_theme.edit') + ' | ', edit_admin_teammate_path(teammate)
+                = link_to t('web_app_theme.delete'), admin_teammate_path(teammate), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
