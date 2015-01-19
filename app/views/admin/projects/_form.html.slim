@@ -15,7 +15,8 @@
           center = image_tag 'dropzone.png'
         .dropzone-previews
         .fallback
-          = s.input :file, multiple: true, name: "screenshots[file][]"
+          = s.input :file, multiple: true
+          //, name: "screenshots[file][]"
        
     h3 = t(:technologies)
     #technologies

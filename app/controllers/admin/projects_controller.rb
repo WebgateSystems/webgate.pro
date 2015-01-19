@@ -18,10 +18,14 @@ class Admin::ProjectsController < Admin::HomeController
     @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
-        params[:screenshots]['file'].each do |s|
-          @screenshots = @project.screenshots.create!(file: s, project_id: @project.id)
-        end
         format.html { redirect_to [:admin, @project], notice: 'Successfully created admin/project.' }
+        format.json {    
+          params[:screenshots]['file'].each do |s|
+            logger.debug "!!!Screenshots params: #{s[1]}"
+            #@project.screenshots.create!(file: s[1])
+          end
+          render json: {message: 'success' }, status: 200
+        }
       else
         format.html { render 'new' }
       end
@@ -32,10 +36,20 @@ class Admin::ProjectsController < Admin::HomeController
   end
 
   def update
-    if @project.update_attributes(project_params)
-      redirect_to [:admin, @project], notice: 'Successfully updated admin/project.'
-    else
-      render 'edit'
+    respond_to do |format|
+      if @project.update_attributes(project_params)
+        format.html { redirect_to [:admin, @project], notice: 'Successfully updated admin/project.' }
+        format.json {    
+          params[:screenshots]['file'].each do |s|
+            logger.debug "!!!Screenshots params: #{s[1]}"
+            #@project.screenshots.create!(file: s[1])
+          end
+          render json: {message: 'success' }, status: 200
+        }
+      else
+        format.html { render 'edit' }
+        format.json { render json: { error: @project.errors.full_messages.join(',') }, status: 400 }
+      end
     end
   end
 

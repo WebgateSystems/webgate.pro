@@ -23,7 +23,7 @@ $(document).ready(function(){
  
   var dropzone = new Dropzone (".dropzone", {
     maxFilesize: 8, // Set the maximum file size to 8 MB
-    paramName: "screenshots[file][]", // Rails expects the file upload to be something like model[field_name]
+    paramName: "screenshots[file]", // Rails expects the file upload to be something like model[field_name]
     addRemoveLinks: true, // Show remove links on dropzone itself.
     previewsContainer: ".dropzone-previews",
     acceptedFiles: ".png, .jpg",
