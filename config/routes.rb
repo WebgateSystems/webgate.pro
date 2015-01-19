@@ -11,7 +11,7 @@ WebgatePro::Application.routes.draw do
     end
     resources :pages
     resources :projects
-    resources :teammates
+    resources :members
     resources :technologies
     resources :technology_groups do
       resources :technologies
@@ -22,6 +22,8 @@ WebgatePro::Application.routes.draw do
   get "home/index", as: 'main'
   get "logout" => "sessions#destroy", as: "logout"
   get "login" => "sessions#new", as: "login"
+  get "team" => "team#index"
+  get "team/:id" => "team#show", as: "teammate"
 
   match "not-found" => "pages#not_found", via: [:get, :post], as: :not_found
   match ":shortlink" => "pages#showbyshortlink", via: [:get, :post]

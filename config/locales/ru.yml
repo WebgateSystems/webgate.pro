@@ -22,7 +22,7 @@ ru:
     technology_group: "группа(у) технологий"
     technology: "технология"
     project: "проект"
-    teammate: "учасник команды"
+    member: "член команды"
     confirm: "Вы уверены?"
     nothing: "Нет ни одной записи"
   activerecord:
@@ -65,7 +65,7 @@ ru:
       screenshot3: "Третий скриншот"
       livelink: "Ссылка на проект"
       publish: "Опубликован"
-    teammate:
+    member:
       name: "Имя"
       shortdesc: "Краткое описание"
       description: "Описание"
@@ -74,7 +74,7 @@ ru:
   categories: "Меню"
   pages: "Страницы"
   projects: "Проекты"
-  teammates: "Команда"
+  members: "Команда"
   technologies: "Технологии"
   technology_groups: "Группы технологий"
   technology_group_title: "Название технологической группы"

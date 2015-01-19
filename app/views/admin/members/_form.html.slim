@@ -1,0 +1,16 @@
+= simple_form_for [:admin, @member], html: { class: :form, multipart: true } do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name, label: t('activerecord.member.name'), label_html: { class: 'label' }
+    = f.input :shortdesc, label: t('activerecord.member.shortdesc'), label_html: { class: 'label' }
+    = f.input :description, label: t('activerecord.member.description'), label_html: { class: 'label' }
+    = f.input :avatar, label: t('activerecord.member.avatar'), label_html: { class: 'label' }
+    h3
+      = t('technologies') + ':'
+      #technologies
+        // todo field with autocomplete for technologies
+  
+  .form-actions
+    = f.submit t('web_app_theme.save'), class: 'button success'
+    = ' ' + t('web_app_theme.or') + ' '
+    = link_to t('web_app_theme.cancel'), admin_members_path

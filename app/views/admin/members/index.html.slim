@@ -1,0 +1,27 @@
+.block
+  .secondary-navigation
+    ul.button-group.radius
+      li.first.active
+        = link_to t('web_app_theme.list'), admin_members_path, class: 'button'
+      li= link_to t('web_app_theme.new'), new_admin_member_path, class: 'button'
+  .content
+    h2.title
+      = t('members')
+    .inner
+      - if @member.any?
+        table.table
+          tr             
+            th.first
+              = t('activerecord.id')
+            th= t('activerecord.member.name')
+            th= t('activerecord.created_at')
+            th.last= t('actions')
+          - @member.each do |member|
+            tr class=("#{cycle('odd', 'even')}")
+              td= member.id
+              td= link_to member.name, admin_members_path(member)
+              td= member.created_at
+              td.last
+                = link_to t('web_app_theme.show') + ' | ', admin_member_path(member)
+                = link_to t('web_app_theme.edit') + ' | ', edit_admin_member_path(member)
+                = link_to t('web_app_theme.delete'), admin_member_path(member), method: :delete, confirm: "#{t('web_app_theme.confirm')}"

@@ -21,7 +21,7 @@ en:
     image_catalog: "image catalog"
     page: "page"
     subcategory: "submenu"
-    teammate: "teammate"
+    member: "member"
     technology_group: "technology group"
     technology: "technology"
     confirm: "Are you sure?"
@@ -66,7 +66,7 @@ en:
       screenshot3: "Third screenshot"
       livelink: "Live link"
       publish: "Publish"
-    teammate:
+    member:
       name: "Name"
       shortdesc: "Short description"
       description: "Description"
@@ -75,7 +75,7 @@ en:
   categories: "Menu"
   pages: "Pages"
   projects: "Projects"
-  teammates: "Team"
+  members: "Team"
   technologies: "Technologies"
   technology_groups: "Technology groups"
   technology_group_title: "Technology group title"

@@ -19,7 +19,7 @@ pl:
     category: "menu"
     page: "strona"
     subcategory: "submenu"
-    teammate: "kolega"
+    member: "członek"
     technology_group: "technology group"
     confirm: "Jesteś pewien?"
     nothing: "Nothing"
@@ -63,7 +63,7 @@ pl:
       screenshot3: "Trzeci zrzut ekranu"
       livelink: "Link na żywo"
       publish: "Publikować"
-    teammate:
+    member:
       name: "Imię"
       shortdesc: "Krótki opis"
       description: "Opis"
@@ -72,6 +72,7 @@ pl:
   categories: "Menu"
   pages: "Strony"
   projects: "Projekty"
+  members: "Zespół"
   technologies: "Technologie"
   technology_groups: "Grupy technologii"
   technology_group_title: "Nazwa grupy technologicznej"

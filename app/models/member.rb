@@ -1,6 +1,6 @@
 require 'carrierwave/orm/activerecord'
 
-class Teammate < ActiveRecord::Base
+class Member < ActiveRecord::Base
 
   has_many :technologies, as: :taggable, dependent: :destroy
   accepts_nested_attributes_for :technologies, reject_if: :all_blank, allow_destroy: true

@@ -2,30 +2,30 @@
   .secondary-navigation
     ul.button-group.radius
       li.first
-        = link_to t('web_app_theme.list'), admin_teammates_path, class: 'button'
-      li= link_to t('web_app_theme.new'), new_admin_teammate_path, class: 'button'
-      li= link_to t('web_app_theme.edit'), edit_admin_teammate_path(@teammate), class: 'button success'
-      li= link_to t('web_app_theme.delete'), admin_teammate_path(@teammate), method: :delete, data: {confirm: "#{t('web_app_theme.confirm')}"}, class: 'button alert'
+        = link_to t('web_app_theme.list'), admin_members_path, class: 'button'
+      li= link_to t('web_app_theme.new'), new_admin_member_path, class: 'button'
+      li= link_to t('web_app_theme.edit'), edit_admin_member_path(@member), class: 'button success'
+      li= link_to t('web_app_theme.delete'), admin_member_path(@member), method: :delete, data: {confirm: "#{t('web_app_theme.confirm')}"}, class: 'button alert'
       li.active
-        = link_to t('web_app_theme.show'), admin_teammate_path, class: 'button'
+        = link_to t('web_app_theme.show'), admin_member_path, class: 'button'
   .content
     .inner
       p
-        b= t('activerecord.teammate.name') + ': '
-        = @teammate.name
+        b= t('activerecord.member.name') + ': '
+        = @member.name
       p
-        b= t('activerecord.teammate.shortdesc') + ': '
-        = @teammate.shortdesc
+        b= t('activerecord.member.shortdesc') + ': '
+        = @member.shortdesc
       p
-        b= t('activerecord.teammate.description') + ': '
-        = @teammate.description
+        b= t('activerecord.member.description') + ': '
+        = @member.description
       p
-        b= t('activerecord.teammate.avatar') + ': '
+        b= t('activerecord.member.avatar') + ': '
         br
-        = image_tag @teammate.avatar.url(:thumb)
+        = image_tag @member.avatar.url(:thumb)
       p
         b = t('technologies') + ':'
-      - if @teammate.technologies.any?
+      - if @member.technologies.any?
         table.table
           tr             
             th.first
@@ -33,7 +33,7 @@
             th= t('activerecord.technology.title')
             th= t('activerecord.created_at')
             th.last
-          - @teammate.technologies.each do |technology|
+          - @member.technologies.each do |technology|
             tr class=("#{cycle('odd', 'even')}")
               td= technology.id
               td= link_to technology.title, admin_technology_path(technology)
