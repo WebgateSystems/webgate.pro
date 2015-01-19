@@ -1,5 +1,5 @@
 WebgatePro::Application.routes.draw do
-
+  
   resources :sessions
 
   namespace :admin do
