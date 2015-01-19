@@ -46,7 +46,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   def make_thumb
     manipulate! do |source|
-      source.resize "x200"
+      source.resize "135!x135!"
       source
     end
   end

@@ -303,21 +303,33 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 		font-size: 12px;
 		line-height: 26px;
 	}
-.about_block_team{
-    background: asset_url('about_block.png') 157px center no-repeat;
+.short_description_block{
     margin-bottom: 37px;
     overflow: hidden;
     position: relative;
     width: 947px;
-    height: 210px;
+    height: 150px;
 }
 
-.about_block_team img{
+.short_description_block img{
   display: block;
   border: 5px #fff solid;
   box-shadow: #ccc 3px 3px 5px;
   left: 0px;
+  margin-top: 3px;
   position: absolute;
+}
+
+.short_description_field{
+  background-color: #cad0d3;
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+  padding: 17px 25px 22px 25px;
+  width: 723px;
+  box-shadow: #ccc 3px 3px 5px;
+  height: 100px;
+  border-radius: 7px;
 }
 
 .about_block{
