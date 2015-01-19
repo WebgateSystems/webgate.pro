@@ -70,6 +70,7 @@ ru:
       shortdesc: "Краткое описание"
       description: "Описание"
       avatar: "Аватар"
+      motto: "Девиз"
   users: "Пользователи"
   categories: "Меню"
   pages: "Страницы"

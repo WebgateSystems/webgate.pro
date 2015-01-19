@@ -19,7 +19,7 @@
           - @member.each do |member|
             tr class=("#{cycle('odd', 'even')}")
               td= member.id
-              td= link_to member.name, admin_members_path(member)
+              td= link_to member.name, admin_member_path(member)
               td= member.created_at
               td.last
                 = link_to t('web_app_theme.show') + ' | ', admin_member_path(member)

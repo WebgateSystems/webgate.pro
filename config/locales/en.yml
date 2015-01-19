@@ -71,6 +71,7 @@ en:
       shortdesc: "Short description"
       description: "Description"
       avatar: "Avatar"
+      motto: "Motto"
   users: "Users"
   categories: "Menu"
   pages: "Pages"

@@ -68,6 +68,7 @@ pl:
       shortdesc: "Krótki opis"
       description: "Opis"
       avatar: "Awatara"
+      motto: "Motto"
   users: "Użytkownicy"
   categories: "Menu"
   pages: "Strony"

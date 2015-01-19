@@ -4,6 +4,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :name
       t.text :shortdesc
       t.text :description
+      t.text :motto
       t.string :avatar
 
       t.timestamps

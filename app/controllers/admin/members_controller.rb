@@ -45,7 +45,7 @@ class Admin::MembersController < Admin::HomeController
   end
 
   def member_params
-    params.require(:member).permit(:name, :shortdesc, :description, :avatar,
+    params.require(:member).permit(:name, :shortdesc, :description, :avatar, :motto,
                                     technologies_attributes: [:id, :title, :technology_group_id, :_destroy])
   end
 
