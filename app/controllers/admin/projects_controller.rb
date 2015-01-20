@@ -24,10 +24,11 @@ class Admin::ProjectsController < Admin::HomeController
             logger.debug "!!!Screenshots params: #{s[1]}"
             #@project.screenshots.create!(file: s[1])
           end
-          render json: {message: 'success' }, status: 200
+          render json: @project, status: :created, location: [:admin, @project]
         }
       else
         format.html { render 'new' }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,20 +43,23 @@ class Admin::ProjectsController < Admin::HomeController
         format.json {    
           params[:screenshots]['file'].each do |s|
             logger.debug "!!!Screenshots params: #{s[1]}"
-            #@project.screenshots.create!(file: s[1])
+            #@project.screenshots.create!(file: s[1][:filename])
           end
-          render json: {message: 'success' }, status: 200
+          render json: {message: 'success' }, status: :ok
         }
       else
         format.html { render 'edit' }
-        format.json { render json: { error: @project.errors.full_messages.join(',') }, status: 400 }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
     @project.destroy
-    redirect_to admin_projects_url, notice: 'Successfully destroyed admin/project.'
+    respond_to do |format|
+      format.html { redirect_to admin_projects_url, notice: 'Successfully destroyed admin/project.' }
+      format.json { head :no_content }
+    end
   end
 
   private

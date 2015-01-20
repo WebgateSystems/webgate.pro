@@ -23,6 +23,7 @@
       // todo field with autocomplete for technologies
   
   .form-actions
-    = f.submit t('web_app_theme.save'), class: 'button success'
-    = ' ' + t('web_app_theme.or') + ' '
-    = link_to t('web_app_theme.cancel'), admin_projects_path
+    #submit-all
+      = f.submit t('web_app_theme.save'), class: 'button success'
+      = ' ' + t('web_app_theme.or') + ' '
+      = link_to t('web_app_theme.cancel'), admin_projects_path

@@ -27,12 +27,19 @@ $(document).ready(function(){
     addRemoveLinks: true, // Show remove links on dropzone itself.
     previewsContainer: ".dropzone-previews",
     acceptedFiles: ".png, .jpg",
-    autoProcessQueue: true,
+    autoProcessQueue: false,
     uploadMultiple: true,
     forceFallback: false,
     parallelUploads: 10,
     maxFiles: 10
-  }); 
+  });
+
+
+  $("#submit-all").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    dropzone.processQueue();
+  });
 
   //dropzone.on("success", function(file) {
   //  this.removeFile(file)
