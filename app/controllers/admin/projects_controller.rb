@@ -6,14 +6,6 @@ class Admin::ProjectsController < Admin::HomeController
   end
 
   def show
-    respond_to do |format|
-      format.html
-      format.js {
-        render :update do |page|
-          page.redirect_to [:admin, @project]
-        end
-      }
-    end
   end
 
   def new
@@ -26,19 +18,13 @@ class Admin::ProjectsController < Admin::HomeController
     @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
-        #format.html { redirect_to [:admin, @project], notice: 'Successfully created admin/project.' }
+        format.html { redirect_to [:admin, @project], notice: 'Successfully created admin/project.' }
         format.json {    
           params[:screenshots]['file'].each do |s|
-            #logger.debug "!!!Screenshots params: #{s[1]}"
             @project.screenshots.create!(file: s[1])
           end
-          #render json: @project, status: :created, location: [:admin, @project]
-          
-          flash[:notice] = 'Successfully created admin/project with screenshots.'
-          flash.keep(:notice) # Keep flash notice around for the redirect.
-          render json: { result: 'success', redirect: admin_project_path(@project) }
+          render json: @project, status: :created, location: [:admin, @project]
         }
-        format.js
       else
         format.html { render 'new' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -55,7 +41,6 @@ class Admin::ProjectsController < Admin::HomeController
         format.html { redirect_to [:admin, @project], notice: 'Successfully updated admin/project.' }
         format.json {    
           params[:screenshots]['file'].each do |s|
-            #logger.debug "!!!Screenshots params: #{s[1]}"
             @project.screenshots.create!(file: s[1])
           end
           render json: {message: 'success' }, status: :ok

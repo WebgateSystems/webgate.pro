@@ -34,15 +34,33 @@ $(document).ready(function(){
     maxFiles: 10
   });
 
-
   $("#submit-all").click(function (e) {
     e.preventDefault();
     e.stopPropagation();
-    dropzone.processQueue();
+    var form = $(this).closest('#dropzone-form'); //error
+    if (form.valid() == true) { 
+      if (dropzone.getQueuedFiles().length > 0) {                        
+        dropzone.processQueue();  
+      } else {                       
+        dropzone.uploadFiles([]); //send empty
+        //$("#dropzone-form").submit();
+      }                                    
+    }
+    //dropzone.processQueue();
   });
 
-  dropzone.on("success", function(file) {
-    this.removeFile(file)
-    $.getScript("/projects")
-  })
+  //dropzone.on("success", function(file) {
+  //  this.removeFile(file)
+  //  $.getScript("/admin/projects")
+  //})
+
+  //dropzone.on("successmultiple", function(files, response) {
+  //  window.location.replace(response.redirect);
+  //  exit();
+  //});
+  
+  //dropzone.on("errormultiple", function(files, response) {
+  //  $("#notifications").before('<div class="alert alert-error" id="alert-error"><button type="button" class="close" data-dismiss="alert">×</button><i class="icon-exclamation-sign"></i> There is a problem with the files being uploaded. Please check the form below.</div>');
+  //  exit();
+  //});
 });

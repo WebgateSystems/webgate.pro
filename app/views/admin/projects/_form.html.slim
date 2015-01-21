@@ -1,4 +1,4 @@
-= simple_form_for [:admin, @project], html: { class: 'form dropzone', multipart: true } do |f|
+= simple_form_for [:admin, @project], html: { id: 'dropzone-form', class: 'form dropzone', multipart: true } do |f|
   = f.error_notification
   .form-inputs
     = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: { class: 'label' }
@@ -16,14 +16,14 @@
         .dropzone-previews
         .fallback
           = s.input :file, multiple: true
-          //, name: "screenshots[file][]"
+      #submit-all
+        = link_to t('save_screenshots'), '#'
        
     h3 = t(:technologies)
     #technologies
       // todo field with autocomplete for technologies
   
   .form-actions
-    #submit-all
-      = f.submit t('web_app_theme.save'), class: 'button success'
-      = ' ' + t('web_app_theme.or') + ' '
-      = link_to t('web_app_theme.cancel'), admin_projects_path
+    = f.submit t('web_app_theme.save'), class: 'button success'
+    = ' ' + t('web_app_theme.or') + ' '
+    = link_to t('web_app_theme.cancel'), admin_projects_path
