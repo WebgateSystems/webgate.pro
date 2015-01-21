@@ -41,8 +41,8 @@ $(document).ready(function(){
     dropzone.processQueue();
   });
 
-  //dropzone.on("success", function(file) {
-  //  this.removeFile(file)
-  //  $.getScript("/projects")
-  //})
+  dropzone.on("success", function(file) {
+    this.removeFile(file)
+    $.getScript("/projects")
+  })
 });
