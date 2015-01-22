@@ -1,0 +1,14 @@
+.block
+  .secondary-navigation
+    ul.button-group.radius
+      li.first
+        = link_to t('web_app_theme.list'), admin_members_path, class: 'button'
+      li= link_to t('web_app_theme.new'), new_admin_member_path, class: 'button'
+      li.active
+        = link_to t('web_app_theme.edit'), edit_admin_member_path, class: 'button success'
+  .content
+    h2.title
+      = t('web_app_theme.edit') + ' '
+      = t('web_app_theme.member')
+    .inner
+      = render 'form'

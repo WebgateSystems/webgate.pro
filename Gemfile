@@ -14,6 +14,7 @@ gem 'globalize'
 gem 'rails-translate-routes'
 gem 'exception_notification'
 gem 'unicorn'
+gem 'will_paginate'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 #gem 'jbuilder', '~> 1.2'
