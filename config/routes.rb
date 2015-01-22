@@ -23,7 +23,7 @@ WebgatePro::Application.routes.draw do
   get "logout" => "sessions#destroy", as: "logout"
   get "login" => "sessions#new", as: "login"
   get "team" => "team#index"
-  get "team/:id" => "team#show", as: "teammate"
+  get "team/:id" => "team#show", as: "member"
 
   match "not-found" => "pages#not_found", via: [:get, :post], as: :not_found
   match ":shortlink" => "pages#showbyshortlink", via: [:get, :post]

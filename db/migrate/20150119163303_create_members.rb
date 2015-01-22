@@ -10,7 +10,7 @@ class CreateMembers < ActiveRecord::Migration
       t.timestamps
     end
     Member.create_translation_table! name: :string,  shortdesc: :text,
-                                     description: :text
+                                     description: :text, motto: :text
   end
 
   def self.down

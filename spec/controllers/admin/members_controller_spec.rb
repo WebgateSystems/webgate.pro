@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Admin::TeammatesController, :type => :controller do
+RSpec.describe Admin::MembersController, :type => :controller do
 
 end
 
