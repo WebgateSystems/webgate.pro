@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115171426) do
+ActiveRecord::Schema.define(version: 20150119163303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,30 @@ ActiveRecord::Schema.define(version: 20150115171426) do
     t.string   "link"
     t.string   "locale"
     t.string   "link_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "member_translations", force: true do |t|
+    t.integer  "member_id",   null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "shortdesc"
+    t.text     "description"
+    t.text     "motto"
+  end
+
+  add_index "member_translations", ["locale"], name: "index_member_translations_on_locale", using: :btree
+  add_index "member_translations", ["member_id"], name: "index_member_translations_on_member_id", using: :btree
+
+  create_table "members", force: true do |t|
+    t.string   "name"
+    t.text     "shortdesc"
+    t.text     "description"
+    t.text     "motto"
+    t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
