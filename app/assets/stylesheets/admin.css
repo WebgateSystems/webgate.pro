@@ -10,6 +10,8 @@
  *
  *= require_self
  *= require foundation_and_overrides
+ *= require dropzone/basic
+ *= require dropzone/dropzone
  */
 
 .flash .message {

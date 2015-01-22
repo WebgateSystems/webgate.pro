@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113184702) do
+ActiveRecord::Schema.define(version: 20150115171426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,13 +95,18 @@ ActiveRecord::Schema.define(version: 20150113184702) do
     t.text     "description"
     t.text     "keywords"
     t.text     "content"
-    t.string   "screenshot1"
-    t.string   "screenshot2"
-    t.string   "screenshot3"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "livelink"
     t.boolean  "publish",     default: false
+  end
+
+  create_table "screenshots", force: true do |t|
+    t.string   "file"
+    t.integer  "project_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "technologies", force: true do |t|

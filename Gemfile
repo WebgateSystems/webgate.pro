@@ -21,6 +21,7 @@ gem 'json'
 gem 'sorcery'
 gem 'foundation-rails'
 gem 'simple_form'
+gem 'dropzonejs-rails'
 
 group :assets do
 # Use SCSS for stylesheets
@@ -55,9 +56,6 @@ group :test do
   gem 'spork'
   gem 'launchy'
   gem 'simplecov'
-
-  gem 'cucumber-rails', :require => false
-  gem 'cucumber'
 
   #gem 'mocha'
 end
