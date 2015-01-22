@@ -1,4 +1,4 @@
-= simple_form_for [:admin, @project], html: { class: :form, multipart: true } do |f|
+= simple_form_for [:admin, @project], html: { id: 'dropzone-form', class: 'form dropzone', multipart: true } do |f|
   = f.error_notification
   .form-inputs
     = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: { class: 'label' }
@@ -7,14 +7,21 @@
     = f.input :keywords, label: t('activerecord.project.keywords'), label_html: { class: 'label' }
     = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
     = f.input :livelink, label: t('activerecord.project.livelink'), label_html: { class: 'label' }
-    = f.input :screenshot1, label: t('activerecord.project.screenshot1'), label_html: { class: 'label' }
-    = f.input :screenshot2, label: t('activerecord.project.screenshot2'), label_html: { class: 'label' }
-    = f.input :screenshot3, label: t('activerecord.project.screenshot3'), label_html: { class: 'label' }
     = f.input :publish, label: t('activerecord.project.publish'), label_html: { class: 'label' }
-    h3
-      = t('technologies') + ':'
-      #technologies
-        // todo field with autocomplete for technologies
+    h3 = t(:screenshots)
+    = f.simple_fields_for :screenshots, @project.screenshots.build do |s|
+      .dropzone
+        .dz-message.dz-clickable  
+          center = image_tag 'dropzone.png'
+        .dropzone-previews
+        .fallback
+          = s.input :file, multiple: true
+      #submit-all
+        = link_to t('save_screenshots'), '#'
+       
+    h3 = t(:technologies)
+    #technologies
+      // todo field with autocomplete for technologies
   
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'

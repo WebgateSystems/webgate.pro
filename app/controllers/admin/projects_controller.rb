@@ -10,15 +10,25 @@ class Admin::ProjectsController < Admin::HomeController
 
   def new
     @project = Project.new
-    @project.technologies.build
+    @project.technologies.build 
+    @project.screenshots.build
   end
 
   def create
     @project = Project.new(project_params)
-    if @project.save
-      redirect_to [:admin, @project], notice: 'Successfully created admin/project.'
-    else
-      render 'new'
+    respond_to do |format|
+      if @project.save
+        format.html { redirect_to [:admin, @project], notice: 'Successfully created admin/project.' }
+        format.json {    
+          params[:screenshots]['file'].each do |s|
+            @project.screenshots.create!(file: s[1])
+          end
+          render json: @project, status: :created, location: [:admin, @project]
+        }
+      else
+        format.html { render 'new' }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -26,16 +36,28 @@ class Admin::ProjectsController < Admin::HomeController
   end
 
   def update
-    if @project.update_attributes(project_params)
-      redirect_to [:admin, @project], notice: 'Successfully updated admin/project.'
-    else
-      render 'edit'
+    respond_to do |format|
+      if @project.update_attributes(project_params)
+        format.html { redirect_to [:admin, @project], notice: 'Successfully updated admin/project.' }
+        format.json {    
+          params[:screenshots]['file'].each do |s|
+            @project.screenshots.create!(file: s[1])
+          end
+          render json: {message: 'success' }, status: :ok
+        }
+      else
+        format.html { render 'edit' }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     @project.destroy
-    redirect_to admin_projects_url, notice: 'Successfully destroyed admin/project.'
+    respond_to do |format|
+      format.html { redirect_to admin_projects_url, notice: 'Successfully destroyed admin/project.' }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -45,9 +67,9 @@ class Admin::ProjectsController < Admin::HomeController
   end
 
   def project_params
-    params.require(:project).permit(:shortlink, :title, :description, :keywords, :content,
-                                    :screenshot1, :screenshot2, :screenshot3, :livelink, :publish,
-                                    technologies_attributes: [:id, :title, :technology_group_id, :_destroy])
+    params.require(:project).permit(:shortlink, :title, :description, :keywords, :content, :livelink, :publish,
+                                    technologies_attributes: [:id, :title, :technology_group_id, :_destroy],
+                                    screenshots_attributes: [:id, :file, :project_id, :position, :_destroy])
   end
 
 end
