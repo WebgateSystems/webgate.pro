@@ -1,4 +1,4 @@
-$(document).on('change', ()->
+$(document).on('ready', ()->
   onAddFile = (event) ->
     file = event.target.files[0]
     url = URL.createObjectURL(file)
