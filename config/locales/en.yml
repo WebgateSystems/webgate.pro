@@ -72,6 +72,14 @@ en:
       description: "Description"
       avatar: "Avatar"
       motto: "Motto"
+      watch_profile: "Watch Profile"
+  views:
+      pagination:
+        previous: "&laquo; Prev."
+        next: "Next &raquo;"
+        first: "&laquo; First"
+        last: "Last &raquo;"
+        truncate: "..."
   users: "Users"
   categories: "Menu"
   pages: "Pages"

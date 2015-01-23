@@ -1,7 +1,7 @@
 class TeamController < ApplicationController
 
   def index
-    @team = Member.paginate(:page => params[:page], :per_page => 10)
+    @team = Member.order(:id).page(params[:page]).per(10)
   end
 
   def show

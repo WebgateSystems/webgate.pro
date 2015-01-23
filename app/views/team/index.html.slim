@@ -8,5 +8,5 @@
           | :
         = team.shortdesc
         |&nbsp;
-        = link_to t('Watch profile'), member_path(team)
-  = will_paginate
+        = link_to t('activerecord.member.watch_profile'), member_path(team)
+  = paginate @team
