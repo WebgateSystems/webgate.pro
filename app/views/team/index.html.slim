@@ -1,0 +1,12 @@
+- @team.any?
+  - @team.each do |team|
+    .short_description_block
+      = image_tag team.avatar.url(:thumb)
+      .short_description_field
+        h2
+          = team.name
+          | :
+        = team.shortdesc
+        |&nbsp;
+        = link_to t('Watch profile'), member_path(team)
+  = will_paginate
