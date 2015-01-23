@@ -21,15 +21,14 @@ gem 'json'
 gem 'sorcery'
 gem 'foundation-rails'
 gem 'simple_form'
-gem 'dropzonejs-rails'
+gem 'cocoon'
 
-group :assets do
 # Use SCSS for stylesheets
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-  gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-  gem 'coffee-rails'
-end
+gem 'coffee-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
