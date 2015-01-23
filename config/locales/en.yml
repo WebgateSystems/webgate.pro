@@ -26,6 +26,8 @@ en:
     technology: "technology"
     confirm: "Are you sure?"
     nothing: "Nothing"
+    input: "Input"
+    preview: "Preview"
   activerecord:
     id: "ID"
     created_at: "Created at"
@@ -61,9 +63,6 @@ en:
       description: "Description"
       keywords: "Keywords"
       content: "Content"
-      screenshot1: "First screenshot"
-      screenshot2: "Second screenshot"
-      screenshot3: "Third screenshot"
       livelink: "Live link"
       publish: "Publish"
     member:
@@ -79,7 +78,9 @@ en:
   team: "Team"
   members: "Team members"
   screenshots: "Screenshots"
+  add_screenshot: "Add screenshot"
   technologies: "Technologies"
+  add_technology: "Add technology"
   technology_groups: "Technology groups"
   technology_group_title: "Technology group title"
   actions: "Actions"

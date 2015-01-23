@@ -13,13 +13,13 @@
     table.project-form
       thead
         tr
-          td = t('input') 
-          td = t('preview')
-          td = t('remove')
+          td = t('web_app_theme.input') 
+          td = t('web_app_theme.preview')
+          td = t('web_app_theme.delete')
       tbody
         = f.fields_for :screenshots do |s|
           = render 'screenshot_fields', f: s
-    .links= link_to_add_association t('add screenshot'), f, :screenshots
+    .links= link_to_add_association t('add_screenshot'), f, :screenshots
 
     h3 = t(:technologies)
     #technologies
