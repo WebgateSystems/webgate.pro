@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
   has_many :technologies, as: :taggable, dependent: :destroy
   accepts_nested_attributes_for :technologies, reject_if: :all_blank, allow_destroy: true
   has_many :screenshots, dependent: :destroy
-  accepts_nested_attributes_for :screenshots, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :screenshots, reject_if: proc{ |param| param[:file].blank? && param[:file_cache].blank? && param[:id].blank? }, allow_destroy: true
 
   validates_presence_of :title, :shortlink, :description, :keywords, :content
   validates_uniqueness_of :shortlink

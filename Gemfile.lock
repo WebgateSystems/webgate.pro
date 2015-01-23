@@ -58,6 +58,7 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
+    cocoon (1.2.6)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -71,8 +72,6 @@ GEM
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    dropzonejs-rails (0.5.3)
-      rails (> 3.1)
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -185,6 +184,12 @@ GEM
     rvm-capistrano (1.5.5)
       capistrano (~> 2.15.4)
     sass (3.4.4)
+    sass-rails (5.0.1)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (~> 1.1)
     sexp_processor (4.4.4)
     simple_form (3.1.0)
       actionpack (~> 4.0)
@@ -252,9 +257,9 @@ DEPENDENCIES
   capistrano_colors
   capybara
   carrierwave
+  cocoon
   coffee-rails
   database_cleaner
-  dropzonejs-rails
   email_spec
   exception_notification
   factory_girl_rails
@@ -275,6 +280,7 @@ DEPENDENCIES
   ruby_parser
   russian
   rvm-capistrano
+  sass-rails
   simple_form
   simplecov
   slim-rails
