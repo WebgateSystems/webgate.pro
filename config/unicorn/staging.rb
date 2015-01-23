@@ -1,6 +1,6 @@
 # Set your full path to application.
-app_path = "/home/webgate/dev.webgate.pro/current"
-shared_path = "/home/webgate/dev.webgate.pro/shared"
+app_path = "/home/webgate/test.webgate.pro/current"
+shared_path = "/home/webgate/test.webgate.pro/shared"
 
 # Set unicorn options
 worker_processes 2
