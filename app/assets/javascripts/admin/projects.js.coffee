@@ -23,3 +23,15 @@ $(document).on('ready', ()->
   $('a.add_fields').data('association-insertion-method', 'append')
   $('a.add_fields').data('association-insertion-node', 'table.project-form tbody')
 )
+
+ready = undefined
+ready = -> 
+  # call sortable on our element with the sortable class
+  $('.sortable').sortable()
+  return
+
+$(document).ready ready
+
+
+# if using turbolinks
+$(document).on 'page:load', ready

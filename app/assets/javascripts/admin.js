@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require html.sortable
 //= require foundation
 //= require cocoon
 //= require_tree ./admin
