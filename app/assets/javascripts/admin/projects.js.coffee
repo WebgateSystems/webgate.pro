@@ -25,13 +25,47 @@ $(document).on('ready', ()->
 )
 
 ready = undefined
-ready = -> 
+
+set_positions = undefined
+set_positions = -> 
+  # loop through and give each screenshot a data-pos
+  # attribute that holds its position in the DOM
+  $('li#screenshot').each (i) ->
+    $(this).attr 'data-pos', i + 1
+    return
+  return
+
+ready = ->
+  # call set_positions function
+  set_positions()
   # call sortable on our element with the sortable class
   $('.sortable').sortable()
+
+  # after the order changes
+  $('.sortable').sortable().bind 'sortupdate', (e, ui) ->
+    # array to store new order
+    updated_order = []
+    # set the updated positions
+    set_positions()
+    # populate the updated_order array with the new screenshot positions
+    $('li#screenshot').each (i) ->
+      updated_order.push
+        id: $(this).data('id')
+        position: i + 1
+      return
+    
+    # send the updated order via ajax
+    project_id = $('li#screenshot').attr('data-project_id')
+    $.ajax
+      type: 'PUT'
+      url: "/admin/projects/#{project_id}" + "/sort"
+      data:
+        order: updated_order
+    return
+
   return
 
 $(document).ready ready
-
 
 # if using turbolinks
 $(document).on 'page:load', ready

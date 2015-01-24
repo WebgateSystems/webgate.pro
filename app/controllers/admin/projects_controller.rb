@@ -1,5 +1,5 @@
 class Admin::ProjectsController < Admin::HomeController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :sort]
 
   def index
     @projects = Project.order(:id)
@@ -58,6 +58,13 @@ class Admin::ProjectsController < Admin::HomeController
       format.html { redirect_to admin_projects_url, notice: 'Successfully destroyed admin/project.' }
       format.json { head :no_content }
     end
+  end
+
+  def sort
+    params[:order].each do |key, value|
+      @project.screenshots.find(value[:id]).update_attribute(:position, value[:position])
+    end
+    render nothing: true
   end
 
   private

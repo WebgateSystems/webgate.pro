@@ -37,7 +37,8 @@
         h3 = t(:screenshots)
       ol.sortable
         - @project.screenshots.each do |screenshot|
-          li id=("screenshot_#{screenshot.id}")
+          - puts "#{admin_project_path(screenshot.project_id)}"
+          li#screenshot data-id="#{screenshot.id}" data-project_id="#{@project.id}"
             = image_tag screenshot.file.url(:thumb) if screenshot
       p
         h3 = t('technologies') + ':'

@@ -3,5 +3,7 @@ class Screenshot < ActiveRecord::Base
 
   mount_uploader :file, ScreenshotUploader
 
+  default_scope { order("position ASC") }
+
   validates_associated :project
 end
