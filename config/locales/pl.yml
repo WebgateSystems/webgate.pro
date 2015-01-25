@@ -68,6 +68,14 @@ pl:
       description: "Opis"
       avatar: "Awatara"
       motto: "Motto"
+      watch_profile: "Zobacz profil"
+  views:
+    pagination:
+      previous: "&lt; Popr."
+      next: "Nast. &lt;"
+      truncate: "..."
+      first: "&laquo; Pierwszy"
+      last: "Ostatni &raquo;"
   users: "Użytkownicy"
   categories: "Menu"
   pages: "Strony"

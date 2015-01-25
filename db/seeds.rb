@@ -11,6 +11,24 @@ if User.count == 0
   User.create email: "admin@webgate.pro", password: "admin789", password_confirmation: "admin789"
 end
 
+if Member.count == 0
+  I18n.locale = 'ru'
+  member = Member.create name: 'Александр Добровольский',
+                shortdesc: 'Студент киевского политехнического института. Ruby on Rails developer.',
+                description: 'Я - студент 2 курса, киевского политехнического института.',
+                motto: 'Harder,better, faster, stronger!'
+  src = File.join(Rails.root, "app/assets/images/alex_dobr.jpg")
+  src_file = File.new(src)
+  member.avatar = src_file
+  member.save!
+
+  I18n.locale = 'en'
+  #todo
+
+  I18n.locale = 'pl'
+  #todo
+end
+
 if TechnologyGroup.count == 0
   I18n.locale = 'en'
   TechnologyGroup.create title: 'Administration', description: 'Administartion technologies'

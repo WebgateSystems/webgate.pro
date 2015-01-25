@@ -70,6 +70,14 @@ ru:
       description: "Описание"
       avatar: "Аватар"
       motto: "Девиз"
+      watch_profile: "Открыть профиль"
+  views:
+      pagination:
+        previous: "&lt; Пред."
+        next: "След. &lt;"
+        first: "&laquo; Первая"
+        last: "Послед. &raquo;"
+        truncate: "..."
   users: "Пользователи"
   categories: "Меню"
   pages: "Страницы"

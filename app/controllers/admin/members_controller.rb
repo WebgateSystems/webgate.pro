@@ -35,7 +35,7 @@ class Admin::MembersController < Admin::HomeController
 
   def destroy
     @member.destroy
-    redirect_to admin_member_url, notice: 'Successfully destroyed admin/member.'
+    redirect_to admin_members_url, notice: 'Successfully destroyed admin/member.'
   end
 
   private
