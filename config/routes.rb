@@ -12,7 +12,14 @@ WebgatePro::Application.routes.draw do
     resources :pages
     resources :projects
     resources :members
-    resources :screenshots, only: [:create]
+    resources :projects do
+      member do
+        put 'sort'
+      end
+      resources :screenshots, only: [:create, :destroy] do
+        put :sort, on: :collection
+      end
+    end
     resources :technologies
     resources :technology_groups do
       resources :technologies

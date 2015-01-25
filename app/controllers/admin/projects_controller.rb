@@ -1,5 +1,5 @@
 class Admin::ProjectsController < Admin::HomeController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :sort]
 
   def index
     @projects = Project.order(:id)
@@ -11,7 +11,7 @@ class Admin::ProjectsController < Admin::HomeController
   def new
     @project = Project.new
     @project.technologies.build 
-    @project.screenshots.build
+    #@project.screenshots.build
   end
 
   def create
@@ -20,9 +20,9 @@ class Admin::ProjectsController < Admin::HomeController
       if @project.save
         format.html { redirect_to [:admin, @project], notice: 'Successfully created admin/project.' }
         format.json {    
-          params[:screenshots]['file'].each do |s|
-            @project.screenshots.create!(file: s[1])
-          end
+          #params[:screenshots]['file'].each do |s|
+          #  @project.screenshots.create!(file: s[1])
+          #end
           render json: @project, status: :created, location: [:admin, @project]
         }
       else
@@ -40,9 +40,9 @@ class Admin::ProjectsController < Admin::HomeController
       if @project.update_attributes(project_params)
         format.html { redirect_to [:admin, @project], notice: 'Successfully updated admin/project.' }
         format.json {    
-          params[:screenshots]['file'].each do |s|
-            @project.screenshots.create!(file: s[1])
-          end
+          #params[:screenshots]['file'].each do |s|
+          #  @project.screenshots.create!(file: s[1])
+          #end
           render json: {message: 'success' }, status: :ok
         }
       else
@@ -60,6 +60,13 @@ class Admin::ProjectsController < Admin::HomeController
     end
   end
 
+  def sort
+    params[:order].each do |key, value|
+      @project.screenshots.find(value[:id]).update_attribute(:position, value[:position])
+    end
+    render nothing: true
+  end
+
   private
 
   def set_project
@@ -69,7 +76,7 @@ class Admin::ProjectsController < Admin::HomeController
   def project_params
     params.require(:project).permit(:shortlink, :title, :description, :keywords, :content, :livelink, :publish,
                                     technologies_attributes: [:id, :title, :technology_group_id, :_destroy],
-                                    screenshots_attributes: [:id, :file, :project_id, :position, :_destroy])
+                                    screenshots_attributes: [:id, :file, :file_cache, :project_id, :position, :_destroy])
   end
 
 end

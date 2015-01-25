@@ -10,6 +10,13 @@ class Admin::ScreenshotsController < Admin::HomeController
     end 
   end
 
+  def destroy
+    @screenshot.destroy
+    respond_to do |format|
+      format.json { head :no_content }
+    end
+  end
+
   private
   
   def screenshot_params
