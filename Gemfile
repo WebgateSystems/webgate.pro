@@ -50,6 +50,10 @@ group :development do
   gem 'capistrano-ext'                                                      
   gem 'capistrano_colors'                                                   
   gem 'rvm-capistrano'
+  gem 'rack-mini-profiler', require: false
+  # Better errors handler
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
