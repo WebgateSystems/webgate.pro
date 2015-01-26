@@ -50,7 +50,7 @@ group :development do
   gem 'capistrano-ext'                                                      
   gem 'capistrano_colors'                                                   
   gem 'rvm-capistrano'
-  gem 'rack-mini-profiler', require: false
+  gem 'rack-mini-profiler', '~> 0.9.2'
   # Better errors handler
   gem 'better_errors'
   gem 'binding_of_caller'
