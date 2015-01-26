@@ -23,6 +23,8 @@ pl:
     technology_group: "technology group"
     confirm: "Jesteś pewien?"
     nothing: "Nothing"
+    input: "Wkład"
+    preview: "Zapowiedź"
   activerecord:
     id: "ID"
     created_at: "Utworzona"
@@ -58,9 +60,6 @@ pl:
       description: "Opis"
       keywords: "Słowa kluczowe"
       content: "Treść"
-      screenshot1: "Pierwszy zrzut ekranu"
-      screenshot2: "Drugi zrzut ekranu"
-      screenshot3: "Trzeci zrzut ekranu"
       livelink: "Link na żywo"
       publish: "Publikować"
     member:
@@ -69,6 +68,14 @@ pl:
       description: "Opis"
       avatar: "Awatara"
       motto: "Motto"
+      watch_profile: "Zobacz profil"
+  views:
+    pagination:
+      previous: "&lt; Popr."
+      next: "Nast. &lt;"
+      truncate: "..."
+      first: "&laquo; Pierwszy"
+      last: "Ostatni &raquo;"
   users: "Użytkownicy"
   categories: "Menu"
   pages: "Strony"
@@ -76,7 +83,9 @@ pl:
   team: "Zespół"
   members: "Członkowie zespołu"
   screenshots: "Screeny"
+  add_screenshot: "Dodaj zrzut ekranu"
   technologies: "Technologie"
+  add_technology: "Dodaj technologii"
   technology_groups: "Grupy technologii"
   technology_group_title: "Nazwa grupy technologicznej"
   actions: "Akcje"

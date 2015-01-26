@@ -34,13 +34,14 @@
         br
         = @project.livelink
       p
-        b = t(:screenshots)
+        h3 = t(:screenshots)
+      ol.sortable
         - @project.screenshots.each do |screenshot|
-          p
-            br
+          - puts "#{admin_project_path(screenshot.project_id)}"
+          li#screenshot data-id="#{screenshot.id}" data-project_id="#{@project.id}"
             = image_tag screenshot.file.url(:thumb) if screenshot
       p
-        b = t('technologies') + ':'
+        h3 = t('technologies') + ':'
       - if @project.technologies.any?
         table.table
           tr             

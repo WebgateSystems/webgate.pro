@@ -1,4 +1,4 @@
-= simple_form_for [:admin, @project], html: { id: 'dropzone-form', class: 'form dropzone', multipart: true } do |f|
+= simple_form_for [:admin, @project] do |f|
   = f.error_notification
   .form-inputs
     = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: { class: 'label' }
@@ -9,16 +9,18 @@
     = f.input :livelink, label: t('activerecord.project.livelink'), label_html: { class: 'label' }
     = f.input :publish, label: t('activerecord.project.publish'), label_html: { class: 'label' }
     h3 = t(:screenshots)
-    = f.simple_fields_for :screenshots, @project.screenshots.build do |s|
-      .dropzone
-        .dz-message.dz-clickable  
-          center = image_tag 'dropzone.png'
-        .dropzone-previews
-        .fallback
-          = s.input :file, multiple: true
-      #submit-all
-        = link_to t('save_screenshots'), '#'
-       
+
+    table.project-form
+      thead
+        tr
+          td = t('web_app_theme.input') 
+          td = t('web_app_theme.preview')
+          td = t('web_app_theme.delete')
+      tbody
+        = f.fields_for :screenshots do |s|
+          = render 'screenshot_fields', f: s
+    .links= link_to_add_association t('add_screenshot'), f, :screenshots
+
     h3 = t(:technologies)
     #technologies
       // todo field with autocomplete for technologies

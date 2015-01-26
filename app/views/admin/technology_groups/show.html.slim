@@ -37,4 +37,4 @@
                 = link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
       - else
         = t('web_app_theme.nothing')
-    = link_to t('web_app_theme.add_technology'), new_admin_technology_group_technology_path(@technology_group), class: 'button small'
+    = link_to t('add_technology'), new_admin_technology_group_technology_path(@technology_group), class: 'button small'

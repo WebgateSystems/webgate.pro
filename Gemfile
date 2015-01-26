@@ -14,7 +14,8 @@ gem 'globalize'
 gem 'rails-translate-routes'
 gem 'exception_notification'
 gem 'unicorn'
-gem 'will_paginate'
+gem 'kaminari'
+gem 'faker'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 #gem 'jbuilder', '~> 1.2'
@@ -22,15 +23,14 @@ gem 'json'
 gem 'sorcery'
 gem 'foundation-rails'
 gem 'simple_form'
-gem 'dropzonejs-rails'
+gem 'cocoon'
 
-group :assets do
 # Use SCSS for stylesheets
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-  gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-  gem 'coffee-rails'
-end
+gem 'coffee-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -46,6 +46,10 @@ group :development do
   gem 'capistrano-ext'                                                      
   gem 'capistrano_colors'                                                   
   gem 'rvm-capistrano'
+  gem 'rack-mini-profiler', '~> 0.9.2'
+  # Better errors handler
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do

@@ -5,7 +5,7 @@
     = f.collection_select :technology_group_id, TechnologyGroup.all, :id, :title
     = f.input :title, label: t('activerecord.technology.title'), label_html: { class: 'label' }
     = f.input :description, label: t('activerecord.technology.description'), label_html: { class: 'label' }
-    = f.input :logo, label: t('activerecord.technology.logo'), label_html: { class: 'label' }
+    = f.input :logo, label: t('activerecord.technology.logo') + ': gif|png', label_html: { class: 'label' }
   
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
