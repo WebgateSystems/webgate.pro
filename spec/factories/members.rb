@@ -6,5 +6,6 @@ FactoryGirl.define do
     shortdesc 'Test shortdescription'
     description 'Test description'
     motto 'Test motto'
+    avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'alex_dobr.jpg')) }
   end
 end

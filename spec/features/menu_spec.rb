@@ -69,4 +69,32 @@ feature 'Menu in admin panel.' do
   scenario 'validation for new menu' do
     #todo add validation for Category.create
   end
+
+  scenario 'should add new menu to root page' do
+    visit root_path
+    expect(page).to have_content Category.last.name
+  end
+
+  scenario 'should translate and display this menu, on other languages. NOW SHOULD BE FAILED' do
+    visit root_path
+    ['pl', 'ru'].each do |lang|
+      click_link(lang) unless I18n.locale.to_s == lang
+      expect(page).to have_content false #Place here created menu - lang variant
+    end
+  end
+
+  scenario 'should translate altlink too. NOW SHOULD BE FAILED' do
+    ['pl', 'ru'].each do |lang|
+      visit root_path
+      click_link(lang) unless I18n.locale.to_s == lang
+      # click on our link in menu
+      expect(current_path).to eq false #here mast be lang altlink
+    end
+
+  end
+
+  scenario 'check active class on current page' do
+    visit "/#{Category.last.altlink}"
+    expect(page).to have_css ('.top_nav li.active')
+  end
 end
