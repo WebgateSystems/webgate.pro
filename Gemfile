@@ -37,6 +37,10 @@ group :doc do
   # gem 'sdoc', require: false
 end
 
+group :prodaction do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'thin'
   # Deploy with Capistrano
