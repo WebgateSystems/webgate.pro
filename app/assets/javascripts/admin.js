@@ -15,6 +15,7 @@
 //= require html.sortable
 //= require foundation
 //= require cocoon
+//= require select2
 //= require_tree ./admin
 
 $(function(){ $(document).foundation(); });

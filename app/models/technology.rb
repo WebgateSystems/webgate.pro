@@ -13,4 +13,6 @@ class Technology < ActiveRecord::Base
 
   mount_uploader :logo, LogoUploader
 
+  default_scope -> { order(title: :asc) }
+
 end
