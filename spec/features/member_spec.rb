@@ -1,34 +1,79 @@
 require 'rails_helper'
 
-feature 'Adding member to admin panel.' do
-  given (:member) {create (:member)}
-  given(:user) { create(:user, password: 'correct_password') }
-
+feature 'Project in admin panel.' do
+  let(:user) { create(:user) }
   before do
     visit '/admin'
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: 'correct_password'
-    click_button 'Log in'
-    visit '/admin/members/new'
-    fill_in 'member[name]', with: member.name
-    fill_in 'member[shortdesc]', with: member.shortdesc
-    fill_in 'member[description]', with: member.description
-    fill_in 'member[motto]', with: member.motto
+    login_user_post(user.email, 'secret')
+    visit '/admin/members'
+    click_link ('New')
+    fill_in 'member[name]', with: 'TestName'
+    fill_in 'member[shortdesc]', with: 'TestShortDesc'
+    fill_in 'member[description]', with: 'TestDesc'
+    fill_in 'member[motto]', with: 'TestMotto'
     click_button 'Save'
-  end
-
-  scenario 'Success create new member' do
     visit '/admin/members'
-    expect(page).to have_content member.name
   end
 
-  scenario 'Displays all attributes' do
+
+  scenario 'Link list should work good' do
+    click_link('List')
+    expect(current_path).to eq '/admin/members'
+  end
+
+  scenario 'Link new should work good' do
+    click_link('New')
+    expect(current_path).to eq '/admin/members/new'
+  end
+
+  scenario 'member root path should have list of members' do
+    expect(page).to have_content 'ID'
+    expect(page).to have_content 'Name'
+    expect(page).to have_content 'Created at'
+    expect(page).to have_content 'Action'
+  end
+
+  scenario 'member root path should have our member name' do
+    expect(page).to have_content 'TestName'
+  end
+
+  scenario 'member root path links show, edit should work' do
+    page.all(:link,'Show')[0].click
+    expect(current_path).to eq "/admin/members/#{Member.last.id}"
     visit '/admin/members'
-    page.all(:link,member.name)[0].click
-    expect(page).to have_content member.name
-    expect(page).to have_content member.shortdesc
-    expect(page).to have_content member.description
-    expect(page).to have_content member.motto
+    page.all(:link,'Edit')[0].click
+    expect(current_path).to eq "/admin/members/#{Member.last.id}/edit"
   end
 
+  scenario 'link delete should delete member' do
+    page.all(:link,'Delete')[0].click
+    expect(current_path).to eq current_path
+  end
+
+  scenario 'Show should display our member information' do
+    click_link ('TestName')
+    expect(page).to have_content 'Name:'
+    expect(page).to have_content 'TestName'
+    expect(page).to have_content 'Description:'
+    expect(page).to have_content 'TestDesc'
+    expect(page).to have_content 'Short description:'
+    expect(page).to have_content 'Motto:'
+    expect(page).to have_content 'TestShortDesc'
+    expect(page).to have_content 'TestMotto'
+  end
+
+  scenario 'Create member should create member' do
+    click_link ('New')
+    fill_in 'member[name]', with: 'TestNamePew'
+    fill_in 'member[shortdesc]', with: 'TestShortDescPew'
+    fill_in 'member[description]', with: 'TestDescPew'
+    fill_in 'member[motto]', with: 'TestMottoPew'
+    click_button 'Save'
+    visit '/admin/members'
+    expect(page).to have_content 'TestNamePew'
+  end
+
+  scenario 'validation for new member' do
+    #todo add validation for Member.create
+  end
 end

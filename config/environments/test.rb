@@ -42,17 +42,18 @@ WebgatePro::Application.configure do
 
     # make sure our uploader is auto-loaded
     ScreenshotUploader
+    AvatarUploader
 
     # use different dirs when testing
     CarrierWave::Uploader::Base.descendants.each do |klass|
       next if klass.anonymous?
       klass.class_eval do
         def cache_dir
-          "#{Rails.root}/spec/uploads/tmp"
+          "#{Rails.root}/spec/support/uploads/tmp"
         end
 
         def store_dir
-          "#{Rails.root}/spec/uploads/project/#{model.id}/#{mounted_as}"
+          "#{Rails.root}/spec/support/uploads/"
         end
       end
     end
