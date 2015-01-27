@@ -1,0 +1,67 @@
+.footer#footer
+  .footer_content
+    span.up do góry
+    p Masz pytania? Zapraszamy do kontaktu. Skorzystaj z naszego formularza lub zadzwoń
+    .column
+      ul.contacts
+        li
+          span telefon:
+          p.tel
+            span +48
+            |&nbsp;
+            dfn.num-3
+            dfn.num-2
+            |&nbsp;
+            dfn.num-7
+            dfn.num-2
+            dfn.num-7
+            |&nbsp;
+            dfn.num-5
+            dfn.num-1
+            dfn.num-8
+            dfn.num-6
+          p.tel
+            span +48
+            |&nbsp;
+            dfn.num-8
+            dfn.num-8
+            dfn.num-3
+            |&nbsp;
+            dfn.num-1
+            dfn.num-1
+            dfn.num-7
+            |&nbsp;
+            dfn.num-3
+            dfn.num-1
+            dfn.num-0
+        li
+          span e-mail:
+          p biuro@webgate.pro
+        li
+          span skype:
+          a.skype href="skype:sladkowski" sladkowski
+          a.rss href="#"
+          =link_to '', 'https://twitter.com/WebgateSystems', class: 'twi', rel: 'nofollow'
+          a.fb href="#"
+      p.copy
+        |&copy; 2011 webgate.pro  Wszelkie prawa zastrzeżone
+        = link_to '.', admin_root_path
+    /-- END column
+    .column
+      <iframe width="290" height="233" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Konstytucji+19,+Sosnowiec,+Poland&amp;aq=&amp;sll=50.272995,19.13372&amp;sspn=0.039662,0.073042&amp;ie=UTF8&amp;hq=&amp;hnear=Konstytucji+19,+Sosnowiec,+%C5%9Bl%C4%85skie,+Poland&amp;t=m&amp;ll=50.245833,19.163547&amp;spn=0.006394,0.012488&amp;z=15&amp;output=embed"></iframe>
+      a.link_map href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Konstytucji+19,+Sosnowiec,+Poland&amp;aq=&amp;sll=50.272995,19.13372&amp;sspn=0.039662,0.073042&amp;ie=UTF8&amp;hq=&amp;hnear=Konstytucji+19,+Sosnowiec,+%C5%9Bl%C4%85skie,+Poland&amp;t=m&amp;ll=50.245833,19.163547&amp;spn=0.006394,0.012488&amp;z=15"
+        |Kliknij aby powiększyć&nbsp;
+        span &raquo;
+    /-- END column
+    .column
+      form.feedback
+        input.text_input type="text" value="Imię i Nazwisko:"
+        input.text_input type="text" value="Twój adres email"
+        textarea Treśc wiadomości
+        <input class="submit" type="submit" value="wyślij &raquo;"/>
+      p class="copy valid"
+        |Dokument zgodny z&nbsp;
+        a.html5 href="#"HTML
+    /-- END column
+  /-- END footer_content
+/-- END footer
