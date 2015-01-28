@@ -17,7 +17,7 @@ set :runner, user
 set :scm, :git
 set :scm_username, "sysadm"
 set :application, "webgate"
-set :repository, "git@tracker.webgate.pro:root/#{application}.git"
+set :repository, "git@tracker.webgate.pro:internal/#{application}.git"
 #ssh_options[:keys] = ["#{ENV['HOME']}/.ssh/id_dsa"]
 
 set :keep_releases, 5
