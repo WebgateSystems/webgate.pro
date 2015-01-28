@@ -23,6 +23,7 @@
 
     h3 = t(:technologies)
     #technologies
+    = f.association :technologies, as: :check_boxes
     //= f.input_field :technology_ids, data: { placeholder: "Choose techs", saved: @search.technologies.to_json, url: autocomplete_technology_title_searches_path }, input_html:  { class: "select2" }
   
   .form-actions
