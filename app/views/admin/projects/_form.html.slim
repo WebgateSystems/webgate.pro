@@ -23,7 +23,7 @@
 
     h3 = t(:technologies)
     #technologies
-    = f.association :technologies, include_blank: true, input_html: { class: 'chosen-select' }
+    = f.association :technologies, include_blank: true, label: false, input_html: { class: 'chosen-select' }
   
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
