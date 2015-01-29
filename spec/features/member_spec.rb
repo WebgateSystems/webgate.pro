@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Project in admin panel.' do
+feature 'Member in admin panel.' do
   let(:user) { create(:user) }
   before do
     visit '/admin'
@@ -83,6 +83,6 @@ feature 'Project in admin panel.' do
     click_link ('New')
     fill_in 'member[name]', with: 'Testname'
     visit '/admin/members'
-    expect(page).to have_no_content 'TestName'
+    expect(page).to have_no_content 'Testname'
   end
 end

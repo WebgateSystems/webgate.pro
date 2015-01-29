@@ -96,13 +96,13 @@ feature 'Project in admin panel.' do
   scenario 'validation for new project' do
     click_link('New')
     click_button 'Save'
-    expect(page).to have_css('.error_fields')
+    expect(page).to have_css('.alert-box.alert')
   end
 
   scenario 'Dont create project with empty fields' do
     click_link ('New')
-    fill_in 'project[title]', with: 'TestTitle'
+    fill_in 'project[title]', with: 'TestTitlekukumba'
     visit '/admin/projects'
-    expect(page).to have_no_content 'TestTitle'
+    expect(page).to have_no_content 'TestTitlekukumba'
   end
 end
