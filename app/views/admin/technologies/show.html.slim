@@ -13,7 +13,7 @@
       p
         b= t('activerecord.technology.logo') + ': '
         br
-        = image_tag @technology.logo.url
+        = image_tag @technology.logo.url(:thumb)
       p
         b= t('technology_group_title') + ': '
         = @technology.technology_group.title
