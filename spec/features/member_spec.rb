@@ -74,6 +74,15 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'validation for new member' do
-    #todo add validation for Member.create
+    click_link('New')
+    click_button 'Save'
+    expect(page).to have_css('.alert-box.alert')
+  end
+
+  scenario 'Dont create member with empty fields' do
+    click_link ('New')
+    fill_in 'member[name]', with: 'Testname'
+    visit '/admin/members'
+    expect(page).to have_no_content 'TestName'
   end
 end

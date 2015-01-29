@@ -54,7 +54,32 @@ feature 'Users in admin panel.' do
     expect(page).to have_content 'TestUser@test.com'
   end
 
-  scenario 'validation for new user' do
-    #todo add validation for User.create
+  scenario 'validation for new user(no password)' do
+    click_link ('New')
+    fill_in 'user[email]', with: 'TestUser@test.com'
+    click_button 'Save'
+    expect(page).to have_content 'error'
+  end
+
+  scenario 'validation for new user(no email)' do
+    click_link ('New')
+    fill_in 'user[password]', with: 'TestUser@test.com'
+    click_button 'Save'
+    expect(page).to have_content 'error'
+  end
+
+  scenario 'validation for new user(empty field)' do
+    click_link('New')
+    click_button 'Save'
+    expect(page).to have_content 'error'
+  end
+
+  scenario 'validation for new user. Email should be correct. FEATURE. NOW NOT WORKING' do
+    click_link ('New')
+    fill_in 'user[email]', with: 'wery wronk@@@emaiL.com.com.e'
+    fill_in 'user[password]', with: 'bad'
+    click_button 'Save'
+    visit '/admin/users'
+    expect(page).to have_no_content 'wery wronk@@@emaiL.com.com.e'
   end
 end

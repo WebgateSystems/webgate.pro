@@ -64,6 +64,8 @@ feature 'technology_group in admin panel.' do
   end
 
   scenario 'validation for new technology_group' do
-    #todo add validation for TechnologyGroup.create
+    click_link('New')
+    click_button 'Save'
+    expect(page).to have_css('.alert-box.alert')
   end
 end

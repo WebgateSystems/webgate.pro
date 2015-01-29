@@ -66,8 +66,17 @@ feature 'Menu in admin panel.' do
     expect(page).to have_content 'TestNameForMenu'
   end
 
-  scenario 'validation for new menu' do
-    #todo add validation for Category.create
+  scenario 'validation for new menu. Empty fields' do
+    click_link('New')
+    click_button 'Save'
+    expect(page).to have_css('.error_fields')
+  end
+
+  scenario 'Dont create menu with empty fields' do
+    click_link ('New')
+    fill_in 'category[name]', with: 'TestNameForMenu'
+    visit '/admin/categories'
+    expect(page).to have_no_content 'TestNameForMenu'
   end
 
   scenario 'should add new menu to root page' do
