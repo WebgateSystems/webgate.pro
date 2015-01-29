@@ -38,7 +38,15 @@ class LogoUploader < CarrierWave::Uploader::Base
 
   # Crop to 64px, 64px
   version :thumb do
-    process resize_to_fill: [64, 64]
+    process :make_thumb
+  end
+
+  def make_thumb
+    manipulate! do |source|
+      source.resize "64"
+      source.crop("64x64+0+0")
+      source
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
