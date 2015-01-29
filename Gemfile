@@ -24,6 +24,7 @@ gem 'sorcery'
 gem 'foundation-rails'
 gem 'simple_form'
 gem 'cocoon'
+gem 'chosen-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
