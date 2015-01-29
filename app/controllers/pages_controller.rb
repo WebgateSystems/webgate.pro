@@ -1,6 +1,6 @@
 # encoding: utf-8
 class PagesController < ApplicationController
-  
+
   def showbyshortlink
     @page = Page.where(shortlink: params[:shortlink]).first
 #    @news = NewsEntry.find(:all, :order => :publish_at, :limit => 3)

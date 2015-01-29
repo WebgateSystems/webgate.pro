@@ -16,6 +16,8 @@ class Project < ActiveRecord::Base
 
   translates :title, :shortlink, :description, :keywords, :content
 
+  scope :published, -> { where(publish: true) }
+
   private
   
   def remove_translation_link
