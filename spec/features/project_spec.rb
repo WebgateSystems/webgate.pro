@@ -94,6 +94,15 @@ feature 'Project in admin panel.' do
     expect(page).to have_content 'true'
   end
   scenario 'validation for new project' do
-    #todo add validation for Project.create
+    click_link('New')
+    click_button 'Save'
+    expect(page).to have_css('.alert-box.alert')
+  end
+
+  scenario 'Dont create project with empty fields' do
+    click_link ('New')
+    fill_in 'project[title]', with: 'TestTitlekukumba'
+    visit '/admin/projects'
+    expect(page).to have_no_content 'TestTitlekukumba'
   end
 end
