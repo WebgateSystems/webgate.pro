@@ -1,0 +1,10 @@
+.carousel
+  .carousel_content
+    h2 = t('recent_projects')
+    = link_to (t('see_more') + " &raquo;").html_safe, '#', class: 'carousel_more' 
+    .carousel_block
+      ul
+        - projects.each do |project|
+          li
+            = link_to (image_tag project.screenshots.first.file.url(:air)), '#'
+            center= link_to project.livelink, 'http://' + project.livelink, class: 'sitename'
