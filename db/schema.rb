@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119163303) do
+ActiveRecord::Schema.define(version: 20150131061616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,6 +125,14 @@ ActiveRecord::Schema.define(version: 20150119163303) do
     t.boolean  "publish",     default: false
   end
 
+  create_table "projects_technologies", id: false, force: true do |t|
+    t.integer "project_id"
+    t.integer "technology_id"
+  end
+
+  add_index "projects_technologies", ["project_id"], name: "index_projects_technologies_on_project_id", using: :btree
+  add_index "projects_technologies", ["technology_id"], name: "index_projects_technologies_on_technology_id", using: :btree
+
   create_table "screenshots", force: true do |t|
     t.string   "file"
     t.integer  "project_id"
@@ -138,8 +146,6 @@ ActiveRecord::Schema.define(version: 20150119163303) do
     t.text     "description"
     t.integer  "technology_group_id"
     t.string   "logo"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -168,6 +174,7 @@ ActiveRecord::Schema.define(version: 20150119163303) do
     t.string   "locale",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
     t.text     "description"
   end
 

@@ -3,11 +3,10 @@ require 'carrierwave/orm/activerecord'
 class Technology < ActiveRecord::Base
 
   belongs_to :technology_group
-  belongs_to :taggable, polymorphic: true
+  has_and_belongs_to_many :projects
 
   validates_presence_of :title
   validates_uniqueness_of :title, case_sensitive: false
-  validates_associated :taggable
 
   translates :description
 
