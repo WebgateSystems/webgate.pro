@@ -1,19 +1,27 @@
+/*! jQuery Carousel V0.9.8 (original) and V1.0.2 by ElColombiano (c) 2012 */
 /* jQuery Carousel 0.9.8
+   jQuery Carousel 1.0.2 by El Colombiano.com (modified version based in V0.9.8
 Copyright 2010 Thomas Lanciaux and Pierre Bertet.
 This software is licensed under the CC-GNU LGPL <http://creativecommons.org/licenses/LGPL/2.1/>
+Modified: EC - Carlos Ortiz Apr.19/2012
+History: COQ Apr.17/2012 - Added parameter startAt to position carousel at a given image.
+         COQ Apr.19/2012 - Fixed transition width calculation with parameter marginRight (when effect is Horizontal).
+		                   Fixed transition height calculation with parameter marginTop (when effect is Vertical).
+		 COQ May.08/2012 - Avoid empty space. For now it will be fixed for dispItems set to 1. This is controlled with
+		                   param padEmtpySpace.
 */
 ;(function($){
 	
 	$.fn.carousel = function(params){
-		
+		var numItems = 0;
 		var params = $.extend({
 			direction: "horizontal",
 			loop: false,
 			dispItems: 1,
 			pagination: false,
 			paginationPosition: "inside",
-			nextBtn: '<span class="next_btn"></span>',
-			prevBtn: '<span class="prev_btn"></span>',
+			nextBtn : '<span class="next_btn"></span>',
+			prevBtn : '<span class="prev_btn"></span>',
 			btnsPosition: "inside",
 			nextBtnInsert: "insertAfter",
 			prevBtnInsert: "insertBefore",
@@ -26,18 +34,22 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 			effect: "slide",
 			slideEasing: "swing",
 			animSpeed: 300,
-			equalWidths: "true",
+			equalWidths: false,
 			verticalMargin: 0,
 			callback: function () {}, 
 			useAddress: false,
-			adressIdentifier: "carousel",
+			adressIdentifier: "carousel",			
 			tabLabel: function (tabNum) { return tabNum; },
 			showEmptyItems: true,
 			ajaxMode:false,
 			ajaxUrl:"",
 			stopSlideBtn: false,
 			stopSlideTextPause: "Pause",
-			stopSlideTextPlay: "Play"
+			stopSlideTextPlay: "Play",
+			startAt : 0,
+			marginRight: 0,
+			marginTop: 0,
+			padEmptySpace: false			
 		}, params);
 		
 		// Buttons position
@@ -57,7 +69,7 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 				params: params,
 				launchOnLoad: []
 			};
-					
+
 			// Carousel main container
 			env.$elts.carousel = $(this).addClass("js");
 			
@@ -65,7 +77,7 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 			env.$elts.content = $(this).children().css({position: "absolute", "top": 0});
 			
 			// Content wrapper
-			env.$elts.wrap = env.$elts.content.wrap('<div class="carousel-wrap"></div>').parent().css({overflow: "hidden", position: "relative"});
+			env.$elts.wrap = env.$elts.content.wrap('<div id="divWrap" class="carousel-wrap"></div>').parent().css({overflow: "hidden", position: "relative"});
 			
 			// env.steps object
 			env.steps = {
@@ -105,10 +117,9 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 					env.$elts.nextBtn = $(params.nextBtn)[params.nextBtnInsert](env.$elts.wrap);
 				}
 			}
-			
 			// Add buttons classes / data
-			env.$elts.nextBtn.addClass("carousel-control carousel-next");
-			env.$elts.prevBtn.addClass("carousel-control carousel-previous");
+			env.$elts.nextBtn.addClass("carousel-control next carousel-next");
+			env.$elts.prevBtn.addClass("carousel-control previous carousel-previous");
 			
 			// Last items to load in ajaxMode var
 			env.lastItemsToLoad;
@@ -134,13 +145,12 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 					$(document).unbind('keypress');
 				}
 			});
-			
+
 			// Address plugin
 			initAddress(env);
-			
+
 			// On document load...
 			$(function(){
-				
 				// Launch carousel initialization
 				initCarousel(env);
 				
@@ -155,23 +165,24 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 				}
 				
 				// Control Slide Button
-				if(params.stopSlideBtn == true){
+				if (params.stopSlideBtn == true){
 					env.$elts.stopSlideBtn = $('<button type="button" class="slide-control play">'+params.stopSlideTextPause+'</button>');
 					createBtnStopAutoslide(env);
 				}
-				
+
+				if (params.startAt > 0) {
+				   goToStep(env, params.startAt);
+				}
 			});
-			
 		});
-		
 	};
-	
+
 	// Init carousel dimensions
 	function initCarousel(env){
 		//Set max Height with the highest element
 		var $items = env.$elts.content.children();
 		var $maxHeight = 0;
-		
+
 		$items.each(function () {
 			$item = $(this);
 			$itemHeight = $item.outerHeight();
@@ -193,31 +204,38 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 		// Width 2/3 : Define content width
 		if (env.params.direction == "vertical"){
 			env.contentWidth = env.itemWidth;
-			
 		} else {
-			
 			if (env.params.equalWidths) {
-				env.contentWidth = env.itemWidth * env.steps.count;
-				
+			    var totalWidth = env.itemWidth * env.steps.count;
+			    if (env.params.marginRight != 0) {
+				   totalWidth = env.itemWidth * env.steps.count * env.params.marginRight;
+				}
+				env.contentWidth = totalWidth;
 			} else {
 				env.contentWidth = (function(){
 						var totalWidth = 0;
-						
+						var itemCount = 0;
+
 						env.$elts.content.children().each(function(){
 							totalWidth += $(this).outerWidth();
+							itemCount++;
 						});
 						
+						if (env.params.marginRight != 0) {
+							totalWidth += (itemCount * env.params.marginRight);
+				        }
+						numItems = itemCount;
 						return totalWidth;
-					})();
+					})();			    
 			}
 		}
-		
+
 		// Width 3/3 : Set content width to container
 		env.$elts.content.width(env.contentWidth);
-		
+
 		// Height 1/2 : Get default item height
 		env.itemHeight = $maxHeight;
-		
+
 		// Height 2/2 : Set content height to container
 		if (env.params.direction == "vertical") {
 			env.$elts.content.css({
@@ -235,53 +253,50 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 		// Update Next / Prev buttons state
 		updateButtonsState(env);
 	}
-	
+
 	// Next / Prev buttons events only
 	function initButtonsEvents(env){
-	
 		env.$elts.nextBtn.add(env.$elts.prevBtn)
-			
 			.bind("enable", function(){
-				
+
 				var $this = $(this)
 					.unbind("click")
 					.bind("click", function(){
 						// Ajax init
-						if(env.params.ajaxMode && $this.is('.next_btn') && getActivePageIndex(env) == (getPageTotal(env)-1) && !env.lastItemsToLoad) {
+						if(env.params.ajaxMode && $this.is('.next') && getActivePageIndex(env) == (getPageTotal(env)-1) && !env.lastItemsToLoad) {
 							// Append content in ajax
 							ajaxLoad(env);
 							// Go to next page of the carousel
 							env.$elts.content.ajaxSuccess(function() {
-															
 							});
-						}else{							
-							goToStep( env, getRelativeStep(env, ($this.is(".next_btn")? "next" : "prev" )) );
+						}else{
+							goToStep( env, getRelativeStep(env, ($this.is(".next")? "next" : "prev" )) );
 							
 							if(env.params.stopSlideBtn == true){
 								env.$elts.stopSlideBtn.trigger('pause');
 							} else {
 								stopAutoSlide(env);
 							}
-						}						
+						}
 					})
-					.removeClass("disabled")
-				
+					.removeClass("disabled").removeAttr('disabled');
+
 				// Combined classes (IE6 compatibility)
 				if (env.params.combinedClasses) {
-					$this.removeClass("next-disabled previous-disabled");
+					$this.removeClass("next-disabled previous-disabled").removeAttr("disabled");
 				}
 			})
 			.bind("disable", function(){
 				
-				var $this = $(this).unbind("click").addClass("disabled");
+				var $this = $(this).unbind("click").addClass("disabled").attr("disabled","disabled");
 				
 				// Combined classes (IE6 compatibility)
 				if (env.params.combinedClasses) {
 					
-					if ($this.is(".next_btn")) {
+					if ($this.is(".next")) {
 						$this.addClass("next-disabled");
 						
-					} else if ($this.is(".prev_btn")) {
+					} else if ($this.is(".previous")) {
 						$this.addClass("previous-disabled");
 						
 					}
@@ -297,14 +312,14 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 			env.$elts.pagination = $('<div class="center-wrap"><div class="carousel-pagination"><p></p></div></div>')[((env.params.paginationPosition == "outside") ? "insertAfter" : "appendTo")](env.$elts.carousel).find("p");
 			env.$elts.paginationBtns = $([]);
 
-			env.$elts.content.find("li").each(function (i) {
+			env.$elts.content.children().each(function (i) {
 				if (i % env.params.dispItems == 0) {
 					addPage(env, i);
 				}
 			});
     };
-	
-	// Add a page in pagintion (@ the end)
+
+	// Add a page in pagination (@ the end)
 	function addPage(env, firststep) {
 		if(env.params.pagination){
 			env.$elts.paginationBtns = env.$elts.paginationBtns.add($('<a role="button"><span>' + env.params.tabLabel(env.$elts.paginationBtns.length + 1) + '</span></a>').data("firstStep", firststep))
@@ -320,12 +335,10 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 			});
 		}
 	}
-	
+
 	// Address plugin
-	function initAddress(env) {
-		
-		if (env.params.useAddress && $.isFunction($.fn.address)) {
-			
+	function initAddress(env) {		
+		if (env.params.useAddress && $.isFunction($.fn.address)) {			
 			$.address
 				.init(function(e) {
 					var pathNames = $.address.pathNames();
@@ -345,9 +358,8 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 			env.params.useAddress = false;
 		}
 	};
-	
-	function goToStep(env, step) {
-		
+
+	function goToStep(env, step) {		
 		// Callback
 		env.params.callback(step);
 		
@@ -364,9 +376,8 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 		if ( env.params.useAddress ) {
 			$.address.value('/'+ env.params.adressIdentifier +'/' + (step + 1));
 		}
-		
 	};
-	
+
 	// Get next/prev step, useful for autoSlide
 	function getRelativeStep(env, position) {
 		if (position == "prev") {
@@ -395,64 +406,81 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 			}
 		}
 	};
-	
+
 	// Animation
 	function transition(env, step) {
+		var topHeightCalc = (env.itemHeight + env.params.marginTop) * step;
+		var leftWidthCalc = (env.itemWidth + env.params.marginRight) * step;
+		var carouselWrapWidth = $('div#divWrap').width();
+		var itemsInCarousel = parseInt(carouselWrapWidth / (env.itemWidth + env.params.marginRight));
+		var r = (carouselWrapWidth - (itemsInCarousel * (env.itemWidth + env.params.marginRight)));
 		
+		if (r < 0) {
+		    r = 0;
+		}
+		if (env.params.direction == "vertical") {
+			;
+		} else {		
+		    if (env.params.dispItems == 1) {
+				if (env.params.padEmptySpace && step >= itemsInCarousel) {
+					step = step - (itemsInCarousel - 1);
+					leftWidthCalc = (env.itemWidth + env.params.marginRight) * step;
+					leftWidthCalc -= r;
+				} else {
+				 leftWidthCalc = 0;
+				}
+			}
+		}
 		// Effect
 		switch (env.params.effect){
 			
 			// No effect
 			case "no":
 				if (env.params.direction == "vertical"){
-					env.$elts.content.css("top", -(env.itemHeight * step) + "px");
+					env.$elts.content.css("top", -(topHeightCalc) + "px");
 				} else {
-					env.$elts.content.css("left", -(env.itemWidth * step) + "px");
+					env.$elts.content.css("left", -(leftWidthCalc) + "px");
 				}
 				break;
-			
+
 			// Fade effect
 			case "fade":
 				if (env.params.direction == "vertical"){
-					env.$elts.content.hide().css("top", -(env.itemHeight * step) + "px").fadeIn(env.params.animSpeed);
+					env.$elts.content.hide().css("top", -(topHeightCalc) + "px").fadeIn(env.params.animSpeed);
 				} else {
-					env.$elts.content.hide().css("left", -(env.itemWidth * step) + "px").fadeIn(env.params.animSpeed);
+					env.$elts.content.hide().css("left", -(leftWidthCalc) + "px").fadeIn(env.params.animSpeed);
 				}
 				break;
-			
+
 			// Slide effect
 			default:
 				if (env.params.direction == "vertical"){
 					env.$elts.content.stop().animate({
-						top : -(env.itemHeight * step) + "px"
+						top : -(topHeightCalc) + "px"
 					}, env.params.animSpeed, env.params.slideEasing);
 				} else {
 					env.$elts.content.stop().animate({
-						left : -(env.itemWidth * step) + "px"
+						left : -(leftWidthCalc) + "px"
 					}, env.params.animSpeed, env.params.slideEasing);
 				}
 				break;
 		}
-		
 	};
 	
 	// Update all buttons state : disabled or not
-	function updateButtonsState(env){
-		
+	function updateButtonsState(env){		
 		if (getRelativeStep(env, "prev") !== false) {
 			env.$elts.prevBtn.trigger("enable");
-			
 		} else {
 			env.$elts.prevBtn.trigger("disable");
 		}
-		
+
 		if (getRelativeStep(env, "next") !== false) {
 			env.$elts.nextBtn.trigger("enable");
-			
 		} else {
 			env.$elts.nextBtn.trigger("disable");
 		}
-		
+
 		if (env.params.pagination){
 			env.$elts.paginationBtns.removeClass("active")
 			.filter(function(){ 			
@@ -461,7 +489,7 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 			.addClass("active");
 		}
 	};	
-	
+
 	// Launch Autoslide
 	function initAutoSlide(env) {
 		env.delayAutoSlide = window.setTimeout(function(){
@@ -477,11 +505,11 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 		window.clearInterval(env.autoSlideInterval);
 		env.params.delayAutoSlide = 0;
 	};
-	
+
 	// Create button "stop autoslide"
 	function createBtnStopAutoslide(env){
 		var jButton = env.$elts.stopSlideBtn;
-		
+
 		jButton.bind({
 			'play' : function(){
 				initAutoSlide(env);
@@ -492,7 +520,7 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 				jButton.removeClass('play').addClass('pause').html(env.params.stopSlideTextPlay);
 			}
 		});
-		
+
 		jButton.click(function(e){
 			if(jButton.is('.play')){
 				jButton.trigger('pause');
@@ -503,7 +531,7 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 		
 		jButton.prependTo(env.$elts.wrap);
 	};
-	
+
 	// Get total number of page in the carousel
 	function getPageTotal(env) {
 		return env.$elts.pagination.children().length;
@@ -518,7 +546,7 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 		// insert loader
 		env.$elts.carousel.prepend(env.$elts.loader);
 		
-		// ajax call				
+		// ajax call
 		$.ajax({
 			url: env.params.ajaxUrl,
 			dataType: 'json',
@@ -526,14 +554,14 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 				// set if the last item of the carousel have been loaded and add items to the carousel
 				env.lastItemsToLoad = data.bLastItemsToLoad;
 				$(env.$elts.content).append(data.shtml);
-				
+
 				// reinit count (number of items have changed after ajax call)
 				env.steps = {
 					first: env.steps.first + env.params.dispItems,
 					count: env.$elts.content.children().length
 				};
 				env.steps.last = env.steps.count - 1;
-				
+
 				// rewrite carousel dimensions
 				initCarousel(env);
 				// rewrite/append pagination
@@ -546,11 +574,11 @@ This software is licensed under the CC-GNU LGPL <http://creativecommons.org/lice
 				} else {
 					stopAutoSlide(env);
 				}
-				
+
 				// remove loader
 				env.$elts.loader.remove();
 			}
-		});
+		});	
 	}
 	
 })(jQuery);

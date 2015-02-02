@@ -10,7 +10,7 @@ class Admin::ProjectsController < Admin::HomeController
 
   def new
     @project = Project.new
-    @project.technologies.build 
+    #@project.technologies.build 
     #@project.screenshots.build
   end
 
