@@ -6,8 +6,8 @@ class Project < ActiveRecord::Base
   before_save :remove_translation_link
   after_save  :add_translation_link
 
-  has_many :technologies, as: :taggable
-  accepts_nested_attributes_for :technologies, reject_if: :all_blank
+  has_and_belongs_to_many :technologies
+  #accepts_nested_attributes_for :technologies, reject_if: :all_blank
   has_many :screenshots, dependent: :destroy
   accepts_nested_attributes_for :screenshots, reject_if: proc{ |param| param[:file].blank? && param[:file_cache].blank? && param[:id].blank? }, allow_destroy: true
 
