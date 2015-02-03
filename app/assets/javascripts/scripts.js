@@ -41,7 +41,8 @@ $(function(){
 		return false;
 	});
 	$(".carousel_block").carousel({
-		dispItems: 3
+		dispItems: 3,
+		showEmptyItems: false,
 	});
 	$(".feedback textarea,.text_input").focus(function(){
 		this.value=""
