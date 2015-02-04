@@ -1,7 +1,3 @@
-# Set your full path to application.
-app_path = "/home/webgate/webgate.pro/current"
-shared_path = "/home/webgate/webgate.pro/shared"
-
 # Set unicorn options
 worker_processes 3
 preload_app true
@@ -20,9 +16,6 @@ rails_env = ENV['RAILS_ENV'] || 'production'
 # Log everything to one file
 stderr_path "#{shared_path}/log/unicorn.stderr.log"
 stdout_path "#{shared_path}/log/unicorn.stdout.log"
-
-# Set master PID location
-pid "#{app_path}/tmp/pids/unicorn.pid"
 
 before_fork do |server, worker|
   ActiveRecord::Base.connection.disconnect!

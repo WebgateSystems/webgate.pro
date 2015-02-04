@@ -35,6 +35,11 @@ after 'deploy', 'deploy:cleanup'
 after 'deploy:assets:force_compile', 'unicorn:restart'
 
 namespace :deploy do
+  desc "Debug variables."
+  task :var_inspect do
+    puts unicorn_pid
+  end
+
   task :symlink_shared do
     run "ln -nsf #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
