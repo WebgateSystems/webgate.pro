@@ -1,0 +1,12 @@
+pl:
+  password_confirmation_error: "Musi być ważne"
+  unique_email_error: "Musi być unikalny"
+  presence_of_attributes_error: "Nie może być puste"
+  simple_form:
+    "yes": 'Tak'
+    "no": 'Nie'
+    required:
+      text: 'Obowiązkowe'
+      mark: '*'
+    error_notification:
+      default_message: "Proszę zapoznać się z problemami poniżej:"

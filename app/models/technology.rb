@@ -6,7 +6,7 @@ class Technology < ActiveRecord::Base
   has_and_belongs_to_many :projects
   has_and_belongs_to_many :members
 
-  validates_presence_of :title
+  validates_presence_of :title, message: I18n.t(:presence_of_attributes_error)
   validates_uniqueness_of :title, case_sensitive: false
 
   translates :description

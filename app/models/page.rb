@@ -8,7 +8,7 @@ class Page < ActiveRecord::Base
 
   belongs_to :category
   validates_uniqueness_of :shortlink
-  validates_presence_of :title, :shortlink, :description, :keywords, :content
+  validates_presence_of :title, :shortlink, :description, :keywords, :content, message: I18n.t(:presence_of_attributes_error)
   translates :title, :shortlink, :description, :keywords, :content, :tooltip
 
   private
