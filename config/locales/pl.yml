@@ -72,6 +72,7 @@ pl:
     errors:
       messages:
         blank: "Nie może być puste"
+        taken: "Już wykorzystane"
   views:
     pagination:
       previous: "&lt; Popr."

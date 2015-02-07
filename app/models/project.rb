@@ -11,8 +11,7 @@ class Project < ActiveRecord::Base
   has_many :screenshots, dependent: :destroy
   accepts_nested_attributes_for :screenshots, reject_if: proc{ |param| param[:file].blank? && param[:file_cache].blank? && param[:id].blank? }, allow_destroy: true
 
-  validates_presence_of :title, :shortlink, :description, :keywords, :content, message: I18n.t(:presence_of_attributes_error)
-  validates_uniqueness_of :shortlink
+  validates_presence_of :title, :shortlink, :description, :keywords, :content
 
   translates :title, :shortlink, :description, :keywords, :content
 

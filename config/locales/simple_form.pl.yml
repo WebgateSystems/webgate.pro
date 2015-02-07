@@ -1,7 +1,4 @@
 pl:
-  password_confirmation_error: "Musi być ważne"
-  unique_email_error: "Musi być unikalny"
-  presence_of_attributes_error: "Nie może być puste"
   simple_form:
     "yes": 'Tak'
     "no": 'Nie'

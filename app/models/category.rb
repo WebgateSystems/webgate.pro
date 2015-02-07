@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
   #attr_accessible :name, :altlink, :description, :position
   has_one :page
   validates_uniqueness_of :name
-  validates_presence_of :name, :altlink, message: I18n.t(:presence_of_attributes_error)
+  validates_presence_of :name, :altlink
   translates :name, :altlink, :description
   before_save :remove_translation_link
   after_save :add_translation_link
