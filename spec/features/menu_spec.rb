@@ -69,7 +69,7 @@ feature 'Menu in admin panel.' do
   scenario 'validation for new menu. Empty fields' do
     click_link('New')
     click_button 'Save'
-    expect(page).to have_css('.error_fields')
+    expect(page).to have_css('.alert-box.alert')
   end
 
   scenario 'Dont create menu with empty fields' do

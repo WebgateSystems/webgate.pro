@@ -1,27 +1,17 @@
-= form_for [:admin, @page], html: { class: :form, multipart: true } do |f|
-  .group
-    = f.label :shortlink, t('activerecord.page.shortlink'), class: :label
-    = f.text_field :shortlink, class: :text_field
+= simple_form_for [:admin, @page], html: { class: :form, multipart: true } do |f|
+  = f.error_notification
 
-  .group
-    = f.label :title, t('activerecord.page.title'), class: :label
-    = f.text_field :title, class: :text_field
+  .form-inputs
+    = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: { class: 'label' }
 
-  .group
-    = f.label :description, t('activerecord.page.description'), class: :label
-    = f.text_field :description, class: :text_field
+    = f.input :title, label: t('activerecord.project.title'), label_html: { class: 'label' }
 
-  .group
-    = f.label :keywords, t('activerecord.page.keywords'), class: :label
-    = f.text_area :keywords, class: :text_area
+    = f.input :description, label: t('activerecord.project.description'), label_html: { class: 'label' }
 
-  .group
-    = f.label :content, t('activerecord.page.content'), class: :label
-    = f.text_area :content, :value=>@page.content.html_safe, class: 'redactor'
-    .bolderror
-      = @page.errors['content'].first
+    = f.input :keywords, label: t('activerecord.project.keywords'), label_html: { class: 'label' }
+    
+    = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
 
-  .group
     = f.label :category_id, t('activerecord.page.category_id'), class: :label
     = f.label :category_id, t('activerecord.page.category_id_main'), class: :label
     = f.select :category_id, @categories

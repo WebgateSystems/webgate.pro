@@ -58,23 +58,23 @@ feature 'Users in admin panel.' do
     click_link ('New')
     fill_in 'user[email]', with: 'TestUser@test.com'
     click_button 'Save'
-    expect(page).to have_content 'error'
+    expect(page).to have_css('.alert-box.alert')
   end
 
   scenario 'validation for new user(no email)' do
     click_link ('New')
     fill_in 'user[password]', with: 'TestUser@test.com'
     click_button 'Save'
-    expect(page).to have_content 'error'
+    expect(page).to have_css('.alert-box.alert')
   end
 
   scenario 'validation for new user(empty field)' do
     click_link('New')
     click_button 'Save'
-    expect(page).to have_content 'error'
+    expect(page).to have_css('.alert-box.alert')
   end
 
-  scenario 'validation for new user. Email should be correct. FEATURE. NOW NOT WORKING' do
+  scenario 'validation for new user. Email should be correct' do
     click_link ('New')
     fill_in 'user[email]', with: 'wery wronk@@@emaiL.com.com.e'
     fill_in 'user[password]', with: 'bad'

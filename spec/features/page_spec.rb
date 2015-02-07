@@ -86,7 +86,7 @@ feature 'Page in admin panel.' do
     fill_in 'page[title]', with: 'TestTitleFull'
     fill_in 'page[shortlink]', with: 'Testlink1'
     click_button 'Save'
-    expect(page).to have_css('.error_field')
+    expect(page).to have_css('.alert-box.alert')
   end
 
   scenario 'validation for new page' do

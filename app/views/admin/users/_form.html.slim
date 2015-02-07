@@ -1,17 +1,11 @@
-= form_for [:admin, @user] do |f|
-  - if @user.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@user.errors.count, 'error')} prohibited this admin_user from being saved:"
-      ul
-        - @user.errors.full_messages.each do |message|
-          li = message
+= simple_form_for [:admin, @user] do |f|
+  = f.error_notification
+  
+  .form-inputs
+    = f.input :email,label: t('activerecord.user.email'), label_html: { class: 'label'}
 
-  .group
-    = f.label :email, class: 'label'
-    = f.text_field :email, class: 'text_field'
-  .group
-    = f.label :password, class: 'label'
-    = f.text_field :password, class: 'text_field'
+    = f.input :password,label: t('activerecord.user.password'), label_html: { class: 'label'}
+
   .actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '

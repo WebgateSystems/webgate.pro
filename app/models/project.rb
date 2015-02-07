@@ -12,7 +12,6 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :screenshots, reject_if: proc{ |param| param[:file].blank? && param[:file_cache].blank? && param[:id].blank? }, allow_destroy: true
 
   validates_presence_of :title, :shortlink, :description, :keywords, :content
-  validates_uniqueness_of :shortlink
 
   translates :title, :shortlink, :description, :keywords, :content
 

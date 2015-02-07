@@ -1,0 +1,9 @@
+pl:
+  simple_form:
+    "yes": 'Tak'
+    "no": 'Nie'
+    required:
+      text: 'Obowiązkowe'
+      mark: '*'
+    error_notification:
+      default_message: "Proszę zapoznać się z problemami poniżej:"

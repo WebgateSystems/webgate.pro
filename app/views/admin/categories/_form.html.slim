@@ -1,16 +1,12 @@
-= form_for [:admin, @category], html: { class: :form } do |f|
-  .group
-    = f.label :name, t('activerecord.category.name'), class: :label
-    = f.text_field :name, class: :text_field
+= simple_form_for [:admin, @category], html: { class: :form } do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name, label: t('activerecord.category.name'), label_html: { class: 'label' }
 
-  .group
-    = f.label :altlink, t('activerecord.category.altlink'), class: :label
-    = f.text_field :altlink, class: :text_field
-  
-  .group
-    = f.label :description, t('activerecord.category.description'), class: :label
-    = f.text_area :description, class: :text_area
-          
+    = f.input :altlink, label: t('activerecord.category.altlink'), label_html: { class: 'label' }
+
+    = f.input :description, label: t('activerecord.category.description'), label_html: { class: 'label' }
+
   .actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '
