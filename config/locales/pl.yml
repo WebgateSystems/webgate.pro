@@ -69,6 +69,9 @@ pl:
       avatar: "Awatara"
       motto: "Motto"
       watch_profile: "Zobacz profil"
+    errors:
+      messages:
+        blank: "Nie może być puste"
   views:
     pagination:
       previous: "&lt; Popr."
