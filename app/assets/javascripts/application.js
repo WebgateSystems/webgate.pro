@@ -16,5 +16,5 @@
 //= require home_slider
 //= require jquery.carousel
 //= require jquery.roundabout.min
-//= require scroll
+//= require animatescroll.min
 //= require scripts
