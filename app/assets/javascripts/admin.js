@@ -16,6 +16,8 @@
 //= require foundation
 //= require cocoon
 //= require chosen-jquery
+//= require jquery.minicolors
+//= require jquery.minicolors.simple_form
 //= require_tree ./admin
 
 $(function(){ $(document).foundation(); });

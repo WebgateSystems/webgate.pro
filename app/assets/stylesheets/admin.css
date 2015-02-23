@@ -11,6 +11,7 @@
  *= require chosen
  *= require_self
  *= require foundation_and_overrides
+ *= require jquery.minicolors
  *= require_tree ./admin
  */
 

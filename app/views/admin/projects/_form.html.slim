@@ -1,19 +1,19 @@
 = simple_form_for [:admin, @project] do |f|
   = f.error_notification
   .form-inputs
-    = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: { class: 'label' }
-    = f.input :title, label: t('activerecord.project.title'), label_html: { class: 'label' }
-    = f.input :description, label: t('activerecord.project.description'), label_html: { class: 'label' }
-    = f.input :keywords, label: t('activerecord.project.keywords'), label_html: { class: 'label' }
-    = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
-    = f.input :livelink, label: t('activerecord.project.livelink'), label_html: { class: 'label' }
-    = f.input :publish, label: t('activerecord.project.publish'), label_html: { class: 'label' }
+    = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: {class: 'label'}
+    = f.input :title, label: t('activerecord.project.title'), label_html: {class: 'label'}
+    = f.input :description, label: t('activerecord.project.description'), label_html: {class: 'label'}
+    = f.input :keywords, label: t('activerecord.project.keywords'), label_html: {class: 'label'}
+    = f.input :content, label: t('activerecord.project.content'), label_html: {class: 'label'}
+    = f.input :livelink, label: t('activerecord.project.livelink'), label_html: {class: 'label'}
+    = f.input :publish, label: t('activerecord.project.publish'), label_html: {class: 'label'}
     h3 = t(:screenshots)
 
     table.project-form
       thead
         tr
-          td = t('web_app_theme.input') 
+          td = t('web_app_theme.input')
           td = t('web_app_theme.preview')
           td = t('web_app_theme.delete')
       tbody
@@ -23,8 +23,8 @@
 
     h3 = t(:technologies)
     #technologies
-    = f.association :technologies, include_blank: true, label: false, input_html: { class: 'chosen-select' }
-  
+    = f.association :technologies, collection: Technology.all.map{|t| [t.title,t.id,{"data-color" => t.technology_group.color}]}, include_blank: true, label: false, input_html: { class: 'chosen-select' }
+
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '

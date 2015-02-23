@@ -77,3 +77,19 @@ $ ->
     allow_single_deselect: true
     no_results_text: 'No results matched'
     width: '100%'
+
+  $('#project_technology_ids option:selected').each () ->
+    inuse_id = $(this).attr('value')
+    col = $('option[value='+inuse_id+']').data('color')
+    if (typeof col != "undefined")
+      name = $('option[value='+inuse_id+']').text()
+      $('ul.chosen-choices li.search-choice span:contains('+name+')').css('background-color', col)
+
+
+  $(".chosen-select").chosen().on 'change', (ev, par) ->
+    id = par['selected']
+    col = $('option[value='+id+']').data('color')
+    name = $('option[value='+id+']').text()
+    fake_id = $('ul.chosen-results li:contains('+name+')').attr("data-option-array-index")
+    $('a[data-option-array-index='+fake_id+']').parent().find('span').css('background-color', col)
+
