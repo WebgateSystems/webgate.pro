@@ -1,0 +1,22 @@
+span.mob.ico_main
+ul.mob.mob_nav.main
+  - @menu.each do |m|
+    - (request.path == m.altlink or request.path == "/"+m.altlink ) ? @class = "active" : @class = ""
+    li class="#{ @class }"
+      = link_to m.name, m.altlink
+
+span.mob.service_lang
+  ul.mob.mob_nav
+    li#block1
+      span Сетевые приложения
+    li#block2
+      span Хостинг
+    li#block3
+      span Регистрация доменов
+    li#block4
+      span SSL Сертификаты
+    li#block5
+      span Аутсорсинг IT
+    li#block6
+      span Дизайн
+

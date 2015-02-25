@@ -5,9 +5,9 @@ class HomeController < ApplicationController
     @projects = Project.published.all
   end
 
-  def portfolio    
+  def portfolio
     @projects = Project.published.all
     render layout: 'portfolio'
   end
-  
+
 end

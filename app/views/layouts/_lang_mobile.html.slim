@@ -1,0 +1,7 @@
+span.mob.ico_lang
+ul.mob.mob_nav
+  li
+    = link_to locale, 'javascript:;'
+  - other_langs.each do |l|
+    li
+      = current_page?(root_path) ? link_to(l, root_path(lang: l)) : link_to(l.upcase, lang: l)

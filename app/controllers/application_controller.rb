@@ -26,6 +26,15 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, :alert => "First login to access this page."
   end
 
+  #def set_layout
+  #  case request.user_agent # or use nginx and params[] flag
+  #  when /iPhone/i, /Android/i && /mobile/i, /Windows Phone/i
+  #    "mobile"
+  #  else
+  #    "main"
+  #  end
+  #end
+
   private
   def prepare_lang
     path_string = request.fullpath.split("/")
