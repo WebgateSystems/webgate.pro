@@ -36,14 +36,15 @@ ul.mob.mob_nav
       span Дизайн
 
 span.mob.ico_lang
+  = locale.upcase
 ul.mob.mob_nav
   li
     = link_to '#' do
       span
-        = locale
+        = locale.upcase
   - other_langs.each do |l|
     li
       = link_to root_path(lang: l) do
         span
-          = l
+          = l.upcase
 
