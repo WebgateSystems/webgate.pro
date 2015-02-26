@@ -21,16 +21,16 @@ $(document).on('ready', ()->
 
   # tell cocoon where to insert partial
   $('a.add_fields').data('association-insertion-method', 'append')
-  $('a.add_fields').data('association-insertion-node', 'table.project-form tbody')
+  $('a.add_fields').data('association-insertion-node', 'table.member-form tbody')
 )
 
 ready = undefined
 
 set_positions = undefined
 set_positions = ->
-  # loop through and give each screenshot a data-pos
+  # loop through and give each link a data-pos
   # attribute that holds its position in the DOM
-  $('li#screenshot').each (i) ->
+  $('li#link').each (i) ->
     $(this).attr 'data-pos', i + 1
     return
   return
@@ -47,18 +47,18 @@ ready = ->
     updated_order = []
     # set the updated positions
     set_positions()
-    # populate the updated_order array with the new screenshot positions
-    $('li#screenshot').each (i) ->
+    # populate the updated_order array with the new link positions
+    $('li#link').each (i) ->
       updated_order.push
         id: $(this).data('id')
         position: i + 1
       return
 
     # send the updated order via ajax
-    project_id = $('li#screenshot').attr('data-project_id')
+    member_id = $('li#link').attr('data-member_id')
     $.ajax
       type: 'PUT'
-      url: "/admin/projects/#{project_id}" + "/sort"
+      url: "/admin/members/#{member_id}" + "/sort"
       data:
         order: updated_order
     return
@@ -69,7 +69,6 @@ $(document).ready ready
 
 # if using turbolinks
 $(document).on 'page:load', ready
-
 
 $ ->
   # enable chosen js

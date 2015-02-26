@@ -1,5 +1,5 @@
 doctype html
-html lang="en" 
+html lang="en"
   head
     meta charset='utf-8'
     meta name='viewport' content='width=device-width, initial-scale=1.0'
@@ -8,6 +8,8 @@ html lang="en"
 
     = stylesheet_link_tag 'admin'
     = javascript_include_tag 'admin'
+    = stylesheet_link_tag "admin/#{controller_name}"
+    = javascript_include_tag "admin/#{controller_name}"
     = csrf_meta_tags
 
   body
@@ -39,7 +41,7 @@ html lang="en"
           ul.dropdown
             - other_langs.each do |l|
               li= current_page?(admin_root_path) ? link_to(l.upcase, admin_root_path(lang: l)) : link_to(l.upcase, lang: l)
-          
+
         li.divider
         li= link_to t('web_app_theme.logout'), logout_path
 

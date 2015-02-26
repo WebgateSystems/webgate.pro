@@ -1,0 +1,10 @@
+tr.nested-fields
+  td
+    = f.file_field :logo
+    = f.hidden_field :logo_cache, value: f.object.logo_cache
+  td.thumb
+    - if f.object.logo.url.present?
+      = image_tag f.object.logo.url
+  td= f.input :name, label: t('activerecord.member_link.name')
+  td= f.input :link, label: t('activerecord.member_link.link')
+  td= link_to_remove_association t('web_app_theme.delete'), f

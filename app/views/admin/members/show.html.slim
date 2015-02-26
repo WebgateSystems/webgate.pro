@@ -26,11 +26,19 @@
         b= t('activerecord.member.avatar') + ': '
         br
         = image_tag @member.avatar.url(:thumb)
+
+      p
+        b = t('member_links')
+        ol.sortable
+          - @member.member_links.each do |link|
+            li#link data-id="#{link.id}" data-member_id="#{@member.id}"
+              = image_tag link.logo.url(:thumb) if link
+              = link_to link.name, link.link
       p
         b = t('technologies') + ':'
       - if @member.technologies.any?
         table.table
-          tr             
+          tr
             th.first
               = t('activerecord.id')
             th= t('activerecord.technology.title')

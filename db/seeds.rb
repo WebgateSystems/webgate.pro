@@ -22,11 +22,33 @@ if Member.count == 0
   member.avatar = src_file
   member.save!
 
+  member = Member.create name: 'Юрий Скурихин',
+                shortdesc: 'Ruby on Rails разработчик',
+                description: 'На рельсах с 2014 года',
+                motto: 'Per aspera ad astra'
+  member.avatar = Rails.root.join("app/assets/images/yuri_skurikhin.png").open
+  member.save!
+
   I18n.locale = 'en'
   #todo
 
+  member = Member.find 2
+  member.name = 'Yuri Skurikhin'
+  member.shortdesc = 'Ruby on Rails Developer'
+  member.description = 'With Rails in 2014'
+  member.motto = 'Per aspera ad astra'
+  member.save
+
   I18n.locale = 'pl'
   #todo
+
+  member = Member.find 2
+  member.name = 'Yuri Skurikhin'
+  member.shortdesc = 'Ruby on Rails Developer'
+  member.description = 'With Rails in 2014'
+  member.motto = 'Per aspera ad astra'
+  member.save
+
 end
 
 if TechnologyGroup.count == 0

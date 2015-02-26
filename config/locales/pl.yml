@@ -69,6 +69,10 @@ pl:
       avatar: "Awatara"
       motto: "Motto"
       watch_profile: "Zobacz profil"
+    member_link:
+      name: "Imię"
+      logo: "Logo"
+      link: "Powiązanie"
     errors:
       messages:
         blank: "Nie może być puste"
@@ -98,3 +102,5 @@ pl:
   used_technologies: "Użyte technologie:"
   recent_projects: "Ostatnie realizacje:"
   see_more: "zobacz więcej realizacji"
+  member_links: "Odnośniki"
+  add_link: "Dodaj link"

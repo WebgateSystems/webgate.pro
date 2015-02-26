@@ -1,5 +1,5 @@
 WebgatePro::Application.routes.draw do
-  
+
   resources :sessions
 
   namespace :admin do
@@ -11,7 +11,11 @@ WebgatePro::Application.routes.draw do
     end
     resources :pages
     resources :projects
-    resources :members
+    resources :members do
+      member do
+        put 'sort'
+      end
+    end
     resources :projects do
       member do
         put 'sort'
