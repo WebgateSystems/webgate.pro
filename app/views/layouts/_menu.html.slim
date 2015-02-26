@@ -10,34 +10,40 @@ ul.mob.mob_nav.main
   - @menu.each do |m|
     - (request.path == m.altlink or request.path == "/"+m.altlink ) ? @class = "active" : @class = ""
     li class="#{ @class }"
-      = link_to m.name, m.altlink
+      = link_to m.altlink do
+        span
+          = m.name
 
 span.mob.service_lang
 ul.mob.mob_nav
   li
-    a#block2 href="#block1"
+    a#block1 href="#block1"
       span Сетевые приложения
   li
     a#block2 href="#block2"
       span Хостинг
   li
-    a#block2 href="#block3"
+    a#block3 href="#block3"
       span Регистрация доменов
   li
-    a#block2 href="#block4"
+    a#block4 href="#block4"
       span SSL Сертификаты
   li
-    a#block2 href="#block5"
+    a#block5 href="#block5"
       span Аутсорсинг IT
   li
-    a#block2 href="#block6"
+    a#block6 href="#block6"
       span Дизайн
 
-span.mob.ico_lang PL
+span.mob.ico_lang
 ul.mob.mob_nav
   li
-    = link_to locale, 'javascript:;'
+    = link_to '#' do
+      span
+        = locale
   - other_langs.each do |l|
     li
-      = current_page?(root_path) ? link_to(l, root_path(lang: l)) : link_to(l.upcase, lang: l)
+      = link_to root_path(lang: l) do
+        span
+          = l
 
