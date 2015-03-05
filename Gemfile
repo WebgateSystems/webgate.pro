@@ -46,11 +46,11 @@ group :development do
   gem 'thin'
   # Deploy with Capistrano
   gem 'capistrano', '2.15.5'
-  gem 'cape'                                                                
-  gem 'capistrano-unicorn'                                                  
-  gem 'capistrano-ext'                                                      
-  gem 'capistrano_colors'                                                   
-  gem 'rvm-capistrano'
+  gem 'cape'
+  gem 'capistrano-unicorn'
+  gem 'capistrano-ext'
+  gem 'capistrano_colors'
+  gem 'rvm-capistrano', require: false
   gem 'rack-mini-profiler', '~> 0.9.2'
   # Better errors handler
   gem 'better_errors'
