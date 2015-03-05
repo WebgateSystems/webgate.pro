@@ -1,6 +1,50 @@
+a.logo href="#"
 ul.top_nav
   - @menu.each do |m|
     - (request.path == m.altlink or request.path == "/"+m.altlink ) ? @class = "active" : @class = ""
     li class="#{ @class }"
       = link_to m.name, m.altlink
+
+span.mob.ico_main
+ul.mob.mob_nav.main
+  - @menu.each do |m|
+    - (request.path == m.altlink or request.path == "/"+m.altlink ) ? @class = "active" : @class = ""
+    li class="#{ @class }"
+      = link_to m.altlink do
+        span
+          = m.name
+
+span.mob.service_lang
+ul.mob.mob_nav
+  li
+    a#block1 href="#block1"
+      span Сетевые приложения
+  li
+    a#block2 href="#block2"
+      span Хостинг
+  li
+    a#block3 href="#block3"
+      span Регистрация доменов
+  li
+    a#block4 href="#block4"
+      span SSL Сертификаты
+  li
+    a#block5 href="#block5"
+      span Аутсорсинг IT
+  li
+    a#block6 href="#block6"
+      span Дизайн
+
+span.mob.ico_lang
+  = locale.upcase
+ul.mob.mob_nav
+  li.active
+    = link_to '#' do
+      span
+        = locale.upcase
+  - other_langs.each do |l|
+    li
+      = link_to root_path(lang: l) do
+        span
+          = l.upcase
 
