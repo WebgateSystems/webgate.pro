@@ -6,9 +6,9 @@ describe MemberLink do
     expect(build(:member_link)).to be_valid
   end
 
-  it { expect validate_presence_of :name }
-  it { expect validate_presence_of :link }
+  it { is_expected.to validate_presence_of :name }
+  it { is_expected.to validate_presence_of :link }
 
-  it { expect belong_to(:member) }
+  it { is_expected.to belong_to(:member) }
 
 end
