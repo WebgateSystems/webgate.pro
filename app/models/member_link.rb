@@ -9,5 +9,4 @@ class MemberLink < ActiveRecord::Base
 
   translates :name
 
-  #mount_uploader :logo, LogoUploader
 end

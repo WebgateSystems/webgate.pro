@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20150226101644) do
 
   create_table "member_links", force: true do |t|
     t.string   "name"
-    t.string   "logo"
     t.string   "link"
     t.integer  "member_id"
     t.integer  "position"
