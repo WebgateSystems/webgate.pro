@@ -3,7 +3,7 @@ $(document).on('ready', ()->
     file = event.target.files[0]
     url = URL.createObjectURL(file)
 
-    thumbContainer = $(this).parent().siblings('td.thumb')
+    thumbContainer = $(this).parent().siblings('span.thumb')
     if thumbContainer.find('img').length == 0
       thumbContainer.append('<img src="' + url + '" />')
     else
@@ -11,7 +11,7 @@ $(document).on('ready', ()->
 
   # for redisplayed file inputs and file inputs in edit page
   $('input[type=file]').each(()->
-      $(this).change(onAddFile)
+    $(this).change(onAddFile)
   )
 
   # register event handler when new cocoon partial is inserted from link_to_add_association link
@@ -21,13 +21,13 @@ $(document).on('ready', ()->
 
   # tell cocoon where to insert partial
   $('a.add_fields').data('association-insertion-method', 'append')
-  $('a.add_fields').data('association-insertion-node', 'table.project-form tbody')
+  $('a.add_fields').data('association-insertion-node', 'ol.project-form')
 )
 
 ready = undefined
 
 set_positions = undefined
-set_positions = -> 
+set_positions = ->
   # loop through and give each screenshot a data-pos
   # attribute that holds its position in the DOM
   $('li#screenshot').each (i) ->
@@ -53,7 +53,7 @@ ready = ->
         id: $(this).data('id')
         position: i + 1
       return
-    
+
     # send the updated order via ajax
     project_id = $('li#screenshot').attr('data-project_id')
     $.ajax
@@ -66,7 +66,6 @@ ready = ->
   return
 
 $(document).ready ready
-
 # if using turbolinks
 $(document).on 'page:load', ready
 
@@ -74,6 +73,6 @@ $(document).on 'page:load', ready
 $ ->
   # enable chosen js
   $('.chosen-select').chosen
-    allow_single_deselect: true
+    allow_single_deselect: false
     no_results_text: 'No results matched'
     width: '100%'
