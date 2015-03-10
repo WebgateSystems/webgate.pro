@@ -162,35 +162,35 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 			text-align: center;
 		}
 			.slider_nav a#first{
-				background: asset_url('tab_first.png') 50px 42px no-repeat;
+				background: asset_url('block_1.png') center 46px/100px 84px no-repeat;
 				width: 162px;
 			}
-				.slider_nav a#first:hover{background-position: 50px 27px;}
+				.slider_nav a#first:hover{background-position: center 30px;}
 			.slider_nav a#second{
-				background: asset_url('tab_second.png') center 58px no-repeat;
+				background: asset_url('block_2.png') center 43px/95px 88px no-repeat;
 				width: 142px;
 			}
-				.slider_nav a#second:hover{background-position: center 43px;}
+				.slider_nav a#second:hover{background-position: center 30px;}
 			.slider_nav a#third{
-				background: asset_url('tab_third.png') center 48px no-repeat;
+				background: asset_url('block_3.png') center 43px/95px 85px no-repeat;
 				width: 142px;
 			}
-				.slider_nav a#third:hover{background-position: center 33px;}
+				.slider_nav a#third:hover{background-position: center 30px;}
 			.slider_nav a#fourth{
-				background: asset_url('tab_fourth.png') center 48px no-repeat;
+				background: asset_url('block_4.png') center 36px/75px 92px no-repeat;
 				width: 142px;
 			}
-				.slider_nav a#fourth:hover{background-position: center 33px;}
+				.slider_nav a#fourth:hover{background-position: center 20px;}
 			.slider_nav a#fifth{
-				background: asset_url('tab_fifth.png') center 48px no-repeat;
+				background: asset_url('block_5.png') center 43px/95px 87px no-repeat;
 				width: 142px;
 			}
-				.slider_nav a#fifth:hover{background-position: center 33px;}
+				.slider_nav a#fifth:hover{background-position: center 30px;}
 			.slider_nav a#sixth{
-				background: asset_url('tab_sixth.png') center 41px no-repeat;
+				background: asset_url('block_6.png') center 38px/102px 89px no-repeat;
 				width: 142px;
 			}
-				.slider_nav a#sixth:hover{background-position: center 26px;}
+				.slider_nav a#sixth:hover{background-position: center 24px;}
 			.slider_nav a span{
 				background: asset_url('shadow_new.png') center top no-repeat;
 				color: #454545;

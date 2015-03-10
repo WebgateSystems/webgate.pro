@@ -71,6 +71,10 @@ ru:
       avatar: "Аватар"
       motto: "Девиз"
       watch_profile: "Открыть профиль"
+    member_link:
+      name: "Название"
+      logo: "Лого"
+      link: "Ссылка"
   views:
       pagination:
         previous: "&lt; Пред."
@@ -96,3 +100,5 @@ ru:
   used_technologies: "Используемые технологии:"
   recent_projects: "Последние проекты:"
   see_more: "посмотреть другие проекты"
+  member_links: "Ссылки"
+  add_link: "Добавить ссылку"

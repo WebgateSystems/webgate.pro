@@ -8,15 +8,15 @@
     h2.title
       = t('members')
     .inner
-      - if @member.any?
+      - if @members.any?
         table.table
-          tr             
+          tr
             th.first
               = t('activerecord.id')
             th= t('activerecord.member.name')
             th= t('activerecord.created_at')
             th.last= t('actions')
-          - @member.each do |member|
+          - @members.each do |member|
             tr class=("#{cycle('odd', 'even')}")
               td= member.id
               td= link_to member.name, admin_member_path(member)

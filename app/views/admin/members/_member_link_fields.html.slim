@@ -1,0 +1,4 @@
+tr.nested-fields
+  td= f.input :name, label: t('activerecord.member_link.name'), placeholder: 'Github'
+  td= f.input :link, as: :url, label: t('activerecord.member_link.link'), placeholder: 'https://github.com/user'
+  td= link_to_remove_association t('web_app_theme.delete'), f

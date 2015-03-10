@@ -1,4 +1,6 @@
 # Set unicorn options
+app_path = "/home/webgate/test.webgate.pro/current"
+shared_path = "/home/webgate/test.webgate.pro/shared"
 worker_processes 2
 preload_app true
 timeout 60
@@ -8,14 +10,14 @@ listen "#{shared_path}/sockets/unicorn.sock", :backlog => 2048
 user 'webgate', 'webgate'
 
 # Fill path to your app
-working_directory app_path
+working_directory = app_path
 
 # Should be 'production' by default, otherwise use other env
 rails_env = ENV['RAILS_ENV'] || 'production'
 
 # Log everything to one file
-stderr_path "#{shared_path}/log/unicorn.stderr.log"
-stdout_path "#{shared_path}/log/unicorn.stdout.log"
+stderr_path = "#{shared_path}/log/unicorn.stderr.log"
+stdout_path = "#{shared_path}/log/unicorn.stdout.log"
 
 before_fork do |server, worker|
   ActiveRecord::Base.connection.disconnect!

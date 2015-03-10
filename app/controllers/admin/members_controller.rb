@@ -1,8 +1,8 @@
 class Admin::MembersController < Admin::HomeController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy, :sort]
 
   def index
-    @member = Member.order(:id)
+    @members = Member.order(:id)
   end
 
   def show
@@ -10,7 +10,6 @@ class Admin::MembersController < Admin::HomeController
 
   def new
     @member = Member.new
-    @member.technologies.build
   end
 
   def create
@@ -38,6 +37,13 @@ class Admin::MembersController < Admin::HomeController
     redirect_to admin_members_url, notice: 'Successfully destroyed admin/member.'
   end
 
+  def sort
+    params[:order].each do |key, value|
+      @member.member_links.find(value[:id]).update_attribute(:position, value[:position])
+    end
+    render nothing: true
+  end
+
   private
 
   def set_member
@@ -45,8 +51,9 @@ class Admin::MembersController < Admin::HomeController
   end
 
   def member_params
-    params.require(:member).permit(:name, :shortdesc, :description, :avatar, :motto,technology_ids: [],
-                                    technologies_attributes: [:id, :title, :technology_group_id, :_destroy])
+    params.require(:member).permit(:name, :shortdesc, :description, :avatar, :motto, technology_ids: [],
+                                    technologies_attributes: [:id, :title, :technology_group_id, :_destroy],
+                                    member_links_attributes: [:id, :name, :link, :member_id, :position, :_destroy])
   end
 
 end
