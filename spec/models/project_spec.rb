@@ -1,39 +1,18 @@
 require 'rails_helper'
-require 'carrierwave/test/matchers'
 
-describe ScreenshotUploader do
+describe Project do
 
-  include CarrierWave::Test::Matchers
-
-  let!(:project) {FactoryGirl.create(:project)}
-
-  before do
-    ScreenshotUploader.enable_processing = true
-    @uploader = ScreenshotUploader.new(project,:image)
-    @uploader.store!(File.open(File.join(Rails.root, '/spec/fixtures/projects/tested.jpg')))
+  describe "Validations" do
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:shortlink) }
+    it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:keywords) }
+    it { is_expected.to validate_presence_of(:content) }
   end
 
-  after do
-    ScreenshotUploader.enable_processing = false
-    @uploader.remove!
-  end
-
-  context 'the thumb version' do
-    it "should scale down a landscape image to be exactly 182 by 114 pixels" do
-      @uploader.thumb.should have_dimensions(182, 114)
-    end
-  end
-
-  context 'the air version' do
-    it "should scale down a landscape image to be exactly 182 by 114 pixels" do
-      @uploader.air.should have_dimensions(182, 114)
-    end
-  end
-
-  context 'the large version' do
-    it "should scale a landscape image to no taller then 1720 pixels" do
-      @uploader.large.should be_no_taller_than(1720)
-    end
+  describe "Associations" do
+    it { is_expected.to have_many(:screenshots).dependent(:destroy) }
+    it { is_expected.to have_and_belong_to_many(:technologies) }
   end
 
 end
