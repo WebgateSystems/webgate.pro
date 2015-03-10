@@ -203,6 +203,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.4.2)
+    ranked-model (0.4.0)
+      activerecord (>= 3.1.12)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -329,6 +331,7 @@ DEPENDENCIES
   rails (~> 4.1.8)
   rails-translate-routes
   rails_12factor
+  ranked-model
   rspec-rails
   ruby_parser
   russian

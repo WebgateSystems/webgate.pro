@@ -16,5 +16,7 @@
 //= require foundation
 //= require cocoon
 //= require chosen-jquery
+//= require jquery-ui/sortable
+//= require jquery-ui/effect-highlight
 
 $(function(){ $(document).foundation(); });

@@ -10,19 +10,17 @@ WebgatePro::Application.routes.draw do
       end
     end
     resources :pages
-    resources :projects
     resources :members do
       member do
         put 'sort'
       end
     end
     resources :projects do
+      put :update_position, on: :collection
       member do
         put 'sort'
       end
-      resources :screenshots, only: [:create, :destroy] do
-        put :sort, on: :collection
-      end
+      resources :screenshots
     end
     resources :technologies
     resources :technology_groups do

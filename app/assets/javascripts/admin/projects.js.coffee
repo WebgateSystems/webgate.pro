@@ -1,3 +1,4 @@
+#--------------------------COCOON
 $(document).on('ready', ()->
   onAddFile = (event) ->
     file = event.target.files[0]
@@ -23,6 +24,8 @@ $(document).on('ready', ()->
   $('a.add_fields').data('association-insertion-method', 'append')
   $('a.add_fields').data('association-insertion-node', 'ol.project-form')
 )
+
+#-----------------------HTML5 SORTABLE
 
 ready = undefined
 
@@ -70,9 +73,42 @@ $(document).ready ready
 $(document).on 'page:load', ready
 
 
+#----------------------CHOSEN FOR TECHS SELECT
 $ ->
   # enable chosen js
   $('.chosen-select').chosen
     allow_single_deselect: false
     no_results_text: 'No results matched'
     width: '100%'
+
+
+#----------------------PROJECT REORDERING
+jQuery ->
+  if $('#sortable').length > 0
+    table_width = $('#sortable').width()
+    cells = $('.table').find('tr')[0].cells.length
+    desired_width = table_width / cells + 'px'
+    $('.table td').css('width', desired_width)
+
+    $('#sortable').sortable(
+      axis: 'y'
+      items: '.item'
+      cursor: 'move'
+
+      sort: (e, ui) ->
+        ui.item.addClass('active-item-shadow')
+      stop: (e, ui) ->
+        ui.item.removeClass('active-item-shadow')
+        # highlight the row on drop to indicate an update
+        ui.item.children('td').effect('highlight', {}, 1000)
+      update: (e, ui) ->
+        item_id = ui.item.data('item-id')
+        console.log(item_id)
+        position = ui.item.index()
+        $.ajax(
+          type: 'PUT'
+          url: '/admin/projects/update_position'
+          dataType: 'json'
+          data: { project: { project_id: item_id, row_position: position } }
+        )
+    )
