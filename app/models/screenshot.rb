@@ -1,5 +1,7 @@
 class Screenshot < ActiveRecord::Base
 
+  validates_presence_of :file
+
   belongs_to :project
   validates_associated :project
 

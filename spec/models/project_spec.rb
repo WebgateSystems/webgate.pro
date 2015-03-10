@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe Project do
 
+  it 'has a valid factory' do
+    expect(build(:project)).to be_valid
+  end
+
   describe "Validations" do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:shortlink) }
