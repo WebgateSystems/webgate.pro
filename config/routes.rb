@@ -37,6 +37,7 @@ WebgatePro::Application.routes.draw do
   get "team" => "team#index"
   get "team/:id" => "team#show", as: "member"
   get "portfolio" => "home#portfolio"
+  get "портфолио" => "home#portfolio"
 
   match "not-found" => "pages#not_found", via: [:get, :post], as: :not_found
   match ":shortlink" => "pages#showbyshortlink", via: [:get, :post]

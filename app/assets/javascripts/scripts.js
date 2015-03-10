@@ -50,7 +50,4 @@
 		adaptiveHeight: true,
 		slideMargin: 0
 	});
-	$('ul.portfolio_carousel').roundabout({
-		minScale: 0.7
-	});
 });
