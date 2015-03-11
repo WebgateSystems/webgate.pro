@@ -8,12 +8,17 @@
     = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
     = f.input :livelink, label: t('activerecord.project.livelink'), label_html: { class: 'label' }
     = f.input :publish, label: t('activerecord.project.publish'), label_html: { class: 'label' }
+    .label= t('activerecord.project.collage')
+    = f.file_field :collage
+    = f.hidden_field :collage_cache, value: f.object.collage_cache
+    - if f.object.collage.url.present?
+      = image_tag f.object.collage.url(:thumb)
     h3 = t(:screenshots)
 
     table.project-form
       thead
         tr
-          td = t('web_app_theme.input') 
+          td = t('web_app_theme.input')
           td = t('web_app_theme.preview')
           td = t('web_app_theme.delete')
       tbody
@@ -24,7 +29,7 @@
     h3 = t(:technologies)
     #technologies
     = f.association :technologies, include_blank: true, label: false, input_html: { class: 'chosen-select' }
-  
+
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '

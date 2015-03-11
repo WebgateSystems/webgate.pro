@@ -11,14 +11,16 @@ class Project < ActiveRecord::Base
   has_many :screenshots, dependent: :destroy
   accepts_nested_attributes_for :screenshots, reject_if: proc{ |param| param[:file].blank? && param[:file_cache].blank? && param[:id].blank? }, allow_destroy: true
 
-  validates_presence_of :title, :shortlink, :description, :keywords, :content
+  validates_presence_of :title, :shortlink, :description, :keywords, :content, :collage
 
   translates :title, :shortlink, :description, :keywords, :content
 
   scope :published, -> { where(publish: true) }
 
+  mount_uploader :collage , ScreenshotUploader
+
   private
-  
+
   def remove_translation_link
     LinkTranslation.where(link_type: 'project', link: self.shortlink, locale: I18n.locale.to_s).first.try(:destroy)
   end

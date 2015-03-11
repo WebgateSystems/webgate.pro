@@ -7,5 +7,6 @@ FactoryGirl.define do
     description 'first project'
     keywords 'first project'
     content 'first project content'
+    collage { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg')) }
   end
 end

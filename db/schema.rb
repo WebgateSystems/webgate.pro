@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226101644) do
+ActiveRecord::Schema.define(version: 20150311115627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20150226101644) do
     t.string   "avatar"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "members_technologies", id: false, force: true do |t|
@@ -151,6 +152,8 @@ ActiveRecord::Schema.define(version: 20150226101644) do
     t.datetime "updated_at"
     t.string   "livelink"
     t.boolean  "publish",     default: false
+    t.integer  "position"
+    t.string   "collage"
   end
 
   create_table "projects_technologies", id: false, force: true do |t|
@@ -176,6 +179,7 @@ ActiveRecord::Schema.define(version: 20150226101644) do
     t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "technology_group_translations", force: true do |t|
@@ -195,6 +199,7 @@ ActiveRecord::Schema.define(version: 20150226101644) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "technology_translations", force: true do |t|
@@ -202,6 +207,7 @@ ActiveRecord::Schema.define(version: 20150226101644) do
     t.string   "locale",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
     t.text     "description"
   end
 

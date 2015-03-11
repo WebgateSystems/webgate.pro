@@ -34,6 +34,10 @@
         br
         = @project.livelink
       p
+        b= t('activerecord.project.collage') + ': '
+        br
+        = image_tag @project.collage.url(:thumb) if @project.collage
+      p
         h3 = t(:screenshots)
       ol.sortable
         - @project.screenshots.each do |screenshot|
@@ -43,7 +47,7 @@
         h3 = t('technologies') + ':'
       - if @project.technologies.any?
         table.table
-          tr             
+          tr
             th.first
               = t('activerecord.id')
             th= t('activerecord.technology.title')
