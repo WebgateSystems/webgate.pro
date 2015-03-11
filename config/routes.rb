@@ -5,28 +5,31 @@ WebgatePro::Application.routes.draw do
   namespace :admin do
     resources :users
     resources :categories do
-      collection do
-        post 'sort'
-      end
+      put :update_position, on: :collection
     end
     resources :pages
-    resources :projects
     resources :members do
+      put :update_position, on: :collection
       member do
         put 'sort'
       end
     end
     resources :projects do
+      put :update_position, on: :collection
       member do
         put 'sort'
       end
-      resources :screenshots, only: [:create, :destroy] do
-        put :sort, on: :collection
-      end
+      resources :screenshots
     end
     resources :technologies
     resources :technology_groups do
-      resources :technologies
+      put :update_position, on: :collection
+      member do
+        put 'sort'
+      end
+      resources :technologies do
+        #put :update_position, on: :collection
+      end
     end
     root :to => "home#index"
   end

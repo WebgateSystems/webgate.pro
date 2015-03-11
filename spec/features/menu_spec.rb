@@ -88,7 +88,7 @@ feature 'Menu in admin panel.' do
     ['pl', 'ru'].each do |lang|
       visit root_path
       click_link(lang) unless I18n.locale.to_s == lang
-      click_link Category.last.name
+      first(:link, Category.last.name).click
       expect(current_path).to eq "/#{Category.last.altlink}"
     end
   end
@@ -106,9 +106,9 @@ feature 'Menu in admin panel.' do
     visit root_path
     ['en', 'pl', 'ru'].each do |lang|
       click_link(lang) unless I18n.locale.to_s == lang
-      expect(page).to have_content 'PolskaName'     if lang == 'pl'
+      expect(page).to have_content 'PolskaName' if lang == 'pl'
       expect(page).to have_content 'RuskaName' if lang == 'ru'
-      expect(page).to have_content 'EnglishName'  if lang == 'en'
+      expect(page).to have_content 'EnglishName' if lang == 'en'
     end
   end
 
@@ -117,12 +117,12 @@ feature 'Menu in admin panel.' do
     ['en', 'pl', 'ru'].each do |lang|
       visit root_path
       click_link(lang) unless I18n.locale.to_s == lang
-      click_link('PolskaName') if lang == 'pl'
-      click_link('RuskaName') if lang == 'ru'
-      click_link('EnglishName') if lang == 'en'
-      expect(current_path).to eq '/PolskaAltlink'     if lang == 'pl'
+      first(:link, 'PolskaName').click if lang == 'pl'
+      first(:link, 'RuskaName').click if lang == 'ru'
+      first(:link, 'EnglishName').click if lang == 'en'
+      expect(current_path).to eq '/PolskaAltlink' if lang == 'pl'
       expect(current_path).to eq '/RuskaAltlink' if lang == 'ru'
-      expect(current_path).to eq '/EnglishAltlink'  if lang == 'en'
+      expect(current_path).to eq '/EnglishAltlink' if lang == 'en'
     end
 
   end

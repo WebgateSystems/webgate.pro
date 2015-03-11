@@ -2,7 +2,7 @@ class Admin::MembersController < Admin::HomeController
   before_action :set_member, only: [:show, :edit, :update, :destroy, :sort]
 
   def index
-    @members = Member.order(:id)
+    @members = Member.rank(:position).all
   end
 
   def show
@@ -37,6 +37,18 @@ class Admin::MembersController < Admin::HomeController
     redirect_to admin_members_url, notice: 'Successfully destroyed admin/member.'
   end
 
+  def update_position
+    @member = Member.find(member_params[:member_id])
+    @member.position_position = member_params[:row_position]
+    respond_to do |format|
+      if @member.save!
+        format.json { head :ok }
+      else
+        format.json { head :error }
+      end
+    end
+  end
+
   def sort
     params[:order].each do |key, value|
       @member.member_links.find(value[:id]).update_attribute(:position, value[:position])
@@ -51,7 +63,8 @@ class Admin::MembersController < Admin::HomeController
   end
 
   def member_params
-    params.require(:member).permit(:name, :shortdesc, :description, :avatar, :motto, technology_ids: [],
+    params.require(:member).permit(:member_id, :row_position, :name, :shortdesc, :description,
+                                    :avatar, :motto, technology_ids: [],
                                     technologies_attributes: [:id, :title, :technology_group_id, :_destroy],
                                     member_links_attributes: [:id, :name, :link, :member_id, :position, :_destroy])
   end

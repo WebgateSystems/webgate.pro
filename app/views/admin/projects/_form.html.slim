@@ -10,21 +10,15 @@
     = f.input :publish, label: t('activerecord.project.publish'), label_html: { class: 'label' }
     h3 = t(:screenshots)
 
-    table.project-form
-      thead
-        tr
-          td = t('web_app_theme.input') 
-          td = t('web_app_theme.preview')
-          td = t('web_app_theme.delete')
-      tbody
-        = f.fields_for :screenshots do |s|
-          = render 'screenshot_fields', f: s
+    ol.project-form.sortable
+      = f.fields_for :screenshots do |s|
+        = render 'screenshot_fields', f: s
     .links= link_to_add_association t('add_screenshot'), f, :screenshots
 
     h3 = t(:technologies)
     #technologies
     = f.association :technologies, include_blank: true, label: false, input_html: { class: 'chosen-select' }
-  
+
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '

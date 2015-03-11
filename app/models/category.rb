@@ -1,10 +1,15 @@
 # encoding: utf-8
 class Category < ActiveRecord::Base
-  #attr_accessible :name, :altlink, :description, :position
+  include RankedModel
+  ranks :position
+
   has_one :page
+
   validates_uniqueness_of :name
   validates_presence_of :name, :altlink
+
   translates :name, :altlink, :description
+
   before_save :remove_translation_link
   after_save :add_translation_link
 
@@ -15,6 +20,7 @@ class Category < ActiveRecord::Base
   end
 
   private
+
   def remove_translation_link
     LinkTranslation.where(link_type: "category", link: self.altlink, locale: I18n.locale.to_s).first.try(:destroy)
   end

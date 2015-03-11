@@ -1,6 +1,8 @@
 require 'carrierwave/orm/activerecord'
 
 class Member < ActiveRecord::Base
+  include RankedModel
+  ranks :position
 
   has_and_belongs_to_many :technologies
   #accepts_nested_attributes_for :technologies, reject_if: :all_blank

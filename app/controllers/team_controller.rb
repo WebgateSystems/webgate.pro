@@ -1,7 +1,7 @@
 class TeamController < ApplicationController
 
   def index
-    @team = Member.order(:id).page(params[:page]).per(10)
+    @team = Member.rank(:position).all.page(params[:page]).per(10)
   end
 
   def show

@@ -1,3 +1,4 @@
+#--------------------------COCOON
 $(document).on('ready', ()->
   onAddFile = (event) ->
     file = event.target.files[0]
@@ -11,7 +12,7 @@ $(document).on('ready', ()->
 
   # for redisplayed file inputs and file inputs in edit page
   $('input[type=file]').each(()->
-      $(this).change(onAddFile)
+    $(this).change(onAddFile)
   )
 
   # register event handler when new cocoon partial is inserted from link_to_add_association link
@@ -24,6 +25,7 @@ $(document).on('ready', ()->
   $('a.add_fields').data('association-insertion-node', 'table.member-form tbody')
 )
 
+#-----------------------HTML5 SORTABLE
 ready = undefined
 
 set_positions = undefined
@@ -66,13 +68,42 @@ ready = ->
   return
 
 $(document).ready ready
-
 # if using turbolinks
 $(document).on 'page:load', ready
 
+
+#----------------------CHOSEN FOR TECHS SELECT
 $ ->
   # enable chosen js
   $('.chosen-select').chosen
     allow_single_deselect: true
     no_results_text: 'No results matched'
     width: '100%'
+
+
+#----------------------MEMBERS REORDERING
+$ ->
+  if $('#sortable').length > 0
+
+    $('#sortable').sortable(
+      axis: 'y'
+      items: '.item'
+      cursor: 'move'
+
+      sort: (e, ui) ->
+        ui.item.addClass('active-item-shadow')
+      stop: (e, ui) ->
+        ui.item.removeClass('active-item-shadow')
+        # highlight the row on drop to indicate an update
+        ui.item.children('td').effect('highlight', {}, 1000)
+      update: (e, ui) ->
+        item_id = ui.item.data('item-id')
+        position = ui.item.index()
+        $.ajax(
+          type: 'PUT'
+          url: '/admin/members/update_position'
+          dataType: 'json'
+          data: { member: { member_id: item_id, row_position: position } }
+        )
+    )
+

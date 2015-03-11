@@ -1,8 +1,9 @@
 require 'carrierwave/orm/activerecord'
 
 class Project < ActiveRecord::Base
+  include RankedModel
+  ranks :position
 
-  before_save :check_for_publish
   before_save :remove_translation_link
   after_save  :add_translation_link
 
@@ -18,17 +19,13 @@ class Project < ActiveRecord::Base
   scope :published, -> { where(publish: true) }
 
   private
-  
+
   def remove_translation_link
     LinkTranslation.where(link_type: 'project', link: self.shortlink, locale: I18n.locale.to_s).first.try(:destroy)
   end
 
   def add_translation_link
     LinkTranslation.create(link: self.shortlink, locale: I18n.locale.to_s, link_type: 'project')
-  end
-
-  def check_for_publish
-    #self.publish = false if self.screenshots.count < 3
   end
 
 end
