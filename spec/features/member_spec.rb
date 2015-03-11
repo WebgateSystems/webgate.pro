@@ -30,7 +30,6 @@ feature 'Member in admin panel.' do
     expect(page).to have_content 'ID'
     expect(page).to have_content 'Name'
     expect(page).to have_content 'Created at'
-    expect(page).to have_content 'Action'
   end
 
   scenario 'member root path should have our member name' do

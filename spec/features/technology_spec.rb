@@ -35,7 +35,6 @@ feature 'Technology in admin panel.' do
     expect(page).to have_content 'Technology group title'
     expect(page).to have_content 'Title'
     expect(page).to have_content 'Created at'
-    expect(page).to have_content 'Actions'
   end
 
   scenario 'Page root path should have our page name' do
