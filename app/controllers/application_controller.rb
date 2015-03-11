@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     @google_analytics = false
     prepare_lang
     @google_analytics = false
-    @menu = Category.order(:position, :created_at)
+    @menu = Category.rank(:position).all #order(:position, :created_at)
   end
 
   #rescue_from CanCan::AccessDenied do |exception|

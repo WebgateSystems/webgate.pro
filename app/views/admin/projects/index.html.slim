@@ -1,12 +1,10 @@
 .block
   .secondary-navigation
     ul.button-group.radius
-      li.first.active
-        = link_to t('web_app_theme.list'), admin_projects_path, class: 'button'
+      li= link_to t('web_app_theme.list'), admin_projects_path, class: 'button'
       li= link_to t('web_app_theme.new'), new_admin_project_path, class: 'button'
   .content
-    h2.title
-      = t('projects')
+    h2.title= t('projects')
     .inner
       - if @projects.any?
         table#sortable.table
@@ -17,6 +15,8 @@
               th= t('activerecord.created_at')
               th= t('activerecord.project.publish')
               th
+              th
+              th
           tbody
             - @projects.each do |project|
               tr.item data-item-id="#{project.id}"
@@ -24,7 +24,8 @@
                 td= link_to project.title, admin_project_path(project)
                 td= project.created_at
                 td= project.publish
-                td.last
-                  = link_to t('web_app_theme.show') + ' | ', admin_project_path(project)
-                  = link_to t('web_app_theme.edit') + ' | ', edit_admin_project_path(project)
-                  = link_to t('web_app_theme.delete'), admin_project_path(project), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+                td= link_to t('web_app_theme.show'), admin_project_path(project)
+                td= link_to t('web_app_theme.edit'), edit_admin_project_path(project)
+                td= link_to t('web_app_theme.delete'), admin_project_path(project), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+      - else
+        = t('web_app_theme.nothing')

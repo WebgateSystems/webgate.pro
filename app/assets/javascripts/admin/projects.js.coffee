@@ -26,9 +26,7 @@ $(document).on('ready', ()->
 )
 
 #-----------------------HTML5 SORTABLE
-
 ready = undefined
-
 set_positions = undefined
 set_positions = ->
   # loop through and give each screenshot a data-pos
@@ -65,7 +63,6 @@ ready = ->
       data:
         order: updated_order
     return
-
   return
 
 $(document).ready ready
@@ -82,13 +79,9 @@ $ ->
     width: '100%'
 
 
-#----------------------PROJECT REORDERING
-jQuery ->
+#----------------------PROJECTS REORDERING
+$ ->
   if $('#sortable').length > 0
-    table_width = $('#sortable').width()
-    cells = $('.table').find('tr')[0].cells.length
-    desired_width = table_width / cells + 'px'
-    $('.table td').css('width', desired_width)
 
     $('#sortable').sortable(
       axis: 'y'
@@ -103,7 +96,6 @@ jQuery ->
         ui.item.children('td').effect('highlight', {}, 1000)
       update: (e, ui) ->
         item_id = ui.item.data('item-id')
-        console.log(item_id)
         position = ui.item.index()
         $.ajax(
           type: 'PUT'

@@ -1,4 +1,6 @@
 class TechnologyGroup < ActiveRecord::Base
+  include RankedModel
+  ranks :position
 
   has_many :technologies, dependent: :destroy
 
