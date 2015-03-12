@@ -7,5 +7,6 @@ FactoryGirl.define do
     description 'first project'
     keywords 'first project'
     content 'first project content'
+    livelink 'http://test.webgate.pro'
   end
 end

@@ -12,6 +12,7 @@ feature 'Project in admin panel.' do
     fill_in 'project[description]', with: 'TestDesc'
     fill_in 'project[keywords]', with: 'TestKeyWord'
     fill_in 'project[content]', with: 'TestContent'
+    fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     click_button 'Save'
     visit '/admin/projects'
   end
@@ -63,6 +64,7 @@ feature 'Project in admin panel.' do
     expect(page).to have_content 'Testlink'
     expect(page).to have_content 'TestKeyWord'
     expect(page).to have_content 'TestContent'
+    expect(page).to have_content 'http://test.webgate.pro'
   end
 
   scenario 'Create project should create project' do
@@ -72,6 +74,7 @@ feature 'Project in admin panel.' do
     fill_in 'project[description]', with: 'TestDesc1'
     fill_in 'project[keywords]', with: 'TestKeyWord1'
     fill_in 'project[content]', with: 'TestContent1'
+    fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     click_button 'Save'
     visit '/admin/projects'
     expect(page).to have_content 'TestTitleFull'
@@ -88,6 +91,7 @@ feature 'Project in admin panel.' do
     fill_in 'project[description]', with: 'TestDesc1'
     fill_in 'project[keywords]', with: 'TestKeyWord1'
     fill_in 'project[content]', with: 'TestContent1'
+    fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     find(:css, "#project_publish").set(true)
     click_button 'Save'
     visit '/admin/projects'
