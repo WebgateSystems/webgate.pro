@@ -24,7 +24,6 @@ feature 'technology_group in admin panel.' do
   end
 
   scenario 'technology_group root path should have list of technology_groups' do
-    expect(page).to have_content 'ID'
     expect(page).to have_content 'Title'
     expect(page).to have_content 'Created at'
   end

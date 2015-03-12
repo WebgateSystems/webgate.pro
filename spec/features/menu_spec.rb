@@ -26,7 +26,6 @@ feature 'Menu in admin panel.' do
   end
 
   scenario 'Menu root path should have list of menus' do
-    expect(page).to have_content 'ID'
     expect(page).to have_content 'Name'
     expect(page).to have_content 'Created at'
   end

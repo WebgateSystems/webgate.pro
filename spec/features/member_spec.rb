@@ -27,7 +27,6 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'member root path should have list of members' do
-    expect(page).to have_content 'ID'
     expect(page).to have_content 'Name'
     expect(page).to have_content 'Created at'
   end
