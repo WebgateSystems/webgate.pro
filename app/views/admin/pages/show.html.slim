@@ -1,13 +1,11 @@
 .block
   .secondary-navigation
     ul.button-group.radius
-      li.first
-        = link_to t('web_app_theme.list'), admin_pages_path, class: 'button'
+      li= link_to t('web_app_theme.list'), admin_pages_path, class: 'button'
       li= link_to t('web_app_theme.new'), new_admin_page_path, class: 'button'
       li= link_to t('web_app_theme.edit'), edit_admin_page_path(@page), class: 'button success'
       li= link_to t('web_app_theme.delete'), admin_page_path(@page), method: :delete, data: {confirm: "#{t('web_app_theme.confirm')}"}, class: 'button alert'
-      li.active
-        = link_to t('web_app_theme.show'), admin_page_path, class: 'button'
+      li= link_to t('web_app_theme.show'), admin_page_path, class: 'button'
   .content
     .inner
       p

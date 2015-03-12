@@ -1,11 +1,12 @@
 class Admin::ProjectsController < Admin::HomeController
-  before_action :set_project, only: [:show, :edit, :update, :destroy, :sort]
+  before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
     @projects = Project.rank(:position).all
   end
 
   def show
+    @screenshots = @project.screenshots.rank(:position)
   end
 
   def new
@@ -60,11 +61,16 @@ class Admin::ProjectsController < Admin::HomeController
     end
   end
 
-  def sort
-    params[:order].each do |key, value|
-      @project.screenshots.find(value[:id]).update_attribute(:position, value[:position])
+  def sort_screenshots
+    @screenshot = Screenshot.find(project_params[:screenshot_id])
+    @screenshot.position_position = project_params[:row_position]
+    respond_to do |format|
+      if @screenshot.save!
+        format.json { head :ok }
+      else
+        format.json { head :error }
+      end
     end
-    render nothing: true
   end
 
   private
@@ -74,7 +80,7 @@ class Admin::ProjectsController < Admin::HomeController
   end
 
   def project_params
-    params.require(:project).permit(:project_id, :row_position, :shortlink, :title, :description,
+    params.require(:project).permit(:project_id, :screenshot_id, :row_position, :shortlink, :title, :description,
                                     :keywords, :content, :livelink, :publish, technology_ids: [],
                                     technologies_attributes: [:id, :title, :technology_group_id],
                                     screenshots_attributes: [:id, :file, :file_cache, :project_id, :position, :_destroy])

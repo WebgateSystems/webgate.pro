@@ -1,5 +1,5 @@
 class Admin::TechnologyGroupsController < Admin::HomeController
-  before_action :set_technology_group, only: [:show, :edit, :update, :destroy, :sort]
+  before_action :set_technology_group, only: [:show, :edit, :update, :destroy]
 
   def index
     @technology_groups = TechnologyGroup.rank(:position).all
@@ -50,7 +50,7 @@ class Admin::TechnologyGroupsController < Admin::HomeController
     end
   end
 
-  def sort
+  def sort_technologies
     @technology = Technology.find(technology_group_params[:technology_id])
     @technology.position_position = technology_group_params[:row_position]
     respond_to do |format|

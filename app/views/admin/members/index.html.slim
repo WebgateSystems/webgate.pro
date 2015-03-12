@@ -7,10 +7,9 @@
     h2.title= t('members')
     .inner
       - if @members.any?
-        table#sortable.table
+        table.members#sortable.table
           thead
             tr
-              th= t('activerecord.id')
               th= t('activerecord.member.name')
               th= t('activerecord.created_at')
               th
@@ -19,7 +18,6 @@
           tbody
             - @members.each do |member|
               tr.item data-item-id="#{member.id}"
-                td= member.id
                 td= link_to member.name, admin_member_path(member)
                 td= member.created_at
                 td= link_to t('web_app_theme.show'), admin_member_path(member)
