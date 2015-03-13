@@ -1,18 +1,35 @@
 require 'rails_helper'
 
 feature 'Member in admin panel.' do
+
   let(:user) { create(:user) }
+
   before do
     visit '/admin'
-    login_user_post(user.email, 'secret')
+    sign_in(user)
     visit '/admin/members'
-    click_link ('New')
-    fill_in 'member[name]', with: 'TestName'
-    fill_in 'member[shortdesc]', with: 'TestShortDesc'
-    fill_in 'member[description]', with: 'TestDesc'
-    fill_in 'member[motto]', with: 'TestMotto'
-    click_button 'Save'
+    3.times do |t|
+      click_link ('New')
+      fill_in 'member[name]', with: "TestName#{t}"
+      fill_in 'member[shortdesc]', with: "TestShortDesc#{t}"
+      fill_in 'member[description]', with: "TestDesc#{t}"
+      fill_in 'member[motto]', with: "TestMotto#{t}"
+      click_button 'Save'
+      visit '/admin/members'
+    end
+  end
+
+  scenario 'Try drag and drop on index', js: true do
     visit '/admin/members'
+    dest_element = find('td', text: "TestName2")
+    source_element = find('td', text: "TestName1")
+    source_element.drag_to dest_element
+    sleep 5 #wait for ajax complete
+    page.all(:link, 'Show')[1].click
+    expect(current_path).to eq "/admin/members/#{Member.last.id}"
+    visit '/admin/members'
+    page.all(:link, 'Show')[2].click
+    expect(current_path).to_not eq "/admin/members/#{Member.last.id}"
   end
 
 
@@ -26,38 +43,37 @@ feature 'Member in admin panel.' do
     expect(current_path).to eq '/admin/members/new'
   end
 
-  scenario 'member root path should have list of members' do
+  scenario 'Member root path should have list of members' do
     expect(page).to have_content 'Name'
     expect(page).to have_content 'Created at'
+    expect(page).to have_content 'TestName0'
+    expect(page).to have_content 'TestName1'
+    expect(page).to have_content 'TestName2'
   end
 
-  scenario 'member root path should have our member name' do
-    expect(page).to have_content 'TestName'
-  end
-
-  scenario 'member root path links show, edit should work' do
-    page.all(:link,'Show')[0].click
-    expect(current_path).to eq "/admin/members/#{Member.last.id}"
+  scenario 'Member root path links show, edit should work' do
+    page.all(:link, 'Show')[0].click
+    expect(current_path).to eq "/admin/members/#{Member.first.id}"
     visit '/admin/members'
-    page.all(:link,'Edit')[0].click
-    expect(current_path).to eq "/admin/members/#{Member.last.id}/edit"
+    page.all(:link, 'Edit')[0].click
+    expect(current_path).to eq "/admin/members/#{Member.first.id}/edit"
   end
 
-  scenario 'link delete should delete member' do
-    page.all(:link,'Delete')[0].click
+  scenario 'Link delete should delete member' do
+    page.all(:link, 'Delete')[0].click
     expect(current_path).to eq current_path
   end
 
   scenario 'Show should display our member information' do
-    click_link ('TestName')
+    click_link ('TestName0')
     expect(page).to have_content 'Name:'
-    expect(page).to have_content 'TestName'
+    expect(page).to have_content 'TestName0'
     expect(page).to have_content 'Description:'
-    expect(page).to have_content 'TestDesc'
+    expect(page).to have_content 'TestDesc0'
     expect(page).to have_content 'Short description:'
     expect(page).to have_content 'Motto:'
-    expect(page).to have_content 'TestShortDesc'
-    expect(page).to have_content 'TestMotto'
+    expect(page).to have_content 'TestShortDesc0'
+    expect(page).to have_content 'TestMotto0'
   end
 
   scenario 'Create member should create member' do
@@ -71,7 +87,7 @@ feature 'Member in admin panel.' do
     expect(page).to have_content 'TestNamePew'
   end
 
-  scenario 'validation for new member' do
+  scenario 'Validation for new member' do
     click_link('New')
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')
