@@ -2,6 +2,24 @@ require 'rails_helper'
 
 feature 'Category in admin panel.' do
 
+  def lang_change
+    I18n.locale = 'pl'
+    c = Category.last
+    c.name = 'PolskaName'
+    c.altlink = 'PolskaAltlink'
+    c.save
+    I18n.locale = 'ru'
+    c = Category.last
+    c.name = 'RuskaName'
+    c.altlink = 'RuskaAltlink'
+    c.save
+    I18n.locale = 'en'
+    c = Category.last
+    c.name = 'EnglishName'
+    c.altlink = 'EnglishAltlink'
+    c.save
+  end
+
   let(:user) { create(:user) }
 
   before do
@@ -94,6 +112,54 @@ feature 'Category in admin panel.' do
     fill_in 'category[name]', with: 'TestTitlekukumba'
     visit '/admin/categories'
     expect(page).to have_no_content 'TestTitlekukumba'
+  end
+
+  scenario 'Now link should be same that we create' do
+    ['pl', 'ru'].each do |lang|
+      visit root_path
+      click_link(lang) unless I18n.locale.to_s == lang
+      first(:link, Category.last.name).click
+      expect(current_path).to eq "/#{Category.last.altlink}"
+    end
+  end
+
+  scenario 'Now name should be the same that we create, but in another language' do
+    visit root_path
+    ['pl', 'ru'].each do |lang|
+      click_link(lang) unless I18n.locale.to_s == lang
+      expect(page).to have_content Category.last.name
+    end
+  end
+
+  scenario 'Should translate and display this menu, on all languages.' do
+    lang_change
+    visit root_path
+    ['en', 'pl', 'ru'].each do |lang|
+      click_link(lang) unless I18n.locale.to_s == lang
+      expect(page).to have_content 'PolskaName' if lang == 'pl'
+      expect(page).to have_content 'RuskaName' if lang == 'ru'
+      expect(page).to have_content 'EnglishName' if lang == 'en'
+    end
+  end
+
+  scenario 'Should translate altlink on all languages.' do
+    lang_change
+    ['en', 'pl', 'ru'].each do |lang|
+      visit root_path
+      click_link(lang) unless I18n.locale.to_s == lang
+      first(:link, 'PolskaName').click if lang == 'pl'
+      first(:link, 'RuskaName').click if lang == 'ru'
+      first(:link, 'EnglishName').click if lang == 'en'
+      expect(current_path).to eq '/PolskaAltlink' if lang == 'pl'
+      expect(current_path).to eq '/RuskaAltlink' if lang == 'ru'
+      expect(current_path).to eq '/EnglishAltlink' if lang == 'en'
+    end
+
+  end
+
+  scenario 'Check active class on current page' do
+    visit "/#{Category.last.altlink}"
+    expect(page).to have_css ('.top_nav li.active')
   end
 
 end
