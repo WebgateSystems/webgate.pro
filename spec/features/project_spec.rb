@@ -5,12 +5,7 @@ feature 'Project in admin panel.' do
   let(:user) { create(:user) }
 
   before do
-    visit '/admin'
-    #login_user_post(user.email, 'secret')
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: 'secret'
-    click_button 'Log in'
-
+    sign_in(user)
     visit '/admin/projects'
     3.times do |t|
       click_link ('New')
@@ -25,21 +20,22 @@ feature 'Project in admin panel.' do
     end
   end
 
-  scenario 'project root path should have list of projects' do
+  scenario 'Project root path should have list of projects' do
     visit '/admin/projects'
     expect(page).to have_content 'Title'
     expect(page).to have_content 'Created at'
     expect(page).to have_content 'Publish'
+    expect(page).to have_content 'TestTitle0'
+    expect(page).to have_content 'TestTitle1'
+    expect(page).to have_content 'TestTitle2'
   end
 
-  scenario 'try drag and drop on index', js: true do
-
+  scenario 'Try drag and drop on index', js: true do
     visit '/admin/projects'
     dest_element = find('td', text: "TestTitle2")
     source_element = find('td', text: "TestTitle1")
     source_element.drag_to dest_element
-    sleep 5
-    visit '/admin/projects'
+    sleep 5 #wait for ajax complete
     page.all(:link, 'Show')[1].click
     expect(current_path).to eq "/admin/projects/#{Project.last.id}"
     visit '/admin/projects'
@@ -57,16 +53,7 @@ feature 'Project in admin panel.' do
     expect(current_path).to eq '/admin/projects/new'
   end
 
-  scenario 'project root path should have list of projects' do
-    expect(page).to have_content 'Title'
-    expect(page).to have_content 'Created at'
-    expect(page).to have_content 'Publish'
-    expect(page).to have_content 'TestTitle0'
-    expect(page).to have_content 'TestTitle1'
-    expect(page).to have_content 'TestTitle2'
-  end
-
-  scenario 'project root path links show, edit should work' do
+  scenario 'Project root path links show, edit should work' do
     page.all(:link,'Show')[0].click
     expect(current_path).to eq "/admin/projects/#{Project.first.id}"
     visit '/admin/projects'
@@ -74,7 +61,7 @@ feature 'Project in admin panel.' do
     expect(current_path).to eq "/admin/projects/#{Project.first.id}/edit"
   end
 
-  scenario 'link delete should delete project' do
+  scenario 'Link delete should delete project' do
     page.all(:link,'Delete')[0].click
     expect(current_path).to eq current_path
   end
@@ -125,7 +112,7 @@ feature 'Project in admin panel.' do
     expect(page).to have_content 'true'
   end
 
-  scenario 'validation for new project' do
+  scenario 'Validation for new project' do
     click_link('New')
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')

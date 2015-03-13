@@ -1,7 +1,6 @@
 = simple_form_for [:admin, @project] do |f|
   = f.error_notification
   .form-inputs
-    = f.input :position, label: t('activerecord.project.position'), label_html: { class: 'label' }
     = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: { class: 'label' }
     = f.input :title, label: t('activerecord.project.title'), label_html: { class: 'label' }
     = f.input :description, label: t('activerecord.project.description'), label_html: { class: 'label' }
