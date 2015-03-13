@@ -5,8 +5,8 @@ class Category < ActiveRecord::Base
 
   has_one :page
 
-  validates_uniqueness_of :name
   validates_presence_of :name, :altlink
+  validates_uniqueness_of :name, case_sensitive: false
 
   translates :name, :altlink, :description
 

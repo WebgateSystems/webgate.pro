@@ -2,7 +2,7 @@ class Admin::ProjectsController < Admin::HomeController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.rank(:position).page(params[:page]).per(3)
+    @projects = Project.rank(:position).all
   end
 
   def show
