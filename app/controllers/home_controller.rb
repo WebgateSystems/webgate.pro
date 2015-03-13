@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def portfolio
-    @projects = Project.published.rank(:position).all
+    @projects = Project.published.rank(:position).page(params[:page]).per(3)
     render layout: 'portfolio'
   end
 
