@@ -54,15 +54,15 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Project root path links show, edit should work' do
-    page.all(:link,'Show')[0].click
+    page.all(:link, 'Show')[0].click
     expect(current_path).to eq "/admin/projects/#{Project.first.id}"
     visit '/admin/projects'
-    page.all(:link,'Edit')[0].click
+    page.all(:link, 'Edit')[0].click
     expect(current_path).to eq "/admin/projects/#{Project.first.id}/edit"
   end
 
   scenario 'Link delete should delete project' do
-    page.all(:link,'Delete')[0].click
+    page.all(:link, 'Delete')[0].click
     expect(current_path).to eq current_path
   end
 
