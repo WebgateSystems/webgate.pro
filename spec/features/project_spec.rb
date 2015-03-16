@@ -12,6 +12,8 @@ feature 'Project in admin panel.' do
     fill_in 'project[description]', with: 'TestDesc'
     fill_in 'project[keywords]', with: 'TestKeyWord'
     fill_in 'project[content]', with: 'TestContent'
+    #print page.html
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
     visit '/admin/projects'
   end
@@ -72,6 +74,7 @@ feature 'Project in admin panel.' do
     fill_in 'project[description]', with: 'TestDesc1'
     fill_in 'project[keywords]', with: 'TestKeyWord1'
     fill_in 'project[content]', with: 'TestContent1'
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
     visit '/admin/projects'
     expect(page).to have_content 'TestTitleFull'
@@ -88,6 +91,7 @@ feature 'Project in admin panel.' do
     fill_in 'project[description]', with: 'TestDesc1'
     fill_in 'project[keywords]', with: 'TestKeyWord1'
     fill_in 'project[content]', with: 'TestContent1'
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     find(:css, "#project_publish").set(true)
     click_button 'Save'
     visit '/admin/projects'
