@@ -64,6 +64,7 @@ ru:
       content: "Содержимое"
       livelink: "Ссылка на проект"
       publish: "Опубликован"
+      collage: "Коллаж"
     member:
       name: "Имя"
       shortdesc: "Краткое описание"

@@ -62,6 +62,7 @@ pl:
       content: "Treść"
       livelink: "Link na żywo"
       publish: "Publikować"
+      collage: "Kolaż"
     member:
       name: "Imię"
       shortdesc: "Krótki opis"

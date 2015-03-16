@@ -65,6 +65,7 @@ en:
       content: "Content"
       livelink: "Live link"
       publish: "Publish"
+      collage: "Collage"
     member:
       name: "Name"
       shortdesc: "Short description"
