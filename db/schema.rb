@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311115627) do
+ActiveRecord::Schema.define(version: 20150311075441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,7 +153,6 @@ ActiveRecord::Schema.define(version: 20150311115627) do
     t.string   "livelink"
     t.boolean  "publish",     default: false
     t.integer  "position"
-    t.string   "collage"
   end
 
   create_table "projects_technologies", id: false, force: true do |t|
