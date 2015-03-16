@@ -20,7 +20,6 @@
         table.show#sortable.table
           thead
             tr
-              th= t('activerecord.id')
               th= t('activerecord.technology.title')
               th= t('activerecord.created_at')
               th
@@ -29,7 +28,6 @@
           tbody
             - @technologies.each do |technology|
               tr.item data-item-id="#{technology.id}" data-parent-id="#{@technology_group.id}"
-                td= technology.id
                 td= link_to technology.title, admin_technology_path(technology)
                 td= technology.created_at
                 td= link_to t('web_app_theme.show'), admin_technology_path(technology)

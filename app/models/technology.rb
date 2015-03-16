@@ -10,6 +10,7 @@ class Technology < ActiveRecord::Base
 
   validates_presence_of :title
   validates_uniqueness_of :title, case_sensitive: false
+  validates_associated :technology_group
 
   translates :description
 

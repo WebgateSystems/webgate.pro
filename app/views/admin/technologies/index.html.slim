@@ -10,7 +10,6 @@
         table.table
           thead
             tr
-              th= t('activerecord.id')
               th= t(:technology_group_title)
               th= t('activerecord.technology.title')
               th= t('activerecord.created_at')
@@ -20,12 +19,11 @@
           tbody
             - @technologies.each do |technology|
               tr
-                td= technology.id
                 td= link_to technology.technology_group.title, admin_technology_group_path(technology.technology_group)
                 td= link_to technology.title, admin_technology_path(technology)
                 td= technology.created_at
-                td= link_to t('web_app_theme.show') + ' | ', admin_technology_path(technology)
-                td= link_to t('web_app_theme.edit') + ' | ', edit_admin_technology_path(technology)
+                td= link_to t('web_app_theme.show'), admin_technology_path(technology)
+                td= link_to t('web_app_theme.edit'), edit_admin_technology_path(technology)
                 td= link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
       - else
         = t('web_app_theme.nothing')

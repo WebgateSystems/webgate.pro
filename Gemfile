@@ -68,6 +68,7 @@ group :test do
   gem 'spork'
   gem 'launchy'
   gem 'simplecov'
+  gem 'selenium-webdriver'
 
   #gem 'mocha'
 end

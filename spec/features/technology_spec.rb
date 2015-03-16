@@ -31,7 +31,6 @@ feature 'Technology in admin panel.' do
   end
 
   scenario 'Page root path should have list of pages' do
-    expect(page).to have_content 'ID'
     expect(page).to have_content 'Technology group title'
     expect(page).to have_content 'Title'
     expect(page).to have_content 'Created at'
@@ -49,7 +48,7 @@ feature 'Technology in admin panel.' do
     expect(current_path).to eq "/admin/technologies/#{Technology.last.id}/edit"
   end
 
-  scenario 'link delete should delete page' do
+  scenario 'Link delete should delete page' do
     page.all(:link,'Delete')[0].click
     expect(current_path).to eq current_path
   end
@@ -71,11 +70,11 @@ feature 'Technology in admin panel.' do
     expect(page).to have_content 'TestTitleFull'
   end
 
-  scenario 'technology group must displays in index' do
+  scenario 'Technology group must displays in index' do
     expect(page).to have_content 'TestGroup'
   end
 
-  scenario 'validation for new technology' do
+  scenario 'Validation for new technology' do
     click_link('New')
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')

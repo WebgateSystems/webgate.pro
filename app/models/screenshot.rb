@@ -1,4 +1,6 @@
 class Screenshot < ActiveRecord::Base
+  include RankedModel
+  ranks :position, with_same: :project_id
 
   validates_presence_of :file
 

@@ -11,13 +11,13 @@ WebgatePro::Application.routes.draw do
     resources :members do
       put :update_position, on: :collection
       member do
-        put 'sort'
+        put 'sort_member_links'
       end
     end
     resources :projects do
       put :update_position, on: :collection
       member do
-        put 'sort'
+        put 'sort_screenshots'
       end
       resources :screenshots
     end
@@ -25,7 +25,7 @@ WebgatePro::Application.routes.draw do
     resources :technology_groups do
       put :update_position, on: :collection
       member do
-        put 'sort'
+        put 'sort_technologies'
       end
       resources :technologies do
         #put :update_position, on: :collection

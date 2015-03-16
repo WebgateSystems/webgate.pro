@@ -7,10 +7,9 @@
     h2.title= t('projects')
     .inner
       - if @projects.any?
-        table#sortable.table
+        table.projects#sortable.table
           thead
             tr
-              th= t('activerecord.id')
               th= t('activerecord.project.title')
               th= t('activerecord.created_at')
               th= t('activerecord.project.publish')
@@ -20,7 +19,6 @@
           tbody
             - @projects.each do |project|
               tr.item data-item-id="#{project.id}"
-                td= project.id
                 td= link_to project.title, admin_project_path(project)
                 td= project.created_at
                 td= project.publish

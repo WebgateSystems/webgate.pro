@@ -10,8 +10,8 @@
         table#sortable.table
           thead
             tr
-              th= t('activerecord.id')
               th= t('activerecord.category.name')
+              th= t('activerecord.category.altlink')
               th= t('activerecord.created_at')
               th
               th
@@ -19,8 +19,8 @@
           tbody
             - @categories.each do |category|
               tr.item data-item-id="#{category.id}"
-                td= category.id
                 td= link_to category.name, admin_category_path(category)
+                td= category.altlink
                 td= category.created_at
                 td= link_to t('web_app_theme.show'), admin_category_path(category)
                 td= link_to t('web_app_theme.edit'), edit_admin_category_path(category)

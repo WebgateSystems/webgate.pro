@@ -1,11 +1,12 @@
 class Admin::MembersController < Admin::HomeController
-  before_action :set_member, only: [:show, :edit, :update, :destroy, :sort]
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def index
     @members = Member.rank(:position).all
   end
 
   def show
+    @member_links = @member.member_links.rank(:position)
   end
 
   def new
@@ -49,11 +50,16 @@ class Admin::MembersController < Admin::HomeController
     end
   end
 
-  def sort
-    params[:order].each do |key, value|
-      @member.member_links.find(value[:id]).update_attribute(:position, value[:position])
+  def sort_member_links
+    @member_link = MemberLink.find(member_params[:member_link_id])
+    @member_link.position_position = member_params[:row_position]
+    respond_to do |format|
+      if @member_link.save!
+        format.json { head :ok }
+      else
+        format.json { head :error }
+      end
     end
-    render nothing: true
   end
 
   private
@@ -64,7 +70,7 @@ class Admin::MembersController < Admin::HomeController
 
   def member_params
     params.require(:member).permit(:member_id, :row_position, :name, :shortdesc, :description,
-                                    :avatar, :motto, technology_ids: [],
+                                    :member_link_id, :avatar, :motto, technology_ids: [],
                                     technologies_attributes: [:id, :title, :technology_group_id, :_destroy],
                                     member_links_attributes: [:id, :name, :link, :member_id, :position, :_destroy])
   end

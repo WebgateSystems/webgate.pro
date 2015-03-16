@@ -42,10 +42,10 @@ $ ->
         item_id = ui.item.data('item-id')
         parent_id = ui.item.data('parent-id')
         position = ui.item.index()
-        technology_group_id = $('tr#item').attr('data-technology_group_id')
+        #technology_group_id = $('tr#item').attr('data-technology_group_id')
         $.ajax(
           type: 'PUT'
-          url: "/admin/technology_groups/#{parent_id}" + "/sort"
+          url: "/admin/technology_groups/#{parent_id}" + "/sort_technologies"
           dataType: 'json'
           data: { technology_group: { technology_id: item_id, row_position: position } }
         )

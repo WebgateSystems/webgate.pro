@@ -21,11 +21,15 @@ RSpec.configure do |config|
   #config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+  #Capybara.default_wait_time = 5
+
   config.include FactoryGirl::Syntax::Methods
-  #config.include Capybara::DSL, :type => :feature
+  config.include Capybara::DSL, type: :feature
 
   config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
   config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
+
+  config.include ChosenSelect
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"

@@ -17,3 +17,4 @@ h2 = t('portfolio')
         ul
           - project.technologies.each do |technology|
             li = technology.title
+= paginate @projects
