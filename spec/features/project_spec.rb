@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Project in admin panel.' do
 
   let(:user) { create(:user) }
+  let(:technology) { create(:technology) }
 
   before do
     sign_in(user)
@@ -81,7 +82,7 @@ feature 'Project in admin panel.' do
     expect(page).to have_content 'http://test.webgate.pro'
   end
 
-  scenario 'Create project should create project' do
+  scenario 'Create project should create project with assigned technology', js: true do
     click_link ('New')
     fill_in 'project[title]', with: 'TestTitleFull'
     fill_in 'project[shortlink]', with: 'TestlinkFull'
@@ -91,7 +92,8 @@ feature 'Project in admin panel.' do
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     click_button 'Save'
     visit '/admin/projects'
-    expect(page).to have_content 'TestTitleFull'
+    click_link ('TestTitleFull')
+    expect(page).to have_content 'TestDescFull'
   end
 
   scenario 'Check publish. Here should be false' do
