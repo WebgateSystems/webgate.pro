@@ -14,6 +14,7 @@ feature 'Member in admin panel.' do
       fill_in 'member[shortdesc]', with: "TestShortDesc#{t}"
       fill_in 'member[description]', with: "TestDesc#{t}"
       fill_in 'member[motto]', with: "TestMotto#{t}"
+      attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))
       click_button 'Save'
       visit '/admin/members'
     end
@@ -82,6 +83,7 @@ feature 'Member in admin panel.' do
     fill_in 'member[shortdesc]', with: 'TestShortDescPew'
     fill_in 'member[description]', with: 'TestDescPew'
     fill_in 'member[motto]', with: 'TestMottoPew'
+    attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))
     click_button 'Save'
     visit '/admin/members'
     expect(page).to have_content 'TestNamePew'

@@ -8,6 +8,11 @@
     = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
     = f.input :livelink, as: :url, label: t('activerecord.project.livelink'), label_html: { class: 'label' }, placeholder: 'https://webgate.pro'
     = f.input :publish, label: t('activerecord.project.publish'), label_html: { class: 'label' }
+    .label= t('activerecord.project.collage')
+    = f.file_field :collage
+    = f.hidden_field :collage_cache, value: f.object.collage_cache
+    - if f.object.collage.url.present?
+      = image_tag f.object.collage.url(:thumb)
 
     h3= t(:screenshots)
     table.project-form

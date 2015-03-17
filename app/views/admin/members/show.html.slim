@@ -23,7 +23,7 @@
       p
         b= t('activerecord.member.avatar') + ': '
         br
-        = image_tag @member.avatar.url(:thumb)
+        = image_tag @member.avatar.url(:avatar) if @member.avatar
 
       p
         b = t('member_links')

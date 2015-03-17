@@ -16,6 +16,7 @@ feature 'Project in admin panel.' do
       fill_in 'project[keywords]', with: "TestKeyWord#{t}"
       fill_in 'project[content]', with: "TestContent#{t}"
       fill_in 'project[livelink]', with: 'http://test.webgate.pro'
+      attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
       click_button 'Save'
       visit '/admin/projects'
     end
@@ -82,7 +83,7 @@ feature 'Project in admin panel.' do
     expect(page).to have_content 'http://test.webgate.pro'
   end
 
-  scenario 'Create project should create project with assigned technology', js: true do
+  scenario 'Create project should create project' do
     click_link ('New')
     fill_in 'project[title]', with: 'TestTitleFull'
     fill_in 'project[shortlink]', with: 'TestlinkFull'
@@ -90,6 +91,7 @@ feature 'Project in admin panel.' do
     fill_in 'project[keywords]', with: 'TestKeyWordFull'
     fill_in 'project[content]', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
     visit '/admin/projects'
     click_link ('TestTitleFull')
@@ -108,6 +110,7 @@ feature 'Project in admin panel.' do
     fill_in 'project[keywords]', with: 'TestKeyWordFull'
     fill_in 'project[content]', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     find(:css, "#project_publish").set(true)
     click_button 'Save'
     visit '/admin/projects'

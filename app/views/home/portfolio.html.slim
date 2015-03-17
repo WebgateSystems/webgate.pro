@@ -1,20 +1,18 @@
 - provide(:title, t('portfolio'))
-
-h2 = t('portfolio')
-- @projects.each do |project|
-  .site_desc
-    .portfolio_carousel_block
-      ul.portfolio_carousel
-        - project.screenshots.each do |screenshot|
-          li = image_tag screenshot.file.url, width:182, height:114
-      h3
-        = t('check_on_line')
-        = link_to project.livelink, 'http://' + project.livelink
-    .desc_text
-      p = project.content.try(:html_safe)
-      .portfolio_column
-        h4 = t('used_technologies')
-        ul
-          - project.technologies.each do |technology|
-            li = technology.title
-= paginate @projects
+.portfolio
+  h2 = t('portfolio')
+  - @projects.each do |project|
+    .portfolio_block
+      = image_tag project.collage.url, width:940, height:244
+      - project.screenshots.each do |s|
+        a.zoom data-lightbox="img-#{project.id}" href="#{s.file.url}"
+      .work_desc
+        = image_tag project.collage.url, width:940, height:244
+        .work_content
+          = link_to project.title, project.livelink, class: 'work_link'
+          p = project.description
+          .work_info
+            p
+              em = t('used_technologies')
+              - project.technologies.each do |technology|
+                span = technology.title + ' '

@@ -4,6 +4,10 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
 require 'capybara/rails'
+require 'capybara/rspec'
+#require 'capybara/poltergeist'
+
+#Capybara.javascript_driver = :poltergeist #default selenium
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -30,6 +34,12 @@ RSpec.configure do |config|
   config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
 
   config.include ChosenSelect
+
+  config.after(:each) do
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+    end
+  end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"

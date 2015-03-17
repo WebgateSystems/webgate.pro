@@ -33,7 +33,11 @@
         = @project.livelink
 
       p
-        b = t('screenshots') + ':'
+        b= t('activerecord.project.collage') + ': '
+        br
+        = image_tag @project.collage.url(:thumb) if @project.collage
+      p
+        b= t('screenshots') + ':'
       - if @screenshots.any?
         table.screenshots#sortable.table
           thead
@@ -50,7 +54,7 @@
         = t('web_app_theme.nothing')
 
       p
-        h3 = t('technologies') + ':'
+        b= t('technologies') + ':'
       - if @project.technologies.any?
         table.table
           thead

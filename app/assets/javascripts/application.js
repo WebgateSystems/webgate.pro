@@ -18,4 +18,5 @@
 //= require jquery.roundabout.min
 //= require jquery.slides.min
 //= require animatescroll.min
+//= require lightbox.min.js
 //= require scripts

@@ -13,12 +13,14 @@ class Project < ActiveRecord::Base
   has_many :screenshots, dependent: :destroy
   accepts_nested_attributes_for :screenshots, reject_if: proc{ |param| param[:file].blank? && param[:file_cache].blank? && param[:id].blank? }, allow_destroy: true
 
-  validates_presence_of :title, :shortlink, :description, :keywords, :content, :livelink
+  validates_presence_of :title, :shortlink, :description, :keywords, :content, :livelink, :collage
   validates :livelink, format: { with: URI.regexp }
 
   translates :title, :shortlink, :description, :keywords, :content
 
   scope :published, -> { where(publish: true) }
+
+  mount_uploader :collage , PictureUploader
 
   def livelink_f
     URI(self.livelink).host

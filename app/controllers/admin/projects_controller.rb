@@ -33,7 +33,7 @@ class Admin::ProjectsController < Admin::HomeController
     respond_to do |format|
       if @project.update_attributes(project_params)
         format.html { redirect_to [:admin, @project], notice: 'Successfully updated admin/project.' }
-        format.json { render json: { message: 'success' }, status: :ok }
+        format.json { render json: {message: 'success' }, status: :ok }
       else
         format.html { render 'edit' }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -80,7 +80,7 @@ class Admin::ProjectsController < Admin::HomeController
   end
 
   def project_params
-    params.require(:project).permit(:project_id, :screenshot_id, :row_position, :shortlink, :title, :description,
+    params.require(:project).permit(:collage, :collage_cache, :project_id, :screenshot_id, :row_position, :shortlink, :title, :description,
                                     :keywords, :content, :livelink, :publish, technology_ids: [],
                                     technologies_attributes: [:id, :title, :technology_group_id],
                                     screenshots_attributes: [:id, :file, :file_cache, :project_id, :position, :_destroy])

@@ -15,6 +15,7 @@ feature 'Project in admin panel.' do
     fill_in 'project[keywords]', with: "TestKeyWord0"
     fill_in 'project[content]', with: "TestContent0"
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     select_from_chosen(technology.title, from: 'project_technology_ids')
     click_button 'Save'
   end
@@ -28,6 +29,7 @@ feature 'Project in admin panel.' do
     fill_in 'project[keywords]', with: 'TestKeyWordFull'
     fill_in 'project[content]', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     select_from_chosen(technology.title, from: 'project_technology_ids')
     click_button 'Save'
     visit '/admin/projects'
