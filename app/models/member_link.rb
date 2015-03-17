@@ -1,6 +1,8 @@
 require 'carrierwave/orm/activerecord'
 
 class MemberLink < ActiveRecord::Base
+  include RankedModel
+  ranks :position, with_same: :member_id
 
   belongs_to :member
 

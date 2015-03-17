@@ -2,10 +2,11 @@ class Admin::TechnologyGroupsController < Admin::HomeController
   before_action :set_technology_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @technology_groups = TechnologyGroup.order(:id)
+    @technology_groups = TechnologyGroup.rank(:position).all
   end
 
   def show
+    @technologies = @technology_group.technologies.rank(:position)
   end
 
   def new
@@ -37,6 +38,30 @@ class Admin::TechnologyGroupsController < Admin::HomeController
     redirect_to admin_technology_groups_url, notice: 'Successfully destroyed admin/technology_group.'
   end
 
+  def update_position
+    @technology_group = TechnologyGroup.find(technology_group_params[:technology_group_id])
+    @technology_group.position_position = technology_group_params[:row_position]
+    respond_to do |format|
+      if @technology_group.save!
+        format.json { head :ok }
+      else
+        format.json { head :error }
+      end
+    end
+  end
+
+  def sort_technologies
+    @technology = Technology.find(technology_group_params[:technology_id])
+    @technology.position_position = technology_group_params[:row_position]
+    respond_to do |format|
+      if @technology.save!
+        format.json { head :ok }
+      else
+        format.json { head :error }
+      end
+    end
+  end
+
   private
 
   def set_technology_group
@@ -44,7 +69,7 @@ class Admin::TechnologyGroupsController < Admin::HomeController
   end
 
   def technology_group_params
-    params.require(:technology_group).permit(:title, :description)
+    params.require(:technology_group).permit(:technology_group_id, :row_position, :technology_id, :title, :description)
   end
 
 end

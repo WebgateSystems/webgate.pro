@@ -25,6 +25,7 @@ gem 'foundation-rails'
 gem 'simple_form'
 gem 'cocoon'
 gem 'chosen-rails'
+gem 'ranked-model'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -67,6 +68,7 @@ group :test do
   gem 'spork'
   gem 'launchy'
   gem 'simplecov'
+  gem 'selenium-webdriver'
 
   #gem 'mocha'
 end

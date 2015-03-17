@@ -8,5 +8,6 @@ FactoryGirl.define do
     keywords 'first project'
     content 'first project content'
     collage { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg')) }
+    livelink 'http://test.webgate.pro'
   end
 end

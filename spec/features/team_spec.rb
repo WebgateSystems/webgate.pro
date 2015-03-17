@@ -26,11 +26,11 @@ feature 'Adding team to site.' do
 
   scenario 'About page should have avatar' do
     visit "/team/#{@member.id}"
-    expect(page).to have_xpath("//img[@src=\"#{Rails.root}/spec/support/uploads/thumb.jpg\"]")
+    expect(page).to have_xpath("//img[contains(@src, #{@member.avatar.url})]")
   end
 
   scenario 'List page should have avatar' do
-    expect(page).to have_xpath("//img[@src=\"#{Rails.root}/spec/support/uploads/thumb.jpg\"]")
+    expect(page).to have_xpath("//img[contains(@src, \"uploads/member/avatar\")]")
   end
 
   scenario 'Show page should have link to /team' do

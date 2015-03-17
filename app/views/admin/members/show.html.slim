@@ -1,13 +1,11 @@
 .block
   .secondary-navigation
     ul.button-group.radius
-      li.first
-        = link_to t('web_app_theme.list'), admin_members_path, class: 'button'
+      li= link_to t('web_app_theme.list'), admin_members_path, class: 'button'
       li= link_to t('web_app_theme.new'), new_admin_member_path, class: 'button'
       li= link_to t('web_app_theme.edit'), edit_admin_member_path(@member), class: 'button success'
       li= link_to t('web_app_theme.delete'), admin_member_path(@member), method: :delete, data: {confirm: "#{t('web_app_theme.confirm')}"}, class: 'button alert'
-      li.active
-        = link_to t('web_app_theme.show'), admin_member_path, class: 'button'
+      li= link_to t('web_app_theme.show'), admin_member_path, class: 'button'
   .content
     .inner
       p
@@ -25,32 +23,42 @@
       p
         b= t('activerecord.member.avatar') + ': '
         br
-        = image_tag @member.avatar.url(:thumb)
+        = image_tag @member.avatar.url(:avatar) if @member.avatar
 
       p
         b = t('member_links')
-        ol.sortable
-          - @member.member_links.each do |link|
-            li#link data-id="#{link.id}" data-member_id="#{@member.id}"
-              = link_to link.name, link.link
+      - if @member_links.any?
+        table.links#sortable.table
+          thead
+            tr
+              th= t('activerecord.member_link.name')
+              th= t('activerecord.created_at')
+          tbody
+            - @member_links.each do |member_link|
+              tr.item data-item-id="#{member_link.id}" data-parent-id="#{@member.id}"
+                td= link_to member_link.name, member_link.link
+                td= member_link.created_at
+      - else
+        = t('web_app_theme.nothing')
+
       p
         b = t('technologies') + ':'
       - if @member.technologies.any?
         table.table
-          tr
-            th.first
-              = t('activerecord.id')
-            th= t('activerecord.technology.title')
-            th= t('activerecord.created_at')
-            th.last
-          - @member.technologies.each do |technology|
-            tr class=("#{cycle('odd', 'even')}")
-              td= technology.id
-              td= link_to technology.title, admin_technology_path(technology)
-              td= technology.created_at
-              td.last
-                = link_to t('web_app_theme.show') + ' | ', admin_technology_path(technology)
-                = link_to t('web_app_theme.edit') + ' | ', edit_admin_technology_path(technology)
-                = link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+          thead
+            tr
+              th= t('activerecord.technology.title')
+              th= t('activerecord.created_at')
+              th
+              th
+              th
+          tbody
+            - @member.technologies.each do |technology|
+              tr
+                td= link_to technology.title, admin_technology_path(technology)
+                td= technology.created_at
+                td= link_to t('web_app_theme.show'), admin_technology_path(technology)
+                td= link_to t('web_app_theme.edit'), edit_admin_technology_path(technology)
+                td= link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
       - else
         = t('web_app_theme.nothing')

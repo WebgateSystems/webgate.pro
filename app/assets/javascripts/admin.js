@@ -12,9 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require html.sortable
 //= require foundation
 //= require cocoon
 //= require chosen-jquery
+//= require jquery-ui/sortable
+//= require jquery-ui/effect-highlight
 
 $(function(){ $(document).foundation(); });

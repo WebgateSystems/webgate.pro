@@ -1,7 +1,7 @@
 - @team.any?
   - @team.each do |team|
     .short_description_block
-      = image_tag team.avatar.url(:thumb)
+      = image_tag team.avatar.url(:avatar)
       .short_description_field
         h2
           = team.name

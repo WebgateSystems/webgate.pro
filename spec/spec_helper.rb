@@ -35,11 +35,6 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = [:should, :expect]
   end
-  config.after(:each) do
-    if Rails.env.test? || Rails.env.cucumber?
-      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
-    end
-  end
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
   config.mock_with :rspec do |mocks|
@@ -47,13 +42,6 @@ RSpec.configure do |config|
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
-  end
-
-  # config for carrierwave tests(for remove created dir)
-  config.after(:each) do
-    if Rails.env.test? || Rails.env.cucumber?
-      FileUtils.rm_rf(Dir["#{Rails.root}/spec/uploads"])
-    end
   end
 
 # The settings below are suggested to provide a good initial experience
