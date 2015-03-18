@@ -24,7 +24,7 @@ RSpec.configure do |config|
   #config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
-  Capybara.default_wait_time = 10
+  #Capybara.default_wait_time = 10
 
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL, type: :feature
