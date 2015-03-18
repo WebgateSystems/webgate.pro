@@ -73,8 +73,8 @@ group :test do
 end
 
 group :test, :development do
-  gem 'selenium-webdriver'
-  #gem 'poltergeist'
+  #gem 'selenium-webdriver'
+  gem "capybara-webkit"
   # gem 'webrat'
   gem 'rspec-rails'
   gem 'hpricot'

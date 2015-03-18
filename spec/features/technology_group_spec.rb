@@ -2,20 +2,19 @@ require 'rails_helper'
 
 feature 'technology_group in admin panel.' do
   let(:user) { create(:user) }
+  let!(:technology_group0) { TechnologyGroup.create(title: 'TestTitle0', description: 'Test Description0') }
+  let!(:technology_group1) { TechnologyGroup.create(title: 'TestTitle1', description: 'Test Description1') }
+
   before do
-    visit '/admin'
     sign_in(user)
     visit '/admin/technology_groups'
-    3.times do |t|
-      click_link ('New')
-      fill_in 'technology_group[title]', with: "TestTitle#{t}"
-      fill_in 'technology_group[description]', with: "Test Description#{t}"
-      click_button 'Save'
-      visit '/admin/technology_groups'
-    end
   end
 
   scenario 'Try drag and drop on index', js: true do
+    click_link ('New')
+    fill_in 'technology_group[title]', with: "TestTitle2"
+    fill_in 'technology_group[description]', with: "Test Description2"
+    click_button 'Save'
     visit '/admin/technology_groups'
     dest_element = find('td', text: "TestTitle2")
     source_element = find('td', text: "TestTitle1")
@@ -43,7 +42,6 @@ feature 'technology_group in admin panel.' do
     expect(page).to have_content 'Created at'
     expect(page).to have_content 'TestTitle0'
     expect(page).to have_content 'TestTitle1'
-    expect(page).to have_content 'TestTitle2'
   end
 
   scenario 'Users root path links show, edit should work' do

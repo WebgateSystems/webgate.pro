@@ -3,24 +3,26 @@ require 'rails_helper'
 feature 'Member in admin panel.' do
 
   let(:user) { create(:user) }
+  let!(:member0) { Member.create(name: 'TestName0', shortdesc: 'TestShortDesc0',
+      description: 'TestDesc0', motto: 'TestMotto0',
+      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'alex_dobr.jpg'))) }
+  let!(:member1) { Member.create(name: 'TestName1', shortdesc: 'TestShortDesc1',
+      description: 'TestDesc1', motto: 'TestMotto1',
+      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'alex_dobr.jpg'))) }
 
   before do
-    visit '/admin'
     sign_in(user)
     visit '/admin/members'
-    3.times do |t|
-      click_link ('New')
-      fill_in 'member[name]', with: "TestName#{t}"
-      fill_in 'member[shortdesc]', with: "TestShortDesc#{t}"
-      fill_in 'member[description]', with: "TestDesc#{t}"
-      fill_in 'member[motto]', with: "TestMotto#{t}"
-      attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))
-      click_button 'Save'
-      visit '/admin/members'
-    end
   end
 
   scenario 'Try drag and drop on index', js: true do
+    click_link ('New')
+    fill_in 'member[name]', with: "TestName2"
+    fill_in 'member[shortdesc]', with: "TestShortDesc2"
+    fill_in 'member[description]', with: "TestDesc2"
+    fill_in 'member[motto]', with: "TestMotto2"
+    attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))
+    click_button 'Save'
     visit '/admin/members'
     dest_element = find('td', text: "TestName2")
     source_element = find('td', text: "TestName1")
@@ -32,7 +34,6 @@ feature 'Member in admin panel.' do
     page.all(:link, 'Show')[2].click
     expect(current_path).to_not eq "/admin/members/#{Member.last.id}"
   end
-
 
   scenario 'Link list should work good' do
     click_link('List')
@@ -49,7 +50,6 @@ feature 'Member in admin panel.' do
     expect(page).to have_content 'Created at'
     expect(page).to have_content 'TestName0'
     expect(page).to have_content 'TestName1'
-    expect(page).to have_content 'TestName2'
   end
 
   scenario 'Member root path links show, edit should work' do

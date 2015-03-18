@@ -3,23 +3,16 @@ require 'rails_helper'
 feature 'Project in admin panel.' do
 
   let(:user) { create(:user) }
-  let(:technology) { create(:technology) }
+  let!(:project0) { Project.create(title: 'TestTitle0', shortlink: 'Testlink0',
+      description: 'TestDesc0', keywords: 'TestKeyWord0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
+      collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) }
+  let!(:project1) { Project.create(title: 'TestTitle1', shortlink: 'Testlink1',
+      description: 'TestDesc1', keywords: 'TestKeyWord1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
+      collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) }
 
   before do
     sign_in(user)
     visit '/admin/projects'
-    3.times do |t|
-      click_link ('New')
-      fill_in 'project[title]', with: "TestTitle#{t}"
-      fill_in 'project[shortlink]', with: "Testlink#{t}"
-      fill_in 'project[description]', with: "TestDesc#{t}"
-      fill_in 'project[keywords]', with: "TestKeyWord#{t}"
-      fill_in 'project[content]', with: "TestContent#{t}"
-      fill_in 'project[livelink]', with: 'http://test.webgate.pro'
-      attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
-      click_button 'Save'
-      visit '/admin/projects'
-    end
   end
 
   scenario 'Project root path should have list of projects' do
@@ -29,10 +22,18 @@ feature 'Project in admin panel.' do
     expect(page).to have_content 'Publish'
     expect(page).to have_content 'TestTitle0'
     expect(page).to have_content 'TestTitle1'
-    expect(page).to have_content 'TestTitle2'
   end
 
   scenario 'Try drag and drop on index', js: true do
+    click_link ('New')
+    fill_in 'project[title]', with: "TestTitle2"
+    fill_in 'project[shortlink]', with: "Testlink2"
+    fill_in 'project[description]', with: "TestDesc2"
+    fill_in 'project[keywords]', with: "TestKeyWord2"
+    fill_in 'project[content]', with: "TestContent2"
+    fill_in 'project[livelink]', with: 'http://test.webgate.pro'
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
+    click_button 'Save'
     visit '/admin/projects'
     dest_element = find('td', text: "TestTitle2")
     source_element = find('td', text: "TestTitle1")

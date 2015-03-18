@@ -3,19 +3,11 @@ require 'rails_helper'
 feature 'Member in admin panel.' do
 
   let(:user) { create(:user) }
-  let(:technology) { create(:technology) }
+  let!(:technology) { create(:technology) }
 
   before do
     sign_in(user)
     visit '/admin/members'
-    click_link ('New')
-    fill_in 'member[name]', with: 'TestName0'
-    fill_in 'member[shortdesc]', with: 'TestShortDesc0'
-    fill_in 'member[description]', with: 'TestDesc0'
-    fill_in 'member[motto]', with: 'TestMotto0'
-    attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))
-    select_from_chosen(technology.title, from: 'member_technology_ids')
-    click_button 'Save'
   end
 
   scenario 'Member should with assigned technology', js: true do
