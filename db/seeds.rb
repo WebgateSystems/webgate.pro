@@ -51,6 +51,43 @@ if Member.count == 0
 
 end
 
+if Project.count == 0
+  I18n.locale = 'ru'
+  project = Project.create title: 'Сервис Auto Centrum',
+                shortlink: 'сервис_auto_centrum',
+                description: 'Сервис Auto Centrum',
+                keywords: 'Сервис Auto Centrum',
+                content: 'Сервис Auto Centrum',
+                livelink: 'http://autocentrumserwis.pl',
+                publish: true
+  project.collage = Rails.root.join("app/assets/images/collage1.jpg").open
+  project.save!
+
+
+  I18n.locale = 'en'
+  #todo
+
+  project = Project.find 1
+  project.title = 'Auto Service Centrum'
+  project.shortlink = 'auto_service_centrum'
+  project.description = 'Auto Service Centrum'
+  project.keywords = 'Auto Service Centrum'
+  project.content = 'Auto Service Centrum'
+  project.save
+
+  I18n.locale = 'pl'
+  #todo
+
+  project = Project.find 1
+  project.title = 'Auto Centrum Serwis'
+  project.shortlink = 'auto_centrum_serwis'
+  project.description = 'Auto Centrum Serwis'
+  project.keywords = 'Auto Centrum Serwis'
+  project.content = 'Auto Centrum Serwis'
+  project.save
+
+end
+
 if TechnologyGroup.count == 0
   I18n.locale = 'en'
   TechnologyGroup.create title: 'Administration', description: 'Administartion technologies'

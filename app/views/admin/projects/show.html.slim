@@ -35,7 +35,7 @@
       p
         b= t('activerecord.project.collage') + ': '
         br
-        = image_tag @project.collage.url(:thumb) if @project.collage
+        = image_tag @project.collage.url(:collage) if @project.collage
       p
         b= t('screenshots') + ':'
       - if @screenshots.any?
