@@ -16,6 +16,7 @@ gem 'exception_notification'
 gem 'unicorn'
 gem 'kaminari'
 gem 'faker'
+gem "font-awesome-rails"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 #gem 'jbuilder', '~> 1.2'

@@ -13,4 +13,15 @@ class Member < ActiveRecord::Base
   translates  :name, :description, :shortdesc, :motto
 
   mount_uploader :avatar , PictureUploader
+
+  private
+
+  def technologies_by_group(tech_group)
+    #if tech_group.technologies & self.technologies
+    #self.technologies.each do |technology|
+    #if технология мембера входит в tg
+    #          - выводим
+    #          - if tg.include?(technology)
+  end
+
 end

@@ -1,26 +1,27 @@
-.content
-  .inner
-    .short_description_block
-      = image_tag @member.avatar.url(:avatar)
-      .short_description_field
-        h2
-          = @member.name
-          | :
-        = @member.motto
-    p
-      b= t('About') + ': '
-      = @member.description
-
-    p
-      b = t('technologies') + ':'
-    - if @member.technologies.any?
-      table.table
-        tr
-          th.last
-        - @member.technologies.each do |technology|
-          tr class=("#{cycle('odd', 'even')}")
-            td= technology.title
-    - else
-      = t('web_app_theme.nothing')
-    p
-      b = link_to t('Go back'), team_path
+- provide(:title, t('team'))
+.team_page
+  h1.page_title= t('team')
+  .worker_block
+    = image_tag @member.avatar.url(:avatar)
+    = link_to @member.name, member_path(@member), class: 'team_name'
+    span.specialization= @member.shortdesc
+    span.mob.more_info= @member.shortdesc
+    .columns_container
+      .worker_column
+        h2= t('about')
+        p= @member.description
+        h2= t('activerecord.member.motto')
+        p= @member.motto
+      .worker_column
+        h2= t('tecnologies')
+        - if @member.technologies.any?
+          - TechnologyGroup.all.each do |tg|
+            - if (tg.technologies & @member.technologies).any?
+              h3.blue
+                i.fa.fa-check-circle
+                = tg.title
+              p
+                - (tg.technologies & @member.technologies).each do |tech|
+                  span= tech.title
+        - else
+          = t('web_app_theme.nothing')
