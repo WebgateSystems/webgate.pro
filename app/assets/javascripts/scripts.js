@@ -42,4 +42,28 @@
 		adaptiveHeight: true,
 		slideMargin: 0
 	});
+	$('.more_info').click(function(){
+		$(this).closest('.team_block').find('.columns_container').fadeIn();
+		$(this).fadeOut(0);
+		$(this).closest('.team_block').find('.service_block_btn').addClass('active');
+		/*var hideBlock = $(this).closest('.team_block').find('.columns_container');
+		$(this).text('More information');
+		$('.columns_container.mob').fadeToggle(300, function() {
+			$(this).closest('.team_block').find('.service_block_btn').text(($('hideBlock' + ':visible').length==0) ? 'More information' : 'Hide information');
+		});*/
+	});
+	$('.team_block .service_block_btn').click(function(){
+		$(this).removeClass('active');
+		$(this).closest('.team_block').find('.columns_container').fadeOut();
+		$(this).closest('.team_block').find('.more_info').fadeIn();
+	});
+	/* Tooltip */
+	/* http://iamceege.github.io/tooltipster/ */
+	$('#tooltip1').tooltipster({
+		position: 'bottom',
+		minWidth: 300,
+		maxWidth: 300,
+		position: 'bottom',
+		content: $('<div class="tooltip_block"><p><img src="images/img22.png" /> <strong>PHP</strong> is a server-side scripting language designed for web development but also used as a general-purpose programming language.</p><p>As of January 2013, PHP was installed on more than 240 million websites (39% of those sampled) and 2.1 million web servers.</p><p>More on Wikipedia: <a href="#">PHP article</a></p></div>')
+	});
 });

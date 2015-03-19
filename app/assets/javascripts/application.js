@@ -17,6 +17,7 @@
 //= require jquery.bxslider.min
 //= require jquery.roundabout.min
 //= require jquery.slides.min
+//= require jquery.tooltipster.min
 //= require animatescroll.min
 //= require lightbox.min.js
 //= require scripts

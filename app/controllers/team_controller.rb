@@ -2,7 +2,7 @@ class TeamController < ApplicationController
   layout 'portfolio'
 
   def index
-    @members = Member.rank(:position).all.page(params[:page]).per(3)
+    @members = Member.rank(:position).all#.page(params[:page]).per(3)
   end
 
   def show

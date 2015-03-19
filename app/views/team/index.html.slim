@@ -8,7 +8,26 @@
           = link_to image_tag(member.avatar.url(:avatar)), member_path(member)
           = link_to member.name, member_path(member), class: 'team_name'
           span.specialization= member.shortdesc
-          span.mob.more_info= member.shortdesc
           p= member.description
-
-    = paginate @members
+          .columns_container.mob
+            .worker_column
+              h2= t('about')
+              p= member.description
+              h2= t('activerecord.member.motto')
+              p= member.motto
+            .worker_column
+              h2= t('tecnologies')
+              - if member.technologies.any?
+                - TechnologyGroup.all.each do |tg|
+                  - if (tg.technologies & member.technologies).any?
+                    h3.blue
+                      i.fa.fa-check-circle
+                      = tg.title
+                    p
+                      - (tg.technologies & member.technologies).each do |tech|
+                        span= tech.title
+              - else
+                = t('web_app_theme.nothing')
+          span.mob.more_info More information
+          span.mob.service_block_btn= t('Hide_information')
+    -#= paginate @members
