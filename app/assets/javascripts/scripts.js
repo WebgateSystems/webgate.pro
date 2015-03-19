@@ -34,14 +34,6 @@
 	$('#block6').click(function(){
 		$('.block_6').animatescroll({scrollSpeed:1000,easing:'easeOutExpo'});
 	});
-	$('.carousel div.mob').slidesjs({
-		width: 320,
-		height: 387,
-		navigation:{
-			active: false,
-			effect: 'slide'
-		}
-	});
 	$('.carousel_block ul.bx_carousel').bxSlider({
 		minSlides: 1,
 		maxSlides: 3,

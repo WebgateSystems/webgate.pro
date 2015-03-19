@@ -16,3 +16,4 @@
               em = t('used_technologies')
               - project.technologies.each do |technology|
                 span = technology.title + ' '
+  = paginate @projects
