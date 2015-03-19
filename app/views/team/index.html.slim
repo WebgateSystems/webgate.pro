@@ -1,12 +1,14 @@
-- @team.any?
-  - @team.each do |team|
-    .short_description_block
-      = image_tag team.avatar.url(:avatar)
-      .short_description_field
-        h2
-          = team.name
-          | :
-        = team.shortdesc
-        |&nbsp;
-        = link_to t('activerecord.member.watch_profile'), member_path(team)
-  = paginate @team
+- provide(:title, t('team'))
+- @members.any?
+  .team_page
+    h1.page_title= t('team')
+    .row
+      - @members.each do |member|
+        .team_block
+          = link_to image_tag(member.avatar.url(:avatar)), member_path(member)
+          = link_to member.name, member_path(member), class: 'team_name'
+          span.specialization= member.shortdesc
+          span.mob.more_info= member.shortdesc
+          p= member.description
+
+    = paginate @members

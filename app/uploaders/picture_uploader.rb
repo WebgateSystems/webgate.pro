@@ -16,7 +16,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
   version :avatar do
-    process resize_to_fill: [135, 135]
+    process resize_to_fill: [180, 180]
   end
 
   version :air do
