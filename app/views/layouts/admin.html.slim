@@ -10,6 +10,7 @@ html lang="en"
     = javascript_include_tag 'admin'
     = stylesheet_link_tag "admin/#{controller_name}"
     = javascript_include_tag "admin/#{controller_name}"
+    = javascript_include_tag "admin/test" if Rails.env.test?
     = csrf_meta_tags
 
   body

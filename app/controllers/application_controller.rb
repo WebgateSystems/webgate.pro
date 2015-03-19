@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
   before_filter :common_prepare
 
   LANGS = [
-      ['en', 'english'],
-      ['pl', 'polish'],
-      ['ru', 'russian']
+      ['en', 'English'],
+      ['pl', 'Polski'],
+      ['ru', 'Русский']
   ]
 
   def common_prepare
