@@ -17,7 +17,7 @@ feature 'Member in admin panel.' do
     fill_in 'member[description]', with: 'TestDescPew'
     fill_in 'member[motto]', with: 'TestMottoPew'
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))
-    select_from_chosen(technology.title, from: 'member_technology_ids')
+    select technology.title, from: 'member_technology_ids', visible: false
     click_button 'Save'
     visit '/admin/members'
     click_link ('TestNamePew')
