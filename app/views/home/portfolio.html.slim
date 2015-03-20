@@ -1,6 +1,6 @@
 - provide(:title, t('portfolio'))
 .portfolio
-  h2 = t('portfolio')
+  h1.page_title= t('portfolio')
   - @projects.each do |project|
     .portfolio_block
       = image_tag project.collage.url, width:940, height:244
@@ -16,3 +16,4 @@
               em = t('used_technologies')
               - project.technologies.each do |technology|
                 span = technology.title + ' '
+  = paginate @projects
