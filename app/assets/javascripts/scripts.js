@@ -67,17 +67,15 @@
 	//	content: $('<div class="tooltip_block"><p><img src="images/img22.png" /> <strong>PHP</strong> is a server-side scripting language designed for web development but also used as a general-purpose programming language.</p><p>As of January 2013, PHP was installed on more than 240 million websites (39% of those sampled) and 2.1 million web servers.</p><p>More on Wikipedia: <a href="#">PHP article</a></p></div>')
 	//});
 
-  $('.tooltip').tooltipster({
+  $('.tooltipstered').tooltipster({
     position: 'bottom',
 		minWidth: 300,
 		maxWidth: 300,
-    //functionBefore: function(origin, content) {
-    //  var data = '<img src="http://' + $(this).attr('alt') + '.jpg" />';
-    //  origin.tooltipster('content', $(data));
-    //  content();
-    //}
-    //console.log('hii');
-    content: $('<div class="tooltip_block"><p>Text</p></div>')
+      functionBefore: function(origin, content) {
+        var data = '<div class="tooltip_block"><p><img src="'+$(this).attr('data-img')+'"/><strong>'+$(this).attr('data-title')+'</strong> - '+ $(this).attr('data-desc') + '</p></div>';
+        origin.tooltipster('content', $(data));
+        content();
+      }
   });
 
 });

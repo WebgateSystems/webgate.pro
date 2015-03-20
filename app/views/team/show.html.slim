@@ -22,7 +22,7 @@
                 = tg.title
               p
                 - (tg.technologies & @member.technologies).each do |tech|
-                  span= link_to tech.title, '#', id: "tooltip#{tech.id}", class: 'tooltip'
+                  span= link_to tech.title, '#', data: { img: tech.logo.url(:thumb), title: tech.title, desc: tech.description }, class: 'tooltipstered'
         - else
           = t('web_app_theme.nothing')
     = link_to t('back_to_team'), team_path, class: 'back_team'
