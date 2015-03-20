@@ -200,6 +200,7 @@ ActiveRecord::Schema.define(version: 20150311115627) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "position"
+    t.string   "color"
   end
 
   create_table "technology_translations", force: true do |t|

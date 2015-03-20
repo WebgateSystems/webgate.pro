@@ -28,7 +28,7 @@
 
     h3= t(:technologies)
     #technologies
-    = f.association :technologies, include_blank: true, label: false, input_html: { class: 'chosen-select' }
+    = f.association :technologies, collection: Technology.all.map{ |t| [t.title, t.id, {"data-color" => t.technology_group.color}] }, include_blank: true, label: false, input_html: { class: 'chosen-select' }
     br
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
