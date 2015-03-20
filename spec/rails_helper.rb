@@ -2,7 +2,11 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'shoulda/matchers'
 require 'capybara/rails'
+require 'capybara/rspec'
+
+Capybara.javascript_driver = :webkit #default selenium
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -20,11 +24,21 @@ RSpec.configure do |config|
   #config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
+  #Capybara.default_wait_time = 10
+
   config.include FactoryGirl::Syntax::Methods
-  #config.include Capybara::DSL, :type => :feature
+  config.include Capybara::DSL, type: :feature
 
   config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
   config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
+
+  config.include ChosenSelect
+
+  config.after(:each) do
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+    end
+  end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"

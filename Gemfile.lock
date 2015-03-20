@@ -58,6 +58,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.4.1)
+      capybara (>= 2.3.0, < 2.5.0)
+      json
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -206,6 +209,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.4.2)
+    ranked-model (0.4.0)
+      activerecord (>= 3.1.12)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -239,6 +244,8 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
     sexp_processor (4.4.4)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -305,6 +312,7 @@ DEPENDENCIES
   capistrano-unicorn
   capistrano_colors
   capybara
+  capybara-webkit
   carrierwave
   chosen-rails
   cocoon
@@ -331,11 +339,13 @@ DEPENDENCIES
   rails (~> 4.1.8)
   rails-translate-routes
   rails_12factor
+  ranked-model
   rspec-rails
   ruby_parser
   russian
   rvm-capistrano
   sass-rails
+  shoulda-matchers
   simple_form
   simplecov
   slim-rails

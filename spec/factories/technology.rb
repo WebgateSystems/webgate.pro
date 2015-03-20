@@ -1,9 +1,8 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :technology do
     title 'tech'
-    technology_group_id 1
+    association :technology_group, factory: :technology_group
     description 'tech'
+    logo { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'ws-logo.png')) }
   end
 end

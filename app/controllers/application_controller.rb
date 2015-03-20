@@ -5,16 +5,16 @@ class ApplicationController < ActionController::Base
   before_filter :common_prepare
 
   LANGS = [
-      ['en', 'english'],
-      ['pl', 'polish'],
-      ['ru', 'russian']
+      ['en', 'English'],
+      ['pl', 'Polski'],
+      ['ru', 'Русский']
   ]
 
   def common_prepare
     @google_analytics = false
     prepare_lang
     @google_analytics = false
-    @menu = Category.order(:position, :created_at)
+    @menu = Category.rank(:position).all #order(:position, :created_at)
   end
 
   #rescue_from CanCan::AccessDenied do |exception|
@@ -25,6 +25,15 @@ class ApplicationController < ActionController::Base
   def not_authenticated
     redirect_to login_url, :alert => "First login to access this page."
   end
+
+  #def set_layout
+  #  case request.user_agent # or use nginx and params[] flag
+  #  when /iPhone/i, /Android/i && /mobile/i, /Windows Phone/i
+  #    "mobile"
+  #  else
+  #    "main"
+  #  end
+  #end
 
   private
   def prepare_lang

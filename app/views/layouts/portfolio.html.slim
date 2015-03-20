@@ -2,16 +2,9 @@
 body
   .header
     = render 'layouts/lang'
-    h1
-      a href="#"
-        span
-        |Webgate Systems
     = render 'layouts/menu'
   .wrapper
-    .tabs_block
-      .competences
-        .content
-          = yield
-        = render "layouts/slider"
+    .content
+      = yield
   = render "layouts/footer"
-    		  
+

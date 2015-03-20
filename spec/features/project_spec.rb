@@ -1,21 +1,50 @@
 require 'rails_helper'
 
 feature 'Project in admin panel.' do
+
   let(:user) { create(:user) }
+  let!(:project0) { Project.create(title: 'TestTitle0', shortlink: 'Testlink0',
+      description: 'TestDesc0', keywords: 'TestKeyWord0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
+      collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) }
+  let!(:project1) { Project.create(title: 'TestTitle1', shortlink: 'Testlink1',
+      description: 'TestDesc1', keywords: 'TestKeyWord1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
+      collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) }
+
   before do
-    visit '/admin'
-    login_user_post(user.email, 'secret')
-    visit '/admin/projects'
-    click_link ('New')
-    fill_in 'project[title]', with: 'TestTitle'
-    fill_in 'project[shortlink]', with: 'Testlink'
-    fill_in 'project[description]', with: 'TestDesc'
-    fill_in 'project[keywords]', with: 'TestKeyWord'
-    fill_in 'project[content]', with: 'TestContent'
-    click_button 'Save'
+    sign_in(user)
     visit '/admin/projects'
   end
 
+  scenario 'Project root path should have list of projects' do
+    visit '/admin/projects'
+    expect(page).to have_content 'Title'
+    expect(page).to have_content 'Created at'
+    expect(page).to have_content 'Publish'
+    expect(page).to have_content 'TestTitle0'
+    expect(page).to have_content 'TestTitle1'
+  end
+
+  scenario 'Try drag and drop on index', js: true do
+    click_link ('New')
+    fill_in 'project[title]', with: "TestTitle2"
+    fill_in 'project[shortlink]', with: "Testlink2"
+    fill_in 'project[description]', with: "TestDesc2"
+    fill_in 'project[keywords]', with: "TestKeyWord2"
+    fill_in 'project[content]', with: "TestContent2"
+    fill_in 'project[livelink]', with: 'http://test.webgate.pro'
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
+    click_button 'Save'
+    visit '/admin/projects'
+    dest_element = find('td', text: "TestTitle2")
+    source_element = find('td', text: "TestTitle1")
+    source_element.drag_to dest_element
+    sleep 5 #wait for ajax complete
+    page.all(:link, 'Show')[1].click
+    expect(current_path).to eq "/admin/projects/#{Project.last.id}"
+    visit '/admin/projects'
+    page.all(:link, 'Show')[2].click
+    expect(current_path).to_not eq "/admin/projects/#{Project.last.id}"
+  end
 
   scenario 'Link list should work good' do
     click_link('List')
@@ -27,54 +56,47 @@ feature 'Project in admin panel.' do
     expect(current_path).to eq '/admin/projects/new'
   end
 
-  scenario 'project root path should have list of projects' do
-    expect(page).to have_content 'ID'
-    expect(page).to have_content 'Title'
-    expect(page).to have_content 'Created at'
-    expect(page).to have_content 'Publish'
-  end
-
-  scenario 'project root path should have our project name' do
-    expect(page).to have_content 'TestTitle'
-  end
-
-  scenario 'project root path links show, edit should work' do
-    page.all(:link,'Show')[0].click
-    expect(current_path).to eq "/admin/projects/#{Project.last.id}"
+  scenario 'Project root path links show, edit should work' do
+    page.all(:link, 'Show')[0].click
+    expect(current_path).to eq "/admin/projects/#{Project.first.id}"
     visit '/admin/projects'
-    page.all(:link,'Edit')[0].click
-    expect(current_path).to eq "/admin/projects/#{Project.last.id}/edit"
+    page.all(:link, 'Edit')[0].click
+    expect(current_path).to eq "/admin/projects/#{Project.first.id}/edit"
   end
 
-  scenario 'link delete should delete project' do
-    page.all(:link,'Delete')[0].click
+  scenario 'Link delete should delete project' do
+    page.all(:link, 'Delete')[0].click
     expect(current_path).to eq current_path
   end
 
   scenario 'Show should display our project information' do
-    click_link ('TestTitle')
+    click_link ('TestTitle0')
     expect(page).to have_content 'Title:'
-    expect(page).to have_content 'TestTitle'
+    expect(page).to have_content 'TestTitle0'
     expect(page).to have_content 'Description:'
-    expect(page).to have_content 'TestDesc'
+    expect(page).to have_content 'TestDesc0'
     expect(page).to have_content 'Shortlink:'
     expect(page).to have_content 'Keywords:'
     expect(page).to have_content 'Content:'
-    expect(page).to have_content 'Testlink'
-    expect(page).to have_content 'TestKeyWord'
-    expect(page).to have_content 'TestContent'
+    expect(page).to have_content 'Testlink0'
+    expect(page).to have_content 'TestKeyWord0'
+    expect(page).to have_content 'TestContent0'
+    expect(page).to have_content 'http://test.webgate.pro'
   end
 
   scenario 'Create project should create project' do
     click_link ('New')
     fill_in 'project[title]', with: 'TestTitleFull'
-    fill_in 'project[shortlink]', with: 'Testlink1'
-    fill_in 'project[description]', with: 'TestDesc1'
-    fill_in 'project[keywords]', with: 'TestKeyWord1'
-    fill_in 'project[content]', with: 'TestContent1'
+    fill_in 'project[shortlink]', with: 'TestlinkFull'
+    fill_in 'project[description]', with: 'TestDescFull'
+    fill_in 'project[keywords]', with: 'TestKeyWordFull'
+    fill_in 'project[content]', with: 'TestContentFull'
+    fill_in 'project[livelink]', with: 'http://test.webgate.pro'
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
     visit '/admin/projects'
-    expect(page).to have_content 'TestTitleFull'
+    click_link ('TestTitleFull')
+    expect(page).to have_content 'TestDescFull'
   end
 
   scenario 'Check publish. Here should be false' do
@@ -84,16 +106,19 @@ feature 'Project in admin panel.' do
   scenario 'Check publish. Here should be true' do
     click_link ('New')
     fill_in 'project[title]', with: 'TestTitleFull'
-    fill_in 'project[shortlink]', with: 'Testlink1'
-    fill_in 'project[description]', with: 'TestDesc1'
-    fill_in 'project[keywords]', with: 'TestKeyWord1'
-    fill_in 'project[content]', with: 'TestContent1'
+    fill_in 'project[shortlink]', with: 'TestlinkFull'
+    fill_in 'project[description]', with: 'TestDescFull'
+    fill_in 'project[keywords]', with: 'TestKeyWordFull'
+    fill_in 'project[content]', with: 'TestContentFull'
+    fill_in 'project[livelink]', with: 'http://test.webgate.pro'
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     find(:css, "#project_publish").set(true)
     click_button 'Save'
     visit '/admin/projects'
     expect(page).to have_content 'true'
   end
-  scenario 'validation for new project' do
+
+  scenario 'Validation for new project' do
     click_link('New')
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')
@@ -105,4 +130,5 @@ feature 'Project in admin panel.' do
     visit '/admin/projects'
     expect(page).to have_no_content 'TestTitlekukumba'
   end
+
 end

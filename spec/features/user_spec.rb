@@ -35,7 +35,7 @@ feature 'Users in admin panel.' do
   end
 
   scenario 'link delete should delete user' do
-    click_link ('Destroy')
+    click_link ('Delete')
     expect(current_path).to eq current_path
   end
 

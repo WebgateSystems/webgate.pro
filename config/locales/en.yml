@@ -65,6 +65,7 @@ en:
       content: "Content"
       livelink: "Live link"
       publish: "Publish"
+      collage: "Collage"
     member:
       name: "Name"
       shortdesc: "Short description"
@@ -72,6 +73,10 @@ en:
       avatar: "Avatar"
       motto: "Motto"
       watch_profile: "Watch Profile"
+    member_link:
+      name: "Name"
+      logo: "Logo"
+      link: "Link"
   views:
       pagination:
         previous: "&laquo; Prev."
@@ -97,3 +102,5 @@ en:
   used_technologies: "Used technologies:"
   recent_projects: "Recent projects:"
   see_more: "see more projects"
+  member_links: "Links"
+  add_link: "Add link"

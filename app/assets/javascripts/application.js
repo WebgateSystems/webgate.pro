@@ -14,7 +14,9 @@
 // require jquery_ujs
 //= require jquery-ui-1.8.16.slider
 //= require home_slider
-//= require jquery.carousel
+//= require jquery.bxslider.min
 //= require jquery.roundabout.min
-//= require scroll
+//= require jquery.slides.min
+//= require animatescroll.min
+//= require lightbox.min.js
 //= require scripts

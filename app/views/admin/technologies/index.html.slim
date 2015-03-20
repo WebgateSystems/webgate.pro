@@ -1,31 +1,29 @@
 .block
   .secondary-navigation
     ul.button-group.radius
-      li.first.active
-        = link_to t('web_app_theme.list'), admin_technologies_path, class: 'button'
+      li= link_to t('web_app_theme.list'), admin_technologies_path, class: 'button'
       li= link_to t('web_app_theme.new'), new_admin_technology_path, class: 'button'
   .content
-    h2.title
-      = t('web_app_theme.technologies')
+    h2.title= t('web_app_theme.technologies')
     .inner
       - if @technologies.any?
         table.table
-          tr             
-            th.first
-              = t('activerecord.id')
-            th= t(:technology_group_title)
-            th= t('activerecord.technology.title')
-            th= t('activerecord.created_at')
-            th.last= t(:actions)
-          - @technologies.each do |technology|
-            tr class=("#{cycle('odd', 'even')}")
-              td= technology.id
-              td= link_to technology.technology_group.title, admin_technology_group_path(technology.technology_group)
-              td= link_to technology.title, admin_technology_path(technology)
-              td= technology.created_at
-              td.last
-                = link_to t('web_app_theme.show') + ' | ', admin_technology_path(technology)
-                = link_to t('web_app_theme.edit') + ' | ', edit_admin_technology_path(technology)
-                = link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+          thead
+            tr
+              th= t(:technology_group_title)
+              th= t('activerecord.technology.title')
+              th= t('activerecord.created_at')
+              th
+              th
+              th
+          tbody
+            - @technologies.each do |technology|
+              tr
+                td= link_to technology.technology_group.title, admin_technology_group_path(technology.technology_group)
+                td= link_to technology.title, admin_technology_path(technology)
+                td= technology.created_at
+                td= link_to t('web_app_theme.show'), admin_technology_path(technology)
+                td= link_to t('web_app_theme.edit'), edit_admin_technology_path(technology)
+                td= link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
       - else
         = t('web_app_theme.nothing')

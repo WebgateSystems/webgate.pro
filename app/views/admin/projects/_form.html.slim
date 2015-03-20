@@ -1,30 +1,35 @@
 = simple_form_for [:admin, @project] do |f|
   = f.error_notification
   .form-inputs
-    = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: {class: 'label'}
-    = f.input :title, label: t('activerecord.project.title'), label_html: {class: 'label'}
-    = f.input :description, label: t('activerecord.project.description'), label_html: {class: 'label'}
-    = f.input :keywords, label: t('activerecord.project.keywords'), label_html: {class: 'label'}
-    = f.input :content, label: t('activerecord.project.content'), label_html: {class: 'label'}
-    = f.input :livelink, label: t('activerecord.project.livelink'), label_html: {class: 'label'}
-    = f.input :publish, label: t('activerecord.project.publish'), label_html: {class: 'label'}
-    h3 = t(:screenshots)
+    = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: { class: 'label' }
+    = f.input :title, label: t('activerecord.project.title'), label_html: { class: 'label' }
+    = f.input :description, label: t('activerecord.project.description'), label_html: { class: 'label' }
+    = f.input :keywords, label: t('activerecord.project.keywords'), label_html: { class: 'label' }
+    = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
+    = f.input :livelink, as: :url, label: t('activerecord.project.livelink'), label_html: { class: 'label' }, placeholder: 'https://webgate.pro'
+    = f.input :publish, label: t('activerecord.project.publish'), label_html: { class: 'label' }
+    .label= t('activerecord.project.collage')
+    = f.file_field :collage
+    = f.hidden_field :collage_cache, value: f.object.collage_cache
+    - if f.object.collage.url.present?
+      = image_tag f.object.collage.url(:thumb)
 
+    h3= t(:screenshots)
     table.project-form
       thead
         tr
-          td = t('web_app_theme.input')
-          td = t('web_app_theme.preview')
-          td = t('web_app_theme.delete')
+          td= t('web_app_theme.file')
+          td= t('web_app_theme.thumb')
+          td= t('web_app_theme.delete')
       tbody
         = f.fields_for :screenshots do |s|
           = render 'screenshot_fields', f: s
     .links= link_to_add_association t('add_screenshot'), f, :screenshots
 
-    h3 = t(:technologies)
+    h3= t(:technologies)
     #technologies
-    = f.association :technologies, collection: Technology.all.map{|t| [t.title,t.id,{"data-color" => t.technology_group.color}]}, include_blank: true, label: false, input_html: { class: 'chosen-select' }
-
+    = f.association :technologies, collection: Technology.all.map{ |t| [t.title, t.id, {"data-color" => t.technology_group.color}] }, include_blank: true, label: false, input_html: { class: 'chosen-select' }
+    br
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '

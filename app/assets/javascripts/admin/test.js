@@ -1,0 +1,1 @@
+$.ajaxSetup({ async: false });

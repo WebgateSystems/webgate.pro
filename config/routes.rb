@@ -1,28 +1,35 @@
 WebgatePro::Application.routes.draw do
-  
+
   resources :sessions
 
   namespace :admin do
     resources :users
     resources :categories do
-      collection do
-        post 'sort'
-      end
+      put :update_position, on: :collection
     end
     resources :pages
-    resources :projects
-    resources :members
-    resources :projects do
+    resources :members do
+      put :update_position, on: :collection
       member do
-        put 'sort'
+        put 'sort_member_links'
       end
-      resources :screenshots, only: [:create, :destroy] do
-        put :sort, on: :collection
+    end
+    resources :projects do
+      put :update_position, on: :collection
+      member do
+        put 'sort_screenshots'
       end
+      resources :screenshots
     end
     resources :technologies
     resources :technology_groups do
-      resources :technologies
+      put :update_position, on: :collection
+      member do
+        put 'sort_technologies'
+      end
+      resources :technologies do
+        #put :update_position, on: :collection
+      end
     end
     root :to => "home#index"
   end
@@ -33,6 +40,7 @@ WebgatePro::Application.routes.draw do
   get "team" => "team#index"
   get "team/:id" => "team#show", as: "member"
   get "portfolio" => "home#portfolio"
+  get "портфолио" => "home#portfolio"
 
   match "not-found" => "pages#not_found", via: [:get, :post], as: :not_found
   match ":shortlink" => "pages#showbyshortlink", via: [:get, :post]

@@ -62,6 +62,7 @@ pl:
       content: "Treść"
       livelink: "Link na żywo"
       publish: "Publikować"
+      collage: "Kolaż"
     member:
       name: "Imię"
       shortdesc: "Krótki opis"
@@ -69,6 +70,10 @@ pl:
       avatar: "Awatara"
       motto: "Motto"
       watch_profile: "Zobacz profil"
+    member_link:
+      name: "Imię"
+      logo: "Logo"
+      link: "Powiązanie"
     errors:
       messages:
         blank: "Nie może być puste"
@@ -98,3 +103,5 @@ pl:
   used_technologies: "Użyte technologie:"
   recent_projects: "Ostatnie realizacje:"
   see_more: "zobacz więcej realizacji"
+  member_links: "Odnośniki"
+  add_link: "Dodaj link"

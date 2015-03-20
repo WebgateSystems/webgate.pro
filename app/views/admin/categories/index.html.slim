@@ -1,26 +1,29 @@
 .block
   .secondary-navigation
     ul.button-group.radius
-      li.first.active= link_to t('web_app_theme.list'), admin_categories_path, class: 'button'
+      li= link_to t('web_app_theme.list'), admin_categories_path, class: 'button'
       li= link_to t('web_app_theme.new'), new_admin_category_path, class: 'button'
-  .content          
+  .content
     h2.title= t('web_app_theme.categories')
     .inner
       - if @categories.any?
-        table.table
+        table#sortable.table
           thead
-          tr             
-            th.first= t('activerecord.id')
-            th= t('activerecord.category.name')
-            th= t('activerecord.created_at')
-            th.last
-          tbody#categories
-          - @categories.each do |category|
-            tr id="category-#{category.id}" class="#{cycle('odd', 'even')}"
-              td= category.id
-              td= link_to category.name, admin_category_path(category)
-              td= category.created_at
-              td.last
-                = link_to t('web_app_theme.show') + ' | ', admin_category_path(category)
-                = link_to t('web_app_theme.edit') + ' | ', edit_admin_category_path(category)
-                = link_to t('web_app_theme.delete'), admin_category_path(category), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+            tr
+              th= t('activerecord.category.name')
+              th= t('activerecord.category.altlink')
+              th= t('activerecord.created_at')
+              th
+              th
+              th
+          tbody
+            - @categories.each do |category|
+              tr.item data-item-id="#{category.id}"
+                td= link_to category.name, admin_category_path(category)
+                td= category.altlink
+                td= category.created_at
+                td= link_to t('web_app_theme.show'), admin_category_path(category)
+                td= link_to t('web_app_theme.edit'), edit_admin_category_path(category)
+                td= link_to t('web_app_theme.delete'), admin_category_path(category), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+      - else
+        = t('web_app_theme.nothing')

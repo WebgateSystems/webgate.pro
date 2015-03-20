@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Adding team to site.' do
 
   before do
-    @member = FactoryGirl.create(:member)
+    @member = create(:member)
     visit "/team"
   end
 
@@ -26,11 +26,11 @@ feature 'Adding team to site.' do
 
   scenario 'About page should have avatar' do
     visit "/team/#{@member.id}"
-    expect(page).to have_xpath("//img[@src=\"#{Rails.root}/spec/support/uploads/thumb.jpg\"]")
+    expect(page).to have_xpath("//img[contains(@src, #{@member.avatar.url})]")
   end
 
   scenario 'List page should have avatar' do
-    expect(page).to have_xpath("//img[@src=\"#{Rails.root}/spec/support/uploads/thumb.jpg\"]")
+    expect(page).to have_xpath("//img[contains(@src, \"uploads/pictures/member\")]")
   end
 
   scenario 'Show page should have link to /team' do

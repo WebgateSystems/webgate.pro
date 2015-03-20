@@ -26,6 +26,7 @@ gem 'foundation-rails'
 gem 'simple_form'
 gem 'cocoon'
 gem 'chosen-rails'
+gem 'ranked-model'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -47,11 +48,11 @@ group :development do
   gem 'thin'
   # Deploy with Capistrano
   gem 'capistrano', '2.15.5'
-  gem 'cape'                                                                
-  gem 'capistrano-unicorn'                                                  
-  gem 'capistrano-ext'                                                      
-  gem 'capistrano_colors'                                                   
-  gem 'rvm-capistrano'
+  gem 'cape'
+  gem 'capistrano-unicorn'
+  gem 'capistrano-ext'
+  gem 'capistrano_colors'
+  gem 'rvm-capistrano', require: false
   gem 'rack-mini-profiler', '~> 0.9.2'
   # Better errors handler
   gem 'better_errors'
@@ -59,6 +60,7 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers', require: false
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
@@ -72,6 +74,8 @@ group :test do
 end
 
 group :test, :development do
+  #gem 'selenium-webdriver'
+  gem "capybara-webkit"
   # gem 'webrat'
   gem 'rspec-rails'
   gem 'hpricot'
