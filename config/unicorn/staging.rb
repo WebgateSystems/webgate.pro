@@ -4,7 +4,7 @@ pid               "#{app_path}/current/tmp/pids/unicorn.pid"
 
 listen "#{app_path}/current/tmp/sockets/unicorn.sock", :backlog => 2048
 
-worker_processes 3
+worker_processes 2
 
 # logging
 stderr_path "#{app_path}/current/log/unicorn.stderr.log"
@@ -19,9 +19,6 @@ timeout 60
 
 # Spawn unicorn master worker for user apps (group: apps)
 user 'webgate', 'webgate'
-
-# Should be 'production' by default, otherwise use other env
-rails_env = ENV['RAILS_ENV'] || 'staging'
 
 before_fork do |server, worker|
   if defined?(ActiveRecord::Base)
