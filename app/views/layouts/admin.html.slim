@@ -46,10 +46,7 @@ html lang="en"
         li.divider
         li= link_to t('web_app_theme.logout'), logout_path
 
-  .flash
-    - flash.each do |type, message|
-      div class=("message #{type}")
-        p= message
+  = render 'layouts/messages'
 
   .row
     .large-12.columns

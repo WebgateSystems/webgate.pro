@@ -11,7 +11,7 @@
       .work_desc
         = image_tag project.collage.url, width:940, height:244
         .work_content
-          = link_to project.title, project.livelink, class: 'work_link'
+          = link_to project.title, project.livelink, class: 'work_link', target: '_blank', rel: 'nofollow'
           p = project.content.try(:html_safe)
           .work_info
             p
