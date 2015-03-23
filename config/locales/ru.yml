@@ -57,10 +57,7 @@ ru:
       description: "Описание"
       logo: "Лого"
     project:
-      shortlink: "Короткий линк"
       title: "Название"
-      description: "Описание"
-      keywords: "Ключевые слова"
       content: "Содержимое"
       livelink: "Ссылка на проект"
       publish: "Опубликован"
@@ -108,3 +105,4 @@ ru:
   more_information: "Информация"
   hide_information: "Скрыть детали"
   content: "Контент"
+  publish: "Публиковать"

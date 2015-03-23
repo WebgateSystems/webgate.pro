@@ -58,10 +58,7 @@ en:
       description: "Description"
       logo: "Logo"
     project:
-      shortlink: "Shortlink"
       title: "Title"
-      description: "Description"
-      keywords: "Keywords"
       content: "Content"
       livelink: "Live link"
       publish: "Publish"
@@ -108,3 +105,4 @@ en:
   back_to_team: "Back to Team"
   more_information: "More Information"
   hide_information: "Hide Information"
+  publish: "Publish"

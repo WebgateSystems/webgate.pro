@@ -10,7 +10,7 @@
         = image_tag project.collage.url, width:940, height:244
         .work_content
           = link_to project.title, project.livelink, class: 'work_link'
-          p = project.description
+          p = project.content.try(:html_safe)
           .work_info
             p
               em = t('used_technologies')
