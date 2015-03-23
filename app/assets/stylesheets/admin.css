@@ -12,30 +12,5 @@
  *= require_self
  *= require foundation_and_overrides
  *= require jquery.minicolors
+ *= require admin/flashes
  */
-
-.flash .message {
-    width: 100%;
-    height: 45px;
-    position: fixed;
-    z-index: 9999;
-    bottom: 0px;
-    text-align: center;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 14px;
-    padding-top: 10px;
-    background-image: url('warning_background.png');
-}
-
-.flash .notice {
-    display: table-cell;
-    vertical-align: middle;
-    background-image: url('notice_background.png');
-}
-
-.flash .warning {
-    display: table-cell;
-    vertical-align: middle;
-    background-image: url('error_background.png');
-}
