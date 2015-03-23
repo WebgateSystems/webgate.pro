@@ -28,6 +28,7 @@ pl:
   activerecord:
     id: "ID"
     created_at: "Utworzona"
+    title: "Tytuł"
     category:
       name: "Nazwa"
       altlink: "Alternatywny link"

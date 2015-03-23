@@ -21,7 +21,7 @@
       p
         b= t('activerecord.project.livelink') + ': '
         br
-        = @project.livelink
+        = link_to @project.livelink, @project.livelink
 
       p
         b= t('activerecord.project.collage') + ': '
@@ -33,7 +33,7 @@
         table.screenshots#sortable.table
           thead
             tr
-              th= t('activerecord.screenshot.title')
+              th= t('screenshots')
               th= t('activerecord.created_at')
 
           tbody

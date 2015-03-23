@@ -30,6 +30,7 @@ ru:
   activerecord:
     id: "ID"
     created_at: "Создана"
+    title: "Название"
     category:
       name: "Имя"
       altlink: "Альтернативный линк"
