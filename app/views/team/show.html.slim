@@ -13,7 +13,7 @@
         h2= t('activerecord.member.motto')
         p= @member.motto
       .worker_column
-        h2= t('tecnologies')
+        h2= t('technologies')
         - if @member.technologies.any?
           - TechnologyGroup.all.each do |tg|
             - if (tg.technologies & @member.technologies).any?

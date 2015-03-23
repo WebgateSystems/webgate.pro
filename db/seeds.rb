@@ -54,9 +54,6 @@ end
 if Project.count == 0
   I18n.locale = 'ru'
   project = Project.create title: 'Сервис Auto Centrum',
-                shortlink: 'сервис_auto_centrum',
-                description: 'Сервис Auto Centrum',
-                keywords: 'Сервис Auto Centrum',
                 content: 'Сервис Auto Centrum',
                 livelink: 'http://autocentrumserwis.pl',
                 publish: true
@@ -69,9 +66,6 @@ if Project.count == 0
 
   project = Project.find 1
   project.title = 'Auto Service Centrum'
-  project.shortlink = 'auto_service_centrum'
-  project.description = 'Auto Service Centrum'
-  project.keywords = 'Auto Service Centrum'
   project.content = 'Auto Service Centrum'
   project.save
 
@@ -80,9 +74,6 @@ if Project.count == 0
 
   project = Project.find 1
   project.title = 'Auto Centrum Serwis'
-  project.shortlink = 'auto_centrum_serwis'
-  project.description = 'Auto Centrum Serwis'
-  project.keywords = 'Auto Centrum Serwis'
   project.content = 'Auto Centrum Serwis'
   project.save
 

@@ -28,6 +28,7 @@ pl:
   activerecord:
     id: "ID"
     created_at: "Utworzona"
+    title: "Tytuł"
     category:
       name: "Nazwa"
       altlink: "Alternatywny link"
@@ -55,10 +56,7 @@ pl:
       description: "Opis"
       logo: "Logo"
     project:
-      shortlink: "Krótki link"
       title: "Tytuł"
-      description: "Opis"
-      keywords: "Słowa kluczowe"
       content: "Treść"
       livelink: "Link na żywo"
       publish: "Publikować"
@@ -109,3 +107,4 @@ pl:
   back_to_team: "Powrót do Team"
   more_information: "Więcej Informacji"
   hide_information: "Ukryj Informacje"
+  publish: "Publikować"
