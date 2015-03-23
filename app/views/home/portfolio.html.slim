@@ -4,8 +4,10 @@
   - @projects.each do |project|
     .portfolio_block
       = image_tag project.collage.url, width:940, height:244
-      - project.screenshots.each do |s|
-        a.zoom data-lightbox="img-#{project.id}" href="#{s.file.url}"
+      - if project.screenshots.any?
+        a.zoom data-lightbox="img-#{project.id}" href="#{project.screenshots.first.file.url}"
+        - project.screenshots.drop(1).each do |s|
+          a.zoom data-lightbox="img-#{project.id}" href="#{s.file.url}" style=('display: none')
       .work_desc
         = image_tag project.collage.url, width:940, height:244
         .work_content
