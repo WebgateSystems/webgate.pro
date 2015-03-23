@@ -193,8 +193,8 @@ ActiveRecord::Schema.define(version: 20150323044144) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position"
     t.string   "color"
+    t.integer  "position"
   end
 
   create_table "technology_translations", force: true do |t|
