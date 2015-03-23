@@ -10,4 +10,4 @@ flashCallback = ->
 $ ->
     $(".flash").bind 'click', (ev) =>
         flashCallback()
-    setTimeout flashCallback, 3000
+    setTimeout flashCallback, 3800
