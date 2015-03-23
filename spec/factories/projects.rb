@@ -3,9 +3,6 @@
 FactoryGirl.define do
   factory :project do
     title 'First project'
-    shortlink 'first_project'
-    description 'first project'
-    keywords 'first project'
     content 'first project content'
     collage { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg')) }
     livelink 'http://test.webgate.pro'

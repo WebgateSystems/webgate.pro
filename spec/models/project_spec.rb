@@ -8,9 +8,6 @@ describe Project do
 
   describe "Validations" do
     it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_presence_of(:shortlink) }
-    it { is_expected.to validate_presence_of(:description) }
-    it { is_expected.to validate_presence_of(:keywords) }
     it { is_expected.to validate_presence_of(:content) }
     it { is_expected.to validate_presence_of(:livelink) }
     it { is_expected.to validate_presence_of(:collage) }
