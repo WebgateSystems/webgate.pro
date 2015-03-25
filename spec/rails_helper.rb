@@ -34,6 +34,13 @@ RSpec.configure do |config|
 
   config.include ChosenSelect
 
+  config.before :each, :js, type: :feature do |example|
+    if example.metadata[:js]
+      page.driver.block_unknown_urls
+      #page.driver.allow_url('api.stripe.com')
+    end
+  end
+
   config.after(:each) do
     if Rails.env.test? || Rails.env.cucumber?
       FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
