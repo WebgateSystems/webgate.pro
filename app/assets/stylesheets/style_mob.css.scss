@@ -118,17 +118,6 @@ body{padding-top: 40px;}
 		line-height: 19px;
 		margin-bottom: 49px;
 	}
-	.service_block_btn,.more_info{
-		background-color: #ea7c16;
-		border-radius: 3px;
-		color: #fff;
-		display: inline-block;
-		font-size: 13px;
-		height: 27px;
-		line-height: 15px;
-		padding: 10px 28px 0;
-	}
-		.service_block_btn:active{background-color: #f7b64d;}
 /* END Wrapper */
 /* Portfolio */
 .content{
@@ -178,7 +167,8 @@ body{padding-top: 40px;}
 }
 /* END portfolio */
 /* Team */
-.team_block .service_block_btn,.team_block .more_info{display: none;}
+.team_block .service_block_btn{display: none;}
+.team_block{border-radius: 0px;}
 .page_title{
 	font-size: 37px;
 	line-height: 37px;
@@ -214,7 +204,7 @@ body{padding-top: 40px;}
 	.team_block,.team_block:first-child{
 		float: none;
 		margin: 0 auto;
-		padding: 49px 20px 51px;
+		padding: 49px 20px 36px;
 		width: auto;
 	}
 		.team_block:nth-child(2n){background-color: #f3f3f3;}
@@ -222,8 +212,7 @@ body{padding-top: 40px;}
 			height: 180px;
 			width: 180px;
 		}
-		.team_block p{display: none;}
-		.team_block .service_block_btn.active,.team_block .more_info{display: inline-block;}
+		.team_block .service_block_btn.active{display: inline-block;}
 		.team_name{font-size: 20px;}
 		.worker_column{
 			float: none;

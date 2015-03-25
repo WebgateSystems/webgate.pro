@@ -42,20 +42,17 @@
 		adaptiveHeight: true,
 		slideMargin: 0
 	});
-	$('.more_info').click(function(){
-		$(this).closest('.team_block').find('.columns_container').fadeIn();
-		$(this).fadeOut(0);
-		$(this).closest('.team_block').find('.service_block_btn').addClass('active');
-		/*var hideBlock = $(this).closest('.team_block').find('.columns_container');
-		$(this).text('More information');
-		$('.columns_container.mob').fadeToggle(300, function() {
-			$(this).closest('.team_block').find('.service_block_btn').text(($('hideBlock' + ':visible').length==0) ? 'More information' : 'Hide information');
-		});*/
+	$('.team_block:not(".active") .team_name,.team_block:not(".active") img,.team_block:not(".active") p').on('click',function(){
+		$('.team_block:not(".active")').fadeOut(0);
+		$(this).closest('.team_block').fadeIn(0).addClass('active');
+		$(this).closest('.team_block').find('.columns_container').slideDown();
+		$(this).closest('.team_block').find('.service_block_btn').css('display','inline-block');
 	});
-	$('.team_block .service_block_btn').click(function(){
-		$(this).removeClass('active');
-		$(this).closest('.team_block').find('.columns_container').fadeOut();
-		$(this).closest('.team_block').find('.more_info').fadeIn();
+	$('.service_block_btn').click(function(){
+		$(this).closest('.team_block').find('.columns_container').slideUp();
+		$('.team_block').fadeIn(500);
+		$(this).closest('.team_block').removeClass('active');
+		$(this).fadeOut(0);
 	});
 
 	/* Tooltip */

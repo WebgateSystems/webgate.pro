@@ -7,5 +7,6 @@
         ul.bx_carousel
           - projects.each do |project|
             li
-              = link_to (image_tag project.screenshots.first.file.url(:air)), project.livelink, target: '_blank', rel: 'nofollow'
-              = link_to project.livelink_f, project.livelink, class: 'sitename', target: '_blank', rel: 'nofollow'
+              - if project.screenshots.any?
+                = link_to (image_tag project.screenshots.first.file.url(:air)), project.livelink, target: '_blank', rel: 'nofollow'
+                = link_to project.livelink_f, project.livelink, class: 'sitename', target: '_blank', rel: 'nofollow'
