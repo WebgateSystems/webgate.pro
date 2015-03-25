@@ -5,10 +5,10 @@
     .row
       - @members.each do |member|
         .team_block
-          = link_to image_tag(member.avatar.url(:avatar)), member_path(member)
-          = link_to member.name, member_path(member), class: 'team_name'
+          = image_tag member.avatar.url(:avatar)
+          span.team_name= member.name
           span.specialization= member.shortdesc
-          p= member.description
+          p= truncate(member.description, length: 200)
           .columns_container.mob
             .worker_column
               h2= t('about')
@@ -16,7 +16,7 @@
               h2= t('activerecord.member.motto')
               p= member.motto
             .worker_column
-              h2= t('tecnologies')
+              h2= t('technologies')
               - if member.technologies.any?
                 - TechnologyGroup.all.each do |tg|
                   - if (tg.technologies & member.technologies).any?

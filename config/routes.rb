@@ -37,11 +37,9 @@ WebgatePro::Application.routes.draw do
   get "home/index", as: 'main'
   get "logout" => "sessions#destroy", as: "logout"
   get "login" => "sessions#new", as: "login"
-  get "team" => "team#index"
-  get "praca" => "team#index"
-  get "команда" => "team#index"
-  get "team/:id" => "team#show", as: "member"
-  get "команда/:id" => "team#show"#, as: "member" #todo
+  get "team" => "home#team"
+  get "praca" => "home#team"
+  get "команда" => "home#team"
   get "portfolio" => "home#portfolio"
   get "портфолио" => "home#portfolio"
 
