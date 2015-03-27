@@ -65,7 +65,8 @@ ru:
       collage: "Коллаж"
     member:
       name: "Имя"
-      shortdesc: "Краткое описание"
+      job_title: "Специализация"
+      education: "Образование"
       description: "Описание"
       avatar: "Аватар"
       motto: "Девиз"

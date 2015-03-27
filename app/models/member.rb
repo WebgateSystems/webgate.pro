@@ -9,19 +9,9 @@ class Member < ActiveRecord::Base
   has_many :member_links, dependent: :destroy
   accepts_nested_attributes_for :member_links, allow_destroy: true
 
-  validates_presence_of :name, :description, :shortdesc, :motto, :avatar
-  translates  :name, :description, :shortdesc, :motto
+  validates_presence_of :name, :job_title, :description, :motto, :avatar
+  translates  :name, :job_title, :description, :shotdesc, :motto
 
   mount_uploader :avatar , PictureUploader
-
-  private
-
-  def technologies_by_group(tech_group)
-    #if tech_group.technologies & self.technologies
-    #self.technologies.each do |technology|
-    #if технология мембера входит в tg
-    #          - выводим
-    #          - if tg.include?(technology)
-  end
 
 end

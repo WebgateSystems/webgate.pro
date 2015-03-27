@@ -13,7 +13,7 @@ feature 'Member in admin panel.' do
   scenario 'Member should with assigned technology', js: true do
     click_link ('New')
     fill_in 'member[name]', with: 'TestNamePew'
-    fill_in 'member[shortdesc]', with: 'TestShortDescPew'
+    fill_in 'member[job_title]', with: 'TestJobTitlePew'
     fill_in_ckeditor 'Description', with: 'TestDescPew'
     fill_in 'member[motto]', with: 'TestMottoPew'
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))

@@ -12,14 +12,17 @@
         b= t('activerecord.member.name') + ': '
         = @member.name
       p
+        b= t('activerecord.member.job_title') + ': '
+        = @member.job_title
+      p
         b= t('activerecord.member.motto') + ': '
         = @member.motto
       p
-        b= t('activerecord.member.shortdesc') + ': '
-        = @member.shortdesc
-      p
         b= t('activerecord.member.description') + ': '
         = @member.description.try(:html_safe)
+      p
+        b= t('activerecord.member.education') + ': '
+        = @member.education.try(:html_safe)
       p
         b= t('activerecord.member.avatar') + ': '
         br

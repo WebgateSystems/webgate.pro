@@ -14,7 +14,7 @@ end
 if Member.count == 0
   I18n.locale = 'ru'
   member = Member.create name: 'Александр Добровольский',
-                shortdesc: 'Студент киевского политехнического института. Ruby on Rails developer.',
+                job_title: 'Студент киевского политехнического института. Ruby on Rails developer.',
                 description: 'Я - студент 2 курса, киевского политехнического института.',
                 motto: 'Harder,better, faster, stronger!'
   src = File.join(Rails.root, "app/assets/images/alex_dobr.jpg")
@@ -23,7 +23,7 @@ if Member.count == 0
   member.save!
 
   member = Member.create name: 'Юрий Скурихин',
-                shortdesc: 'Ruby on Rails разработчик',
+                job_title: 'Ruby on Rails разработчик',
                 description: 'На рельсах с 2014 года',
                 motto: 'Per aspera ad astra'
   member.avatar = Rails.root.join("app/assets/images/yuri_skurikhin.png").open
@@ -34,7 +34,7 @@ if Member.count == 0
 
   member = Member.find 2
   member.name = 'Yuri Skurikhin'
-  member.shortdesc = 'Ruby on Rails Developer'
+  member.job_title = 'Ruby on Rails Developer'
   member.description = 'With Rails in 2014'
   member.motto = 'Per aspera ad astra'
   member.save
@@ -44,7 +44,7 @@ if Member.count == 0
 
   member = Member.find 2
   member.name = 'Yuri Skurikhin'
-  member.shortdesc = 'Ruby on Rails Developer'
+  member.job_title = 'Ruby on Rails Developer'
   member.description = 'With Rails in 2014'
   member.motto = 'Per aspera ad astra'
   member.save
