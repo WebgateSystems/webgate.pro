@@ -8,7 +8,7 @@
           = image_tag member.avatar.url(:avatar)
           span.team_name= member.name
           span.specialization= member.shortdesc
-          p= truncate(member.description, length: 200)
+          p= truncate(member.motto, length: 100)
           .columns_container.mob
             .worker_column
               h2= t('about')

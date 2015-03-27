@@ -42,7 +42,7 @@
 		adaptiveHeight: true,
 		slideMargin: 0
 	});
-	$('.team_block:not(".active") .team_name,.team_block:not(".active") img,.team_block:not(".active") p').on('click',function(){
+	$('.team_block:not(".active") .team_name,.team_block:not(".active") img,.team_block:not(".active") p,.team_block:not(".active") .specialization').on('click',function(){
 		$('.team_block:not(".active")').fadeOut(0);
 		$(this).closest('.team_block').fadeIn(0).addClass('active');
 		$(this).closest('.team_block').find('.columns_container').slideDown();

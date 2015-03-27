@@ -23,4 +23,4 @@
       p
         b= t('activerecord.page.content') + ': '
         br
-        = @page.content.html_safe
+        = @page.content.try(:html_safe)

@@ -19,7 +19,7 @@ feature 'Member in admin panel.' do
     click_link ('New')
     fill_in 'member[name]', with: "TestName2"
     fill_in 'member[shortdesc]', with: "TestShortDesc2"
-    fill_in 'member[description]', with: "TestDesc2"
+    fill_in_ckeditor 'Description', with: "TestDesc2"
     fill_in 'member[motto]', with: "TestMotto2"
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))
     click_button 'Save'

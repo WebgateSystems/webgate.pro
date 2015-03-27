@@ -9,13 +9,13 @@
     = f.input :description, label: t('activerecord.project.description'), label_html: { class: 'label' }
 
     = f.input :keywords, label: t('activerecord.project.keywords'), label_html: { class: 'label' }
-    
-    = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
+
+    = f.input :content, as: :ckeditor, input_html: { class: 'ckeditor', ckeditor: {toolbar: 'mini'} }
 
     = f.label :category_id, t('activerecord.page.category_id'), class: :label
     = f.label :category_id, t('activerecord.page.category_id_main'), class: :label
     = f.select :category_id, @categories
-  
+
   .actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '

@@ -4,7 +4,7 @@
     = f.input :name, label: t('activerecord.member.name'), label_html: { class: 'label' }
     = f.input :shortdesc, label: t('activerecord.member.shortdesc'), label_html: { class: 'label' }
     = f.input :motto, label: t('activerecord.member.motto'), label_html: {class: 'label'}
-    = f.input :description, label: t('activerecord.member.description'), label_html: { class: 'label' }
+    = f.input :description, label: t('activerecord.member.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
     = f.input :avatar, label: t('activerecord.member.avatar'), label_html: { class: 'label' }
 
     h3= t('links') + ':'

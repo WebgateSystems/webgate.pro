@@ -19,7 +19,7 @@
         = @member.shortdesc
       p
         b= t('activerecord.member.description') + ': '
-        = @member.description
+        = @member.description.try(:html_safe)
       p
         b= t('activerecord.member.avatar') + ': '
         br
