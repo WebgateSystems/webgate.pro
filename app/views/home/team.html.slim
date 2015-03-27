@@ -13,8 +13,9 @@
             .worker_column
               h2= t('about')
               p= member.description.try(:html_safe)
-              h2= t('activerecord.member.education')
-              p= member.education.try(:html_safe)
+              - if member.education.present?
+                h2= t('activerecord.member.education')
+                p= member.education.try(:html_safe)
               - if member.member_links.any?
                 h2= t('online_portfolio')
                 - member.member_links.each do |ml|
