@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150327135928) do
+ActiveRecord::Schema.define(version: 20150327125554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,7 +106,6 @@ ActiveRecord::Schema.define(version: 20150327135928) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "position"
-    t.string   "job_title"
   end
 
   create_table "members_technologies", id: false, force: true do |t|
@@ -158,12 +157,15 @@ ActiveRecord::Schema.define(version: 20150327135928) do
   add_index "project_translations", ["project_id"], name: "index_project_translations_on_project_id", using: :btree
 
   create_table "projects", force: true do |t|
+    t.string   "shortlink"
     t.string   "title"
+    t.text     "description"
+    t.text     "keywords"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "livelink"
-    t.boolean  "publish",    default: false
+    t.boolean  "publish",     default: false
     t.integer  "position"
     t.string   "collage"
   end
@@ -211,8 +213,8 @@ ActiveRecord::Schema.define(version: 20150327135928) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "position"
     t.string   "color"
+    t.integer  "position"
   end
 
   create_table "technology_translations", force: true do |t|

@@ -10,7 +10,7 @@ class Member < ActiveRecord::Base
   accepts_nested_attributes_for :member_links, allow_destroy: true
 
   validates_presence_of :name, :job_title, :description, :motto, :avatar
-  translates  :name, :job_title, :description, :shotdesc, :motto
+  translates  :name, :job_title, :description, :education, :motto
 
   mount_uploader :avatar , PictureUploader
 
