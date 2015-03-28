@@ -4,7 +4,7 @@ feature 'Adding team to site.' do
 
   let!(:member1) { Member.create(name: 'TestName1', job_title: 'TestJobTitle1',
       description: 'TestDesc1', motto: 'TestMotto1',
-      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'alex_dobr.jpg'))) }
+      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) }
 
   before do
     visit "/team"

@@ -1,4 +1,13 @@
 WebgatePro::Application.routes.draw do
+  get "main"          => "home#index", as: 'main'
+  match "not-found"     => "pages#not_found", via: [:get, :post], as: :not_found
+  get "portfolio" => "home#portfolio"
+  get "team" => "home#team"
+
+  ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', { no_prefixes: true })
+end
+
+WebgatePro::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
   resources :sessions
@@ -35,16 +44,9 @@ WebgatePro::Application.routes.draw do
     root :to => "home#index"
   end
 
-  get "home/index", as: 'main'
   get "logout" => "sessions#destroy", as: "logout"
   get "login" => "sessions#new", as: "login"
-  get "team" => "home#team"
-  get "praca" => "home#team"
-  get "команда" => "home#team"
-  get "portfolio" => "home#portfolio"
-  get "портфолио" => "home#portfolio"
 
-  match "not-found" => "pages#not_found", via: [:get, :post], as: :not_found
-  match ":shortlink" => "pages#showbyshortlink", via: [:get, :post]
-  root 'home#index'
+  get ":shortlink" => "pages#showbyshortlink"
+  root to: 'home#index'
 end

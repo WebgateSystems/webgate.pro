@@ -16,7 +16,7 @@ feature 'Member in admin panel.' do
     fill_in 'member[job_title]', with: 'TestJobTitlePew'
     fill_in_ckeditor 'Description', with: 'TestDescPew'
     fill_in 'member[motto]', with: 'TestMottoPew'
-    attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))
+    attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     select technology.title, from: 'member_technology_ids', visible: false
     click_button 'Save'
     visit '/admin/members'
