@@ -17,14 +17,15 @@ if Member.count == 0
                 job_title: 'Студент киевского политехнического института. Ruby on Rails developer.',
                 description: 'Я - студент 2 курса, киевского политехнического института.',
                 motto: 'Harder,better, faster, stronger!'
-  member.avatar = Rails.root.join("app/assets/images/alex_dobr.jpg").open
+  member.avatar = Rails.root.join('app/assets/images/alex_dobr.jpg').open
   member.save!
 
   member = Member.create name: 'Юрий Скурихин',
                 job_title: 'Ruby on Rails разработчик',
-                description: 'На рельсах с 2014 года',
+                description: "<p>На рельсах с 2014 года</p>\r\n\r\n<p>- *nix<br />\r\n- ruby<br />\r\n- Rails 4<br />\r\n- PostgreSQL<br />\r\n- тестирование (rspec, capybara)&nbsp;<br />\r\n- Git (git flow)<br />\r\n- Github, Gitlab<br />\r\n- Slim, Haml<br />\r\n- CoffeeScript/JS<br />\r\n- jQuery(UI)<br />\r\n- AJAX<br />\r\n- SASS/CSS<br />\r\n- JSON API<br />\r\n- Heroku<br />\r\n- AWS<br />\r\n- Bootstrap<br />\r\n- Foundation<br />\r\n- Интеграция с внешними веб-сервисами<br />\r\n- Реализация мобильных версий</p>\r\n",
+                education: "<h4><strong>Московский Университет Государственного Управления</strong></h4>\r\n\r\n<p>Инженер-программист&#39;s degree -&nbsp;Информационные системы в экономике</p>\r\n\r\n<p>2003 - 2008</p>\r\n",
                 motto: 'Per aspera ad astra'
-  member.avatar = Rails.root.join("app/assets/images/yuri_skurikhin.png").open
+  member.avatar = Rails.root.join('app/assets/images/yuri_skurikhin.png').open
   member.save!
 
   I18n.locale = 'en'
@@ -33,7 +34,8 @@ if Member.count == 0
   member = Member.find 2
   member.name = 'Yuri Skurikhin'
   member.job_title = 'Ruby on Rails Developer'
-  member.description = 'With Rails in 2014'
+  member.description = "<ul>\r\n\t<li>With Rails in 2014</li>\r\n\t<li>Programming languages: Ruby, JavaScript</li>\r\n\t<li>DMSs: PostgreSQL, MongoDB</li>\r\n\t<li>Web frameworks: Ruby on Rails</li>\r\n\t<li>JavaScript libraries: JQuery, Ember</li>\r\n\t<li>Markup languages, template engines: HTML, XML, ERB, Haml, Slim, Markdown</li>\r\n\t<li>SCMs: Git (git flow)</li>\r\n\t<li>Operating systems: Linux, Windows</li>\r\n</ul>\r\n"
+  member.education = "<h4><strong>Moscow University Governance</strong></h4>\r\n\r\n<p>Engineer&#39;s degree -&nbsp;Programming and Economy</p>\r\n\r\n<p>2003 - 2008</p>\r\n"
   member.motto = 'Per aspera ad astra'
   member.save
 
@@ -43,7 +45,8 @@ if Member.count == 0
   member = Member.find 2
   member.name = 'Yuri Skurikhin'
   member.job_title = 'Ruby on Rails Developer'
-  member.description = 'With Rails in 2014'
+  member.description = "<ul>\r\n\t<li>With Rails in 2014</li>\r\n\t<li>Programming languages: Ruby, JavaScript</li>\r\n\t<li>DMSs: PostgreSQL, MongoDB</li>\r\n\t<li>Web frameworks: Ruby on Rails</li>\r\n\t<li>JavaScript libraries: JQuery, Ember</li>\r\n\t<li>Markup languages, template engines: HTML, XML, ERB, Haml, Slim, Markdown</li>\r\n\t<li>SCMs: Git (git flow)</li>\r\n\t<li>Operating systems: Linux, Windows</li>\r\n</ul>\r\n"
+  member.education = "<h4><strong>Moscow University Governance</strong></h4>\r\n\r\n<p>Engineer&#39;s degree -&nbsp;Programming and Economy</p>\r\n\r\n<p>2003 - 2008</p>\r\n"
   member.motto = 'Per aspera ad astra'
   member.save
 
