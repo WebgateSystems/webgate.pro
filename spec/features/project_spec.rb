@@ -25,7 +25,7 @@ feature 'Project in admin panel.' do
   scenario 'Try drag and drop on index', js: true do
     click_link ('New')
     fill_in 'project[title]', with: "TestTitle2"
-    fill_in 'project[content]', with: "TestContent2"
+    fill_in_ckeditor 'Content', with: "TestContent2"
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'

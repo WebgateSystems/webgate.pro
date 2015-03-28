@@ -12,8 +12,7 @@ class CreateProjects < ActiveRecord::Migration
 
       t.timestamps
     end
-    Project.create_translation_table! title: :string, shortlink: :string, description: :text,
-                                      keywords: :text, content: :text
+    Project.create_translation_table! title: :string, content: :text
   end
 
   def self.down

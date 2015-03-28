@@ -28,6 +28,7 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'chosen-rails'
 gem 'ranked-model'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'

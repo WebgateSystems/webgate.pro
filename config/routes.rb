@@ -1,5 +1,6 @@
 WebgatePro::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
   resources :sessions
 
   namespace :admin do

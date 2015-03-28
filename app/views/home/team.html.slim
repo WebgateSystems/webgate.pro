@@ -7,27 +7,32 @@
         .team_block
           = image_tag member.avatar.url(:avatar)
           span.team_name= member.name
-          span.specialization= member.shortdesc
-          p= truncate(member.description, length: 200)
+          span.specialization= member.job_title
+          p= truncate(member.motto, length: 100)
           .columns_container.mob
             .worker_column
               h2= t('about')
-              p= member.description
-              h2= t('activerecord.member.motto')
-              p= member.motto
+              p= member.description.try(:html_safe)
+              - if member.education.present?
+                h2= t('activerecord.member.education')
+                p= member.education.try(:html_safe)
+              - if member.member_links.any?
+                h2= t('online_portfolio')
+                - member.member_links.each do |ml|
+                  h3.blue
+                    i.fa.fa-check-circle
+                    = link_to ml.name, ml.link, target: '_blank', rel: 'nofollow'
             .worker_column
-              h2= t('technologies')
               - if member.technologies.any?
+                h2= t('technologies')
                 - TechnologyGroup.all.each do |tg|
                   - if (tg.technologies & member.technologies).any?
-                    h3.blue
+                    h3 style=("color: #{tg.color}")
                       i.fa.fa-check-circle
                       = tg.title
                     p
                       - (tg.technologies & member.technologies).each do |tech|
-                        span= tech.title
-              - else
-                = t('web_app_theme.nothing')
+                        span= link_to tech.title, '#', data: { img: tech.logo.url(:thumb), title: tech.title, desc: tech.description }, class: 'tooltipstered'
           span.mob.more_info= t('more_information')
           span.mob.service_block_btn= t('hide_information')
     = paginate @members

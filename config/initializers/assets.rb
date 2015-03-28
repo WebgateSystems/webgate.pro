@@ -12,3 +12,4 @@ Rails.application.config.assets.precompile += %w( admin.css )
   Rails.application.config.assets.precompile += ["admin/#{controller}.js", "admin/#{controller}.css"]
 end
 Rails.application.config.assets.precompile += %w( style_mob.css )
+Rails.application.config.assets.precompile += %w( ckeditor/* )

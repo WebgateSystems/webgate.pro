@@ -63,8 +63,8 @@ pl:
       collage: "Kolaż"
     member:
       name: "Imię"
-      shortdesc: "Krótki opis"
-      description: "Opis"
+      job_title: "specjalizacja"
+      education: "Edukacja"
       avatar: "Awatara"
       motto: "Motto"
       watch_profile: "Zobacz profil"
