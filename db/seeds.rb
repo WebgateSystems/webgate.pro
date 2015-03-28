@@ -17,9 +17,7 @@ if Member.count == 0
                 job_title: 'Студент киевского политехнического института. Ruby on Rails developer.',
                 description: 'Я - студент 2 курса, киевского политехнического института.',
                 motto: 'Harder,better, faster, stronger!'
-  src = File.join(Rails.root, "app/assets/images/alex_dobr.jpg")
-  src_file = File.new(src)
-  member.avatar = src_file
+  member.avatar = Rails.root.join("app/assets/images/alex_dobr.jpg").open
   member.save!
 
   member = Member.create name: 'Юрий Скурихин',
