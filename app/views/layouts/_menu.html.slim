@@ -38,13 +38,9 @@ ul.mob.mob_nav
 span.mob.ico_lang
   = locale.upcase
 ul.mob.mob_nav
-  li.active
-    = link_to '#' do
-      span
-        = locale.upcase
-  - other_langs.each do |l|
+  - other_mobile_langs.each do |l|
     li
       = link_to root_path(lang: l) do
         span
-          = l.upcase
+          = l
 

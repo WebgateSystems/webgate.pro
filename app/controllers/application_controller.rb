@@ -7,7 +7,14 @@ class ApplicationController < ActionController::Base
   LANGS = [
       ['en', 'English'],
       ['pl', 'Polski'],
-      ['ru', 'Русский']
+      ['ru', 'Русский'],
+      ['fr', 'Français']
+  ]
+
+  PUBLIC_LANGS = [
+    ['en', 'English'],
+    ['pl', 'Polsci'],
+    ['ru', 'Русский']
   ]
 
   def common_prepare
@@ -70,7 +77,7 @@ class ApplicationController < ActionController::Base
   end
 
   def lang_by_tag(lng)
-    language = LANGS.detect{|lang| lang.first == lng.downcase}
-    language ? language.first : LANGS.first.first
+    language = PUBLIC_LANGS.detect{|lang| lang.first == lng.downcase}
+    language ? language.first : PUBLIC_LANGS.first.first
   end
 end

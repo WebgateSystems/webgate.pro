@@ -104,9 +104,7 @@ en:
   member_links: "Links"
   add_link: "Add link"
   content: "Content"
-<<<<<<< HEAD
   admin_panel: "Admin Panel"
-=======
   back_to_team: "Back to Team"
   more_information: "More Information"
   hide_information: "Hide Information"
@@ -116,4 +114,3 @@ en:
   add_collage: "Add collage"
   add_files: "Add files"
   add_avatar: "Add avatar"
->>>>>>> develop
