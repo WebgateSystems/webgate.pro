@@ -3,7 +3,7 @@
   .form-inputs
     = f.input :title, label: t('activerecord.project.title'), label_html: { class: 'label' }
     = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
-    = f.input :livelink, as: :url, label: t('activerecord.project.livelink'), label_html: { class: 'label' }, placeholder: 'https://webgate.pro'
+    p= f.input :livelink, as: :url, label: t('activerecord.project.livelink'), label_html: { class: 'label' }, placeholder: 'https://webgate.pro'
     .label= t('publish')
     = f.input :publish, label: t('activerecord.project.publish')
     .label= t('activerecord.project.collage')
@@ -15,7 +15,7 @@
     = f.hidden_field :collage_cache, value: f.object.collage_cache
     - if f.object.collage.url.present?
       = image_tag f.object.collage.url(:collage), id: 'img_cache'
-    br
+    p
     .label= t('screenshots')
     #screenshots
       = f.simple_fields_for :screenshots, Screenshot.new do |s|
