@@ -57,12 +57,6 @@ class ApplicationController < ActionController::Base
       end
     end
     lang = params[:lang] || curr_locale || cookies[:lang] || geoip_lang
-    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-    puts lang
-    puts params[:lang]
-    puts curr_locale
-    puts cookies[:lang]
-    puts geoip_lang
     cookies[:lang] = lang_by_tag(lang)
     I18n.locale = lang
   end
