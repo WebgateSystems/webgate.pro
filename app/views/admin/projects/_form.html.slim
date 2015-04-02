@@ -40,8 +40,8 @@ javascript:
       reader.onload = function (e) {
         $('#img_prev')
           .attr('src', e.target.result)
-          .width(200)
-          .height(160);
+          .width(940)
+          .height(244);
       };
       reader.readAsDataURL(input.files[0]);
     }
@@ -53,7 +53,7 @@ javascript:
       $('#filenames').html('');
       $.each(names, function( index, value ) {
         console.log(value);
-        $('#filenames').append('<li>'+value);
+        $('#filenames').append("<i class='fa fa-picture-o'></i> " + value + "<br/>");
       });
     }
   }
