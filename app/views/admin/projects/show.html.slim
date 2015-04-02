@@ -41,7 +41,7 @@
               tr.item data-item-id="#{screenshot.id}" data-parent-id="#{@project.id}"
                 td= image_tag screenshot.file.url(:thumb) if screenshot
                 td= screenshot.created_at
-                td= link_to t('web_app_theme.delete'), admin_project_screenshot_path(@project, screenshot), method: :delete
+                td= link_to t('web_app_theme.delete'), admin_project_screenshot_path(@project, screenshot), id: screenshot.id, method: :delete, remote: true
       - else
         = t('web_app_theme.nothing')
 

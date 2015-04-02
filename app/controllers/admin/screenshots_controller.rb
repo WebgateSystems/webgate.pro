@@ -16,6 +16,7 @@ class Admin::ScreenshotsController < Admin::HomeController
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Successfully destroyed screenshot.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

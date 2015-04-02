@@ -26,12 +26,13 @@
       .completed
         - if @project.screenshots.any?
           - @project.screenshots.each do |s|
-            i.fa.fa-check-circle
-            |&nbsp
-            = s.file_identifier
-            |&nbsp
-            = link_to t('web_app_theme.delete'), admin_project_screenshot_path(@project, s), method: :delete
-            br
+            .file
+              i.fa.fa-check-circle
+              |&nbsp
+              = s.file_identifier
+              |&nbsp
+              span= link_to t('web_app_theme.delete'), admin_project_screenshot_path(@project, s), id: s.id, method: :delete, remote: true
+              br
       .new
     br
     .label= t('technologies')
@@ -62,7 +63,6 @@ javascript:
       var names = $.map(input.files, function(val) { return val.name; });
       $('#filenames .new').html('');
       $.each(names, function( index, value ) {
-        console.log(value);
         $('#filenames .new').append("<i class='fa fa-picture-o'></i> " + value + "<br/>");
       });
     }
