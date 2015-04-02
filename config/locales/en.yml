@@ -110,3 +110,6 @@ en:
   publish: "Publish"
   error_404: "Page not found (error 404)!"
   error_404_message: "If You belive, that isn't correct - please, send this error by email or contact form to us. Thanks."
+  add_collage: "Add collage"
+  add_files: "Add files"
+  add_avatar: "Add avatar"

@@ -35,7 +35,7 @@ class Admin::TechnologiesController < Admin::HomeController
 
   def destroy
     @technology.destroy
-    redirect_to admin_technologies_url, notice: 'Successfully destroyed admin/technology.'
+    redirect_to :back, notice: 'Successfully destroyed admin/technology.'
   end
 
   private
