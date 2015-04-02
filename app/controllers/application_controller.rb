@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   PUBLIC_LANGS = [
     ['en', 'English'],
-    ['pl', 'Polsci'],
+    ['pl', 'Polski'],
     ['ru', 'Русский']
   ]
 
