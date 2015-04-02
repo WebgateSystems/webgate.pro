@@ -1,36 +1,69 @@
-= simple_form_for [:admin, @project] do |f|
+= simple_form_for [:admin, @project], html: { id: 'project-form', multipart: true } do |f|
   = f.error_notification
   .form-inputs
-    = f.input :shortlink, label: t('activerecord.project.shortlink'), label_html: { class: 'label' }
     = f.input :title, label: t('activerecord.project.title'), label_html: { class: 'label' }
-    = f.input :description, label: t('activerecord.project.description'), label_html: { class: 'label' }
-    = f.input :keywords, label: t('activerecord.project.keywords'), label_html: { class: 'label' }
-    = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }
-    = f.input :livelink, as: :url, label: t('activerecord.project.livelink'), label_html: { class: 'label' }, placeholder: 'https://webgate.pro'
-    = f.input :publish, label: t('activerecord.project.publish'), label_html: { class: 'label' }
+    = f.input :content, label: t('activerecord.project.content'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
+    p= f.input :livelink, as: :url, label: t('activerecord.project.livelink'), label_html: { class: 'label' }, placeholder: 'https://webgate.pro'
+    .label= t('publish')
+    = f.input :publish, label: t('activerecord.project.publish')
     .label= t('activerecord.project.collage')
-    = f.file_field :collage
+    #collage
+      .wrapper
+        = f.file_field :collage, onchange: 'readCollageURL(this);'
+      span.button.success= t('add_collage')
+    = image_tag '', id: 'img_prev'
     = f.hidden_field :collage_cache, value: f.object.collage_cache
     - if f.object.collage.url.present?
-      = image_tag f.object.collage.url(:thumb)
-
-    h3= t(:screenshots)
-    table.project-form
-      thead
-        tr
-          td= t('web_app_theme.file')
-          td= t('web_app_theme.thumb')
-          td= t('web_app_theme.delete')
-      tbody
-        = f.fields_for :screenshots do |s|
-          = render 'screenshot_fields', f: s
-    .links= link_to_add_association t('add_screenshot'), f, :screenshots
-
-    h3= t(:technologies)
-    #technologies
+      = image_tag f.object.collage.url(:collage), id: 'img_cache'
+    p
+    .label= t('screenshots')
+    #screenshots
+      = f.simple_fields_for :screenshots, Screenshot.new do |s|
+        .wrapper
+          = s.file_field :file, multiple: true, name: 'project[screenshots_attributes][][file]', onchange: 'readScreenshotURL(this);'
+        span.button.success= t('add_files') + '...'
+    #filenames
+      .completed
+        - if @project.screenshots.any?
+          - @project.screenshots.each do |s|
+            .file
+              i.fa.fa-check-circle
+              |&nbsp
+              = s.file_identifier
+              |&nbsp
+              span= link_to t('web_app_theme.delete'), admin_project_screenshot_path(@project, s), id: s.id, method: :delete, remote: true
+              br
+      .new
+    br
+    .label= t('technologies')
     = f.association :technologies, collection: Technology.all.map{ |t| [t.title, t.id, {"data-color" => t.technology_group.color}] }, include_blank: true, label: false, input_html: { class: 'chosen-select' }
     br
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '
     = link_to t('web_app_theme.cancel'), admin_projects_path
+
+javascript:
+  function readCollageURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      $('#img_cache').hide();
+      reader.onload = function (e) {
+        $('#img_prev')
+          .attr('src', e.target.result)
+          .width(940)
+          .height(244);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function readScreenshotURL(input) {
+    if (input.files && input.files[0]) {
+      var names = $.map(input.files, function(val) { return val.name; });
+      $('#filenames .new').html('');
+      $.each(names, function( index, value ) {
+        $('#filenames .new').append("<i class='fa fa-picture-o'></i> " + value + "<br/>");
+      });
+    }
+  }

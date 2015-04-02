@@ -2,12 +2,22 @@
   = f.error_notification
   .form-inputs
     = f.input :name, label: t('activerecord.member.name'), label_html: { class: 'label' }
-    = f.input :shortdesc, label: t('activerecord.member.shortdesc'), label_html: { class: 'label' }
+    = f.input :job_title, label: t('activerecord.member.job_title'), label_html: { class: 'label' }
     = f.input :motto, label: t('activerecord.member.motto'), label_html: {class: 'label'}
-    = f.input :description, label: t('activerecord.member.description'), label_html: { class: 'label' }
-    = f.input :avatar, label: t('activerecord.member.avatar'), label_html: { class: 'label' }
+    = f.input :description, label: t('activerecord.member.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
+    p= f.input :education, label: t('activerecord.member.education'), label_html: { class: 'label' }, label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
+    .label= t('activerecord.member.avatar')
+    #avatar
+      .wrapper
+        = f.file_field :avatar, onchange: 'readAvatarURL(this);'
+      span.button.success= t('add_avatar')
+    = image_tag '', id: 'img_prev'
+    = f.hidden_field :avatar_cache, value: f.object.avatar_cache
+    - if f.object.avatar.url.present?
+      = image_tag f.object.avatar.url(:avatar), id: 'img_cache'
 
-    h3= t('links') + ':'
+    p
+    .label= t('member_links')
     table.member-form
       thead
         tr
@@ -19,11 +29,26 @@
           = render 'member_link_fields', f: s
     .links= link_to_add_association t('add_link'), f, :member_links
 
-    h3= t('technologies') + ':'
-    #technologies
-      = f.association :technologies, collection: Technology.all.map{|t| [t.title,t.id,{"data-color" => t.technology_group.color}]}, include_blank: true, label: false, input_html: {class: 'chosen-select'}
+    p
+    .label= t('technologies')
+    = f.association :technologies, collection: Technology.all.map{|t| [t.title,t.id,{"data-color" => t.technology_group.color}]}, include_blank: true, label: false, input_html: {class: 'chosen-select'}
     br
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '
     = link_to t('web_app_theme.cancel'), admin_members_path
+
+javascript:
+  function readAvatarURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      $('#img_cache').hide();
+      reader.onload = function (e) {
+        $('#img_prev')
+          .attr('src', e.target.result)
+          .width(180)
+          .height(180);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }

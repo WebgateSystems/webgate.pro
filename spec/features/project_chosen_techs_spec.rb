@@ -14,10 +14,7 @@ feature 'Project in admin panel.' do
     visit '/admin/projects'
     click_link ('New')
     fill_in 'project[title]', with: 'TestTitleFull'
-    fill_in 'project[shortlink]', with: 'TestlinkFull'
-    fill_in 'project[description]', with: 'TestDescFull'
-    fill_in 'project[keywords]', with: 'TestKeyWordFull'
-    fill_in 'project[content]', with: 'TestContentFull'
+    fill_in_ckeditor 'Content', with: 'TestContent'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     select technology.title, from: 'project_technology_ids', visible: false

@@ -1,0 +1,25 @@
+.flash {
+  .message {
+    width: 100%;
+    height: 45px;
+    position: fixed;
+    z-index: 9999;
+    bottom: 0;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 10px;
+    background-image: asset_url("warning_background.png");
+  }
+  .notice {
+    display: table-cell;
+    vertical-align: middle;
+    background-image: asset_url("notice_background.png");
+  }
+  .warning {
+    display: table-cell;
+    vertical-align: middle;
+    background-image: asset_url("error_background.png");
+  }
+}

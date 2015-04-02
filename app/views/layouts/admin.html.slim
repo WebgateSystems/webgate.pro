@@ -6,10 +6,9 @@ html lang="en"
 
     title= content_for?(:title) ? yield(:title) : 'Webgate Systems - dashboard'
 
-    = stylesheet_link_tag 'admin'
+    = stylesheet_link_tag 'admin', params[:controller], media: "all"
     = javascript_include_tag 'admin'
-    = stylesheet_link_tag "admin/#{controller_name}"
-    = javascript_include_tag "admin/#{controller_name}"
+    = javascript_include_tag params[:controller]
     = javascript_include_tag "admin/test" if Rails.env.test?
     = csrf_meta_tags
 
@@ -47,10 +46,7 @@ html lang="en"
         li.divider
         li= link_to t('web_app_theme.logout'), logout_path
 
-  .flash
-    - flash.each do |type, message|
-      div class=("message #{type}")
-        p= message
+  = render 'layouts/messages'
 
   .row
     .large-12.columns

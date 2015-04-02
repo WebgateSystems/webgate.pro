@@ -34,14 +34,6 @@
 	$('#block6').click(function(){
 		$('.block_6').animatescroll({scrollSpeed:1000,easing:'easeOutExpo'});
 	});
-	$('.carousel div.mob').slidesjs({
-		width: 320,
-		height: 387,
-		navigation:{
-			active: false,
-			effect: 'slide'
-		}
-	});
 	$('.carousel_block ul.bx_carousel').bxSlider({
 		minSlides: 1,
 		maxSlides: 3,
@@ -50,4 +42,37 @@
 		adaptiveHeight: true,
 		slideMargin: 0
 	});
+	$('.team_block:not(".active") .team_name,.team_block:not(".active") img,.team_block:not(".active") p,.team_block:not(".active") .specialization').on('click',function(){
+		$('.team_block:not(".active")').fadeOut(0);
+		$(this).closest('.team_block').fadeIn(0).addClass('active');
+		$(this).closest('.team_block').find('.columns_container').slideDown();
+		$(this).closest('.team_block').find('.service_block_btn').css('display','inline-block');
+	});
+	$('.service_block_btn').click(function(){
+		$(this).closest('.team_block').find('.columns_container').slideUp();
+		$('.team_block').fadeIn(500);
+		$(this).closest('.team_block').removeClass('active');
+		$(this).fadeOut(0);
+	});
+
+	/* Tooltip */
+	/* http://iamceege.github.io/tooltipster/ */
+	//$('#tooltip1').tooltipster({
+	//	position: 'bottom',
+	//	minWidth: 300,
+	//	maxWidth: 300,
+	//	content: $('<div class="tooltip_block"><p><img src="images/img22.png" /> <strong>PHP</strong> is a server-side scripting language designed for web development but also used as a general-purpose programming language.</p><p>As of January 2013, PHP was installed on more than 240 million websites (39% of those sampled) and 2.1 million web servers.</p><p>More on Wikipedia: <a href="#">PHP article</a></p></div>')
+	//});
+
+  $('.tooltipstered').tooltipster({
+    position: 'bottom',
+		minWidth: 300,
+		maxWidth: 300,
+      functionBefore: function(origin, content) {
+        var data = '<div class="tooltip_block"><p><img src="'+$(this).attr('data-img')+'"/><strong>'+$(this).attr('data-title')+'</strong> - '+ $(this).attr('data-desc') + '</p></div>';
+        origin.tooltipster('content', $(data));
+        content();
+      }
+  });
+
 });

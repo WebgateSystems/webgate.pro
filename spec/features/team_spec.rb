@@ -2,41 +2,26 @@ require 'rails_helper'
 
 feature 'Adding team to site.' do
 
+  let!(:member1) { Member.create(name: 'TestName1', job_title: 'TestJobTitle1',
+      description: 'TestDesc1', motto: 'TestMotto1',
+      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) }
+
   before do
-    @member = create(:member)
     visit "/team"
   end
 
-  scenario 'Should created profile in list of profiles' do
-    expect(page).to have_content @member.name
-    expect(page).to have_content @member.shortdesc
-  end
-
-  scenario 'Should have link to profile' do
-    click_link("Watch Profile")
-    expect(current_path).to eq "/team/#{@member.id}"
-  end
-
-  scenario 'About page should have all information' do
-    visit "/team/#{@member.id}"
-    expect(page).to have_content @member.name
-    expect(page).to have_content @member.motto
-    expect(page).to have_content @member.description
-  end
-
-  scenario 'About page should have avatar' do
-    visit "/team/#{@member.id}"
-    expect(page).to have_xpath("//img[contains(@src, #{@member.avatar.url})]")
-  end
-
-  scenario 'List page should have avatar' do
+  scenario 'Should show list of team members' do
+    expect(page).to have_content member1.name
+    expect(page).to have_content member1.job_title
     expect(page).to have_xpath("//img[contains(@src, \"uploads/pictures/member\")]")
   end
 
-  scenario 'Show page should have link to /team' do
-    visit "/team/#{@member.id}"
-    click_link('Go Back')
-    expect(current_path).to eq '/team'
+  scenario 'Show and Hide extend team members information', js: true do
+    page.execute_script("$('span.team_name').click()")
+    expect(page).to have_content 'About'
+    expect(page).to have_content member1.description
+    page.execute_script("$('span.mob.service_block_btn').click()")
+    expect(page).to_not have_content 'Technologies'
   end
 
 end

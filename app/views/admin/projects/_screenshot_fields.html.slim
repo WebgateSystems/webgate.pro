@@ -1,8 +1,0 @@
-tr
-  td
-    = f.file_field :file
-    = f.hidden_field :file_cache, value: f.object.file_cache
-  td.thumb
-    - if f.object.file.url.present?
-      = image_tag f.object.file.url
-  td= link_to_remove_association t('web_app_theme.delete'), f

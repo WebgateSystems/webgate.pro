@@ -12,17 +12,8 @@
         b= t('activerecord.project.publish') + ': '
         = @project.publish
       p
-        b= t('activerecord.project.shortlink') + ': '
-        = @project.shortlink
-      p
         b= t('activerecord.project.title') + ': '
         = @project.title
-      p
-        b= t('activerecord.project.description') + ': '
-        = @project.description
-      p
-        b= t('activerecord.project.keywords') + ': '
-        = @project.keywords
       p
         b= t('activerecord.project.content') + ': '
         br
@@ -30,26 +21,27 @@
       p
         b= t('activerecord.project.livelink') + ': '
         br
-        = @project.livelink
+        = link_to @project.livelink, @project.livelink
 
       p
         b= t('activerecord.project.collage') + ': '
         br
-        = image_tag @project.collage.url(:thumb) if @project.collage
+        = image_tag @project.collage.url(:collage) if @project.collage
       p
         b= t('screenshots') + ':'
       - if @screenshots.any?
         table.screenshots#sortable.table
           thead
             tr
-              th= t('activerecord.screenshot.title')
+              th= t('screenshots')
               th= t('activerecord.created_at')
-
+              th= t('web_app_theme.delete')
           tbody
             - @screenshots.each do |screenshot|
               tr.item data-item-id="#{screenshot.id}" data-parent-id="#{@project.id}"
                 td= image_tag screenshot.file.url(:thumb) if screenshot
                 td= screenshot.created_at
+                td= link_to t('web_app_theme.delete'), admin_project_screenshot_path(@project, screenshot), id: screenshot.id, method: :delete, remote: true
       - else
         = t('web_app_theme.nothing')
 

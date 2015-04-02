@@ -16,6 +16,7 @@ gem 'exception_notification'
 gem 'unicorn'
 gem 'kaminari'
 gem 'faker'
+gem "font-awesome-rails"
 gem 'jquery-minicolors-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -27,6 +28,7 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'chosen-rails'
 gem 'ranked-model'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 
 # Use SCSS for stylesheets
 gem 'sass-rails'
@@ -47,12 +49,11 @@ end
 group :development do
   gem 'thin'
   # Deploy with Capistrano
-  gem 'capistrano', '2.15.5'
-  gem 'cape'
-  gem 'capistrano-unicorn'
-  gem 'capistrano-ext'
-  gem 'capistrano_colors'
-  gem 'rvm-capistrano', require: false
+  gem 'capistrano', '~> 3.0', require: false
+  gem 'capistrano-rails', '~> 1.1', require: false
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano-rvm', '~> 0.1', require: false
+  gem 'capistrano3-unicorn'
   gem 'rack-mini-profiler', '~> 0.9.2'
   # Better errors handler
   gem 'better_errors'

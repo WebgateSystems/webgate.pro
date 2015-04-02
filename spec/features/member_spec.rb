@@ -3,12 +3,12 @@ require 'rails_helper'
 feature 'Member in admin panel.' do
 
   let(:user) { create(:user) }
-  let!(:member0) { Member.create(name: 'TestName0', shortdesc: 'TestShortDesc0',
+  let!(:member0) { Member.create(name: 'TestName0', job_title: 'TestJobTitle0', education: 'TestEducation0',
       description: 'TestDesc0', motto: 'TestMotto0',
-      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'alex_dobr.jpg'))) }
-  let!(:member1) { Member.create(name: 'TestName1', shortdesc: 'TestShortDesc1',
+      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) }
+  let!(:member1) { Member.create(name: 'TestName1', job_title: 'TestJobTitle1', education: 'TestEducation1',
       description: 'TestDesc1', motto: 'TestMotto1',
-      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'alex_dobr.jpg'))) }
+      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) }
 
   before do
     sign_in(user)
@@ -18,10 +18,10 @@ feature 'Member in admin panel.' do
   scenario 'Try drag and drop on index', js: true do
     click_link ('New')
     fill_in 'member[name]', with: "TestName2"
-    fill_in 'member[shortdesc]', with: "TestShortDesc2"
-    fill_in 'member[description]', with: "TestDesc2"
+    fill_in 'member[job_title]', with: "TestJobTitle2"
+    fill_in_ckeditor 'Description', with: "TestDesc2"
     fill_in 'member[motto]', with: "TestMotto2"
-    attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))
+    attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     click_button 'Save'
     visit '/admin/members'
     dest_element = find('td', text: "TestName2")
@@ -71,19 +71,19 @@ feature 'Member in admin panel.' do
     expect(page).to have_content 'TestName0'
     expect(page).to have_content 'Description:'
     expect(page).to have_content 'TestDesc0'
-    expect(page).to have_content 'Short description:'
+    expect(page).to have_content 'Education:'
     expect(page).to have_content 'Motto:'
-    expect(page).to have_content 'TestShortDesc0'
+    expect(page).to have_content 'TestEducation0'
     expect(page).to have_content 'TestMotto0'
   end
 
   scenario 'Create member should create member' do
     click_link ('New')
     fill_in 'member[name]', with: 'TestNamePew'
-    fill_in 'member[shortdesc]', with: 'TestShortDescPew'
+    fill_in 'member[job_title]', with: 'TestJobTitlePew'
     fill_in 'member[description]', with: 'TestDescPew'
     fill_in 'member[motto]', with: 'TestMottoPew'
-    attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/alex_dobr.jpg'))
+    attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     click_button 'Save'
     visit '/admin/members'
     expect(page).to have_content 'TestNamePew'

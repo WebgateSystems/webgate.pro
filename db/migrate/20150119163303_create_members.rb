@@ -2,14 +2,14 @@ class CreateMembers < ActiveRecord::Migration
   def self.up
     create_table :members do |t|
       t.string :name
-      t.text :shortdesc
+      t.text :education
       t.text :description
       t.text :motto
       t.string :avatar
 
       t.timestamps
     end
-    Member.create_translation_table! name: :string,  shortdesc: :text,
+    Member.create_translation_table! name: :string, education: :text,
                                      description: :text, motto: :text
   end
 

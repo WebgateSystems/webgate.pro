@@ -1,31 +1,31 @@
 FactoryGirl.define do
 
   factory :page do  
-    shortlink '/'
+    shortlink 'about-test'
     position 1
 
     factory :pl_page do
       association :category, factory: :pl_category
-      title 'Glowna'
-      description 'Glowna'
-      keywords 'Glowna'
-      content 'Glowna'
+      title 'O nas'
+      description 'O nas'
+      keywords 'O nas'
+      content 'O nas'
     end
 
     factory :en_page do
       association :category, factory: :en_category
-      title 'Main'
-      description 'Main'
-      keywords 'Main'
-      content 'Main'
+      title 'About us'
+      description 'About us'
+      keywords 'About us'
+      content 'About us'
     end
 
     factory :ru_page do
       association :category, factory: :ru_category
-      title 'Главная'
-      description 'Главная'
-      keywords 'Главная'
-      content 'Главная'
+      title 'О нас'
+      description 'О нас'
+      keywords 'О нас'
+      content 'О нас'
     end
 
   end
