@@ -23,6 +23,14 @@
           = s.file_field :file, multiple: true, name: 'project[screenshots_attributes][][file]', onchange: 'readScreenshotURL(this);'
         span.button.success= t('add_files') + '...'
     #filenames
+      .completed
+        - if @project.screenshots.any?
+          - @project.screenshots.each do |s|
+            i.fa.fa-check-circle
+            |&nbsp
+            = s.file_identifier
+            br
+      .new
     br
     .label= t('technologies')
     = f.association :technologies, collection: Technology.all.map{ |t| [t.title, t.id, {"data-color" => t.technology_group.color}] }, include_blank: true, label: false, input_html: { class: 'chosen-select' }
@@ -50,10 +58,10 @@ javascript:
   function readScreenshotURL(input) {
     if (input.files && input.files[0]) {
       var names = $.map(input.files, function(val) { return val.name; });
-      $('#filenames').html('');
+      $('#filenames .new').html('');
       $.each(names, function( index, value ) {
         console.log(value);
-        $('#filenames').append("<i class='fa fa-picture-o'></i> " + value + "<br/>");
+        $('#filenames .new').append("<i class='fa fa-picture-o'></i> " + value + "<br/>");
       });
     }
   }
