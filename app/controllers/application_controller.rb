@@ -4,13 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :common_prepare
 
-  LANGS = [
-      ['en', 'English'],
-      ['pl', 'Polski'],
-      ['ru', 'Русский'],
-      ['fr', 'Français']
-  ]
-
   PUBLIC_LANGS = [
     ['en', 'English'],
     ['pl', 'Polski'],
