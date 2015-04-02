@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :common_prepare
 
+  LANGS = [
+    ['en', 'English'],
+    ['pl', 'Polski'],
+    ['ru', 'Русский'],
+    ['fr', 'Français']
+  ]
+
   PUBLIC_LANGS = [
     ['en', 'English'],
     ['pl', 'Polski'],
@@ -50,7 +57,12 @@ class ApplicationController < ActionController::Base
       end
     end
     lang = params[:lang] || curr_locale || cookies[:lang] || geoip_lang
-
+    puts '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
+    puts lang
+    puts params[:lang]
+    puts curr_locale
+    puts cookies[:lang]
+    puts geoip_lang
     cookies[:lang] = lang_by_tag(lang)
     I18n.locale = lang
   end
@@ -70,7 +82,7 @@ class ApplicationController < ActionController::Base
   end
 
   def lang_by_tag(lng)
-    language = PUBLIC_LANGS.detect{|lang| lang.first == lng.downcase}
-    language ? language.first : PUBLIC_LANGS.first.first
+    language = LANGS.detect{|lang| lang.first == lng.downcase}
+    language ? language.first : LANGS.first.first
   end
 end
