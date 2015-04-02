@@ -29,6 +29,8 @@
             i.fa.fa-check-circle
             |&nbsp
             = s.file_identifier
+            |&nbsp
+            = link_to t('web_app_theme.delete'), admin_project_screenshot_path(@project, s), method: :delete
             br
       .new
     br
