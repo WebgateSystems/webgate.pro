@@ -16,6 +16,22 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+Dir["#{Rails.root}/app/uploaders/*.rb"].each { |file| require file }
+if defined?(CarrierWave)
+  CarrierWave::Uploader::Base.descendants.each do |klass|
+    next if klass.anonymous?
+    klass.class_eval do
+      def cache_dir
+        "#{Rails.root}/public/spec/uploads/cache"
+      end
+
+      def store_dir
+        "#{Rails.root}/public/spec/uploads/#{model.class.to_s.underscore}/#{model.id}/#{mounted_as}"
+      end
+    end
+  end
+end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -41,9 +57,9 @@ RSpec.configure do |config|
     end
   end
 
-  config.after(:each) do
+  config.after(:all) do
     if Rails.env.test? || Rails.env.cucumber?
-      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/spec"])
     end
   end
 

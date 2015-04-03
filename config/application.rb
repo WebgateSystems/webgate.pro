@@ -26,7 +26,7 @@ module WebgatePro
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
     #I18n.config.enforce_available_locales = true
-    config.i18n.available_locales = [:pl, :en, :ru]
+    config.i18n.available_locales = [:pl, :en, :ru, :fr]
 
     config.generators do |g|
       g.template_engine :slim

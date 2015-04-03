@@ -5,15 +5,20 @@ class ApplicationController < ActionController::Base
   before_filter :common_prepare
 
   LANGS = [
-      ['en', 'English'],
-      ['pl', 'Polski'],
-      ['ru', 'Русский']
+    ['en', 'English'],
+    ['pl', 'Polski'],
+    ['ru', 'Русский'],
+    ['fr', 'Français']
+  ]
+
+  PUBLIC_LANGS = [
+    ['en', 'English'],
+    ['pl', 'Polski'],
+    ['ru', 'Русский']
   ]
 
   def common_prepare
-    @google_analytics = false
     prepare_lang
-    @google_analytics = false
     @menu = Category.rank(:position).all #order(:position, :created_at)
   end
 
@@ -50,7 +55,6 @@ class ApplicationController < ActionController::Base
       end
     end
     lang = params[:lang] || curr_locale || cookies[:lang] || geoip_lang
-
     cookies[:lang] = lang_by_tag(lang)
     I18n.locale = lang
   end
