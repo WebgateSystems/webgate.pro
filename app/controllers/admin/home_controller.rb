@@ -3,7 +3,6 @@ class Admin::HomeController < ApplicationController
   before_filter :require_login
 
   def index
-    @google_analytics = false
   end
 
 end

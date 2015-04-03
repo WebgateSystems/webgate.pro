@@ -18,9 +18,7 @@ class ApplicationController < ActionController::Base
   ]
 
   def common_prepare
-    @google_analytics = false
     prepare_lang
-    @google_analytics = false
     @menu = Category.rank(:position).all #order(:position, :created_at)
   end
 
