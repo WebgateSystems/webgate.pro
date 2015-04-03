@@ -1,14 +1,13 @@
 .footer#footer
   .footer_content
-    span.up do góry
+    span.up= t('to_up')
     p
-      span
-        |Masz pytania? Zapraszamy do kontaktu.
-      |&nbsp;Skorzystaj z naszego formularza lub zadzwoń
+      span= t('we_invite_you_to_contact_us')
+      |&nbsp;#{t('use_our_form_or_call')}
     .column
       ul.contacts
         li
-          span Telefon:
+          span=t('phone')
           p.tel
             span +48
             |&nbsp;
@@ -51,26 +50,26 @@
           =link_to '', 'https://twitter.com/WebgateSystems', class: 'twi', rel: 'nofollow'
           a.fb href="#"
       p.copy
-        |&copy; #{Date.today.year} webgate.pro  Wszelkie prawa zastrzeżone
+        |&copy; #{Date.today.year} webgate.pro  #{t('all_rights_reserved')}
         = link_to '.', admin_root_path
     /-- END column
     .column.map
       <iframe width="290" height="233" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Konstytucji+19,+Sosnowiec,+Poland&amp;aq=&amp;sll=50.272995,19.13372&amp;sspn=0.039662,0.073042&amp;ie=UTF8&amp;hq=&amp;hnear=Konstytucji+19,+Sosnowiec,+%C5%9Bl%C4%85skie,+Poland&amp;t=m&amp;ll=50.245833,19.163547&amp;spn=0.006394,0.012488&amp;z=15&amp;output=embed"></iframe>
       a.link_map href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Konstytucji+19,+Sosnowiec,+Poland&amp;aq=&amp;sll=50.272995,19.13372&amp;sspn=0.039662,0.073042&amp;ie=UTF8&amp;hq=&amp;hnear=Konstytucji+19,+Sosnowiec,+%C5%9Bl%C4%85skie,+Poland&amp;t=m&amp;ll=50.245833,19.163547&amp;spn=0.006394,0.012488&amp;z=15"
-        |Kliknij aby powiększyć&nbsp;
+        |#{t('click_to_enlarge')}&nbsp;
         span &raquo;
     /-- END column
     .column
       form.feedback
-        input.text_input placeholder=("Imię i Nazwisko:") type="text"
-        input.text_input placeholder=("Twój adres email") type="text"
-        textarea placeholder=("Treśc wiadomości")
-        <input class="submit" type="submit" value="wyślij"/>
+        input.text_input placeholder=(t('fist_and_last_name')) type="text"
+        input.text_input placeholder=(t('email_address')) type="text"
+        textarea placeholder=(t('message_content'))
+        input class="submit" value=(t('submit')) type="submit"
       p class="copy valid"
-        |Dokument zgodny z&nbsp;
+        |#{t('document_compile')}&nbsp;
         a.html5 href="#"HTML
       p class="copy mob"
-        |&copy; #{Date.today.year} webgate.pro  Wszelkie prawa zastrzeżone
+        |&copy; #{Date.today.year}  webgate.pro #{t('all_rights_reserved')}
     /-- END column
   /-- END footer_content
 /-- END footer

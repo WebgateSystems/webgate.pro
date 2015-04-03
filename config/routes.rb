@@ -1,8 +1,8 @@
 WebgatePro::Application.routes.draw do
-  get "main"          => "home#index", as: 'main'
-  match "not-found"     => "pages#not_found", via: [:get, :post], as: :not_found
-  get "portfolio" => "home#portfolio"
-  get "team" => "home#team"
+  get "main"        => "home#index", as: 'main'
+  match "not-found" => "pages#not_found", via: [:get, :post], as: :not_found
+  get "portfolio"   => "home#portfolio"
+  get "team"        => "home#team"
 
   ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', { no_prefixes: true })
 end
@@ -38,7 +38,6 @@ WebgatePro::Application.routes.draw do
         put 'sort_technologies'
       end
       resources :technologies do
-        #put :update_position, on: :collection
       end
     end
     root :to => "home#index"
