@@ -13,7 +13,7 @@ feature 'Adding team to site.' do
   scenario 'Should show list of team members' do
     expect(page).to have_content member1.name
     expect(page).to have_content member1.job_title
-    expect(page).to have_xpath("//img[contains(@src, \"uploads/pictures/member\")]")
+    expect(page).to have_xpath("//img[contains(@src, \"/spec/uploads/member/#{member1.id}\")]")
   end
 
   scenario 'Show and Hide extend team members information', js: true do
