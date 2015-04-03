@@ -40,7 +40,7 @@ span.mob.ico_lang
 ul.mob.mob_nav
   - other_mobile_langs.each do |l|
     li
-      = link_to root_path(lang: l) do
+      = link_to root_path(lang: l[0]) do
         span
-          = l
+          = l[1]
 
