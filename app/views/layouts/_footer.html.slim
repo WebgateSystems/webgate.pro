@@ -15,13 +15,11 @@
       p.copy
         |&copy; #{Date.today.year} webgate.pro  #{t('all_rights_reserved')}
         = link_to '.', admin_root_path
-    /-- END column
     .column.map
-      <iframe width="290" height="233" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Konstytucji+19,+Sosnowiec,+Poland&amp;aq=&amp;sll=50.272995,19.13372&amp;sspn=0.039662,0.073042&amp;ie=UTF8&amp;hq=&amp;hnear=Konstytucji+19,+Sosnowiec,+%C5%9Bl%C4%85skie,+Poland&amp;t=m&amp;ll=50.245833,19.163547&amp;spn=0.006394,0.012488&amp;z=15&amp;output=embed"></iframe>
+      = link_to image_tag(asset_url('map.png'), width: 290, height: 233), 'https://www.google.com/maps?ll=50.245722,19.164129&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Konstytucji+19+Sosnowiec+Poland', target: '_blank', rel: 'nofollow'
       a.link_map target="_blank" rel="nofollow" href="https://www.google.com/maps?ll=50.245722,19.164129&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Konstytucji+19+Sosnowiec+Poland"
         |#{t('click_to_enlarge')}&nbsp;
         span &raquo;
-    /-- END column
     .column
       form.feedback
         input.text_input placeholder=(t('fist_and_last_name')) type="text"
@@ -30,9 +28,6 @@
         input class="submit" value=(t('submit')) type="submit"
       p class="copy valid"
         |#{t('document_compliant_with')}&nbsp;
-        =link_to 'HTML', 'http://validator.w3.org/check?uri=https%3A%2F%2Fwebgate.pro&charset=%28detect+automatically%29&doctype=Inline&group=0', class: 'html5', rel: 'nofollow', target: '_blank'
+        = link_to 'HTML', 'http://validator.w3.org/check?uri=https%3A%2F%2Fwebgate.pro&charset=%28detect+automatically%29&doctype=Inline&group=0', class: 'html5', rel: 'nofollow', target: '_blank'
       p class="copy mob"
         |&copy; #{Date.today.year}  webgate.pro #{t('all_rights_reserved')}
-    /-- END column
-  /-- END footer_content
-/-- END footer
