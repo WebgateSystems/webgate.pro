@@ -28,7 +28,7 @@ set :keep_releases, 5
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
   task :restart do
-    invoke 'unicorn:reload'
+    invoke 'unicorn:restart'
   end
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do

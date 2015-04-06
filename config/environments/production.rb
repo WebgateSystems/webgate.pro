@@ -84,6 +84,6 @@ WebgatePro::Application.configure do
       sender_address: %{"webgate.pro exception notifier" <notify@webgate.pro>},
       exception_recipients: %w{devs@webgate.pro},
       delivery_method: :smtp,
-      smtp_settings: APP_CONFIG['notify_smtp_data']
+      smtp_settings: YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['notify_smtp_data']
     }
 end
