@@ -12,41 +12,41 @@ html lang="en"
     = csrf_meta_tags
 
   body
-  nav.top-bar data-topbar=''
-    ul.title-area
-      li.name
-        h1= link_to 'Webgate Systems', root_path
-      li.toggle-topbar.menu-icon
-        = link_to 'Menu', '#'
-    section.top-bar-section
-      ul.right
-        li.divider
-        li.has-dropdown
-          = link_to t('content'), '#'
-          ul.dropdown
-            li= link_to t(:categories), admin_categories_path
-            li= link_to t(:pages), admin_pages_path
-            li= link_to t(:projects), admin_projects_path
-            li= link_to t(:technology_groups), admin_technology_groups_path
-            li= link_to t(:technologies), admin_technologies_path
-        li.divider
-        li.has-dropdown
-          = link_to t('team'), '#'
-          ul.dropdown
-            li= link_to t(:users), admin_users_path
-            li= link_to t(:members), admin_members_path
-        li.divider
-        li.has-dropdown
-          = link_to locale.upcase, 'javascript:;'
-          ul.dropdown
-            - other_langs.each do |l|
-              li= current_page?(admin_root_path) ? link_to(l.upcase, admin_root_path(lang: l)) : link_to(l.upcase, lang: l)
+    nav.top-bar data-topbar=''
+      ul.title-area
+        li.name
+          h1= link_to 'Webgate Systems', root_path
+        li.toggle-topbar.menu-icon
+          = link_to 'Menu', '#'
+      section.top-bar-section
+        ul.right
+          li.divider
+          li.has-dropdown
+            = link_to t('content'), '#'
+            ul.dropdown
+              li= link_to t(:categories), admin_categories_path
+              li= link_to t(:pages), admin_pages_path
+              li= link_to t(:projects), admin_projects_path
+              li= link_to t(:technology_groups), admin_technology_groups_path
+              li= link_to t(:technologies), admin_technologies_path
+          li.divider
+          li.has-dropdown
+            = link_to t('team'), '#'
+            ul.dropdown
+              li= link_to t(:users), admin_users_path
+              li= link_to t(:members), admin_members_path
+          li.divider
+          li.has-dropdown
+            = link_to locale.upcase, 'javascript:;'
+            ul.dropdown
+              - other_langs.each do |l|
+                li= current_page?(admin_root_path) ? link_to(l.upcase, admin_root_path(lang: l)) : link_to(l.upcase, lang: l)
 
-        li.divider
-        li= link_to t('web_app_theme.logout'), logout_path
+          li.divider
+          li= link_to t('web_app_theme.logout'), logout_path
 
-  = render 'layouts/messages'
+    = render 'layouts/messages'
 
-  .row
-    .large-12.columns
-      = yield
+    .row
+      .large-12.columns
+        = yield

@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   #end
 
   def not_authenticated
-    redirect_to login_url, :alert => "First login to access this page."
+    redirect_to login_url, alert: t('first_login_to_access')
   end
 
   #def set_layout

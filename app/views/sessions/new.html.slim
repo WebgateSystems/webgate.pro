@@ -1,0 +1,15 @@
+div[style="text-align: center; vertical-align: middle; line-height: 150px;"]
+  = image_tag('ws-logo.png', alt: "Logotype", width: 350, style: "vertical-align: middle;")
+div[style="width: 300px; margin: 0 auto;"]
+  = form_tag sessions_path :id => 'login' do
+    .field
+      = label_tag t(:email)
+      = text_field_tag :email, params[:email]
+    .field
+      = label_tag t(:password)
+      = password_field_tag :password
+    .field
+      = check_box_tag :remember_me, 1, params[:remember_me]
+      = label_tag t(:remember_me)
+    .actions[style="text-align: center"]
+      = submit_tag t('log_in'), class: "button radius"

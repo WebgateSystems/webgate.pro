@@ -150,3 +150,10 @@ fr:
   design_description: "Durant nos sessions ou en régie, nous vous formons à HTML/CSS, jQuery, WordPress et l'accessibilité avec des programmes de qualité constamment mis à jour."
   design_about: "More about Design"
 
+  email_or_password_invalid: "Email ou mot de passe est invalide"
+  logged_in: "Connecté!"
+  first_login_to_access: "Première connexion pour accéder à cette page."
+  log_in: "Se connecter"
+  email: "Сourriel"
+  password: "Mot de passe"
+  remember_me: "Souviens-toi de moi"
