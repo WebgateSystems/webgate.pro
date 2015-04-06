@@ -75,6 +75,11 @@ ru:
       name: "Название"
       logo: "Лого"
       link: "Ссылка"
+    errors:
+      messages:
+        blank: "Не может быть пустым"
+        taken: "Уже использован"
+        confirmation: "Не совпадает"
   views:
       pagination:
         previous: "&lt; Пред."

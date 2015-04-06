@@ -76,6 +76,11 @@ en:
       name: "Name"
       logo: "Logo"
       link: "Link"
+    errors:
+      messages:
+        blank: "Can't be blank"
+        taken: "Already taken"
+        confirmation: "Password not equal with password confirmation"
   views:
       pagination:
         previous: "&laquo; Prev."

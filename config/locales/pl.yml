@@ -76,6 +76,7 @@ pl:
       messages:
         blank: "Nie może być puste"
         taken: "Już wykorzystane"
+        confirmation: "Nie zgadza się"
   views:
     pagination:
       previous: "&lt; Popr."
