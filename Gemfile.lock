@@ -336,7 +336,7 @@ DEPENDENCIES
   coffee-rails
   database_cleaner
   email_spec
-  exception_notification
+  exception_notification (~> 4.0.1)
   factory_girl_rails
   faker
   font-awesome-rails

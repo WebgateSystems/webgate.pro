@@ -17,6 +17,7 @@ log
 .DS_Store
 .idea
 config/database.yml
+config/config.yml
 tmp/*
 public/assets
 public/system

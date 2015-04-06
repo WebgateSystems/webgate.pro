@@ -1,0 +1,27 @@
+staging:
+  noreply_email: 'noreply@mailing.webgate.pro'
+  support_email: 'support@webgate.pro'
+  notify_email: 'notify@webgate.pro'
+
+  notify_smtp_data:
+    tls: true
+    address: smtp.gmail.com
+    port: 587
+    domain: webgate.pro
+    user_name: 'notify@webgate.pro'
+    password: 'hard_password'
+    authentication: plain
+
+production:
+  noreply_email: 'noreply@mailing.webgate.pro'
+  support_email: 'support@webgate.pro'
+  notify_email: 'notify@webgate.pro'
+
+  notify_smtp_data:
+    tls: true
+    address: smtp.gmail.com
+    port: 587
+    domain: webgate.pro
+    user_name: 'notify@webgate.pro'
+    password: 'hard_password'
+    authentication: plain
