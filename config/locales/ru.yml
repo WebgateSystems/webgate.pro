@@ -53,6 +53,7 @@ ru:
     technology_group:
       title: "Название"
       description: "Описание"
+      color: "Цвет"
     technology:
       title: "Название"
       description: "Описание"
@@ -75,6 +76,8 @@ ru:
       name: "Название"
       logo: "Лого"
       link: "Ссылка"
+    user:
+      email: "email"
   views:
       pagination:
         previous: "&lt; Пред."

@@ -3,8 +3,8 @@
   .form-inputs
     = f.input :title, label: t('activerecord.technology_group.title'), label_html: { class: 'label' }
     = f.input :description, label: t('activerecord.technology_group.description'), label_html: { class: 'label' }
-    = f.input :color, as: :minicolors, label: t('activerecord.technology_group.description'), label_html: { class: 'label' }, input_html: {data: {minicolors: {theme: :bootstrap, position: :right}}}
-  
+    = f.input :color, as: :minicolors, label: t('activerecord.technology_group.color'), label_html: { class: 'label' }, input_html: {data: {minicolors: {theme: :bootstrap, position: :right}}}
+
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '

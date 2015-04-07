@@ -15,6 +15,10 @@
         b= t('activerecord.technology_group.description') + ': '
         = @technology_group.description
       p
+        b= t('activerecord.technology_group.color') + ': '
+        span style=("background-color: #{@technology_group.color}")
+          = @technology_group.color
+      p
         b = t('technologies') + ':'
       - if @technologies.any?
         table.show#sortable.table

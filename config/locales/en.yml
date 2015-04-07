@@ -22,6 +22,7 @@ en:
     page: "page"
     subcategory: "submenu"
     member: "member"
+    project: "project"
     technology_group: "technology group"
     technology: "technology"
     confirm: "Are you sure?"
@@ -54,6 +55,7 @@ en:
     technology_group:
       title: "Title"
       description: "Description"
+      color: "Color"
     technology:
       title: "Title"
       description: "Description"
@@ -76,6 +78,8 @@ en:
       name: "Name"
       logo: "Logo"
       link: "Link"
+    user:
+      email: "email"
   views:
       pagination:
         previous: "&laquo; Prev."
@@ -106,6 +110,7 @@ en:
   content: "Content"
   admin_panel: "Admin Panel"
   back_to_team: "Back to Team"
+  about: "About"
   more_information: "More Information"
   hide_information: "Hide Information"
   publish: "Publish"

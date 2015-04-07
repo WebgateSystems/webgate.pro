@@ -19,7 +19,7 @@ feature 'Users in admin panel.' do
   end
 
   scenario 'Users root path should have list of users' do
-    expect(page).to have_content 'Email'
+    expect(page).to have_content 'email'
   end
 
   scenario 'Users root path should have our user email' do

@@ -20,7 +20,9 @@ pl:
     page: "strona"
     subcategory: "submenu"
     member: "członek"
+    project: "projekt"
     technology_group: "technology group"
+    technology: "technologia"
     confirm: "Jesteś pewien?"
     nothing: "Nothing"
     input: "Wkład"
@@ -51,6 +53,7 @@ pl:
     technology_group:
       title: "Tytuł"
       description: "Opis"
+      color: "Kolor"
     technology:
       title: "Tytuł"
       description: "Opis"
@@ -65,6 +68,7 @@ pl:
       name: "Imię"
       job_title: "specjalizacja"
       education: "Edukacja"
+      description: "Opis"
       avatar: "Awatara"
       motto: "Motto"
       watch_profile: "Zobacz profil"
@@ -76,6 +80,8 @@ pl:
       messages:
         blank: "Nie może być puste"
         taken: "Już wykorzystane"
+    user:
+      email: "email"
   views:
     pagination:
       previous: "&lt; Popr."
@@ -107,6 +113,7 @@ pl:
   admin_panel: "Admin Panel"
   content: "Zawartość strony"
   back_to_team: "Powrót do Team"
+  about: "Co Do"
   more_information: "Więcej Informacji"
   hide_information: "Ukryj Informacje"
   publish: "Publikować"
