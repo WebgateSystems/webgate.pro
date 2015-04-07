@@ -78,6 +78,11 @@ ru:
       link: "Ссылка"
     user:
       email: "email"
+    errors:
+      messages:
+        blank: "Не может быть пустым"
+        taken: "Уже использован"
+        confirmation: "Не совпадает"
   views:
       pagination:
         previous: "&lt; Пред."
@@ -147,3 +152,10 @@ ru:
   outsourcing_about: "Подробнее об Аутсорсинге"
   design_description: "Durant nos sessions ou en régie, nous vous formons à HTML/CSS, jQuery, WordPress et l'accessibilité avec des programmes de qualité constamment mis à jour."
   design_about: "Подробнее о дизайне"
+  email_or_password_invalid: "Емейл и/или пароль неправильные"
+  logged_in: "Успешный вход в систему!"
+  first_login_to_access: "Для начала введите логин и пароль, чтобы получить доступ к этой странице."
+  log_in: "Войти"
+  email: "Емейл"
+  password: "Пароль"
+  remember_me: "Запомнить меня"

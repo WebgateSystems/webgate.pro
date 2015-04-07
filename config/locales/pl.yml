@@ -82,6 +82,7 @@ pl:
         taken: "Już wykorzystane"
     user:
       email: "email"
+        confirmation: "Nie zgadza się"
   views:
     pagination:
       previous: "&lt; Popr."
@@ -152,3 +153,10 @@ pl:
   outsourcing_about: "więcej o outsoursing"
   design_description: "Durant nos sessions ou en régie, nous vous formons à HTML/CSS, jQuery, WordPress et l'accessibilité avec des programmes de qualité constamment mis à jour."
   design_about: "wiecej o grafice"
+  email_or_password_invalid: "Email albo hasło nieprawidłowe"
+  logged_in: "Zalogowałeś się pomyślnie!"
+  first_login_to_access: "Najpierw się zaloguj, aby uzyskać dostęp do tej strony."
+  log_in: "Wejść"
+  email: "Email"
+  password: "Hasło"
+  remember_me: "Zapamiętaj mnie"

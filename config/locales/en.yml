@@ -80,6 +80,11 @@ en:
       link: "Link"
     user:
       email: "email"
+    errors:
+      messages:
+        blank: "Can't be blank"
+        taken: "Already taken"
+        confirmation: "Password not equal with password confirmation"
   views:
       pagination:
         previous: "&laquo; Prev."
@@ -149,3 +154,10 @@ en:
   outsourcing_about: "About outsourcing"
   design_description: "Durant nos sessions ou en régie, nous vous formons à HTML/CSS, jQuery, WordPress et l'accessibilité avec des programmes de qualité constamment mis à jour."
   design_about: "More about Design"
+  email_or_password_invalid: "Email or password was invalid"
+  logged_in: "Logged in!"
+  first_login_to_access: "First login to access this page."
+  log_in: "Log in"
+  email: "Email"
+  password: "Password"
+  remember_me: "Remember me"
