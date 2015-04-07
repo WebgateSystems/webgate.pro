@@ -19,7 +19,7 @@ feature 'Users in admin panel.' do
   end
 
   scenario 'Users root path should have list of users' do
-    expect(page).to have_content 'email'
+    expect(page).to have_content 'Email'
   end
 
   scenario 'Users root path should have our user email' do
@@ -49,6 +49,7 @@ feature 'Users in admin panel.' do
     click_link ('New')
     fill_in 'user[email]', with: 'TestUser@test.com'
     fill_in 'user[password]', with: 'password123'
+    fill_in 'user[password_confirmation]', with: 'password123'
     click_button 'Save'
     visit '/admin/users'
     expect(page).to have_content 'TestUser@test.com'

@@ -79,7 +79,9 @@ fr:
       logo: "Logo"
       link: "Link"
     user:
-      email: "email"
+      email: "Email"
+      password: "Password"
+      password_confirmation: "Repeat password"
     errors:
       messages:
         blank: "Can't be blank"
@@ -162,3 +164,6 @@ fr:
   email: "Сourriel"
   password: "Mot de passe"
   remember_me: "Souviens-toi de moi"
+  contact_form: "Contact Form"
+  system: "System"
+  background_jobs: "Background Jobs"

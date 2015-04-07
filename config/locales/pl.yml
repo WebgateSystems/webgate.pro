@@ -81,8 +81,9 @@ pl:
         blank: "Nie może być puste"
         taken: "Już wykorzystane"
     user:
-      email: "email"
-        confirmation: "Nie zgadza się"
+      email: "Email"
+      password: "Hasło"
+      password_confirmation: "Nie zgadza się"
   views:
     pagination:
       previous: "&lt; Popr."
@@ -160,3 +161,6 @@ pl:
   email: "Email"
   password: "Hasło"
   remember_me: "Zapamiętaj mnie"
+  contact_form: "Formularz kontaktowy"
+  system: "System"
+  background_jobs: "Praca w tle"

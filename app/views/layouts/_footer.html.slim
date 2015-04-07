@@ -21,11 +21,8 @@
         |#{t('click_to_enlarge')}&nbsp;
         span &raquo;
     .column
-      form.feedback
-        input.text_input placeholder=(t('fist_and_last_name')) type="text"
-        input.text_input placeholder=(t('email_address')) type="text"
-        textarea placeholder=(t('message_content'))
-        input class="submit" value=(t('submit')) type="submit"
+      = render 'contacts/form'
+
       p class="copy valid"
         |#{t('document_compliant_with')}&nbsp;
         = link_to 'HTML', 'http://validator.w3.org/check?uri=https%3A%2F%2Fwebgate.pro&charset=%28detect+automatically%29&doctype=Inline&group=0', class: 'html5', rel: 'nofollow', target: '_blank'

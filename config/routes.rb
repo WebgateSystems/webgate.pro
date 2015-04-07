@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 WebgatePro::Application.routes.draw do
   get "main"        => "home#index", as: 'main'
   match "not-found" => "pages#not_found", via: [:get, :post], as: :not_found
@@ -8,11 +10,12 @@ WebgatePro::Application.routes.draw do
 end
 
 WebgatePro::Application.routes.draw do
-
   mount Ckeditor::Engine => '/ckeditor'
   resources :sessions
+  resources :contacts, only: [:new, :create]
 
   namespace :admin do
+    mount Sidekiq::Web => '/sidekiq'
     resources :users
     resources :categories do
       put :update_position, on: :collection
