@@ -2,4 +2,6 @@
   = f.input :name, required: true, placeholder: t('fist_and_last_name'), label: false
   = f.input :email, required: true, placeholder: t('email_address'), label: false
   = f.input :content, as: :text, placeholder: t('message_content'), label: false
+  .hidden
+    = f.input :nickname, hint: 'Leave this field blank!'
   = f.submit t('submit'), class: 'submit'

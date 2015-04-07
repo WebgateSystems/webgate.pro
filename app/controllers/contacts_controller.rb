@@ -6,16 +6,17 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
 
-    if @contact.valid?
+    if @contact.valid? && @contact.nickname == ''
       SupportMailer.delay.contact_support(@contact)
       redirect_to :back, notice: t('thank_you_for_your_message') #todo
     else
-      render :back
+      redirect_to :back
     end
   end
 
   private
-    def contact_params
-      params.require(:contact).permit(:name, :email, :content)
-    end
+
+  def contact_params
+    params.require(:contact).permit(:name, :email, :content, :nickname)
+  end
 end
