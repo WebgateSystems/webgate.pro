@@ -49,6 +49,7 @@ feature 'Users in admin panel.' do
     click_link ('New')
     fill_in 'user[email]', with: 'TestUser@test.com'
     fill_in 'user[password]', with: 'password123'
+    fill_in 'user[password_confirmation]', with: 'password123'
     click_button 'Save'
     visit '/admin/users'
     expect(page).to have_content 'TestUser@test.com'
@@ -57,6 +58,15 @@ feature 'Users in admin panel.' do
   scenario 'validation for new user(no password)' do
     click_link ('New')
     fill_in 'user[email]', with: 'TestUser@test.com'
+    click_button 'Save'
+    expect(page).to have_css('.alert-box.alert')
+  end
+
+  scenario 'validation for new user(password and password confirmation mismatch)' do
+    click_link ('New')
+    fill_in 'user[email]', with: 'TestUser@test.com'
+    fill_in 'user[password]', with: 'password123'
+    fill_in 'user[password_confirmation]', with: 'bla1234'
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')
   end
