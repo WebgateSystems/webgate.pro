@@ -4,7 +4,7 @@
       li= link_to t('web_app_theme.list'), admin_technology_groups_path, class: 'button'
       li= link_to t('web_app_theme.new'), new_admin_technology_group_path, class: 'button'
       li= link_to t('web_app_theme.edit'), edit_admin_technology_group_path(@technology_group), class: 'button success'
-      li= link_to t('web_app_theme.delete'), admin_technology_group_path(@technology_group), method: :delete, data: {confirm: "#{t('web_app_theme.confirm')}"}, class: 'button alert'
+      li= link_to t('web_app_theme.delete'), admin_technology_group_path(@technology_group), method: :delete, data: {confirm: t(:are_you_sure)}, class: 'button alert'
       li= link_to t('web_app_theme.show'), admin_technology_group_path, class: 'button'
   .content
     .inner
@@ -32,7 +32,7 @@
                 td= technology.created_at
                 td= link_to t('web_app_theme.show'), admin_technology_path(technology)
                 td= link_to t('web_app_theme.edit'), edit_admin_technology_path(technology)
-                td= link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+                td= link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, data: {confirm: t(:are_you_sure)}
       - else
         = t('web_app_theme.nothing')
     = link_to t('add_technology'), new_admin_technology_group_technology_path(@technology_group), class: 'button small'

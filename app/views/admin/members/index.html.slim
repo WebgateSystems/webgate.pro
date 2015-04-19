@@ -24,6 +24,6 @@
                 td= member.created_at
                 td= link_to t('web_app_theme.show'), admin_member_path(member)
                 td= link_to t('web_app_theme.edit'), edit_admin_member_path(member)
-                td= link_to t('web_app_theme.delete'), admin_member_path(member), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+                td= link_to t('web_app_theme.delete'), admin_member_path(member), method: :delete, data: {confirm: t(:are_you_sure)}
       - else
         = t('web_app_theme.nothing')
