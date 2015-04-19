@@ -12,6 +12,7 @@ class HomeController < ApplicationController
 
   def team
     @members = Member.rank(:position).all.page(params[:page]).per(9)
+    @technology_groups = TechnologyGroup.order(:position)
   end
 
 end

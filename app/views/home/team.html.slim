@@ -25,7 +25,7 @@
             .worker_column
               - if member.technologies.any?
                 h2= t('technologies')
-                - TechnologyGroup.all.each do |tg|
+                - @technology_groups.each do |tg|
                   - if (tg.technologies & member.technologies).any?
                     h3 style=("color: #{tg.color}")
                       i.fa.fa-check-circle
