@@ -12,6 +12,9 @@
         b= t('activerecord.technology_group.title') + ': '
         = @technology_group.title
       p
+        b= t('activerecord.technology_group.color') + ': '
+        == color_square @technology_group
+      p
         b= t('activerecord.technology_group.description') + ': '
         = @technology_group.description
       p

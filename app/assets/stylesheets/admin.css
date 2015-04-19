@@ -13,5 +13,6 @@
  *= require foundation_and_overrides
  *= require jquery.minicolors
  *= require admin/flashes
+ *= require admin/common
  *= require font-awesome
  */
