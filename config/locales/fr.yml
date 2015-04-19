@@ -54,6 +54,7 @@ fr:
     technology_group:
       title: "Title"
       description: "Description"
+      color: "Сouleur"
     technology:
       title: "Title"
       description: "Description"

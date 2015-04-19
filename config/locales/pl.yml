@@ -51,6 +51,7 @@ pl:
     technology_group:
       title: "Tytuł"
       description: "Opis"
+      color: "Kolor"
     technology:
       title: "Tytuł"
       description: "Opis"

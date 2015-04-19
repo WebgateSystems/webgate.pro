@@ -53,6 +53,7 @@ ru:
     technology_group:
       title: "Название"
       description: "Описание"
+      color: "Цвет"
     technology:
       title: "Название"
       description: "Описание"
