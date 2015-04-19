@@ -22,5 +22,5 @@
         = @technology.title
       p
         b= t('activerecord.technology.description') + ': '
-        = @technology.description
+        = @technology.description.try(:html_safe)
       

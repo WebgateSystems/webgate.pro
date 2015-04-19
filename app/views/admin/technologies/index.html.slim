@@ -10,20 +10,18 @@
         table.table
           thead
             tr
-              th= t(:technology_group_title)
               th= t('activerecord.technology.title')
+              th= t(:technology_group_title)
               th= t('activerecord.created_at')
-              th
-              th
-              th
+              th[colspan="3"] #{t(:actions)}
           tbody
             - @technologies.each do |technology|
               tr
-                td= link_to technology.technology_group.title, admin_technology_group_path(technology.technology_group)
                 td= link_to technology.title, admin_technology_path(technology)
-                td= technology.created_at
-                td= link_to t('web_app_theme.show'), admin_technology_path(technology)
-                td= link_to t('web_app_theme.edit'), edit_admin_technology_path(technology)
-                td= link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, data: {confirm: t(:are_you_sure)}
+                td= link_to technology.technology_group.title, admin_technology_group_path(technology.technology_group)
+                td= technology.created_at.to_s(:short)
+                td = link_to fa_icon('eye'), admin_technology_path(technology), title: t('web_app_theme.show')
+                td = link_to fa_icon('edit'), edit_admin_technology_path(technology), title: t('web_app_theme.edit'), class: 'edit'
+                td = link_to fa_icon('trash'), admin_technology_path(technology), title: t('web_app_theme.delete'), method: :delete, data: {confirm: t(:are_you_sure)}, class: 'delete'
       - else
         = t('web_app_theme.nothing')
