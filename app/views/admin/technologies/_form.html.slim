@@ -4,6 +4,7 @@
     .label = t('technology_group_title')
     = f.collection_select :technology_group_id, TechnologyGroup.all, :id, :title
     = f.input :title, label: t('activerecord.technology.title'), label_html: { class: 'label' }
+    = f.input :link, label: t('activerecord.technology.link'), label_html: { class: 'label' }
     = f.input :description, label: t('activerecord.technology.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { class: 'ckeditor', ckeditor: {toolbar: 'mini'} }
     = f.input :logo, label: t('activerecord.technology.logo') + ': gif|png', label_html: { class: 'label' }
   

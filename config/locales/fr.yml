@@ -53,6 +53,7 @@ fr:
       category_id: "Category"
     technology_group:
       title: "Title"
+      link: "Lien"
       description: "Description"
       color: "Сouleur"
     technology:

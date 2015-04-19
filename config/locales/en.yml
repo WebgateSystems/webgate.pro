@@ -57,6 +57,7 @@ en:
       color: "Color"
     technology:
       title: "Title"
+      link: "Link"
       description: "Description"
       logo: "Logo"
     project:

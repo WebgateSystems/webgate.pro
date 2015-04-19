@@ -21,6 +21,9 @@
         b= t('activerecord.technology.title') + ': '
         = @technology.title
       p
+        b= t('activerecord.technology.link') + ': '
+        = tech_link @technology if @technology.link
+      p
         b= t('activerecord.technology.description') + ': '
         = @technology.description.try(:html_safe)
       

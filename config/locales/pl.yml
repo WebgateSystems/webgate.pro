@@ -54,6 +54,7 @@ pl:
       color: "Kolor"
     technology:
       title: "Tytuł"
+      link: "Link"
       description: "Opis"
       logo: "Logo"
     project:
