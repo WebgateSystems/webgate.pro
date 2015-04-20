@@ -22,6 +22,6 @@
                 td= page.created_at
                 td= link_to t('web_app_theme.show'), admin_page_path(page)
                 td= link_to t('web_app_theme.edit'), edit_admin_page_path(page)
-                td= link_to t('web_app_theme.delete'), admin_page_path(page), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+                td= link_to t('web_app_theme.delete'), admin_page_path(page), method: :delete, data: {confirm: t(:are_you_sure)}
       - else
         = t('web_app_theme.nothing')

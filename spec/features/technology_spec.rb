@@ -14,6 +14,7 @@ feature 'Technology in admin panel.' do
     click_link ('New')
     find('#technology_technology_group_id').find(:xpath, 'option[1]').select_option
     fill_in 'technology[title]', with: 'TestTitle'
+    fill_in 'technology[link]', with: 'http://example_tech.com/link'
     fill_in 'technology[description]', with: 'TestDesc'
     click_button 'Save'
     visit '/admin/technologies'
@@ -61,9 +62,10 @@ feature 'Technology in admin panel.' do
     expect(page).to have_content 'TestDesc'
   end
 
-  scenario 'Create page should create page' do
+  scenario 'Create technology should create technology with link' do
     click_link ('New')
     fill_in 'technology[title]', with: 'TestTitleFull'
+    fill_in 'technology[link]', with: 'https://example.com/tech'
     fill_in 'technology[description]', with: 'PewPewPew'
     click_button 'Save'
     visit '/admin/technologies'

@@ -56,6 +56,7 @@ ru:
       color: "Цвет"
     technology:
       title: "Название"
+      link: "Ссылка"
       description: "Описание"
       logo: "Лого"
     project:
@@ -164,3 +165,4 @@ ru:
   contact_form: "Форма Обратной Связи"
   system: "Система"
   background_jobs: "Фоновые задачи"
+  are_you_sure: "Вы уверены?"

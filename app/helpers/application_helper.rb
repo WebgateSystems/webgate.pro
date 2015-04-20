@@ -12,4 +12,8 @@ module ApplicationHelper
     (I18n.available_locales.map(&:to_s) - [I18n.locale.to_s]).sort
   end
 
+  def tech_link(technology)
+    link = technology.link
+    (link and !link.blank?) ? link : 'javascript:;'
+  end
 end

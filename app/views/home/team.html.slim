@@ -8,7 +8,7 @@
           = image_tag member.avatar.url(:avatar)
           span.team_name= member.name
           span.specialization= member.job_title
-          p= truncate(member.motto, length: 100)
+          p.motto= truncate(member.motto, length: 100)
           .columns_container.mob
             .worker_column
               h2= t('about')
@@ -25,14 +25,14 @@
             .worker_column
               - if member.technologies.any?
                 h2= t('technologies')
-                - TechnologyGroup.all.each do |tg|
+                - @technology_groups.each do |tg|
                   - if (tg.technologies & member.technologies).any?
                     h3 style=("color: #{tg.color}")
                       i.fa.fa-check-circle
                       = tg.title
                     p
                       - (tg.technologies & member.technologies).each do |tech|
-                        span= link_to tech.title, '#', data: { img: tech.logo.url(:thumb), title: tech.title, desc: tech.description }, class: 'tooltipstered'
+                        span= link_to tech.title, tech_link(tech), data: { img: tech.logo.url(:thumb), title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'
           span.mob.more_info= t('more_information')
           span.mob.service_block_btn= t('hide_information')
     = paginate @members

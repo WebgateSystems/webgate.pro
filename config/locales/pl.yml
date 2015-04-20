@@ -56,6 +56,7 @@ pl:
       color: "Kolor"
     technology:
       title: "Tytuł"
+      link: "Link"
       description: "Opis"
       logo: "Logo"
     project:
@@ -164,3 +165,4 @@ pl:
   contact_form: "Formularz kontaktowy"
   system: "System"
   background_jobs: "Praca w tle"
+  are_you_sure: "Jesteś pewien?"

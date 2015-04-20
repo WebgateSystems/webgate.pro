@@ -54,8 +54,9 @@ fr:
       category_id: "Category"
     technology_group:
       title: "Title"
+      link: "Lien"
       description: "Description"
-      color: "Color"
+      color: "Сouleur"
     technology:
       title: "Title"
       description: "Description"
@@ -156,7 +157,6 @@ fr:
   outsourcing_about: "About outsourcing"
   design_description: "Durant nos sessions ou en régie, nous vous formons à HTML/CSS, jQuery, WordPress et l'accessibilité avec des programmes de qualité constamment mis à jour."
   design_about: "More about Design"
-
   email_or_password_invalid: "Email ou mot de passe est invalide"
   logged_in: "Connecté!"
   first_login_to_access: "Première connexion pour accéder à cette page."
@@ -167,3 +167,4 @@ fr:
   contact_form: "Contact Form"
   system: "System"
   background_jobs: "Background Jobs"
+  are_you_sure: "Êtes-vous sûr?"

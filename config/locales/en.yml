@@ -58,6 +58,7 @@ en:
       color: "Color"
     technology:
       title: "Title"
+      link: "Link"
       description: "Description"
       logo: "Logo"
     project:
@@ -166,3 +167,4 @@ en:
   contact_form: "Contact Form"
   system: "System"
   background_jobs: "Background Jobs"
+  are_you_sure: "Are you sure?"
