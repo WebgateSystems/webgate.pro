@@ -14,4 +14,8 @@ class Member < ActiveRecord::Base
 
   mount_uploader :avatar , PictureUploader
 
+  def technology_groups
+    TechnologyGroup.where(id: self.technologies.map(&:technology_group_id).uniq).rank(:position)
+  end
+
 end
