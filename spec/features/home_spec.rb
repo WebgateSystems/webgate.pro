@@ -4,19 +4,32 @@ feature 'Home page' do
 
   before do
     visit "/"
-    SupportMailer.stub(:delay).and_return(SupportMailer)
+    reset_email
+  end
+
+  after do
+    ActionMailer::Base.deliveries.clear
+    Sidekiq::Worker.clear_all
   end
 
   scenario 'Contact form should mail' do
-    fill_in 'contact[name]', with: "TestName"
-    fill_in 'contact[email]', with: "test@test.com"
-    fill_in 'contact[content]', with: "TestContent"
+    fill_in 'contact[name]', with: 'TestName'
+    fill_in 'contact[email]', with: 'test@example.com'
+    fill_in 'contact[content]', with: 'TestContent'
     click_button 'Send'
-    #expect(SupportMailer).to receive(:contact_support).once
+
+    expect(ActionMailer::Base.deliveries.count).to eq(1)
+    expect(last_email).to have_content('TestContent')
   end
 
   scenario 'Contact form should not mail' do
+    fill_in 'contact[name]', with: 'TestName'
+    fill_in 'contact[email]', with: 'bad_mail'
+    fill_in 'contact[content]', with: 'TestContent'
+    click_button 'Send'
 
+    expect(ActionMailer::Base.deliveries.count).to_not eq(1)
+    expect(last_email).to have_content('TestContent')
   end
 
 end
