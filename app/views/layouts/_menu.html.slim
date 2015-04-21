@@ -1,4 +1,7 @@
-a.logo href="#"
+-if @logged_to_admin
+  = link_to '', admin_root_path, title: t(:admin_panel), class: :logo
+-else
+  a.logo href="#"
 ul.top_nav
   - @menu.each do |m|
     - (request.path == m.altlink or request.path == "/"+m.altlink ) ? @class = "active" : @class = ""

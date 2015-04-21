@@ -632,6 +632,9 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 				float: left;
 				margin: 0 17px 4px 0;
 			}
+			.tooltip_desc p:first-child{
+				margin: -20px 0px 20px 0;
+			}
 	.tooltipster-fade{
 		opacity: 0;
 		-webkit-transition-property: opacity;

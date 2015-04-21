@@ -16,6 +16,9 @@
           .work_info
             p
               em = t('used_technologies')
-              - project.technologies.each do |technology|
-                span = technology.title + ' '
+              - project.technologies.each do |tech|
+                span
+                  = tech.title
+                  - unless tech == project.technologies.last
+                    |,&nbsp
   = paginate @projects
