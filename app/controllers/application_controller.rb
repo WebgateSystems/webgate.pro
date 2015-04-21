@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   def common_prepare
     prepare_lang
     @menu = Category.rank(:position).all #order(:position, :created_at)
+    @logged_to_admin = true if current_user
   end
 
   #rescue_from CanCan::AccessDenied do |exception|
