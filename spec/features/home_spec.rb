@@ -29,7 +29,7 @@ feature 'Home page' do
     click_button 'Send'
 
     expect(ActionMailer::Base.deliveries.count).to_not eq(1)
-    expect(last_email).to have_content('TestContent')
+    expect(last_email).to_not have_content('TestContent')
   end
 
 end
