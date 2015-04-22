@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+
   def new
     @contact = Contact.new
   end
@@ -8,7 +9,7 @@ class ContactsController < ApplicationController
 
     if @contact.valid? && @contact.nickname == ''
       SupportMailer.delay.contact_support(@contact)
-      redirect_to :back, notice: t('thank_you_for_your_message') #todo
+      render template: 'contacts/contact_complete'
     else
       redirect_to :back
     end
