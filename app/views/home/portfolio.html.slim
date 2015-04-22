@@ -16,8 +16,8 @@
           .work_info
             p
               em = t('used_technologies')
-              - project.technologies.each do |tech|
-                span
+              span
+                - project.technologies.each do |tech|
                   = tech.title
                   - unless tech == project.technologies.last
                     |,&nbsp

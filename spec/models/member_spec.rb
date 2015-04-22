@@ -19,4 +19,25 @@ describe Member do
     it { is_expected.to have_and_belong_to_many(:technologies) }
   end
 
+  describe "Method: technology_groups" do
+    it "return member technology groups" do
+      member = create(:member)
+      tg1 = TechnologyGroup.create!(title: 'Administration')
+      tg2 = TechnologyGroup.create!(title: 'Frontend')
+      t1 = Technology.create!(title: 'unix', link: 'http://link.com', technology_group: tg1)
+      t2 = Technology.create!(title: 'html', link: 'http://link.com', technology_group: tg2)
+      member.technologies << [t1, t2]
+      expect(member.technology_groups).to match_array([tg1, tg2])
+    end
+
+    it "not return member technology groups" do
+      member = create(:member)
+      tg1 = TechnologyGroup.create!(title: 'Administration')
+      tg2 = TechnologyGroup.create!(title: 'Frontend')
+      t1 = Technology.create!(title: 'unix', link: 'http://link.com', technology_group: tg1)
+      t2 = Technology.create!(title: 'html', link: 'http://link.com', technology_group: tg2)
+      member.technologies << t1
+      expect(member.technology_groups).to_not match_array([tg1, tg2])
+    end
+  end
 end
