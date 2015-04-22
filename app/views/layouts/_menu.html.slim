@@ -4,14 +4,16 @@
   a.logo href="#"
 ul.top_nav
   - @menu.each do |m|
-    - (request.path == m.altlink or request.path == "/"+m.altlink ) ? @class = "active" : @class = ""
+    - compare_path = URI.escape m.altlink
+    - (request.path == compare_path or request.path == "/"+compare_path ) ? @class = "active" : @class = ""
     li class="#{ @class }"
       = link_to m.name, m.altlink
 
 span.mob.ico_main
 ul.mob.mob_nav.main
   - @menu.each do |m|
-    - (request.path == m.altlink or request.path == "/"+m.altlink ) ? @class = "active" : @class = ""
+    - compare_path = URI.escape m.altlink
+    - (request.path == compare_path or request.path == "/"+compare_path ) ? @class = "active" : @class = ""
     li class="#{ @class }"
       = link_to m.altlink do
         span
