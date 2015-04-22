@@ -40,7 +40,7 @@
             - @member_links.each do |member_link|
               tr.item data-item-id="#{member_link.id}" data-parent-id="#{@member.id}"
                 td= link_to member_link.name, member_link.link
-                td= member_link.created_at
+                td= member_link.created_at.to_s(:short)
       - else
         = t('web_app_theme.nothing')
 
@@ -52,16 +52,14 @@
             tr
               th= t('activerecord.technology.title')
               th= t('activerecord.created_at')
-              th
-              th
-              th
+              th[colspan="3"] #{t(:actions)}
           tbody
             - @member.technologies.each do |technology|
               tr
                 td= link_to technology.title, admin_technology_path(technology)
-                td= technology.created_at
-                td= link_to t('web_app_theme.show'), admin_technology_path(technology)
-                td= link_to t('web_app_theme.edit'), edit_admin_technology_path(technology)
-                td= link_to t('web_app_theme.delete'), admin_technology_path(technology), method: :delete, confirm: "#{t('web_app_theme.confirm')}"
+                td= technology.created_at.to_s(:short)
+                td= link_to fa_icon('eye'), admin_technology_path(technology), title: t('web_app_theme.show')
+                td= link_to fa_icon('edit'), edit_admin_technology_path(technology), title: t('web_app_theme.edit'), class: 'edit'
+                td= link_to fa_icon('trash'), admin_technology_path(technology), title: t('web_app_theme.delete'), method: :delete, confirm: "#{t('web_app_theme.confirm')}", class: 'delete'
       - else
         = t('web_app_theme.nothing')

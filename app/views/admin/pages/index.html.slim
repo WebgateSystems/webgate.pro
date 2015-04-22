@@ -12,16 +12,14 @@
             tr
               th= t('activerecord.page.title')
               th= t('activerecord.created_at')
-              th
-              th
-              th
+              th[colspan="3"] #{t(:actions)}
           tbody
             - @pages.each do |page|
               tr
                 td= link_to page.title, admin_page_path(page)
-                td= page.created_at
-                td= link_to t('web_app_theme.show'), admin_page_path(page)
-                td= link_to t('web_app_theme.edit'), edit_admin_page_path(page)
-                td= link_to t('web_app_theme.delete'), admin_page_path(page), method: :delete, data: {confirm: t(:are_you_sure)}
+                td= page.created_at.to_s(:short)
+                td= link_to fa_icon('eye'), admin_page_path(page), title: t('web_app_theme.show')
+                td= link_to fa_icon('edit'), edit_admin_page_path(page), title: t('web_app_theme.edit'), class: 'edit'
+                td= link_to fa_icon('trash'), admin_page_path(page), title: t('web_app_theme.delete'), method: :delete, data: {confirm: t(:are_you_sure)}, class: 'delete'
       - else
         = t('web_app_theme.nothing')
