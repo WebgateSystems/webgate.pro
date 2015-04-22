@@ -9,7 +9,7 @@ class ContactsController < ApplicationController
 
     if @contact.valid? && @contact.nickname == ''
       SupportMailer.delay.contact_support(@contact)
-      render template: 'contacts/contact_complete'
+      render partial: 'contact_complete'
     else
       redirect_to :back
     end

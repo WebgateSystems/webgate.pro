@@ -1,0 +1,16 @@
+= render "layouts/header"
+body
+  .header
+    = render 'layouts/lang'
+    = render 'layouts/menu'
+  .wrapper
+    .tabs_block
+      .competences
+        .content
+          h2
+            center= t('thank_you_for_your_message')
+        = render 'layouts/slider'
+    .message_block.mob
+      .content
+        h2= t('thank_you_for_your_message')
+  = render "layouts/footer"
