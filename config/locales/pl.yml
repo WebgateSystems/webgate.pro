@@ -156,3 +156,5 @@ pl:
   password: "Hasło"
   remember_me: "Zapamiętaj mnie"
   are_you_sure: "Jesteś pewien?"
+  page_title: "Tytuł strony"
+  page_link: "Link strona"

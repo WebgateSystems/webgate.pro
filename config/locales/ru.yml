@@ -159,3 +159,5 @@ ru:
   password: "Пароль"
   remember_me: "Запомнить меня"
   are_you_sure: "Вы уверены?"
+  page_title: "Название страницы"
+  page_link: "Линк страницы"
