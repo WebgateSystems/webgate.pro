@@ -9,7 +9,7 @@ pl:
   routes:
     main: główna
     team: zespół
-    portfolio: 'wybrane-realizacje'
+    portfolio: wybrane-realizacje
     not_found: nie-znalieziono
 
 ru:
