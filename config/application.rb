@@ -27,6 +27,7 @@ module WebgatePro
     config.i18n.enforce_available_locales = true
     #I18n.config.enforce_available_locales = true
     config.i18n.available_locales = [:pl, :en, :ru, :fr]
+    config.i18n.fallbacks = true
 
     config.generators do |g|
       g.template_engine :slim

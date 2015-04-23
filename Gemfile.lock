@@ -371,7 +371,7 @@ DEPENDENCIES
   font-awesome-rails
   foundation-rails
   geoip
-  globalize
+  globalize (~> 5.0.0)
   hpricot
   jquery-fileupload-rails
   jquery-minicolors-rails
