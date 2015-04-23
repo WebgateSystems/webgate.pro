@@ -36,7 +36,7 @@ WebgatePro::Application.routes.draw do
 
   localized do
     get 'main',         to: 'home#index', as: :main
-    #match 'not-found',  to: 'pages#not_found', via: [:get, :post], as: :not_found
+    match 'not-found',  to: 'pages#not_found', via: [:get, :post], as: :not_found
     get 'portfolio',    to: 'home#portfolio'
     get 'team',         to: 'home#team'
   end
@@ -44,6 +44,6 @@ WebgatePro::Application.routes.draw do
   get "logout" => "sessions#destroy", as: "logout"
   get "login" => "sessions#new", as: "login"
 
-  #get ":shortlink" => "pages#showbyshortlink"
+  get ":shortlink" => "pages#showbyshortlink"
   root to: 'home#index'
 end
