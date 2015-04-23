@@ -13,17 +13,15 @@
               th= t('activerecord.member.name')
               th= t('activerecord.member.job_title')
               th= t('activerecord.created_at')
-              th
-              th
-              th
+              th[colspan="3"] #{t(:actions)}
           tbody
             - @members.each do |member|
               tr.item data-item-id="#{member.id}"
                 td= link_to member.name, admin_member_path(member)
                 td= link_to member.job_title, admin_member_path(member)
-                td= member.created_at
-                td= link_to t('web_app_theme.show'), admin_member_path(member)
-                td= link_to t('web_app_theme.edit'), edit_admin_member_path(member)
-                td= link_to t('web_app_theme.delete'), admin_member_path(member), method: :delete, data: {confirm: t(:are_you_sure)}
+                td= member.created_at.to_s(:short)
+                td= link_to fa_icon('eye'), admin_member_path(member), title: t('web_app_theme.show')
+                td= link_to fa_icon('edit'), edit_admin_member_path(member), title: t('web_app_theme.edit'), class: 'edit'
+                td= link_to fa_icon('trash'), admin_member_path(member), title: t('web_app_theme.delete'), method: :delete, data: {confirm: t(:are_you_sure)}, class: 'delete'
       - else
         = t('web_app_theme.nothing')
