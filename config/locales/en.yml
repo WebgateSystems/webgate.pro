@@ -1,6 +1,5 @@
 en:
   change_language: "Change language"
-
   web_app_theme:
     save: "Save"
     or: "or"
@@ -159,3 +158,5 @@ en:
   password: "Password"
   remember_me: "Remember me"
   are_you_sure: "Are you sure?"
+  page_title: "Page title"
+  page_link: "Page link"

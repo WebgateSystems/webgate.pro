@@ -5,7 +5,6 @@
       li= link_to t('web_app_theme.new'), new_admin_member_path, class: 'button'
       li= link_to t('web_app_theme.edit'), edit_admin_member_path(@member), class: 'button success'
       li= link_to t('web_app_theme.delete'), admin_member_path(@member), method: :delete, data: {confirm: t(:are_you_sure)}, class: 'button alert'
-      li= link_to t('web_app_theme.show'), admin_member_path, class: 'button'
   .content
     .inner
       p

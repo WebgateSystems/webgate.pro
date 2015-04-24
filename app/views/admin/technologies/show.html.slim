@@ -1,13 +1,10 @@
 .block
   .secondary-navigation
     ul.button-group.radius
-      li.first
-        = link_to t('web_app_theme.list'), admin_technologies_path, class: 'button'
+      li= link_to t('web_app_theme.list'), admin_technologies_path, class: 'button'
       li= link_to t('web_app_theme.new'), new_admin_technology_path, class: 'button'
       li= link_to t('web_app_theme.edit'), edit_admin_technology_path(@technology), class: 'button success'
       li= link_to t('web_app_theme.delete'), admin_technology_path(@technology), method: :delete, data: {confirm: t(:are_you_sure)}, class: 'button alert'
-      li.active
-        = link_to t('web_app_theme.show'), admin_technology_path, class: 'button'
   .content
     .inner
       p
@@ -26,4 +23,4 @@
       p
         b= t('activerecord.technology.description') + ': '
         = @technology.description.try(:html_safe)
-      
+

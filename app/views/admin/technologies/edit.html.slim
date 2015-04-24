@@ -1,11 +1,8 @@
 .block
   .secondary-navigation
     ul.button-group.radius
-      li.first
-        = link_to t('web_app_theme.list'), admin_technologies_path, class: 'button'
+      li= link_to t('web_app_theme.list'), admin_technologies_path, class: 'button'
       li= link_to t('web_app_theme.new'), new_admin_technology_path, class: 'button'
-      li.active
-        = link_to t('web_app_theme.edit'), edit_admin_technology_path, class: 'button success'
   .content
     h2.title
       = t('web_app_theme.edit') + ' '

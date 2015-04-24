@@ -113,14 +113,14 @@ end
 
 if Technology.count == 0
   I18n.locale = 'en'
-  Technology.create title: 'Oracle Database', description: 'Oracle Database', technology_group_id: 1, logo: ''
-  Technology.create title: 'Firebird', description: 'Firebird', technology_group_id: 1, logo: ''
-  Technology.create title: 'PostgreSQL', description: 'PostgreSQL', technology_group_id: 1, logo: ''
-  Technology.create title: 'MySQL', description: 'MySQL', technology_group_id: 1, logo: ''
-  Technology.create title: 'SQLite', description: 'SQLite', technology_group_id: 1, logo: ''
-  Technology.create title: 'MongoDB', description: 'MongoDB', technology_group_id: 1, logo: ''
-  Technology.create title: 'riak', description: 'Riak', technology_group_id: 1, logo: ''
-  Technology.create title: 'Cassandra', description: 'Cassandra', technology_group_id: 1, logo: ''
+  Technology.create title: 'Oracle Database', description: 'Oracle Database', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/Oracle'
+  Technology.create title: 'Firebird', description: 'Firebird', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/Firebird'
+  Technology.create title: 'PostgreSQL', description: 'PostgreSQL', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/PostgreSQL'
+  Technology.create title: 'MySQL', description: 'MySQL', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/MySQL'
+  Technology.create title: 'SQLite', description: 'SQLite', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/SQLite'
+  Technology.create title: 'MongoDB', description: 'MongoDB', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/MongoDB'
+  Technology.create title: 'riak', description: 'Riak', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/Riak'
+  Technology.create title: 'Apache Cassandra', description: 'Cassandra', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/Apache_Cassandra'
 
   I18n.locale = 'pl'
   #todo
