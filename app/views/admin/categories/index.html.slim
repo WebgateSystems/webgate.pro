@@ -21,7 +21,7 @@
                 td= link_to category.name, admin_category_path(category)
                 td= category.altlink
                 td= category.page.title if category.page
-                td= category.page.shortlink if category.page
+                td= truncate(category.page.shortlink, length: 16) if category.page
                 td= category.created_at.to_s(:short)
                 td= link_to fa_icon('eye'), admin_category_path(category), title: t('web_app_theme.show')
                 td= link_to fa_icon('edit'), edit_admin_category_path(category), title: t('web_app_theme.edit'), class: 'edit'
