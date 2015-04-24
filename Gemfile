@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1' #for heroku
 gem 'rails', '~> 4.2.1'
 gem 'pg'
 gem 'jquery-rails'
