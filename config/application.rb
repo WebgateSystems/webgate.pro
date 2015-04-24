@@ -29,8 +29,6 @@ module WebgatePro
     config.i18n.available_locales = [:pl, :en, :ru, :fr]
     config.i18n.fallbacks = true
 
-    config.active_record.raise_in_transactional_callbacks = true
-
     config.generators do |g|
       g.template_engine :slim
       g.test_framework :rspec, fixtures: true, views: false
