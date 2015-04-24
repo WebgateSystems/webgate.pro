@@ -1,5 +1,5 @@
-= simple_form_for Contact.new, html: { class: 'feedback', novalidate: false } do |f|
-  = f.input :name, required: true, placeholder: t('fist_and_last_name'), label: false, include_blank: false
+= simple_form_for Contact.new, html: { class: 'feedback' } do |f|
+  = f.input :name, required: true, placeholder: t('fist_and_last_name'), label: false
   = f.input :email, required: true, placeholder: t('email_address'), label: false
   = f.input :content, as: :text, placeholder: t('message_content'), label: false
   .control_form
