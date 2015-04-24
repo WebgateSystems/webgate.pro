@@ -29,6 +29,8 @@ gem 'cocoon'
 gem 'chosen-rails'
 gem 'ranked-model'
 gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'dynamic_sitemaps'
+gem 'whenever', require: false
 
 # Use SCSS for stylesheets
 gem 'sass-rails'

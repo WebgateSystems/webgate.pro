@@ -43,8 +43,11 @@ WebgatePro::Application.routes.draw do
     root :to => "home#index"
   end
 
+  get 'sitemap' => 'home#sitemap'
+  get 'robots' => 'home#robots', format: :text
+
   get "logout" => "sessions#destroy", as: "logout"
-  get "login" => "sessions#new", as: "login"
+  get "login"  => "sessions#new", as: "login"
 
   get ":shortlink" => "pages#showbyshortlink"
   root to: 'home#index'
