@@ -1,3 +1,5 @@
+require 'carrierwave/orm/activerecord'
+
 class Screenshot < ActiveRecord::Base
   include RankedModel
   ranks :position, with_same: :project_id

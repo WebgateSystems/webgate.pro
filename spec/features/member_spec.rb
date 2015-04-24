@@ -36,6 +36,7 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Link list should work good' do
+    visit '/admin/members/new'
     click_link('List')
     expect(current_path).to eq '/admin/members'
   end

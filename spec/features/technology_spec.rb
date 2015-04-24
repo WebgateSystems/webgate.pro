@@ -22,6 +22,7 @@ feature 'Technology in admin panel.' do
 
 
   scenario 'Link list should work good' do
+    visit '/admin/technologies/new'
     click_link('List')
     expect(current_path).to eq '/admin/technologies'
   end

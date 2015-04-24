@@ -1,6 +1,5 @@
 en:
   change_language: "Change language"
-
   web_app_theme:
     save: "Save"
     or: "or"
@@ -169,3 +168,5 @@ en:
   background_jobs: "Background Jobs"
   are_you_sure: "Are you sure?"
   thank_you_for_your_message: "Thank you for your message"
+  page_title: "Page title"
+  page_link: "Page link"
