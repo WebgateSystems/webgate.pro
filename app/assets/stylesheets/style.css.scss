@@ -2,7 +2,16 @@
 @import url(reset.css);
 html{background: asset_url('html.jpg') repeat-x;}
 body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
+
 .mob{display: none;}
+
+#edge-badge {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 100;
+  border: none;
+}
 
 .header{
 	height: 135px;
