@@ -21,7 +21,7 @@
                 - member.member_links.each do |ml|
                   h3.blue
                     i.fa.fa-check-circle
-                    = link_to ml.name, ml.link, target: '_blank', rel: 'nofollow'
+                    = link_to ml.name, ml.link, target: '_blank', rel: 'nofollow', class: 'profile_links'
             .worker_column
               - if member.technology_groups.any?
                 h2= t('technologies')

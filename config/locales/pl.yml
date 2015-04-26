@@ -131,7 +131,7 @@ pl:
   submit: "Wyślij"
   network_applications: "Aplikacje sieciowe"
   hosting: "Hosting"
-  domain_registration: "Rejestracja domen"
+  domain_reg: "Rejestracja domen"
   ssl_certificates: "Certyfikaty SSL"
   outsourcing: "Outsourcing IT"
   design: "Design"
