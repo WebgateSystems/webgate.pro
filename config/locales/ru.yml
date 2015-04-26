@@ -138,7 +138,7 @@ ru:
   submit: "Отправить"
   network_applications: "Сетевые приложения"
   hosting: "Хостинг"
-  domain_registration: "Регистрация доменов"
+  domain_reg: "Регистрация доменов"
   ssl_certificates: "SSL Сертификаты"
   outsourcing: "Аутсорсинг IT"
   design: "Дизайн"

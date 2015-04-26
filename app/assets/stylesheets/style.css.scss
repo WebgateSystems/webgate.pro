@@ -2,8 +2,17 @@
 @import url(reset.css);
 html{background: asset_url('html.jpg') repeat-x;}
 body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
+
 .mob{display: none;}
 .control_form{display: none;}
+
+#edge-badge {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  z-index: 100;
+  border: none;
+}
 
 .header{
 	height: 135px;
@@ -530,6 +539,7 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 		}
         .team_block p.motto{
           text-align: center;
+          font-style: italic;
         }
 		.service_block_btn,.more_info{
 			background-color: #ea7c16;
@@ -583,6 +593,13 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 			.green{color: #19bb9b;}
 			.purple{color: #8d43ad;}
 			.orange{color: #d35300;}
+            .profile_links{
+              color: #454545;
+              -webkit-transition: color 0.3s linear;
+              transition: color 0.3s linear;
+            }
+            .profile_links:hover{color: #ea7c16;}
+
 			.worker_column h3 i{
 				float: left;
 				margin: 4px 7px 0 0;
