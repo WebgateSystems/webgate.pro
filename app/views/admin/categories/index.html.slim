@@ -1,7 +1,6 @@
 .block
   .secondary-navigation
     ul.button-group.radius
-      li= link_to t('web_app_theme.list'), admin_categories_path, class: 'button'
       li= link_to t('web_app_theme.new'), new_admin_category_path, class: 'button'
   .content
     h2.title= t('web_app_theme.categories')
@@ -12,6 +11,8 @@
             tr
               th= t('activerecord.category.name')
               th= t('activerecord.category.altlink')
+              th= t('page_title')
+              th= t('page_link')
               th= t('activerecord.created_at')
               th[colspan="3"] #{t(:actions)}
           tbody
@@ -19,6 +20,8 @@
               tr.item data-item-id="#{category.id}"
                 td= link_to category.name, admin_category_path(category)
                 td= category.altlink
+                td= category.page.title if category.page
+                td= truncate(category.page.shortlink, length: 16) if category.page
                 td= category.created_at.to_s(:short)
                 td= link_to fa_icon('eye'), admin_category_path(category), title: t('web_app_theme.show')
                 td= link_to fa_icon('edit'), edit_admin_category_path(category), title: t('web_app_theme.edit'), class: 'edit'

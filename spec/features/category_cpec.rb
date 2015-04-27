@@ -59,6 +59,7 @@ feature 'Category in admin panel.' do
   end
 
   scenario 'Link list should work good' do
+    visit '/admin/categories/new'
     click_link('List')
     expect(current_path).to eq '/admin/categories'
   end

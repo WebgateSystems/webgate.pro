@@ -42,6 +42,7 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Link list should work good' do
+    visit '/admin/projects/new'
     click_link('List')
     expect(current_path).to eq '/admin/projects'
   end

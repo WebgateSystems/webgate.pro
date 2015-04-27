@@ -5,7 +5,6 @@
       li= link_to t('web_app_theme.new'), new_admin_category_path, class: 'button'
       li= link_to t('web_app_theme.edit'), edit_admin_category_path(@category), class: 'button success'
       li= link_to t('web_app_theme.delete'), admin_category_path(@category), method: :delete, data: {confirm: t(:are_you_sure)}, class: 'button alert'
-      li= link_to t('web_app_theme.show'), admin_category_path, class: 'button'
 
   .content
     .inner

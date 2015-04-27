@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.1.8'
+gem 'rails', '~> 4.2.1'
 gem 'pg'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -10,8 +10,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'geoip'
 gem 'russian'
-gem 'globalize'
-gem 'rails-translate-routes'
+gem 'globalize', '~> 5.0.0'
+#gem 'rails-translate-routes'
+gem 'route_translator'
 gem 'exception_notification', '~> 4.0.1'
 gem 'unicorn'
 gem 'kaminari'
@@ -33,7 +34,8 @@ gem 'dynamic_sitemaps'
 gem 'whenever', require: false
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
+gem 'sass-rails', '~> 5.0'
+gem 'sprockets-rails', '~> 2.2.4'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -58,6 +60,8 @@ group :development do
   # Better errors handler
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'spring'
+  gem 'web-console', '~> 2.0'
 end
 
 group :test do

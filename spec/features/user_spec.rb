@@ -9,6 +9,7 @@ feature 'Users in admin panel.' do
   end
 
   scenario 'Link list should work good' do
+    visit '/admin/users/new'
     click_link('List')
     expect(current_path).to eq '/admin/users'
   end

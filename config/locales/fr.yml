@@ -1,6 +1,5 @@
 fr:
   change_language: "Changer de langue"
-
   web_app_theme:
     save: "Sauver"
     or: "ou"
@@ -134,7 +133,7 @@ fr:
   submit: "Send"
   network_applications: "Network applications"
   hosting: "Hosting"
-  domain_registration: "Domain registration"
+  domain_reg: "Domain registration"
   ssl_certificates: "SSL Certificates"
   outsourcing: "Outsourcing IT"
   design: "Design"
@@ -160,3 +159,5 @@ fr:
   password: "Mot de passe"
   remember_me: "Souviens-toi de moi"
   are_you_sure: "Êtes-vous sûr?"
+  page_title: "Titre de la page"
+  page_link: "Lien de la page"

@@ -1,13 +1,4 @@
 WebgatePro::Application.routes.draw do
-  get "main"        => "home#index", as: 'main'
-  match "not-found" => "pages#not_found", via: [:get, :post], as: :not_found
-  get "portfolio"   => "home#portfolio"
-  get "team"        => "home#team"
-
-  ActionDispatch::Routing::Translator.translate_from_file('config/locales/routes.yml', { no_prefixes: true })
-end
-
-WebgatePro::Application.routes.draw do
 
   mount Ckeditor::Engine => '/ckeditor'
   resources :sessions
@@ -45,6 +36,13 @@ WebgatePro::Application.routes.draw do
 
   get 'sitemap' => 'home#sitemap'
   get 'robots' => 'home#robots', format: :text
+
+  localized do
+    get 'main',         to: 'home#index', as: :main
+    match 'not-found',  to: 'pages#not_found', via: [:get, :post], as: :not_found
+    get 'portfolio',    to: 'home#portfolio'
+    get 'team',         to: 'home#team'
+  end
 
   get "logout" => "sessions#destroy", as: "logout"
   get "login"  => "sessions#new", as: "login"
