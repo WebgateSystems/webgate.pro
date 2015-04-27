@@ -170,3 +170,6 @@ fr:
   thank_you_for_your_message: "Thank you for your message"
   page_title: "Titre de la page"
   page_link: "Lien de la page"
+  three_chars_minimum: "3 caractères minimum"
+  cannot_be_empty: "Vous ne pouvez pas être vide"
+  email_format: "Email format"

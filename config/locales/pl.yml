@@ -169,3 +169,6 @@ pl:
   thank_you_for_your_message: "Thanka za wiadomość"
   page_title: "Tytuł strony"
   page_link: "Link strona"
+  three_chars_minimum: "co najmniej 3 znaki"
+  cannot_be_empty: "Nie może być pusty"
+  email_format: "Email format"
