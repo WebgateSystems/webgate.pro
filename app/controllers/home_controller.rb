@@ -24,6 +24,7 @@ class HomeController < ApplicationController
 
   def robots
     #@pages = Page.where(published: false)
+    respond_to :text
   end
 
 end
