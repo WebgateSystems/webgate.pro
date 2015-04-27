@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
 
-    if @contact.valid? && @contact.nickname == ''
+    if @contact.valid?
       SupportMailer.delay.contact_support(@contact)
       render partial: 'contact_complete'
     else
