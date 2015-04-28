@@ -5,7 +5,6 @@ host "webgate.pro"
 sitemap :site do
   url root_url, last_mod: Time.now, change_freq: 'daily', priority: 1.0
 
-  #puts portfolio_ru_url
   ApplicationController::PUBLIC_LANGS.map do |l|
     url eval("portfolio_" + "#{l.first.to_s}" + "_url"), last_mod: Time.now, change_freq: 'daily', priority: 1.0
     url eval("team_" + "#{l.first.to_s}" + "_url"), last_mod: Time.now, change_freq: 'daily', priority: 1.0
@@ -45,4 +44,4 @@ end
 #   end
 
 # Ping search engines after sitemap generation:
-ping_with "http://#{host}/sitemap.xml"
+ping_with "https://#{host}/sitemap.xml"
