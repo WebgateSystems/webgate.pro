@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery.min
-// require jquery_ujs
+//= require jquery_ujs
 //= require jquery-ui-1.8.16.slider
 //= require home_slider
 //= require jquery.bxslider.min

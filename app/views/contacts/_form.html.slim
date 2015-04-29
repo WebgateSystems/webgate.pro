@@ -1,6 +1,6 @@
-= simple_form_for Contact.new, html: { class: 'feedback', novalidate: false } do |f|
+= simple_form_for Contact.new, remote: true, authenticity_token: true, html: { class: 'feedback', novalidate: false } do |f|
   = f.input :name, placeholder: t('fist_and_last_name'), label: false, input_html: { required: true, pattern: '.{3,}', title: t('three_chars_minimum'), onchange: "this.setCustomValidity('')", oninvalid: "this.setCustomValidity('#{t('cannot_be_empty')}')" }
-  = f.text_field :email, placeholder: t('email_address'), label: false, required: true, pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$", title: 'username@email.com', onchange: "this.setCustomValidity('')", oninvalid: "this.setCustomValidity('#{t('email_format')}')"
+  = f.text_field :email, placeholder: t('email_address'), label: false, required: true, pattern: "\\S+@\\S+\\.\\S+", title: 'username@email.com', onchange: "this.setCustomValidity('')", oninvalid: "this.setCustomValidity('#{t('email_format')}')"
   = f.input :content, as: :text, placeholder: t('message_content'), label: false, input_html: { required: true, pattern: '.{3,}', title: t('three_chars_minimum'), onchange: "this.setCustomValidity('')", oninvalid: "this.setCustomValidity('#{t('cannot_be_empty')}')" }
   .control_form
     = f.input :nickname

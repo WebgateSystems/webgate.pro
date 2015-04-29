@@ -7,11 +7,17 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
 
-    if @contact.valid?
-      SupportMailer.delay.contact_support(@contact)
-      render partial: 'contact_complete'
-    else
-      redirect_to :back
+    respond_to do |format|
+      if @contact.valid?
+        SupportMailer.delay.contact_support(@contact)
+        format.html { render partial: 'contact_complete' }
+        format.json { render head :no_content }
+        format.js
+      else
+        format.html { render partial: 'contact_complete' }
+        format.json { render head :no_content }
+        format.js
+      end
     end
   end
 
