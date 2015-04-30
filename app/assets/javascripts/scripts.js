@@ -69,7 +69,12 @@
 		minWidth: 300,
 		maxWidth: 300,
       functionBefore: function(origin, content) {
-        var data = '<div class="tooltip_block"><p><img src="'+$(this).attr('data-img')+'"/>'+ '<div class="tooltip_desc">'+$(this).attr('data-desc') + '</div></p></div>';
+          if (! $(this).attr('data-img')) {
+              var data = '<div class="tooltip_block"><p><div class="tooltip_desc">'+$(this).attr('data-desc') + '</div></p></div>';
+          }
+          else {
+              var data = '<div class="tooltip_block"><p><img src="'+$(this).attr('data-img')+'"/>'+ '<div class="tooltip_desc">'+$(this).attr('data-desc') + '</div></p></div>';
+          };
         origin.tooltipster('content', $(data));
         content();
       }
