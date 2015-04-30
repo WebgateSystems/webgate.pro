@@ -30,16 +30,4 @@ describe PictureUploader do
     end
   end
 
-  context 'the avatar version' do
-    it "should scale a landscape image to be exactly 180 by 180 pixels" do
-      expect(@uploader.avatar).to have_dimensions(180, 180)
-    end
-  end
-
-  context 'the collage version' do
-    it "should scale a landscape image to be exactly 940 by 244 pixels" do
-      expect(@uploader.collage).to have_dimensions(940, 244)
-    end
-  end
-
 end

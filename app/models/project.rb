@@ -20,7 +20,7 @@ class Project < ActiveRecord::Base
 
   scope :published, -> { where(publish: true) }
 
-  mount_uploader :collage , PictureUploader
+  mount_uploader :collage , CollageUploader
 
   def livelink_f
     URI(self.livelink).host
