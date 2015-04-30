@@ -1,0 +1,19 @@
+#logo {
+  position: relative;
+}
+
+#logo .wrapper {
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+
+#logo span.button {
+  font-size: 80%;
+  padding: 5px 7px;
+  position: relative;
+  top: 0;
+  z-index: 1;
+}
