@@ -5,10 +5,33 @@
     = f.collection_select :technology_group_id, TechnologyGroup.all, :id, :title
     = f.input :title, label: t('activerecord.technology.title'), label_html: { class: 'label' }
     = f.input :link, label: t('activerecord.technology.link'), label_html: { class: 'label' }
-    = f.input :description, label: t('activerecord.technology.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { class: 'ckeditor', ckeditor: {toolbar: 'mini'} }
-    = f.input :logo, label: t('activerecord.technology.logo') + ': gif|png', label_html: { class: 'label' }
-  
+    p= f.input :description, label: t('activerecord.technology.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { class: 'ckeditor', ckeditor: {toolbar: 'mini'} }
+    .label= t('activerecord.technology.logo') + ': gif|png'
+    #logo
+      .wrapper
+        = f.file_field :logo, onchange: 'readLogoURL(this);'
+      span.button.success= t('add_logo')
+    = image_tag '', id: 'img_prev'
+    = f.hidden_field :logo_cache, value: f.object.logo_cache
+    - if f.object.logo.url.present?
+      = image_tag f.object.logo.url(:thumb), id: 'img_cache'
+    p
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '
     = link_to t('web_app_theme.cancel'), admin_technologies_path
+
+javascript:
+  function readLogoURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      $('#img_cache').hide();
+      reader.onload = function (e) {
+        $('#img_prev')
+          .attr('src', e.target.result)
+          .width(64)
+          .height(64);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
