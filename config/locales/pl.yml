@@ -22,7 +22,7 @@ pl:
     member: "członek"
     technology_group: "technology group"
     confirm: "Jesteś pewien?"
-    nothing: "Nothing"
+    nothing: "Nie ma żadnego wpisu"
     input: "Wkład"
     preview: "Zapowiedź"
   activerecord:
@@ -110,6 +110,7 @@ pl:
   admin_panel: "Admin Panel"
   content: "Zawartość strony"
   back_to_team: "Powrót do Team"
+  basic_information: "Podstawowa informacja"
   more_information: "Więcej Informacji"
   hide_information: "Ukryj Informacje"
   publish: "Publikować"
@@ -142,9 +143,8 @@ pl:
   outsourcing_link: "/it-outsourcing"
   design: "Kreatywny design"
   design_link: "/kreatywny-design"
-  net_apps:
-    description: "Tworzymy aplikacje sieciowe na miarę potrzeb, dobieramy właściwe technologie, dbamy o wydajność i scalowalność powstających aplikacji, tworzymy czysty, dobrze przetestowany kod"
-    learn_more: "Dowiedz się więcej"
+  net_apps_description: "Tworzymy aplikacje sieciowe na miarę potrzeb, dobieramy właściwe technologie, dbamy o wydajność i scalowalność powstających aplikacji, tworzymy czysty, dobrze przetestowany kod"
+  net_apps_learn_more: "Dowiedz się więcej"
   hosting_description: "Le web c’est aussi de nouvelles applications en HTML5 pour plus d’interactivité et d’usages suisse a communiquants en temps réel peel."
   hosting_details: "Szczegóły oferty"
   domain_description: "Jesteśmy rejestratorem i resellerem domain. Sprawdź nasz cennik - zawsze korzystne rozwiązania dla Twojego biznesu."
@@ -165,3 +165,4 @@ pl:
   are_you_sure: "Jesteś pewien?"
   page_title: "Tytuł strony"
   page_link: "Link strona"
+  online_portfolio: "Online portfolio"
