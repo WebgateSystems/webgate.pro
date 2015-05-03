@@ -112,6 +112,7 @@ fr:
   content: "Content"
   admin_panel: "Panneau d'administration"
   back_to_team: "Back to Team"
+  basic_information: "Informations de base"
   more_information: "More Information"
   hide_information: "Hide Information"
   publish: "Publish"
@@ -144,9 +145,8 @@ fr:
   outsourcing_link: "/externalisation-it"
   design: "Conception créative"
   design_link: "/conception-créative"
-  net_apps:
-    description: "Tworzymy aplikacje sieciowe na miarę potrzeb, dobieramy właściwe technologie, dbamy o wydajność i scalowalność powstających aplikacji, tworzymy czysty, dobrze przetestowany kod"
-    learn_more: "Learn more"
+  net_apps_description: "Tworzymy aplikacje sieciowe na miarę potrzeb, dobieramy właściwe technologie, dbamy o wydajność i scalowalność powstających aplikacji, tworzymy czysty, dobrze przetestowany kod"
+  net_apps_learn_more: "Learn more"
   hosting_description: "Le web c’est aussi de nouvelles applications en HTML5 pour plus d’interactivité et d’usages suisse a communiquants en temps réel peel."
   hosting_details: "Details"
   domain_description: "We registrar and domain reseller. Check our prices - always beneficial solutions for your business."
@@ -157,7 +157,6 @@ fr:
   outsourcing_about: "About outsourcing"
   design_description: "Durant nos sessions ou en régie, nous vous formons à HTML/CSS, jQuery, WordPress et l'accessibilité avec des programmes de qualité constamment mis à jour."
   design_about: "More about Design"
-
   email_or_password_invalid: "Email ou mot de passe est invalide"
   logged_in: "Connecté!"
   first_login_to_access: "Première connexion pour accéder à cette page."
@@ -168,3 +167,4 @@ fr:
   are_you_sure: "Êtes-vous sûr?"
   page_title: "Titre de la page"
   page_link: "Lien de la page"
+  online_portfolio: "Online portfolio"
