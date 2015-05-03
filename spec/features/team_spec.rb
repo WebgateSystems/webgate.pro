@@ -18,7 +18,7 @@ feature 'Adding team to site.' do
 
   scenario 'Show and Hide extend team members information', js: true do
     page.execute_script("$('span.team_name').click()")
-    expect(page).to have_content 'About'
+    expect(page).to have_content 'Basic information'
     expect(page).to have_content member1.description
     page.execute_script("$('span.mob.service_block_btn').click()")
     expect(page).to_not have_content 'Technologies'
