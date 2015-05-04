@@ -1,17 +1,19 @@
-= render "layouts/header"
-body
-  -if %w(staging development).include? Rails.env
-    .edge =image_tag 'edge.png', alt: "edge-badge", id: "edge-badge"
-  .header
-    = render 'layouts/lang'
-    = render 'layouts/menu'
-  .wrapper
-    = render 'layouts/services'
-    .tabs_block
-      .competences
-        = render 'layouts/slideshow'
-        .content
-          = yield
-        = render 'layouts/slider'
-    = render partial: 'layouts/carousel', locals: { projects: @projects }
-  = render "layouts/footer"
+doctype html
+html lang="#{locale}"
+  = render "layouts/header"
+  body
+    -if %w(staging development).include? Rails.env
+      .edge =image_tag 'edge.png', alt: "edge-badge", id: "edge-badge"
+    .header
+      = render 'layouts/lang'
+      = render 'layouts/menu'
+    .wrapper
+      = render 'layouts/services'
+      .tabs_block
+        .competences
+          = render 'layouts/slideshow'
+          .content
+            = yield
+          = render 'layouts/slider'
+      = render partial: 'layouts/carousel', locals: { projects: @projects }
+    = render "layouts/footer"
