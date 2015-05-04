@@ -1,2 +1,6 @@
 var element = document.getElementById("<%= @screenshot.id %>");
+console.log(element);
+console.log(element.parentNode);
+console.log(element.parentNode.parentNode);
+console.log(element.parentNode.parentNode.parentNode);
 $(element.parentNode.parentNode.parentNode).fadeOut("slow");
