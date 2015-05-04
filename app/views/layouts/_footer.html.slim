@@ -3,31 +3,32 @@
     span.up= t('to_top')
     p
       span= "#{t('we_invite_you_to_contact_us')} #{t('use_our_form_or_call')}"
-    .column
-      ul.contacts
-        = render "layouts/contacts_#{locale}"
-        li
-          span skype:
-          a.skype href="skype:sladkowski" sladkowski
-          a.rss href="#"
-          =link_to '', 'https://twitter.com/WebgateSystems', class: 'twi', rel: 'nofollow', target: '_blank'
-          =link_to '', 'https://www.facebook.com/WebgateSystems', class: 'fb', rel: 'nofollow', target: '_blank'
-      p.copy
-        |&copy; #{Date.today.year} webgate.pro  #{t('all_rights_reserved')}
-        = link_to '.', admin_root_path
-    .column.map
-      = link_to image_tag(asset_url('map.jpg'), width: 290, height: 233), 'https://www.google.com/maps?ll=50.245722,19.164129&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Konstytucji+19+Sosnowiec+Poland', target: '_blank', rel: 'nofollow'
-      a.link_map target="_blank" rel="nofollow" href="https://www.google.com/maps?ll=50.245722,19.164129&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Konstytucji+19+Sosnowiec+Poland"
-        |#{t('click_to_enlarge')}&nbsp;
-        span &raquo;
-    .column
-      form.feedback
-        input.text_input placeholder=(t('fist_and_last_name')) type="text"
-        input.text_input placeholder=(t('email_address')) type="text"
-        textarea placeholder=(t('message_content'))
-        input class="submit" value=(t('submit')) type="submit"
-      p class="copy valid"
-        |#{t('document_compliant_with')}&nbsp;
-        = link_to 'HTML', "http://validator.w3.org/check?uri=#{CGI.escape request.original_url}&charset=%28detect+automatically%29&doctype=Inline&group=0", class: 'html5', rel: 'nofollow', target: '_blank'
-      p class="copy mob"
-        |&copy; #{Date.today.year}  webgate.pro #{t('all_rights_reserved')}
+    .footer_columns
+      .column
+        ul.contacts
+          = render "layouts/contacts_#{locale}"
+          li
+            span skype:
+            a.skype href="skype:sladkowski" sladkowski
+            a.rss href="#"
+            =link_to '', 'https://twitter.com/WebgateSystems', class: 'twi', rel: 'nofollow', target: '_blank'
+            =link_to '', 'https://www.facebook.com/WebgateSystems', class: 'fb', rel: 'nofollow', target: '_blank'
+        p.copy
+          |&copy; #{Date.today.year} webgate.pro  #{t('all_rights_reserved')}
+          = link_to '.', admin_root_path
+      .column.map
+        = link_to image_tag(asset_url('map.jpg'), width: 290, height: 233), 'https://www.google.com/maps?ll=50.245722,19.164129&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Konstytucji+19+Sosnowiec+Poland', target: '_blank', rel: 'nofollow'
+        a.link_map target="_blank" rel="nofollow" href="https://www.google.com/maps?ll=50.245722,19.164129&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Konstytucji+19+Sosnowiec+Poland"
+          |#{t('click_to_enlarge')}&nbsp;
+          span &raquo;
+      .column
+        form.feedback
+          input.text_input placeholder=(t('fist_and_last_name')) type="text"
+          input.text_input placeholder=(t('email_address')) type="text"
+          textarea placeholder=(t('message_content')) rows="5" style="resize:none;"
+          input class="submit" value=(t('submit')) type="submit"
+        p class="copy valid"
+          |#{t('document_compliant_with')}&nbsp;
+          = link_to 'HTML', "http://validator.w3.org/check?uri=#{CGI.escape request.original_url}&charset=%28detect+automatically%29&doctype=Inline&group=0", class: 'html5', rel: 'nofollow', target: '_blank'
+        p class="copy mob"
+          |&copy; #{Date.today.year}  webgate.pro #{t('all_rights_reserved')}
