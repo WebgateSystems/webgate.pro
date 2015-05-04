@@ -12,7 +12,7 @@ class Member < ActiveRecord::Base
   validates_presence_of :name, :job_title, :description, :motto, :avatar
   translates  :name, :job_title, :description, :education, :motto
 
-  mount_uploader :avatar , PictureUploader
+  mount_uploader :avatar , AvatarUploader
 
   def technology_groups
     TechnologyGroup.where(id: self.technologies.map(&:technology_group_id).uniq).rank(:position)

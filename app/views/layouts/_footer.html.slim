@@ -25,6 +25,6 @@
 
       p class="copy valid"
         |#{t('document_compliant_with')}&nbsp;
-        = link_to 'HTML', 'http://validator.w3.org/check?uri=https%3A%2F%2Fwebgate.pro&charset=%28detect+automatically%29&doctype=Inline&group=0', class: 'html5', rel: 'nofollow', target: '_blank'
+        = link_to 'HTML', "http://validator.w3.org/check?uri=#{CGI.escape request.original_url}&charset=%28detect+automatically%29&doctype=Inline&group=0", class: 'html5', rel: 'nofollow', target: '_blank'
       p class="copy mob"
         |&copy; #{Date.today.year}  webgate.pro #{t('all_rights_reserved')}

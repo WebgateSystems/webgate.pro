@@ -1,29 +1,29 @@
 .mob.service_block.block_1
-  h2= t('network_applications')
-  p= t('net_apps.description')
-  a.service_block_btn href="#" #{t('net_apps.learn_more')}
+  h2= t(:network_applications)
+  p= t(:net_apps_description)
+  = link_to t(:net_apps_learn_more), t(:network_applications_link), class: 'service_block_btn'
 
 .mob.service_block.block_2
-  h2= t('hosting')
-  p= t('hosting_description')
-  a.service_block_btn href="#" #{t('hosting_details')}
+  h2= t(:hosting)
+  p= t(:hosting_description)
+  = link_to t(:hosting_details), t(:hosting_link), class: 'service_block_btn'
 
 .mob.service_block.block_3
-  h2= t('domain_reg')
-  p= t('domain_description')
-  a.service_block_btn href="#" #{t('domain_pricing')}
+  h2= t(:domain_reg)
+  p= t(:domain_description)
+  = link_to t(:domain_details), t(:domain_reg_link), class: 'service_block_btn'
 
 .mob.service_block.block_4
-  h2= t('ssl_certificates')
-  p= t('ssl_certificates_description')
-  a.service_block_btn href="#" #{t('ssl_certificates_more_info')}
+  h2= t(:ssl_certificates)
+  p= t(:ssl_certificates_description)
+  = link_to t(:ssl_certificates_more_info), t(:ssl_certificates_link), class: 'service_block_btn'
 
 .mob.service_block.block_5
-  h2= t('outsourcing')
-  p= t('outsourcing_description')
-  a.service_block_btn href="#" #{t('outsourcing_about')}
+  h2= t(:outsourcing)
+  p= t(:outsourcing_description)
+  = link_to t(:outsourcing_about), t(:outsourcing_link), class: 'service_block_btn'
 
 .mob.service_block.block_6
-  h2= t('design')
-  p= t('design_description')
-  a.service_block_btn href="#" #{t('design_about')}
+  h2= t(:design)
+  p= t(:design_description)
+  = link_to t(:design_about), t(:design_link), class: 'service_block_btn'
