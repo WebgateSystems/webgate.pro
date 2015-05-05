@@ -6,6 +6,8 @@
     = f.input :motto, label: t('activerecord.member.motto'), label_html: {class: 'label'}
     = f.input :description, label: t('activerecord.member.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
     p= f.input :education, label: t('activerecord.member.education'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
+    .label= t('publish')
+    = f.input :publish, label: t('activerecord.member.publish')
     .label= t('activerecord.member.avatar')
     #avatar
       .wrapper

@@ -71,6 +71,7 @@ fr:
       education: "Education"
       description: "Description"
       avatar: "Avatar"
+      publish: "Publish"
       motto: "Motto"
       watch_profile: "Watch Profile"
     member_link:

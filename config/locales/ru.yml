@@ -71,6 +71,7 @@ ru:
       education: "Образование"
       description: "Описание"
       avatar: "Аватар"
+      publish: "Опубликован"
       motto: "Девиз"
       watch_profile: "Открыть профиль"
     member_link:

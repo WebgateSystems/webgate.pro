@@ -11,7 +11,6 @@ describe Member do
     it { is_expected.to validate_presence_of(:job_title) }
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_presence_of(:motto) }
-    it { is_expected.to validate_presence_of(:avatar) }
   end
 
   describe "Associations" do
