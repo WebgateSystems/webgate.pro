@@ -21,3 +21,4 @@
 //= require animatescroll.min
 //= require lightbox.min.js
 //= require scripts
+//= require contacts

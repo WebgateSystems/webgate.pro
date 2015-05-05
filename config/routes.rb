@@ -44,6 +44,8 @@ WebgatePro::Application.routes.draw do
     get 'team',         to: 'home#team', as: :team
   end
 
+  get 'contact_complete', to: 'contacts#contact_complete'
+
   get "logout" => "sessions#destroy", as: "logout"
   get "login" => "sessions#new", as: "login"
 
