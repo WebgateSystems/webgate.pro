@@ -7,6 +7,7 @@ class Admin::MembersController < Admin::HomeController
 
   def show
     @member_links = @member.member_links.rank(:position)
+    @technologies = @member.technologies.rank(:member_position)
   end
 
   def new
@@ -55,6 +56,18 @@ class Admin::MembersController < Admin::HomeController
     @member_link.position_position = member_params[:row_position]
     respond_to do |format|
       if @member_link.save!
+        format.json { head :ok }
+      else
+        format.json { head :error }
+      end
+    end
+  end
+
+  def sort_technologies
+    @technology = Technology.find(member_params[:member_technology_id])
+    @technology.member_position_position = member_params[:row_member_position]
+    respond_to do |format|
+      if @technology.save!
         format.json { head :ok }
       else
         format.json { head :error }
