@@ -6,8 +6,9 @@
     = f.input :motto, label: t('activerecord.member.motto'), label_html: {class: 'label'}
     = f.input :description, label: t('activerecord.member.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
     p= f.input :education, label: t('activerecord.member.education'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
-    .label= t('publish')
-    = f.input :publish, label: t('activerecord.member.publish')
+    .label= t(:publish)
+    - @member.avatar.to_s.empty? ? disabled = true : disabled = false
+    = f.input :publish, label: t('activerecord.member.publish'), disabled: disabled
     .label= t('activerecord.member.avatar')
     #avatar
       .wrapper
@@ -52,5 +53,6 @@ javascript:
           .height(180);
       };
       reader.readAsDataURL(input.files[0]);
+      $('#member_publish').removeAttr('disabled');
     }
   }
