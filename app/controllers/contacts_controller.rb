@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  layout 'portfolio'
 
   def new
     @contact = Contact.new

@@ -1,8 +1,3 @@
 .contact_message
   h2
-    - if @contact.errors.any?
-      ul style=('color: #f00')
-        - @contact.errors.full_messages.each do |msg|
-          li= msg
-    - else
-      = t('thank_you_for_your_message')
+    center= t('thank_you_for_your_message')
