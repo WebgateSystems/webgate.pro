@@ -167,3 +167,5 @@ pl:
   page_title: "Tytuł strony"
   page_link: "Link strona"
   online_portfolio: "Online portfolio"
+  can_not_publish_without_avatar: "Nie można publikować bez avatar"
+  can_not_publish_without_collage: "Nie można publikować bez kolażu"

@@ -11,10 +11,9 @@ class Member < ActiveRecord::Base
   accepts_nested_attributes_for :member_links, allow_destroy: true
 
   validates  :name, :job_title, :description, :education, :motto, presence: true
+  validate :check_avatar
 
   translates :name, :job_title, :description, :education, :motto
-
-  after_validation :check_avatar
 
   mount_uploader :avatar, AvatarUploader
 
@@ -25,8 +24,8 @@ class Member < ActiveRecord::Base
   protected
 
   def check_avatar
-    unless self.avatar?
-      self.publish = false
+    if self.publish? and self.avatar.to_s.empty?
+      errors.add :publish, I18n.t('can_not_publish_without_avatar')
     end
   end
 

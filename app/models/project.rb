@@ -13,10 +13,9 @@ class Project < ActiveRecord::Base
 
   validates :title, :content, :livelink, presence: true
   validates :livelink, format: { with: URI.regexp }
+  validate  :check_collage
 
   translates :title, :content
-
-  after_validation :check_collage
 
   mount_uploader :collage, CollageUploader
 
@@ -27,8 +26,8 @@ class Project < ActiveRecord::Base
   protected
 
   def check_collage
-    unless self.collage?
-      self.publish = false
+    if self.publish? and self.collage.to_s.empty?
+      errors.add :publish, I18n.t('can_not_publish_without_collage')
     end
   end
 
