@@ -20,5 +20,6 @@
 //= require jquery.tooltipster.min
 //= require animatescroll.min
 //= require lightbox.min.js
+//= require lightbox-video.min.js
 //= require scripts
 //= require contacts
