@@ -20,6 +20,7 @@ feature 'Member in admin panel.' do
     fill_in 'member[name]', with: "TestName2"
     fill_in 'member[job_title]', with: "TestJobTitle2"
     fill_in_ckeditor 'Description', with: "TestDesc2"
+    fill_in_ckeditor 'Education', with: "TestEducation2"
     fill_in 'member[motto]', with: "TestMotto2"
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     click_button 'Save'
@@ -83,6 +84,7 @@ feature 'Member in admin panel.' do
     fill_in 'member[name]', with: 'TestNamePew'
     fill_in 'member[job_title]', with: 'TestJobTitlePew'
     fill_in 'member[description]', with: 'TestDescPew'
+    fill_in 'member[education]', with: 'TestducPew'
     fill_in 'member[motto]', with: 'TestMottoPew'
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     click_button 'Save'
@@ -99,6 +101,7 @@ feature 'Member in admin panel.' do
     fill_in 'member[name]', with: 'TestNamePew'
     fill_in 'member[job_title]', with: 'TestJobTitlePew'
     fill_in 'member[description]', with: 'TestDescPew'
+    fill_in 'member[education]', with: 'TestEducPew'
     fill_in 'member[motto]', with: 'TestMottoPew'
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     find(:css, "#member_publish").set(true)

@@ -10,6 +10,7 @@ describe Member do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:job_title) }
     it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:education) }
     it { is_expected.to validate_presence_of(:motto) }
   end
 
