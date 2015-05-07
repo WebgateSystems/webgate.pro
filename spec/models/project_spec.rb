@@ -10,11 +10,17 @@ describe Project do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:content) }
     it { is_expected.to validate_presence_of(:livelink) }
-    it { is_expected.to validate_presence_of(:collage) }
     it { is_expected.to allow_value('https://webgate.pro').for(:livelink) }
     it { is_expected.to allow_value('http://webgate.pro').for(:livelink) }
     it { is_expected.to_not allow_value('webgate.pro').for(:livelink) }
     it { is_expected.to_not allow_value('://webgate.pro').for(:livelink) }
+
+    it 'validates not publish without collage' do
+      project = Project.new(title: 'test', content: 'test', livelink: 'https://test.com',
+        publish: true, collage: nil)
+      expect(project.valid?).to be_falsey
+      expect(project.errors[:publish].size).to eq(1)
+    end
   end
 
   describe "Associations" do
