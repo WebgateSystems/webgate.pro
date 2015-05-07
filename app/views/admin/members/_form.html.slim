@@ -13,14 +13,14 @@
     #avatar
       .wrapper
         = f.file_field :avatar, onchange: 'readAvatarURL(this);'
-      span.button.success= t('add_avatar')
+      span.button.success= t(:add_avatar)
     = image_tag '', id: 'img_prev'
     = f.hidden_field :avatar_cache, value: f.object.avatar_cache
     - if f.object.avatar.url.present?
       = image_tag f.object.avatar.url(:avatar), id: 'img_cache'
 
     p
-    .label= t('member_links')
+    .label= t(:member_links)
     table.member-form
       thead
         tr
@@ -30,10 +30,10 @@
       tbody
         = f.fields_for :member_links do |s|
           = render 'member_link_fields', f: s
-    .links= link_to_add_association t('add_link'), f, :member_links
+    .links= link_to_add_association t(:add_link), f, :member_links
 
     p
-    .label= t('technologies')
+    .label= t(:technologies)
     = f.association :technologies, collection: Technology.all.map{|t| [t.title,t.id,{"data-color" => t.technology_group.color}]}, include_blank: true, label: false, input_html: {class: 'chosen-select'}
     br
   .form-actions

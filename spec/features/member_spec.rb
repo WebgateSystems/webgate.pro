@@ -96,12 +96,12 @@ feature 'Member in admin panel.' do
     expect(page).to have_content 'false'
   end
 
-  scenario 'Check publish. Here should be true' do
+  scenario 'Check publish. Here should be true', js: true do
     click_link ('New')
     fill_in 'member[name]', with: 'TestNamePew'
     fill_in 'member[job_title]', with: 'TestJobTitlePew'
-    fill_in 'member[description]', with: 'TestDescPew'
-    fill_in 'member[education]', with: 'TestEducPew'
+    fill_in_ckeditor 'Description', with: "TestDescPew"
+    fill_in_ckeditor 'Education', with: "TestEducPew"
     fill_in 'member[motto]', with: 'TestMottoPew'
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     find(:css, "#member_publish").set(true)
