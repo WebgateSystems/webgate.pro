@@ -1,5 +1,7 @@
 class Admin::TechnologiesController < Admin::HomeController
   before_action :set_technology, only: [:show, :edit, :update, :destroy]
+  before_action :set_technology_groups, only: [:new, :edit, :update]
+
 
   def index
     @technologies = Technology.order(:id)
@@ -42,6 +44,10 @@ class Admin::TechnologiesController < Admin::HomeController
 
   def set_technology
     @technology = Technology.find(params[:id])
+  end
+
+  def set_technology_groups
+    @technology_groups = TechnologyGroup.all.inject([]){|res, k| res << [k.title,k.id]}
   end
 
   def technology_params
