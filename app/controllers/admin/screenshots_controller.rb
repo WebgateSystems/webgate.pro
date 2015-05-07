@@ -1,5 +1,5 @@
 class Admin::ScreenshotsController < Admin::HomeController
-  before_action :set_screenshot, only: [:destroy]
+  before_action :set_screenshot, only: [:show, :destroy]
 
   def create
     @screenshot = Screenshot.new(screenshot_params)
@@ -9,6 +9,9 @@ class Admin::ScreenshotsController < Admin::HomeController
     else
       render json: { error: @screenshot.errors.full_messages.join(',')}, status: 400
     end
+  end
+
+  def show
   end
 
   def destroy
