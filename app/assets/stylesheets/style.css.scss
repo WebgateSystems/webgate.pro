@@ -40,8 +40,8 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 			overflow: hidden;
 			position: absolute;
 			right: 0px;
-			-webkit-transition: height 0.4s linear;
-			transition: height 0.4s linear;
+			-webkit-transition: height 0.2s linear;
+			transition: height 0.2s linear;
 			width: 32px;
 		}
 			.lang ul:hover{height: 75px;} //+25px for add lang
