@@ -11,8 +11,8 @@ class HomeController < ApplicationController
   end
 
   def team
-    @members = Member.rank(:position).all.page(params[:page]).per(9)
-    @technology_groups = TechnologyGroup.rank(:position)
+    @members = Member.published.rank(:position).all.page(params[:page]).per(9)
+    @technology_groups = TechnologyGroup.order(:position)
   end
 
 end

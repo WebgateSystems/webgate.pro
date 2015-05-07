@@ -72,6 +72,7 @@ fr:
       education: "Education"
       description: "Description"
       avatar: "Avatar"
+      publish: "Publish"
       motto: "Motto"
       watch_profile: "Watch Profile"
     member_link:
@@ -181,3 +182,5 @@ fr:
   cannot_be_empty: "Vous ne pouvez pas être vide"
   email_format: "Email format"
   online_portfolio: "Online portfolio"
+  can_not_publish_without_avatar: "Vous ne pouvez pas publier sans avatar"
+  can_not_publish_without_collage: "Vous ne pouvez pas publier sans collage"

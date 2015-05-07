@@ -23,7 +23,7 @@ WebgatePro::Application.routes.draw do
       member do
         put 'sort_screenshots'
       end
-      resources :screenshots
+      resources :screenshots, only: [:destroy]
     end
     resources :technologies
     resources :technology_groups do

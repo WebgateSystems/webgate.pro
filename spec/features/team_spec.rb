@@ -3,8 +3,12 @@ require 'rails_helper'
 feature 'Adding team to site.' do
 
   let!(:member1) { Member.create(name: 'TestName1', job_title: 'TestJobTitle1',
-      description: 'TestDesc1', motto: 'TestMotto1',
+      description: 'TestDesc1', education: 'TestEduc1', motto: 'TestMotto1', publish: true,
       avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) }
+
+  let!(:member2) { Member.create(name: 'TestName2', job_title: 'TestJobTitle2',
+      description: 'TestDesc2', education: 'TestEduc2', motto: 'TestMotto1', publish: true,
+      avatar: nil) }
 
   before do
     visit "/team"
@@ -14,6 +18,10 @@ feature 'Adding team to site.' do
     expect(page).to have_content member1.name
     expect(page).to have_content member1.job_title
     expect(page).to have_xpath("//img[contains(@src, \"/spec/uploads/member/#{member1.id}\")]")
+  end
+
+  scenario 'Should not show member without avatar' , js: true do
+    expect(page).to_not have_content member2.name
   end
 
   scenario 'Show and Hide extend team members information', js: true do

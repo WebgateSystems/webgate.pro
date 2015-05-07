@@ -71,6 +71,7 @@ ru:
       education: "Образование"
       description: "Описание"
       avatar: "Аватар"
+      publish: "Опубликован"
       motto: "Девиз"
       watch_profile: "Открыть профиль"
     member_link:
@@ -179,3 +180,5 @@ ru:
   cannot_be_empty: "Не может быть пустым"
   email_format: "Email формат"
   online_portfolio: "Онлайн портфолио"
+  can_not_publish_without_avatar: "Нельзя опубликовать без аватара"
+  can_not_publish_without_collage: "Нельзя обубликовать без коллажа"

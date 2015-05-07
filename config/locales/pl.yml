@@ -71,6 +71,7 @@ pl:
       education: "Edukacja"
       description: "Opis"
       avatar: "Awatara"
+      publish: "Publikować"
       motto: "Motto"
       watch_profile: "Zobacz profil"
     member_link:
@@ -180,3 +181,5 @@ pl:
   cannot_be_empty: "Nie może być pusty"
   email_format: "Email format"
   online_portfolio: "Online portfolio"
+  can_not_publish_without_avatar: "Nie można publikować bez avatar"
+  can_not_publish_without_collage: "Nie można publikować bez kolażu"
