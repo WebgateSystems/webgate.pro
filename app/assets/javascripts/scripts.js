@@ -43,7 +43,7 @@
 		slideMargin: 0
 	});
 	$('.team_block:odd').addClass('odd');
-	$('.team_name,.team_block img,.specialization').on('click',function(){
+	$('.team_name,.team_block img,.specialization,.motto').on('click',function(){
 		el = $(this)
 		closest = el.closest('.team_block')
 		active = closest.hasClass('active')
