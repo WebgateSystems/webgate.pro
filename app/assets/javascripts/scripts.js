@@ -59,12 +59,6 @@
 			$(this).closest('.team_block').find('.service_block_btn').css('display','inline-block');
 		}
 	});
-	$('.team_block:not(".active") p').on('click',function(){
-		$('.team_block:not(".active")').fadeOut(0);
-		$(this).closest('.team_block').fadeIn(0).addClass('active');
-		$(this).closest('.team_block').find('.columns_container').slideDown();
-		$(this).closest('.team_block').find('.service_block_btn').css('display','inline-block');
-	});
 	$('.service_block_btn').on('click', function(){
 		$(this).closest('.team_block').find('.columns_container').slideUp();
 		$('.team_block').fadeIn(500);
