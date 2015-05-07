@@ -42,13 +42,30 @@
 		adaptiveHeight: true,
 		slideMargin: 0
 	});
-	$('.team_block:not(".active") .team_name,.team_block:not(".active") img,.team_block:not(".active") p,.team_block:not(".active") .specialization').on('click',function(){
+	$('.team_block:odd').addClass('odd');
+	$('.team_name,.team_block img,.specialization').on('click',function(){
+		el = $(this)
+		closest = el.closest('.team_block')
+		active = closest.hasClass('active')
+		if(active){
+			$(this).closest('.team_block').find('.columns_container').slideUp();
+			$('.team_block').fadeIn(500);
+			$(this).closest('.team_block').removeClass('active');
+			$('.service_block_btn').fadeOut(0);
+		} else {
+			$('.team_block:not(".active")').fadeOut(0);
+			$(this).closest('.team_block').fadeIn(0).addClass('active');
+			$(this).closest('.team_block').find('.columns_container').slideDown();
+			$(this).closest('.team_block').find('.service_block_btn').css('display','inline-block');
+		}
+	});
+	$('.team_block:not(".active") p').on('click',function(){
 		$('.team_block:not(".active")').fadeOut(0);
 		$(this).closest('.team_block').fadeIn(0).addClass('active');
 		$(this).closest('.team_block').find('.columns_container').slideDown();
 		$(this).closest('.team_block').find('.service_block_btn').css('display','inline-block');
 	});
-	$('.service_block_btn').click(function(){
+	$('.service_block_btn').on('click', function(){
 		$(this).closest('.team_block').find('.columns_container').slideUp();
 		$('.team_block').fadeIn(500);
 		$(this).closest('.team_block').removeClass('active');
