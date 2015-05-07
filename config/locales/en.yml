@@ -71,6 +71,7 @@ en:
       education: "Education"
       description: "Description"
       avatar: "Avatar"
+      publish: "Publish"
       motto: "Motto"
       watch_profile: "Watch Profile"
     member_link:
@@ -168,3 +169,5 @@ en:
   page_title: "Page title"
   page_link: "Page link"
   online_portfolio: "Online portfolio"
+  can_not_publish_without_avatar: "Can not publish without avatar"
+  can_not_publish_without_collage: "Can not publish without collage"
