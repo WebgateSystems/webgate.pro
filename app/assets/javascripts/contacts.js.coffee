@@ -5,25 +5,18 @@
 $(document).ready ->
   $("#new_contact")
     .on "ajax:success", (event, data, status, xhr) ->
-      console.log("success!")
-      console.log(data)
-      console.log(xhr.responseText)
-      console.log(status)
-      $(".content").append("<li>" + data['name'] + "</li>")
-      $("#new_contact")[0].reset();
       $.getScript(document.location.href = "/contact_complete")
     .on "ajax:error", (event, data, status, xhr) ->
-      console.log("error!")
-      console.log(data.responseJSON)
-      console.log(xhr)
-      console.log(status)
-      $.each(data.responseJSON, (field, messages) ->
-        console.log(field)
-        console.log(messages)
-        #input = $("new_contact").find('input, select, textarea').filter( ->
-        #  name = $(this).attr('name')
-        #  if name
-        #    name.match(new RegExp(model_name + '\\[' + field + '\\(?'))
-        #)
+      $.each($.parseJSON(data.responseText), (field, messages) ->
+        #console.log(field)
+        #console.log(messages)
+        input = $("new_contact").find(':input').filter( ->
+          name = $(this).attr('email')
+          if name
+            name.match(new RegExp('contact' + '\\[' + field + '\\(?'))
+        )
+        input.parent().css('border','1px solid red')
+        input.closest('.form-group').addClass('has-error')
+        console.log(input)
+        input.parent().append('<span class="help-block">' + $.map(messages, (m) -> m.charAt(0).toUpperCase() + m.slice(1)).join('<br />') + '</span>')
       )
-      #$("#new_contact")[0].reset();
