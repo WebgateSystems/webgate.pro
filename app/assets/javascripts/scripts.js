@@ -91,4 +91,9 @@
       }
   });
 
+  $('#overlay, #form_msg').on('click', function(){
+  	$('#overlay, #form_msg').hide();
+  });
+
+
 });

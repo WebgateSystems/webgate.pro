@@ -5,7 +5,8 @@
 $(document).ready ->
   $("#new_contact")
     .on "ajax:success", (event, data, status, xhr) ->
-      $.getScript(document.location.href = "/contact_complete")
+      $("#overlay").show()
+      $("#form_msg").show()
     .on "ajax:error", (event, data, status, xhr) ->
       $.each($.parseJSON(data.responseText), (field, messages) ->
         input = $("#new_contact").find(':input').filter( ->
