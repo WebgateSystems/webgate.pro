@@ -41,8 +41,8 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 			overflow: hidden;
 			position: absolute;
 			right: 0px;
-			-webkit-transition: height 0.4s linear;
-			transition: height 0.4s linear;
+			-webkit-transition: height 0.2s linear;
+			transition: height 0.2s linear;
 			width: 32px;
 		}
 			.lang ul:hover{height: 75px;} //+25px for add lang
@@ -525,6 +525,7 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 			.team_name.mob{display: none;}
 		.specialization{
 			color: #595959;
+			cursor: pointer;
 			display: block;
 			font-size: 13px;
 			line-height: 19px;
@@ -610,6 +611,7 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 				margin: 4px 7px 0 0;
 			}
 		.worker_column p{
+			cursor: auto;
 			margin-bottom: 19px;
 			padding-left: 20px;
 		}
