@@ -20,7 +20,6 @@ feature 'Home page' do
 
     expect(ActionMailer::Base.deliveries.count).to eq(1)
     expect(last_email).to have_content('TestContent')
-    expect(page).to have_content(I18n.t('thank_you_for_your_message'))
   end
 
   scenario 'Contact form should not mail' do
