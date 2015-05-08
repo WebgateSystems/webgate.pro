@@ -1,6 +1,6 @@
 class Admin::TechnologiesController < Admin::HomeController
   before_action :set_technology, only: [:show, :edit, :update, :destroy]
-  before_action :set_technology_groups, only: [:new, :edit, :update]
+  # before_action :set_technology_groups, only: [:new, :edit, :update]
 
 
   def index

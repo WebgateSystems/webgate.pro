@@ -3,7 +3,7 @@
   .form-inputs
     .label = t('technology_group_title')
     br
-    = f.select :technology_group_id, options_for_select(@technology_groups, @technology.technology_group_id)
+    = f.collection_select :technology_group_id, TechnologyGroup.all, :id, :title
     = f.input :title, label: t('activerecord.technology.title'), label_html: { class: 'label' }
     = f.input :link, label: t('activerecord.technology.link'), label_html: { class: 'label' }
     p= f.input :description, label: t('activerecord.technology.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { class: 'ckeditor', ckeditor: {toolbar: 'mini'} }
