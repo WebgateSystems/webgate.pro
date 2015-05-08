@@ -16,10 +16,10 @@ $(document).ready ->
             name.match(new RegExp('contact' + '\\[' + field + '\\(?'))
         )
         input.tooltipster
-          arrow: false
+          theme: 'tooltipster-msg'
           maxWidth: 220
           position: 'left'
           onlyOne: true
-        input.tooltipster('content', $('<div class="tooltip_msg">' + $.map(messages, (m) -> m.charAt(0).toUpperCase() + m.slice(1)).join('<br />') + '</span>'))
+        input.tooltipster('content', $('<div>' + $.map(messages, (m) -> m.charAt(0).toUpperCase() + m.slice(1)).join('<br />') + '</span>'))
         input.tooltipster('show')
       )

@@ -2,8 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.tooltip_msg{
-  background-color: #fcc;
-  border-radius: 3px;
-  padding: 20px 20px 3px;
+.tooltipster-msg {
+  border-radius: 5px;
+  border: 2px solid #000;
+  background: #fcc;
+}
+
+.tooltipster-msg .tooltipster-content {
+  font-size: 14px;
+  line-height: 16px;
+  padding: 4px 15px;
 }
