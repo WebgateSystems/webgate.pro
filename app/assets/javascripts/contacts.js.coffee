@@ -7,6 +7,7 @@ $(document).ready ->
     .on "ajax:success", (event, data, status, xhr) ->
       $("#overlay").show()
       $("#form_msg").show()
+      $("#new_contact")[0].reset()
     .on "ajax:error", (event, data, status, xhr) ->
       $.each($.parseJSON(data.responseText), (field, messages) ->
         input = $("#new_contact").find(':input').filter( ->
