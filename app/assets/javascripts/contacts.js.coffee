@@ -18,8 +18,9 @@ $(document).ready ->
         input.tooltipster
           theme: 'tooltipster-msg'
           maxWidth: 220
-          position: 'left'
+          position: 'top-left'
           onlyOne: true
+          offsetY: -3
         input.tooltipster('content', $('<div>' + $.map(messages, (m) -> m.charAt(0).toUpperCase() + m.slice(1)).join('<br />') + '</span>'))
         input.tooltipster('show')
       )
