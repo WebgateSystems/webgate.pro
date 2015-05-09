@@ -11,7 +11,7 @@ feature 'Adding team to site.' do
       avatar: nil) }
 
   before do
-    visit "/team"
+    visit team_path
   end
 
   scenario 'Should show list of team members' do

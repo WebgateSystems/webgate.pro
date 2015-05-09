@@ -12,7 +12,7 @@ feature 'Member in admin panel.' do
 
   before do
     sign_in(user)
-    visit '/admin/members'
+    visit admin_members_path
   end
 
   scenario 'Try drag and drop on index', js: true do
@@ -24,27 +24,27 @@ feature 'Member in admin panel.' do
     fill_in 'member[motto]', with: "TestMotto2"
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     click_button 'Save'
-    visit '/admin/members'
+    visit admin_members_path
     dest_element = find('td', text: "TestName2")
     source_element = find('td', text: "TestName1")
     source_element.drag_to dest_element
     sleep 5 #wait for ajax complete
     page.all(:link, 'Show')[1].click
-    expect(current_path).to eq "/admin/members/#{Member.last.id}"
-    visit '/admin/members'
+    expect(current_path).to eq admin_member_path(Member.last.id)
+    visit admin_members_path
     page.all(:link, 'Show')[2].click
-    expect(current_path).to_not eq "/admin/members/#{Member.last.id}"
+    expect(current_path).to_not eq admin_member_path(Member.last.id)
   end
 
   scenario 'Link list should work good' do
-    visit '/admin/members/new'
+    visit new_admin_member_path
     click_link('List')
-    expect(current_path).to eq '/admin/members'
+    expect(current_path).to eq admin_members_path
   end
 
   scenario 'Link new should work good' do
     click_link('New')
-    expect(current_path).to eq '/admin/members/new'
+    expect(current_path).to eq new_admin_member_path
   end
 
   scenario 'Member root path should have list of members' do
@@ -56,10 +56,10 @@ feature 'Member in admin panel.' do
 
   scenario 'Member root path links show, edit should work' do
     page.all(:link, 'Show')[0].click
-    expect(current_path).to eq "/admin/members/#{Member.first.id}"
-    visit '/admin/members'
+    expect(current_path).to eq admin_member_path(Member.first.id)
+    visit admin_members_path
     page.all(:link, 'Edit')[0].click
-    expect(current_path).to eq "/admin/members/#{Member.first.id}/edit"
+    expect(current_path).to eq edit_admin_member_path(Member.first.id)
   end
 
   scenario 'Link delete should delete member' do
@@ -88,7 +88,7 @@ feature 'Member in admin panel.' do
     fill_in 'member[motto]', with: 'TestMottoPew'
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     click_button 'Save'
-    visit '/admin/members'
+    visit admin_members_path
     expect(page).to have_content 'TestNamePew'
   end
 
@@ -106,7 +106,7 @@ feature 'Member in admin panel.' do
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     find(:css, "#member_publish").set(true)
     click_button 'Save'
-    visit '/admin/members'
+    visit admin_members_path
     expect(page).to have_content 'true'
   end
 
@@ -119,7 +119,7 @@ feature 'Member in admin panel.' do
   scenario 'Dont create member with empty fields' do
     click_link ('New')
     fill_in 'member[name]', with: 'Testname'
-    visit '/admin/members'
+    visit admin_members_path
     expect(page).to have_no_content 'Testname'
   end
 end
