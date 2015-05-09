@@ -16,11 +16,12 @@ $(document).ready ->
             name.match(new RegExp('contact' + '\\[' + field + '\\(?'))
         )
         input.tooltipster
+          animation: 'grow' # or fade
           theme: 'tooltipster-msg'
           maxWidth: 220
           position: 'top-left'
           onlyOne: true
-          offsetY: -3
+          offsetY: -3 # 0 with position left
         input.tooltipster('content', $('<div>' + $.map(messages, (m) -> m.charAt(0).toUpperCase() + m.slice(1)).join('<br />') + '</span>'))
         input.tooltipster('show')
       )
