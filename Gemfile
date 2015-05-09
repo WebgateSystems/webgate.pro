@@ -30,8 +30,8 @@ gem 'cocoon'
 gem 'chosen-rails'
 gem 'ranked-model'
 gem 'ckeditor', github: 'galetahub/ckeditor'
-gem 'sidekiq'
-gem 'sinatra', require: nil
+#gem 'sidekiq'
+#gem 'sinatra', require: nil
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
