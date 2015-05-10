@@ -76,13 +76,4 @@ WebgatePro::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  WebgatePro::Application.config.middleware.use ExceptionNotification::Rack,
-    :email => {
-      email_prefix: "[webgate.pro - exception] ",
-      sender_address: %{"webgate.pro exception notifier" <notify@webgate.pro>},
-      exception_recipients: %w{devs@webgate.pro},
-      delivery_method: :smtp,
-      smtp_settings: YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['notify_smtp_data']
-    }
 end

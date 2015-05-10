@@ -34,5 +34,12 @@ module WebgatePro
       g.test_framework :rspec, fixtures: true, views: false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'config.yml')
+      YAML.load(File.open(env_file))[Rails.env]['notify_smtp_data'].each do |key, value|
+        ENV[key] = value.to_s
+      end if File.exists?(env_file)
+    end
   end
 end

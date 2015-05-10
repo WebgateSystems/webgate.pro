@@ -9,18 +9,26 @@ ExceptionNotification.configure do |config|
   # Adds a condition to decide when an exception must be ignored or not.
   # The ignore_if method can be invoked multiple times to add extra conditions.
   config.ignore_if do |exception, options|
-    #Rails.env.development? or Rails.env.test?
+    Rails.env.development? or Rails.env.test?
   end
 
   # Notifiers =================================================================
 
   # Email notifier sends notifications by email.
   config.add_notifier :email, {
-    email_prefix: "[webgate.pro - exception] ",
+    email_prefix: Rails.env.production? ? '[webgate.pro - exception]' : '[test.webgate.pro - exception]',
     sender_address: %{"webgate.pro exception notifier" <notify@webgate.pro>},
-    exception_recipients: %w{yuri.skurikhin@gmail.com},
+    exception_recipients: %w{yunixon@gmail.com}, #%w{devs@webgate.pro}
     delivery_method: :smtp,
-    smtp_settings: YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['notify_smtp_data']
+    smtp_settings: {
+      tls: ENV['tls'],
+      address: ENV['address'],
+      port: ENV['port'],
+      domain: ENV['domain'],
+      user_name: ENV['user_name'],
+      password: ENV['password'],
+      authentication: ENV['authentication']
+    }
   }
   #WebgatePro::Application.config.middleware.use ExceptionNotification::Rack,
   #  :email => {
