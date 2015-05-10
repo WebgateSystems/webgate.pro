@@ -3,7 +3,12 @@ class HomeController < ApplicationController
 
   def index
     @projects = Project.published.rank(:position).all
-    render layout: 'main'
+    unless params[:lang].nil?
+      I18n.locale = params[:lang]
+      redirect_to root_path
+    else
+      render layout: 'main'
+    end
   end
 
   def portfolio
