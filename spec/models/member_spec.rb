@@ -10,8 +10,15 @@ describe Member do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:job_title) }
     it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:education) }
     it { is_expected.to validate_presence_of(:motto) }
-    it { is_expected.to validate_presence_of(:avatar) }
+
+    it 'validates not publish without avatar' do
+      member = Member.new(name: 'test', job_title: 'test', description: 'test', education: 'test',
+        publish: true, avatar: nil)
+      expect(member.valid?).to be_falsey
+      expect(member.errors[:publish].size).to eq(1)
+    end
   end
 
   describe "Associations" do

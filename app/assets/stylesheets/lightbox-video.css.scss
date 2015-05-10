@@ -1,0 +1,56 @@
+//colors
+$black_80: rgba(0,0,0,0.8);
+$white: #ffffff;
+$black_30: rgba(0,0,0,0.3);
+
+#slvj-window {
+  width: 100%;
+  min-height: 100%;
+  z-index: 30;
+  background: $black_80;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
+}
+#slvj-background-close {
+  width: 100%;
+  min-height: 100%;
+  z-index: 31;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#slvj-back-lightbox {
+  width: 700px;
+  height: 540px;
+  margin: auto;
+  z-index: 32;
+}
+.slvj-lightbox {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  margin: 0;
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px 2px $black_30;
+  z-index: 53;
+}
+#slvj-close-icon {
+  background-image: asset_url('lightbox/close-video.gif');
+  background-repeat: no-repeat;
+  width: 11px;
+  height: 11px;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 999;
+  &:hover {
+    cursor: pointer;
+  }
+}

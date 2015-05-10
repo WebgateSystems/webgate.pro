@@ -20,7 +20,7 @@ WebgatePro::Application.routes.draw do
       member do
         put 'sort_screenshots'
       end
-      resources :screenshots
+      resources :screenshots, only: [:destroy]
     end
     resources :technologies
     resources :technology_groups do
@@ -40,8 +40,8 @@ WebgatePro::Application.routes.draw do
   localized do
     get 'main',         to: 'home#index', as: :main
     match 'not-found',  to: 'pages#not_found', via: [:get, :post], as: :not_found
-    get 'portfolio',    to: 'home#portfolio'
-    get 'team',         to: 'home#team'
+    get 'portfolio',    to: 'home#portfolio', as: :portfolio
+    get 'team',         to: 'home#team', as: :team
   end
 
   get "logout" => "sessions#destroy", as: "logout"

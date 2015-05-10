@@ -21,6 +21,7 @@ feature 'Project in admin panel.' do
     click_button 'Save'
     visit '/admin/projects'
     click_link ('TestTitleFull')
+
     expect(page).to have_content technology.title
   end
 end

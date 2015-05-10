@@ -42,13 +42,24 @@
 		adaptiveHeight: true,
 		slideMargin: 0
 	});
-	$('.team_block:not(".active") .team_name,.team_block:not(".active") img,.team_block:not(".active") p,.team_block:not(".active") .specialization').on('click',function(){
-		$('.team_block:not(".active")').fadeOut(0);
-		$(this).closest('.team_block').fadeIn(0).addClass('active');
-		$(this).closest('.team_block').find('.columns_container').slideDown();
-		$(this).closest('.team_block').find('.service_block_btn').css('display','inline-block');
+	$('.team_block:odd').addClass('odd');
+	$('.team_name,.team_block img,.specialization,.motto').on('click',function(){
+		el = $(this)
+		closest = el.closest('.team_block')
+		active = closest.hasClass('active')
+		if(active){
+			$(this).closest('.team_block').find('.columns_container').slideUp();
+			$('.team_block').fadeIn(500);
+			$(this).closest('.team_block').removeClass('active');
+			$('.service_block_btn').fadeOut(0);
+		} else {
+			$('.team_block:not(".active")').fadeOut(0);
+			$(this).closest('.team_block').fadeIn(0).addClass('active');
+			$(this).closest('.team_block').find('.columns_container').slideDown();
+			$(this).closest('.team_block').find('.service_block_btn').css('display','inline-block');
+		}
 	});
-	$('.service_block_btn').click(function(){
+	$('.service_block_btn').on('click', function(){
 		$(this).closest('.team_block').find('.columns_container').slideUp();
 		$('.team_block').fadeIn(500);
 		$(this).closest('.team_block').removeClass('active');
@@ -69,7 +80,12 @@
 		minWidth: 300,
 		maxWidth: 300,
       functionBefore: function(origin, content) {
-        var data = '<div class="tooltip_block"><p><img src="'+$(this).attr('data-img')+'"/>'+ '<div class="tooltip_desc">'+$(this).attr('data-desc') + '</div></p></div>';
+          if (! $(this).attr('data-img')) {
+              var data = '<div class="tooltip_block"><p><div class="tooltip_desc">'+$(this).attr('data-desc') + '</div></p></div>';
+          }
+          else {
+              var data = '<div class="tooltip_block"><p><img src="'+$(this).attr('data-img')+'"/>'+ '<div class="tooltip_desc">'+$(this).attr('data-desc') + '</div></p></div>';
+          };
         origin.tooltipster('content', $(data));
         content();
       }
