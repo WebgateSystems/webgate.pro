@@ -18,7 +18,7 @@ ExceptionNotification.configure do |config|
   config.add_notifier :email, {
     email_prefix: Rails.env.production? ? '[webgate.pro - exception]' : '[test.webgate.pro - exception]',
     sender_address: %{"webgate.pro exception notifier" <notify@webgate.pro>},
-    exception_recipients: %w{yunixon@gmail.com}, #%w{devs@webgate.pro}
+    exception_recipients: %w{devs@webgate.pro}
     delivery_method: :smtp,
     smtp_settings: {
       tls: ENV['tls'],
