@@ -1,5 +1,6 @@
 class SupportMailer < ActionMailer::Base
   include Sidekiq::Worker
+  sidekiq_options queue: :mail
 
   default to: 'biuro@webgate.pro'
 
