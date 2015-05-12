@@ -23,7 +23,7 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/assets public/upl
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
-set :sidekiq_config, -> { File.join(Rails.root, 'config', 'sidekiq.yml') }
+set :sidekiq_config, -> { File.join(shared_path, 'config', 'sidekiq.yml') }
 
 set :keep_releases, 5
 
