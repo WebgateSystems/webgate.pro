@@ -41,6 +41,9 @@ module WebgatePro
         YAML.load(File.open(env_file))[Rails.env].each do |key, value|
           ENV[key] = value.to_s
         end if File.exists?(env_file)
+        YAML.load(File.open(env_file))[Rails.env]['notify_smtp_data'].each do |key, value|
+          ENV[key] = value.to_s
+        end if File.exists?(env_file)
       end
     end
 
