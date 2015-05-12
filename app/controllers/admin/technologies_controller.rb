@@ -1,8 +1,9 @@
 class Admin::TechnologiesController < Admin::HomeController
   before_action :set_technology, only: [:show, :edit, :update, :destroy]
+  before_action :set_technology_groups, only: [:new, :create, :edit, :update]
 
   def index
-    @technologies = Technology.order(:id)
+    @technologies = Technology.order(:id).includes(:technology_group)
   end
 
   def show
@@ -42,6 +43,10 @@ class Admin::TechnologiesController < Admin::HomeController
 
   def set_technology
     @technology = Technology.find(params[:id])
+  end
+
+  def set_technology_groups
+    @technology_groups = TechnologyGroup.includes(:translations)
   end
 
   def technology_params

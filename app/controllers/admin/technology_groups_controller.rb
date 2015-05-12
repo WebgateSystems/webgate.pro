@@ -2,7 +2,7 @@ class Admin::TechnologyGroupsController < Admin::HomeController
   before_action :set_technology_group, only: [:show, :edit, :update, :destroy]
 
   def index
-    @technology_groups = TechnologyGroup.rank(:position).all
+    @technology_groups = TechnologyGroup.rank(:position).includes(:translations)
   end
 
   def show
