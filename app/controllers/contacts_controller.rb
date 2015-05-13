@@ -12,7 +12,7 @@ class ContactsController < ApplicationController
       if @contact.valid?
         SupportMailer.delay.contact_support(@contact)
         format.html { redirect_to contact_complete_path, notice: 'success' }
-        format.json { render json: @contact }
+        format.json { render json: @contact, status: :created, location: @contact }
       else
         format.html { redirect_to contact_complete_path, notice: 'errors' }
         format.json { render json: @contact.errors, status: :unprocessable_entity }

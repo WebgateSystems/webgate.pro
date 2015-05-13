@@ -2,13 +2,14 @@ class SupportMailer < ActionMailer::Base
   include Sidekiq::Worker
   sidekiq_options queue: :mail
 
-  default to: 'biuro@webgate.pro'
+  default to: 'yuri.skurikhin@gmail.com'
 
   def contact_support(contact)
+    @contact = contact
+    subject = t('contact_form')
     if contact.nickname.present?
-      mail from: contact.email, subject: 'SPAM', body: contact.content
-    else
-      mail from: contact.email, subject: t('contact_form'), body: contact.content
+      subject = 'SPAM'
     end
+    mail from: contact.email, reply_to: contact.email, subject: subject
   end
 end

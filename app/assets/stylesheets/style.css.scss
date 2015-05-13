@@ -30,7 +30,10 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 }
 
 #form_msg h2{
-	margin-top: 20%;
+	position: fixed;
+	top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .header{

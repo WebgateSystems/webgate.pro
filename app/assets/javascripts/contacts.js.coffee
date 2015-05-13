@@ -5,10 +5,11 @@
 $(document).ready ->
   $("#new_contact")
     .on "ajax:success", (event, data, status, xhr) ->
-      $("#form_msg").show()
+      $("#form_msg").css('opacity', '1.0')
+      $("#form_msg").show().delay(1000)
       $('#form_msg').animate
         opacity: 0
-      , 4600
+      , 3000
       , ->
         $(this).hide()
       $("#new_contact")[0].reset()
