@@ -1,4 +1,6 @@
 staging:
+  REDIS_URL: 'redis://localhost:6379'
+
   noreply_email: 'noreply@mailing.webgate.pro'
   support_email: 'support@webgate.pro'
   notify_email: 'notify@webgate.pro'
@@ -13,6 +15,8 @@ staging:
     authentication: plain
 
 production:
+  REDIS_URL: 'redis://localhost:6379'
+
   noreply_email: 'noreply@mailing.webgate.pro'
   support_email: 'support@webgate.pro'
   notify_email: 'notify@webgate.pro'

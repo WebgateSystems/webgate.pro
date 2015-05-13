@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Admin panel' do
-  
+
   let(:user) { create(:user) }
 
   scenario 'forbid access to dashboard without fill the correct login/password' do
