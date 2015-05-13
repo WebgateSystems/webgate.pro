@@ -60,6 +60,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'spring'
   gem 'web-console', '~> 2.0'
+  gem 'bullet'
 end
 
 group :test do

@@ -1,8 +1,9 @@
 class Admin::MembersController < Admin::HomeController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_technologies, only: [:new, :edit, :create, :update]
 
   def index
-    @members = Member.rank(:position).all
+    @members = Member.rank(:position).includes(:translations)
   end
 
   def show
@@ -66,6 +67,10 @@ class Admin::MembersController < Admin::HomeController
 
   def set_member
     @member = Member.find(params[:id])
+  end
+
+  def set_technologies
+    @technologies = Technology.includes(:technology_group)
   end
 
   def member_params

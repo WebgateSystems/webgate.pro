@@ -54,6 +54,9 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    bullet (4.14.7)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
     byebug (4.0.5)
       columnize (= 0.9.0)
     capistrano (3.4.0)
@@ -335,6 +338,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.9.0)
     web-console (2.1.2)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -349,6 +353,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bullet
   byebug
   capistrano (~> 3.0)
   capistrano-bundler (~> 1.1)
