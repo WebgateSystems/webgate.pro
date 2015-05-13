@@ -1,8 +1,9 @@
 class Admin::ProjectsController < Admin::HomeController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_technologies, only: [:new, :create, :edit, :update]
 
   def index
-    @projects = Project.rank(:position).all
+    @projects = Project.rank(:position).includes(:translations)
   end
 
   def show
@@ -77,6 +78,10 @@ class Admin::ProjectsController < Admin::HomeController
 
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def set_technologies
+    @technologies = Technology.includes(:technology_group)
   end
 
   def project_params

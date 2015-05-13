@@ -2,14 +2,11 @@ require 'rails_helper'
 
 feature 'Technology in admin panel.' do
   let(:user) { create(:user) }
+  let!(:technology_group) { create(:technology_group)}
+
   before do
     visit '/admin'
     login_user_post(user.email, 'secret')
-    visit '/admin/technology_groups'
-    click_link ('New')
-    fill_in 'technology_group[title]', with: 'TestGroup'
-    fill_in 'technology_group[description]', with: 'Test Description'
-    click_button 'Save'
     visit '/admin/technologies'
     click_link ('New')
     find('#technology_technology_group_id').find(:xpath, 'option[1]').select_option
@@ -19,7 +16,6 @@ feature 'Technology in admin panel.' do
     click_button 'Save'
     visit '/admin/technologies'
   end
-
 
   scenario 'Link list should work good' do
     visit '/admin/technologies/new'
@@ -74,11 +70,12 @@ feature 'Technology in admin panel.' do
   end
 
   scenario 'Technology group must displays in index' do
-    expect(page).to have_content 'TestGroup'
+    expect(page).to have_content technology_group.title
   end
 
   scenario 'Validation for new technology' do
     click_link('New')
+    find('#technology_technology_group_id').find(:xpath, 'option[1]').select_option
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')
   end

@@ -63,6 +63,7 @@ group :development do
   gem 'spring'
   gem 'web-console', '~> 2.0'
   gem 'capistrano-sidekiq'
+  gem 'bullet'
 end
 
 group :test do
