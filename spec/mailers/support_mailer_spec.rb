@@ -12,7 +12,6 @@ describe SupportMailer, type: :mailer do
   describe '#contact support' do
     it 'mail from contacts' do
       last_email = SupportMailer.contact_support(contact)
-      expect(last_email.from).to include contact.email
       expect(last_email).to have_content(contact.content)
       expect(last_email.subject).to_not include 'SPAM'
     end
