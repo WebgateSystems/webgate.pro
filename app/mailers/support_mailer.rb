@@ -2,7 +2,7 @@ class SupportMailer < ActionMailer::Base
   include Sidekiq::Worker
   sidekiq_options queue: :mail
 
-  default to: 'yuri.skurikhin@gmail.com'
+  default to: 'biuro@webgate.pro'
 
   def contact_support(contact)
     @contact = contact
