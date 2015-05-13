@@ -10,6 +10,6 @@ class SupportMailer < ActionMailer::Base
     if contact.nickname.present?
       subject = 'SPAM'
     end
-    mail from: contact.email, reply_to: contact.email, subject: subject
+    mail from: '"Notifier" <notifier@webgate.pro>', reply_to: %("#{@contact.name}" <#{contact.email}>), subject: subject
   end
 end

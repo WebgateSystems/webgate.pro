@@ -37,7 +37,19 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
-  -ms-filter: 'progid:DXImageTransform.Microsoft.Matrix(M11=0.5, M12=0, M21=0, M22=0.5,  SizingMethod="auto expand")'; /*IE8 */
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+#form_msg i{
+	font-size: 86px;
+	position: fixed;
+	text-align: center;
+	top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   z-index: 10000;
 }
