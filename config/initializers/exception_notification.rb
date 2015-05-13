@@ -1,5 +1,5 @@
 require 'exception_notification/rails'
-#require 'exception_notification/sidekiq'
+require 'exception_notification/sidekiq'
 
 ExceptionNotification.configure do |config|
   # Ignore additional exception types.
@@ -28,16 +28,11 @@ ExceptionNotification.configure do |config|
       user_name: ENV['user_name'],
       password: ENV['password'],
       authentication: ENV['authentication']
+    },
+    sidekiq_options: {
+      queue: :system, retry: false
     }
   }
-  #WebgatePro::Application.config.middleware.use ExceptionNotification::Rack,
-  #  :email => {
-  #    email_prefix: "[webgate.pro - exception] ",
-  #    sender_address: %{"webgate.pro exception notifier" <notify@webgate.pro>},
-  #    exception_recipients: %w{devs@webgate.pro},
-  #    delivery_method: :smtp,
-  #    smtp_settings: YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]['notify_smtp_data']
-  #  }
 
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
   # config.add_notifier :campfire, {
