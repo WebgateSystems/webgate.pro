@@ -23,5 +23,8 @@ $(document).ready ->
           onlyOne: true
           offsetY: -3 # 0 with position left
         input.tooltipster('content', $('<div>' + $.map(messages, (m) -> m.charAt(0).toUpperCase() + m.slice(1)).join('<br />') + '</span>'))
+        input.tooltipster('enable')
         input.tooltipster('show')
+        input.on 'input', (e) ->
+          input.tooltipster('disable')
       )
