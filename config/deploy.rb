@@ -18,12 +18,10 @@ set :tests, []
 # Default value for :pty is false
 # set :pty, true
 
-set :linked_files, %w{config/database.yml config/config.yml}
+set :linked_files, %w{config/database.yml config/config.yml config/sidekiq.yml}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/assets public/uploads}
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
-
-set :sidekiq_config, -> { File.join(shared_path, 'config', 'sidekiq.yml') }
 
 set :keep_releases, 5
 
