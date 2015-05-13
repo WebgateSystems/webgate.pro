@@ -184,3 +184,6 @@ fr:
   online_portfolio: "Online portfolio"
   can_not_publish_without_avatar: "Vous ne pouvez pas publier sans avatar"
   can_not_publish_without_collage: "Vous ne pouvez pas publier sans collage"
+  contact_name: "Name:"
+  contact_email: "Email:"
+  contact_content: "Content:"

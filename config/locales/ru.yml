@@ -182,3 +182,6 @@ ru:
   online_portfolio: "Онлайн портфолио"
   can_not_publish_without_avatar: "Нельзя опубликовать без аватара"
   can_not_publish_without_collage: "Нельзя обубликовать без коллажа"
+  contact_name: "Имя:"
+  contact_email: "Email:"
+  contact_content: "Сообщение:"

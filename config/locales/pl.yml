@@ -183,3 +183,6 @@ pl:
   online_portfolio: "Online portfolio"
   can_not_publish_without_avatar: "Nie można publikować bez avatar"
   can_not_publish_without_collage: "Nie można publikować bez kolażu"
+  contact_name: "Name:"
+  contact_email: "Email:"
+  contact_content: "Content:"
