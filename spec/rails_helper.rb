@@ -5,6 +5,9 @@ require 'rspec/rails'
 require 'shoulda/matchers'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'sidekiq/testing'
+
+Sidekiq::Testing.inline!
 
 Capybara.javascript_driver = :webkit #default selenium
 
@@ -49,6 +52,7 @@ RSpec.configure do |config|
   config.include Sorcery::TestHelpers::Rails::Integration, type: :feature
 
   config.include ChosenSelect
+  config.include MailerMacros
 
   config.before :each, :js, type: :feature do |example|
     if example.metadata[:js]

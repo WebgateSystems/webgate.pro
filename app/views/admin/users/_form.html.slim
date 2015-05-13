@@ -1,10 +1,10 @@
 = simple_form_for [:admin, @user] do |f|
   = f.error_notification
-  
+
   .form-inputs
-    = f.input :email,label: t('activerecord.user.email'), label_html: { class: 'label'}
-    = f.input :password,label: t('activerecord.user.password'), label_html: { class: 'label'}
-    = f.input :password_confirmation,label: t('activerecord.user.password_confirmation'), label_html: { class: 'label'}
+    = f.input :email, label: t('activerecord.user.email'), label_html: { class: 'label'}
+    = f.input :password, label: t('activerecord.user.password'), label_html: { class: 'label'}
+    = f.input :password_confirmation, label: t('activerecord.user.password_confirmation'), label_html: { class: 'label'}
 
   .actions
     = f.submit t('web_app_theme.save'), class: 'button success'
