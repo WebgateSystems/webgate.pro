@@ -66,13 +66,13 @@ WebgatePro::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   ActionMailer::Base.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: ENV['address'],
-    port: ENV['port'],
-    domain: ENV['domain'],
-    authentication: ENV['authentication'],
-    enable_starttls_auto: ENV['tls'],
-    user_name: ENV['user_name'],
-    password: ENV['password']
+    address: APP_ENV['address'],
+    port: APP_ENV['port'],
+    domain: APP_ENV['domain'],
+    authentication: APP_ENV['authentication'],
+    enable_starttls_auto: APP_ENV['tls'],
+    user_name: APP_ENV['user_name'],
+    password: APP_ENV['password']
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
