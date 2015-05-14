@@ -65,16 +65,6 @@ WebgatePro::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
-  ActionMailer::Base.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: ENV['address'],
-    port: ENV['port'],
-    domain: ENV['domain'],
-    authentication: ENV['authentication'],
-    enable_starttls_auto: ENV['tls'],
-    user_name: ENV['user_name'],
-    password: ENV['password']
-  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).

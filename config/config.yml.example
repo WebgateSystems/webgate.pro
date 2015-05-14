@@ -1,11 +1,38 @@
+development:
+  REDIS_URL: 'redis://localhost:6379'
+
+  noreply_email: 'noreply@mailing.webgate.pro'
+  support_email: 'support@webgate.pro'
+  notify_email: 'notifier@webgate.pro'
+  office_email: 'biuro@webgate.pro'
+
+  smtp_data:
+    address: localhost
+    port: 1025
+    domain: webgate.pro
+
+test:
+  REDIS_URL: 'redis://localhost:6379'
+
+  noreply_email: 'noreply@mailing.webgate.pro'
+  support_email: 'support@webgate.pro'
+  notify_email: 'notifier@webgate.pro'
+  office_email: 'biuro@webgate.pro'
+
+  smtp_data:
+    address: localhost
+    port: 1025
+    domain: webgate.pro
+
 staging:
   REDIS_URL: 'redis://localhost:6379'
 
   noreply_email: 'noreply@mailing.webgate.pro'
   support_email: 'support@webgate.pro'
   notify_email: 'notify@webgate.pro'
+  office_email: 'biuro@webgate.pro'
 
-  notify_smtp_data:
+  smtp_data:
     tls: true
     address: smtp.gmail.com
     port: 587
@@ -20,8 +47,9 @@ production:
   noreply_email: 'noreply@mailing.webgate.pro'
   support_email: 'support@webgate.pro'
   notify_email: 'notify@webgate.pro'
+  office_email: 'biuro@webgate.pro'
 
-  notify_smtp_data:
+  smtp_data:
     tls: true
     address: smtp.gmail.com
     port: 587
