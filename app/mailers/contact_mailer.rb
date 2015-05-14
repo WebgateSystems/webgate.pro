@@ -1,10 +1,10 @@
-class SupportMailer < ActionMailer::Base
+class ContactMailer < ActionMailer::Base
   include Sidekiq::Worker
   sidekiq_options queue: :mail
 
-  default to: 'biuro@webgate.pro'
+  default to: APP_CONFIG['office_email']
 
-  def contact_support(contact)
+  def contact_mail(contact)
     @contact = contact
     subject = t('contact_form')
     if contact.nickname.present?
