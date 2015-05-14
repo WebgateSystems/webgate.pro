@@ -1,6 +1,8 @@
 require 'exception_notification/rails'
 require 'exception_notification/sidekiq'
 
+NOTIFY_CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]
+
 ExceptionNotification.configure do |config|
   # Ignore additional exception types.
   # ActiveRecord::RecordNotFound, AbstractController::ActionNotFound and ActionController::RoutingError are already added.
@@ -21,16 +23,13 @@ ExceptionNotification.configure do |config|
     exception_recipients: %w{devs@webgate.pro},
     delivery_method: :smtp,
     smtp_settings: {
-      tls: ENV['tls'],
-      address: ENV['address'],
-      port: ENV['port'],
-      domain: ENV['domain'],
-      user_name: ENV['user_name'],
-      password: ENV['password'],
-      authentication: ENV['authentication']
-    },
-    sidekiq_options: {
-      queue: :system, retry: false
+      tls: NOTIFY_CONFIG['smtp_data']['tls'],
+      address: NOTIFY_CONFIG['smtp_data']['address'],
+      port: NOTIFY_CONFIG['smtp_data']['port'],
+      domain: NOTIFY_CONFIG['smtp_data']['domain'],
+      user_name: NOTIFY_CONFIG['smtp_data']['user_name'],
+      password: NOTIFY_CONFIG['smtp_data']['password'],
+      authentication: NOTIFY_CONFIG['smtp_data']['authentication']
     }
   }
 
