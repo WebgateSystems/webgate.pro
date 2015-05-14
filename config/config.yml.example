@@ -4,6 +4,7 @@ development:
   noreply_email: 'noreply@mailing.webgate.pro'
   support_email: 'support@webgate.pro'
   notify_email: 'notifier@webgate.pro'
+  office_email: 'biuro@webgate.pro'
 
   smtp_data:
     address: localhost
@@ -16,6 +17,7 @@ test:
   noreply_email: 'noreply@mailing.webgate.pro'
   support_email: 'support@webgate.pro'
   notify_email: 'notifier@webgate.pro'
+  office_email: 'biuro@webgate.pro'
 
   smtp_data:
     address: localhost
@@ -28,6 +30,7 @@ staging:
   noreply_email: 'noreply@mailing.webgate.pro'
   support_email: 'support@webgate.pro'
   notify_email: 'notify@webgate.pro'
+  office_email: 'biuro@webgate.pro'
 
   smtp_data:
     tls: true
@@ -44,6 +47,7 @@ production:
   noreply_email: 'noreply@mailing.webgate.pro'
   support_email: 'support@webgate.pro'
   notify_email: 'notify@webgate.pro'
+  office_email: 'biuro@webgate.pro'
 
   smtp_data:
     tls: true
