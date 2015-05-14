@@ -3,7 +3,7 @@ class Admin::CategoriesController < Admin::HomeController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.rank(:position).all
+    @categories = Category.rank(:position).includes(:translations, :page => :translations)
   end
 
   def show

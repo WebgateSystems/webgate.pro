@@ -8,6 +8,9 @@
   .content
     .inner
       p
+        b= t('activerecord.member.publish') + ': '
+        = @member.publish
+      p
         b= t('activerecord.member.name') + ': '
         = @member.name
       p

@@ -1,4 +1,4 @@
-﻿.tabs_block,.lang,.top_nav,.valid,.tabs_block,.carousel,.carousel_content,.carousel_more,.bx-next,.bx-prev,.up,.bx-wrapper{display: none;}
+﻿.control_form,.tabs_block,.lang,.top_nav,.valid,.tabs_block,.carousel,.carousel_content,.carousel_more,.bx-next,.bx-prev,.up,.bx-wrapper,.tooltipster-base{display: none;}
 body,html{
 	background: #fff;
 	min-width: 320px;
@@ -85,9 +85,15 @@ body{padding-top: 40px;}
 				}
 /* END header */
 /* Wrapper */
+.message_block{
+	display: block;
+	padding: 40px 35px 21px;
+	position: relative;
+	text-align: center;
+}
 .service_block{
 	display: block;
-	padding: 210px 30px 51px;
+	padding: 210px 30px 20px;
 	position: relative;
 	text-align: center;
 }
@@ -98,6 +104,7 @@ body{padding-top: 40px;}
 		top: -40px;
 		width: 1px;
 	}
+	.service_block .service_block_btn{display: inline-block!important;}
 	.block_1{background: asset_url('block_1.png') center 35px no-repeat;}
 	.block_2{background: asset_url('block_2.png') center 35px no-repeat;}
 	.block_3{background: asset_url('block_3.png') center 35px no-repeat;}
@@ -136,6 +143,8 @@ body{padding-top: 40px;}
 			width: 100%;
 		}
 		.zoom,.portfolio_block:hover .zoom{background: none;}
+.team_block.active{margin-left: 0;}
+.team_block.active.odd{margin-top: 49px;}
 @media only screen and (max-width: 940px){
 	.portfolio{padding: 0;}
 		.work_desc{
@@ -176,30 +185,31 @@ body{padding-top: 40px;}
 }
 @media only screen and (max-width: 940px){
 	.team_block{
-		margin-left: 10%;
-		width: 180px;
+		margin-left: 5%;
+		width: 220px;
 	}
 		.team_block:first-child{margin-left: 0;}
 		.team_block img{
 			height: 140px;
 			width: 140px;
 		}
-	.worker_block{
+	/*.worker_block{
 		float: none;
 		margin: 0 auto;
 		padding: 0px 20px 17px;
 		width: auto;
 	}
-		.worker_block .service_block_btn,.worker_block .more_info{display: none;}
-	.worker_block .worker_column{
+		.worker_block .service_block_btn,.worker_block .more_info{display: none;}*/
+	.worker_column, .worker_column:first-child{
 		float: none;
 		margin-bottom: 0px;
+		padding-right: 0px;
 		width: auto;
 	}
 }
 @media only screen and (max-width: 875px){.team_block{margin-left: 5%;}}
 @media only screen and (max-width: 875px){
-	//.page_title{margin-bottom: -26px;}
+	.team_page .page_title{margin-bottom: -26px;}
 	.worker_block{padding-top: 49px;}
 	.team_block,.team_block:first-child{
 		float: none;
@@ -207,7 +217,7 @@ body{padding-top: 40px;}
 		padding: 49px 20px 36px;
 		width: auto;
 	}
-		.team_block:nth-child(2n){background-color: #f3f3f3;}
+		.team_block.odd{background-color: #f3f3f3;}
 		.team_block img{
 			height: 180px;
 			width: 180px;

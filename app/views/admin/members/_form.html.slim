@@ -6,18 +6,21 @@
     = f.input :motto, label: t('activerecord.member.motto'), label_html: {class: 'label'}
     = f.input :description, label: t('activerecord.member.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
     p= f.input :education, label: t('activerecord.member.education'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
+    .label= t(:publish)
+    - @member.avatar.to_s.empty? ? disabled = true : disabled = false
+    = f.input :publish, label: t('activerecord.member.publish'), disabled: disabled
     .label= t('activerecord.member.avatar')
     #avatar
       .wrapper
         = f.file_field :avatar, onchange: 'readAvatarURL(this);'
-      span.button.success= t('add_avatar')
+      span.button.success= t(:add_avatar)
     = image_tag '', id: 'img_prev'
     = f.hidden_field :avatar_cache, value: f.object.avatar_cache
     - if f.object.avatar.url.present?
       = image_tag f.object.avatar.url(:avatar), id: 'img_cache'
 
     p
-    .label= t('member_links')
+    .label= t(:member_links)
     table.member-form
       thead
         tr
@@ -27,11 +30,11 @@
       tbody
         = f.fields_for :member_links do |s|
           = render 'member_link_fields', f: s
-    .links= link_to_add_association t('add_link'), f, :member_links
+    .links= link_to_add_association t(:add_link), f, :member_links
 
     p
-    .label= t('technologies')
-    = f.association :technologies, collection: Technology.all.map{|t| [t.title,t.id,{"data-color" => t.technology_group.color}]}, include_blank: true, label: false, input_html: {class: 'chosen-select'}
+    .label= t(:technologies)
+    = f.association :technologies, collection: @technologies.map{|t| [t.title,t.id,{"data-color" => t.technology_group.color}]}, include_blank: true, label: false, input_html: {class: 'chosen-select'}
     br
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'
@@ -50,5 +53,6 @@ javascript:
           .height(180);
       };
       reader.readAsDataURL(input.files[0]);
+      $('#member_publish').removeAttr('disabled');
     }
   }

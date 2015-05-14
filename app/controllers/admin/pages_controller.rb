@@ -1,8 +1,9 @@
 class Admin::PagesController < Admin::HomeController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:new, :create, :edit, :update]
 
   def index
-    @pages = Page.order(:id)
+    @pages = Page.order(:id).includes(:translations)
   end
 
   def show
@@ -10,16 +11,10 @@ class Admin::PagesController < Admin::HomeController
 
   def new
     @page = Page.new
-    @page.content = ""
-    @categories = Category.select_all
-    #@subcategories = Subcategory.select_all
   end
 
   def create
-    @categories = Category.select_all
-    #@subcategories = Subcategory.select_all
     @page = Page.new(page_params)
-    @page.position = Page.count + 1
     if @page.save
       redirect_to [:admin, @page], notice: 'Successfully created admin/page.'
     else
@@ -28,13 +23,9 @@ class Admin::PagesController < Admin::HomeController
   end
 
   def edit
-    @categories = Category.select_all
-    #@subcategories = Subcategory.select_all
   end
 
   def update
-    @categories = Category.select_all
-    #@subcategories = Subcategory.select_all
     if @page.update_attributes(page_params)
       redirect_to [:admin, @page], notice: 'Successfully updated admin/page.'
     else
@@ -51,6 +42,10 @@ class Admin::PagesController < Admin::HomeController
 
   def set_page
     @page = Page.find(params[:id])
+  end
+
+  def set_categories
+    @categories = Category.includes(:translations)
   end
 
   def page_params

@@ -90,10 +90,10 @@ feature 'Project in admin panel.' do
     expect(page).to have_content 'false'
   end
 
-  scenario 'Check publish. Here should be true' do
+  scenario 'Check publish. Here should be true', js: true do
     click_link ('New')
     fill_in 'project[title]', with: 'TestTitleFull'
-    fill_in 'project[content]', with: 'TestContentFull'
+    fill_in_ckeditor 'Content', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     find(:css, "#project_publish").set(true)
