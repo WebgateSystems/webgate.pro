@@ -3,12 +3,13 @@ class HomeController < ApplicationController
 
   def index
     @projects = Project.published.rank(:position).all
-    unless params[:lang].nil?
-      I18n.locale = params[:lang]
-      redirect_to root_path
-    else
-      render layout: 'main'
+    unless params[:locale].nil?
+      I18n.locale = params[:locale]
     end
+    Rails.logger.info(request.path)
+    Rails.logger.info('----------------------------------------------------------------')
+
+    render layout: 'main'
   end
 
   def portfolio
@@ -18,6 +19,14 @@ class HomeController < ApplicationController
   def team
     @members = Member.published.rank(:position).all.page(params[:page]).per(9)
     @technology_groups = TechnologyGroup.order(:position)
+  end
+
+  private
+
+  def locale_urls
+    current_locale = I18n.locale
+    path = request.path
+
   end
 
 end
