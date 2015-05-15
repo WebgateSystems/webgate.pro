@@ -10,7 +10,7 @@
     #logo
       .wrapper
         = f.file_field :logo, onchange: 'readLogoURL(this);'
-      span.button.success= t('add_logo')
+      span.button.success= t(:add_logo)
     = image_tag '', id: 'img_prev'
     = f.hidden_field :logo_cache, value: f.object.logo_cache
     - if f.object.logo.url.present?
