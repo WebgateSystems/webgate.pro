@@ -843,27 +843,24 @@ p.copy{
 	}
 		p.copy.valid:hover .html5{background-position: 0 -32px;}
 .feedback{margin-bottom: 53px;}
-	.feedback input{
-		background: asset_url('feedback.png') no-repeat;
+	.feedback input[type="text"],.feedback textarea{
+		background: #fff;
 		border: none;
+		border-radius: 3px;
+		box-shadow: inset rgba(0,0,0,.20) 5px 0 5px,inset rgba(0,0,0,.20) 0 5px 5px;
 		color: #454545;
 		display: block;
 		font-size: 14px;
 		height: 42px;
 		margin-bottom: 10px;
 		padding: 0 0 0 14px;
-		width: 290px;
+		width: 276px;
 	}
+	.feedback input[type="text"].tooltipstered,.feedback textarea.tooltipstered{box-shadow: inset rgba(234,124,22,.50) 5px 0 5px,inset rgba(234,124,22,.50) 0 5px 5px;}
 	.feedback textarea{
-		background: asset_url('feedback.png') 0px -54px no-repeat;
-		border: none;
-		color: #454545;
-		display: block;
-		font-size: 14px;
-		height: 130px;
-		margin-bottom: 10px;
-		padding: 14px 0 0 14px;
-		width: 290px;
+		resize: none;
+		height: 116px;
+		padding-top: 14px;
 	}
 	.feedback input.submit{
 		background: #ea7c16;

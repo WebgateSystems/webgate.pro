@@ -20,6 +20,7 @@ $(document).ready ->
           if name
             name.match(new RegExp('contact' + '\\[' + field + '\\(?'))
         )
+        input.addClass('tooltipstered')
         input.tooltipster
           animation: 'grow' # or fade
           theme: 'tooltipster-msg'
@@ -32,4 +33,5 @@ $(document).ready ->
         input.tooltipster('show')
         input.on 'input', (e) ->
           input.tooltipster('disable')
+          input.removeClass('tooltipstered')
       )
