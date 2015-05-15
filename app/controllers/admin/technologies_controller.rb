@@ -17,7 +17,7 @@ class Admin::TechnologiesController < Admin::HomeController
   def create
     @technology = Technology.new(technology_params)
     if @technology.save
-      redirect_to [:admin, @technology], notice: 'Successfully created admin/technology.'
+      redirect_to [:admin, @technology], notice: "#{t(:technology)} #{t(:was_successfully_created)}."
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class Admin::TechnologiesController < Admin::HomeController
 
   def update
     if @technology.update_attributes(technology_params)
-      redirect_to [:admin, @technology], notice: 'Successfully updated admin/technology.'
+      redirect_to [:admin, @technology], notice: "#{t(:technology)} #{t(:was_successfully_updated)}."
     else
       render 'edit'
     end
@@ -36,7 +36,7 @@ class Admin::TechnologiesController < Admin::HomeController
 
   def destroy
     @technology.destroy
-    redirect_to :back, notice: 'Successfully destroyed admin/technology.'
+    redirect_to :back, notice: "#{t(:technology)} #{t(:was_successfully_destroyed)}."
   end
 
   private
