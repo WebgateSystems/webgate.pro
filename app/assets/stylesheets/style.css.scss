@@ -847,6 +847,7 @@ p.copy{
 		background: #fff;
 		border: none;
 		border-radius: 3px;
+		-webkit-box-shadow: inset rgba(0,0,0,.20) 5px 0 5px,inset rgba(0,0,0,.20) 0 5px 5px;
 		box-shadow: inset rgba(0,0,0,.20) 5px 0 5px,inset rgba(0,0,0,.20) 0 5px 5px;
 		color: #454545;
 		display: block;
@@ -856,7 +857,10 @@ p.copy{
 		padding: 0 0 0 14px;
 		width: 276px;
 	}
-	.feedback input[type="text"].tooltipstered,.feedback textarea.tooltipstered{box-shadow: inset rgba(234,124,22,.50) 5px 0 5px,inset rgba(234,124,22,.50) 0 5px 5px;}
+	.feedback input[type="text"].tooltipstered,.feedback textarea.tooltipstered{
+		-webkit-box-shadow: inset rgba(234,124,22,.50) 5px 0 5px,inset rgba(234,124,22,.50) 0 5px 5px;
+		box-shadow: inset rgba(234,124,22,.50) 5px 0 5px,inset rgba(234,124,22,.50) 0 5px 5px;
+	}
 	.feedback textarea{
 		resize: none;
 		height: 116px;
