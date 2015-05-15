@@ -16,7 +16,7 @@ class Admin::PagesController < Admin::HomeController
   def create
     @page = Page.new(page_params)
     if @page.save
-      redirect_to [:admin, @page], notice: 'Successfully created admin/page.'
+      redirect_to [:admin, @page], notice: "#{t(:page)} #{t(:was_successfully_created)}."
     else
       render 'new'
     end
@@ -27,7 +27,7 @@ class Admin::PagesController < Admin::HomeController
 
   def update
     if @page.update_attributes(page_params)
-      redirect_to [:admin, @page], notice: 'Successfully updated admin/page.'
+      redirect_to [:admin, @page], notice: "#{t(:page)} #{t(:was_successfully_updated)}."
     else
       render 'edit'
     end
@@ -35,7 +35,7 @@ class Admin::PagesController < Admin::HomeController
 
   def destroy
     @page.destroy
-    redirect_to admin_pages_url, notice: 'Successfully destroyed admin/page.'
+    redirect_to admin_pages_url, notice: "#{t(:page)} #{t(:was_successfully_destroyed)}."
   end
 
   private
