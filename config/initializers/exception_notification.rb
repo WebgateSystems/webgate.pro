@@ -1,8 +1,6 @@
 require 'exception_notification/rails'
 require 'exception_notification/sidekiq'
 
-NOTIFY_CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]
-
 ExceptionNotification.configure do |config|
   # Ignore additional exception types.
   # ActiveRecord::RecordNotFound, AbstractController::ActionNotFound and ActionController::RoutingError are already added.
@@ -20,19 +18,8 @@ ExceptionNotification.configure do |config|
   config.add_notifier :email, {
     email_prefix: Rails.env.production? ? '[webgate.pro - exception]' : '[test.webgate.pro - exception]',
     sender_address: %{"webgate.pro exception notifier" <notify@webgate.pro>},
-    exception_recipients: %w{devs@webgate.pro},
-    delivery_method: :smtp,
-    smtp_settings: {
-      tls: NOTIFY_CONFIG['smtp_data']['tls'],
-      address: NOTIFY_CONFIG['smtp_data']['address'],
-      port: NOTIFY_CONFIG['smtp_data']['port'],
-      domain: NOTIFY_CONFIG['smtp_data']['domain'],
-      user_name: NOTIFY_CONFIG['smtp_data']['user_name'],
-      password: NOTIFY_CONFIG['smtp_data']['password'],
-      authentication: NOTIFY_CONFIG['smtp_data']['authentication']
-    }
+    exception_recipients: %w{devs@webgate.pro}
   }
-
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
   # config.add_notifier :campfire, {
   #   :subdomain => 'my_subdomain',
