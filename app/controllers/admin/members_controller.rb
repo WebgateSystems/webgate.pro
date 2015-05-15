@@ -64,9 +64,9 @@ class Admin::MembersController < Admin::HomeController
     end
   end
 
-  def sort_technologies
+  def sort_member_technologies
     @technology = Technology.find(member_params[:member_technology_id])
-    @technology.member_position_position = member_params[:row_member_position]
+    @technology.member_position_position = member_params[:row_tech_position]
     respond_to do |format|
       if @technology.save!
         format.json { head :ok }
@@ -87,8 +87,8 @@ class Admin::MembersController < Admin::HomeController
   end
 
   def member_params
-    params.require(:member).permit(:member_id, :row_position, :name, :job_title, :education, :description,
-                                    :member_link_id, :avatar, :avatar_cache, :motto, :publish, technology_ids: [],
+    params.require(:member).permit(:member_id, :row_position, :row_tech_position, :name, :job_title, :education, :description,
+                                    :member_link_id, :member_technology_id, :avatar, :avatar_cache, :motto, :publish, technology_ids: [],
                                     technologies_attributes: [:id, :title, :technology_group_id, :_destroy],
                                     member_links_attributes: [:id, :name, :link, :member_id, :position, :_destroy])
   end
