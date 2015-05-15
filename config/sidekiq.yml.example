@@ -1,6 +1,8 @@
 ---
 :concurrency: 5
 :pidfile: tmp/pids/sidekiq.pid
+:logfile: log/sidekiq.log
+:timeout: 45
 staging:
   :concurrency: 10
 production:
@@ -9,5 +11,3 @@ production:
   - [system, 3]
   - [mail, 1]
   - [default, 1]
-
-

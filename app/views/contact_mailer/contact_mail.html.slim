@@ -4,11 +4,11 @@ html
     meta content=('text/html; charset=UTF-8') http-equiv='Content-Type'
   body
     p
-      = t(:contact_name) + ' '
+      strong= t(:contact_name) + ' '
       = @contact.name
     p
-      = t(:contact_email) + ' '
+      strong= t(:contact_email) + ' '
       = @contact.email
     p
-      = t(:contact_content) + ' '
-      = @contact.content
+      strong= t(:contact_content) + ' '
+      = simple_format(@contact.content)
