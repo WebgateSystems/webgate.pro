@@ -18,7 +18,7 @@ class Admin::MembersController < Admin::HomeController
   def create
     @member = Member.new(member_params)
     if @member.save
-      redirect_to [:admin, @member], notice: 'Successfully created admin/member.'
+      redirect_to [:admin, @member], notice: "#{t(:member)} #{t(:was_successfully_created)}."
     else
       render 'new'
     end
@@ -29,7 +29,7 @@ class Admin::MembersController < Admin::HomeController
 
   def update
     if @member.update_attributes(member_params)
-      redirect_to [:admin, @member], notice: 'Successfully updated admin/member.'
+      redirect_to [:admin, @member], notice: "#{t(:member)} #{t(:was_successfully_updated)}."
     else
       render 'edit'
     end
@@ -37,7 +37,7 @@ class Admin::MembersController < Admin::HomeController
 
   def destroy
     @member.destroy
-    redirect_to admin_members_url, notice: 'Successfully destroyed admin/member.'
+    redirect_to admin_members_url, notice: "#{t(:member)} #{t(:was_successfully_destroyed)}."
   end
 
   def update_position
