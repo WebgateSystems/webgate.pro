@@ -19,7 +19,7 @@ class Admin::UsersController < Admin::HomeController
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to admin_user_path(@user), notice: 'User was successfully created.' }
+        format.html { redirect_to admin_user_path(@user), notice: "#{t(:user)} #{t(:was_successfully_created)}." }
       else
         format.html { render action: 'new' }
       end
@@ -29,7 +29,7 @@ class Admin::UsersController < Admin::HomeController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to admin_user_path(@user), notice: 'User was successfully updated.' }
+        format.html { redirect_to admin_user_path(@user), notice: "#{t(:user)} #{t(:was_successfully_updated)}." }
       else
         format.html { render action: 'edit' }
       end
@@ -39,7 +39,7 @@ class Admin::UsersController < Admin::HomeController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_url }
+      format.html { redirect_to admin_users_url, notice: "#{t(:user)} #{t(:was_successfully_destroyed)}."}
     end
   end
 

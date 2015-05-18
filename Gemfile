@@ -31,6 +31,8 @@ gem 'chosen-rails'
 gem 'ranked-model'
 gem 'select2-rails'
 gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'sidekiq'
+gem 'sinatra', require: nil
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -61,6 +63,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'spring'
   gem 'web-console', '~> 2.0'
+  gem 'capistrano-sidekiq'
+  gem 'bullet'
 end
 
 group :test do

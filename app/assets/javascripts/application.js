@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery.min
-// require jquery_ujs
+//= require jquery_ujs
 //= require jquery-ui-1.8.16.slider
 //= require home_slider
 //= require jquery.bxslider.min
@@ -22,3 +22,4 @@
 //= require lightbox.min.js
 //= require lightbox-video.min.js
 //= require scripts
+//= require contacts

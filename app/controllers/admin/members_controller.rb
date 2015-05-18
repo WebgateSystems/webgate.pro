@@ -1,8 +1,9 @@
 class Admin::MembersController < Admin::HomeController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_technologies, only: [:new, :edit, :create, :update]
 
   def index
-    @members = Member.rank(:position).all
+    @members = Member.rank(:position).includes(:translations)
   end
 
   def show
@@ -16,7 +17,7 @@ class Admin::MembersController < Admin::HomeController
   def create
     @member = Member.new(member_params)
     if @member.save
-      redirect_to [:admin, @member], notice: 'Successfully created admin/member.'
+      redirect_to [:admin, @member], notice: "#{t(:member)} #{t(:was_successfully_created)}."
     else
       render 'new'
     end
@@ -27,7 +28,7 @@ class Admin::MembersController < Admin::HomeController
 
   def update
     if @member.update_attributes(member_params)
-      redirect_to [:admin, @member], notice: 'Successfully updated admin/member.'
+      redirect_to [:admin, @member], notice: "#{t(:member)} #{t(:was_successfully_updated)}."
     else
       render 'edit'
     end
@@ -35,7 +36,7 @@ class Admin::MembersController < Admin::HomeController
 
   def destroy
     @member.destroy
-    redirect_to admin_members_url, notice: 'Successfully destroyed admin/member.'
+    redirect_to admin_members_url, notice: "#{t(:member)} #{t(:was_successfully_destroyed)}."
   end
 
   def update_position
@@ -66,6 +67,10 @@ class Admin::MembersController < Admin::HomeController
 
   def set_member
     @member = Member.find(params[:id])
+  end
+
+  def set_technologies
+    @technologies = Technology.includes(:technology_group)
   end
 
   def member_params

@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    meta content=('text/html; charset=UTF-8') http-equiv='Content-Type'
+  body
+    p
+      strong= t(:contact_name) + ' '
+      = @contact.name
+    p
+      strong= t(:contact_email) + ' '
+      = @contact.email
+    p
+      strong= t(:contact_content) + ' '
+      = simple_format(@contact.content)
