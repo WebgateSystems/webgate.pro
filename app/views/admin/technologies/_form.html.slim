@@ -2,7 +2,7 @@
   = f.error_notification
   .form-inputs
     .label = t('technology_group_title')
-    = f.collection_select :technology_group_id, TechnologyGroup.all, :id, :title
+    = f.collection_select :technology_group_id, @technology_groups, :id, :title
     = f.input :title, label: t('activerecord.technology.title'), label_html: { class: 'label' }
     = f.input :link, label: t('activerecord.technology.link'), label_html: { class: 'label' }
     p= f.input :description, label: t('activerecord.technology.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { class: 'ckeditor', ckeditor: {toolbar: 'mini'} }
@@ -10,7 +10,7 @@
     #logo
       .wrapper
         = f.file_field :logo, onchange: 'readLogoURL(this);'
-      span.button.success= t('add_logo')
+      span.button.success= t(:add_logo)
     = image_tag '', id: 'img_prev'
     = f.hidden_field :logo_cache, value: f.object.logo_cache
     - if f.object.logo.url.present?

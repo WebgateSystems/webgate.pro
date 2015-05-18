@@ -1,0 +1,10 @@
+= simple_form_for Contact.new, format: :json, remote: true, authenticity_token: true, html: { class: 'feedback', novalidate: false } do |f|
+  = f.input :name, placeholder: t('fist_and_last_name'), label: false, input_html: { autocomplete: 'off' }
+  -#, input_html: { required: true, pattern: '.{3,}', title: t('three_chars_minimum'), onchange: "this.setCustomValidity('')", oninvalid: "this.setCustomValidity('#{t('cannot_be_empty')}')" }
+  = f.text_field :email, placeholder: t('email_address'), label: false, autocomplete: 'off'
+  -#, required: true, pattern: "\\S+@\\S+\\.\\S+", title: 'username@email.com', onchange: "this.setCustomValidity('')", oninvalid: "this.setCustomValidity('#{t('email_format')}')"
+  = f.input :content, as: :text, placeholder: t('message_content'), label: false
+  -#, input_html: { required: true, pattern: '.{3,}', title: t('three_chars_minimum'), onchange: "this.setCustomValidity('')", oninvalid: "this.setCustomValidity('#{t('cannot_be_empty')}')" }
+  .control_form
+    = f.input :nickname
+  = f.submit t('submit'), class: 'submit'

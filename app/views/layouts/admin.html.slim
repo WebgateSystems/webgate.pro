@@ -37,6 +37,11 @@ html lang="en"
               li= link_to t(:members), admin_members_path
           li.divider
           li.has-dropdown
+            = link_to t('system'), '#'
+            ul.dropdown
+              li= link_to t(:background_jobs), admin_sidekiq_web_path
+          li.divider
+          li.has-dropdown
             = link_to locale.upcase, 'javascript:;'
             ul.dropdown
               - other_langs.each do |l|

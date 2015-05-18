@@ -110,7 +110,7 @@ feature 'Member in admin panel.' do
     expect(page).to have_content 'true'
   end
 
-  scenario 'Validation for new member' do
+  scenario 'Validation for new member', js: true do
     click_link('New')
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')

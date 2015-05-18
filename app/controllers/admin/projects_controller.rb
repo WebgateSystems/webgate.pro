@@ -1,8 +1,9 @@
 class Admin::ProjectsController < Admin::HomeController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_technologies, only: [:new, :create, :edit, :update]
 
   def index
-    @projects = Project.rank(:position).all
+    @projects = Project.rank(:position).includes(:translations)
   end
 
   def show
@@ -17,7 +18,7 @@ class Admin::ProjectsController < Admin::HomeController
     @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to [:admin, @project], notice: 'Successfully created admin/project.' }
+        format.html { redirect_to [:admin, @project], notice: "#{t(:project)} #{t(:was_successfully_created)}." }
         format.json { render json: @project, status: :created, location: [:admin, @project] }
       else
         format.html { render 'new' }
@@ -32,7 +33,7 @@ class Admin::ProjectsController < Admin::HomeController
   def update
     respond_to do |format|
       if @project.update_attributes(project_params)
-        format.html { redirect_to [:admin, @project], notice: 'Successfully updated admin/project.' }
+        format.html { redirect_to [:admin, @project], notice: "#{t(:project)} #{t(:was_successfully_updated)}." }
         format.json { render json: {message: 'success' }, status: :ok }
       else
         format.html { render 'edit' }
@@ -44,7 +45,7 @@ class Admin::ProjectsController < Admin::HomeController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to admin_projects_url, notice: 'Successfully destroyed admin/project.' }
+      format.html { redirect_to admin_projects_url, notice: "#{t(:project)} #{t(:was_successfully_destroyed)}." }
       format.json { head :no_content }
     end
   end
@@ -77,6 +78,10 @@ class Admin::ProjectsController < Admin::HomeController
 
   def set_project
     @project = Project.find(params[:id])
+  end
+
+  def set_technologies
+    @technologies = Technology.includes(:technology_group)
   end
 
   def project_params
