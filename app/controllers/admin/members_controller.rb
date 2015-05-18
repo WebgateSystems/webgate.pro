@@ -1,5 +1,5 @@
 class Admin::MembersController < Admin::HomeController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy, :sort_member_technologies]
   before_action :set_technologies, only: [:new, :edit, :create, :update]
 
   def index
@@ -8,7 +8,7 @@ class Admin::MembersController < Admin::HomeController
 
   def show
     @member_links = @member.member_links.rank(:position)
-    @technologies = @member.technologies.rank(:member_position)
+    @technologies = @member.technologies.rank(:position)
   end
 
   def new
@@ -65,10 +65,10 @@ class Admin::MembersController < Admin::HomeController
   end
 
   def sort_member_technologies
-    @technology = Technology.find(member_params[:member_technology_id])
-    @technology.member_position_position = member_params[:row_tech_position]
+    @technologies_member = TechnologiesMember.find_by(member_id: @member.id, technology_id: member_params[:member_technology_id])
+    @technologies_member.position_position = member_params[:row_tech_position]
     respond_to do |format|
-      if @technology.save!
+      if @technologies_member.save!
         format.json { head :ok }
       else
         format.json { head :error }

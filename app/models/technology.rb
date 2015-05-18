@@ -3,12 +3,11 @@ require 'carrierwave/orm/activerecord'
 class Technology < ActiveRecord::Base
   include RankedModel
   ranks :position, with_same: :technology_group_id
-  ranks :member_position, with_same: :member_id
-  ranks :project_position, with_same: :project_id
 
   belongs_to :technology_group
   has_and_belongs_to_many :projects
-  has_and_belongs_to_many :members
+  has_many :members, through: :technologies_members
+  has_many :technologies_members
 
   validates_presence_of :title
   validates_uniqueness_of :title, case_sensitive: false

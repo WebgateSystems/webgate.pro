@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514132059) do
+ActiveRecord::Schema.define(version: 20150518063214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,6 +198,15 @@ ActiveRecord::Schema.define(version: 20150514132059) do
     t.string   "link"
     t.integer  "member_position"
   end
+
+  create_table "technologies_members", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "technology_id"
+    t.integer "position"
+  end
+
+  add_index "technologies_members", ["member_id"], name: "index_technologies_members_on_member_id", using: :btree
+  add_index "technologies_members", ["technology_id"], name: "index_technologies_members_on_technology_id", using: :btree
 
   create_table "technology_group_translations", force: :cascade do |t|
     t.integer  "technology_group_id", null: false
