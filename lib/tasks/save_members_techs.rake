@@ -6,9 +6,9 @@ namespace :db do
     Member.all.each do |m|
       techs = []
       m.technologies.each do |t|
-        techs << t.title
+        techs << t.id
       end
-      array_of_hashes << {m.name => techs}
+      array_of_hashes << {m.id => techs}
     end
 
     File.open("lib/member_techs.yml", "w") do |file|
