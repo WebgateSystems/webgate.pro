@@ -17,7 +17,7 @@ gem 'exception_notification', '~> 4.0.1'
 gem 'unicorn'
 gem 'kaminari'
 gem 'faker'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'jquery-minicolors-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -82,7 +82,7 @@ end
 
 group :test, :development do
   #gem 'selenium-webdriver'
-  gem "capybara-webkit"
+  gem 'capybara-webkit'
   # gem 'webrat'
   gem 'rspec-rails'
   gem 'hpricot'

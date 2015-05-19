@@ -10,8 +10,8 @@ class Technology < ActiveRecord::Base
   has_many :members, through: :technologies_members
   has_many :technologies_members
 
-  validates_presence_of :title
-  validates_uniqueness_of :title, case_sensitive: false
+  validates :title, presence: true
+  validates :title, uniqueness: { case_sensitive: false }
   validates_associated :technology_group
   validates :link, format: { with: URI.regexp }
 

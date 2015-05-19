@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :technology_group do
-    title 'tech group'
-    description 'tech group'
+    title { Faker::Name.title }
+    description { Faker::Lorem.paragraph }
   end
 end
