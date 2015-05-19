@@ -22,7 +22,8 @@ WebgatePro::Application.routes.draw do
     resources :projects do
       put :update_position, on: :collection
       member do
-        put 'sort_screenshots'
+        put 'sort_project_screenshots'
+        put 'sort_project_technologies'
       end
       resources :screenshots, only: [:destroy]
     end

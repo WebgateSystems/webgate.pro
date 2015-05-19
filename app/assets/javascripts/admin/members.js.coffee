@@ -76,7 +76,7 @@ $ ->
         )
     )
 
-#----------------------MEMBERLINKS REORDERING
+#----------------------MEMBER LINKS REORDERING
 $ ->
   if $('.links#sortable').length > 0
     $('.links#sortable').sortable(
@@ -102,7 +102,7 @@ $ ->
         )
     )
 
-#----------------------MEMBERTECHNOLOGIES REORDERING
+#----------------------MEMBER TECHNOLOGIES REORDERING
 $ ->
   if $('.technologies#sortable').length > 0
     $('.technologies#sortable').sortable(

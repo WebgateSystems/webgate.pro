@@ -24,6 +24,7 @@ describe Member do
   describe "Associations" do
     it { is_expected.to have_many(:member_links).dependent(:destroy) }
     it { is_expected.to have_many(:technologies).order('technologies_members.position').through(:technologies_members) }
+    it { is_expected.to have_many(:technologies_members) }
   end
 
   describe "Method: technology_groups" do

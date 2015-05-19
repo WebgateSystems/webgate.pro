@@ -48,7 +48,7 @@
 
       p
         b = t('technologies') + ':'
-      - if @member.technologies.any?
+      - if @technologies.any?
         table.technologies#sortable.table
           thead
             tr
@@ -56,7 +56,7 @@
               th= t('activerecord.created_at')
               th[colspan="2"] #{t(:actions)}
           tbody
-            - @member.technologies.each do |technology|
+            - @technologies.each do |technology|
               tr.item data-item-id="#{technology.id}" data-parent-id="#{@member.id}"
                 td= link_to technology.title, admin_technology_path(technology)
                 td= technology.created_at.to_s(:short)
