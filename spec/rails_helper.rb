@@ -56,7 +56,7 @@ RSpec.configure do |config|
 
   config.before :each, :js, type: :feature do |example|
     if example.metadata[:js]
-      page.driver.block_unknown_urls
+      page.driver.block_unknown_urls if Capybara.javascript_driver == :webkit
       #page.driver.allow_url('api.stripe.com')
     end
   end
