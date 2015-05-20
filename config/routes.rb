@@ -37,6 +37,9 @@ WebgatePro::Application.routes.draw do
     root :to => "home#index"
   end
 
+  get 'sitemap' => 'home#sitemap'
+  get 'robots.:format' => 'home#robots', format: :text
+
   localized do
     get 'main',         to: 'home#index', as: :main
     match 'not-found',  to: 'pages#not_found', via: [:get, :post], as: :not_found
@@ -47,7 +50,7 @@ WebgatePro::Application.routes.draw do
   get 'contact_complete', to: 'contacts#contact_complete'
 
   get "logout" => "sessions#destroy", as: "logout"
-  get "login" => "sessions#new", as: "login"
+  get "login"  => "sessions#new", as: "login"
 
   get ":shortlink" => "pages#showbyshortlink"
   root to: 'home#index'

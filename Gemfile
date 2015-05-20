@@ -31,6 +31,8 @@ gem 'chosen-rails'
 gem 'ranked-model'
 gem 'select2-rails'
 gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'dynamic_sitemaps'
+gem 'whenever', require: false
 gem 'sidekiq'
 gem 'sinatra', require: nil
 
