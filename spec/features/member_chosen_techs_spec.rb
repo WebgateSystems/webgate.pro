@@ -7,7 +7,7 @@ feature 'Member in admin panel.' do
 
   before do
     sign_in(user)
-    visit '/admin/members'
+    visit admin_members_path
   end
 
   scenario 'Member should with assigned technology', js: true do
@@ -20,7 +20,7 @@ feature 'Member in admin panel.' do
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     select technology.title, from: 'member_technology_ids', visible: false
     click_button 'Save'
-    visit '/admin/members'
+    visit admin_members_path
     click_link ('TestNamePew')
 
     expect(page).to have_content technology.title

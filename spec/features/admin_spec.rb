@@ -5,20 +5,20 @@ feature 'Admin panel' do
   let(:user) { create(:user) }
 
   scenario 'forbid access to dashboard without fill the correct login/password' do
-    visit '/admin'
+    visit admin_root_path
     fill_in 'email', with: user.email
     fill_in 'password', with: 'wrong_password'
     click_button 'Log in'
-    visit '/admin'
+    visit admin_root_path
 
     expect(current_path).to eq login_path
   end
 
   scenario 'displays dashboard after correct login' do
-    visit '/admin'
+    visit admin_root_path
     login_user_post(user.email, 'secret')
 
-    visit '/admin'
+    visit admin_root_path
     expect(current_path).to eq '/admin'
     within 'h1' do
       expect(page).to have_content 'Webgate Systems'
@@ -34,10 +34,10 @@ feature 'Admin panel' do
   end
 
   scenario 'all link should work' do
-    visit '/admin'
+    visit admin_root_path
     login_user_post(user.email, 'secret')
     ['Users','Pages','Technology groups','Technologies','Projects','Team members'].each do |name|
-      visit '/admin'
+      visit admin_root_path
       page.all(:link,name)[0].click
       within ("h2") do
         expect(page).to have_content name.pluralize
@@ -46,18 +46,18 @@ feature 'Admin panel' do
   end
 
   scenario 'webgate systems should link to root' do
-    visit '/admin'
+    visit admin_root_path
     login_user_post(user.email, 'secret')
-    visit '/admin'
+    visit admin_root_path
     click_link('Webgate Systems')
     expect(current_path).to eq '/'
   end
 
   scenario 'lang link should work' do
-    visit '/admin'
+    visit admin_root_path
     login_user_post(user.email, 'secret')
     ['PL', 'RU'].each do |lang|
-      visit '/admin'
+      visit admin_root_path
       click_link(lang) unless I18n.locale.to_s == lang
       if lang == 'PL'
         expect(page).to have_content 'Użytkownicy'
