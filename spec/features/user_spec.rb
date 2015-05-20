@@ -3,20 +3,20 @@ require 'rails_helper'
 feature 'Users in admin panel.' do
   let(:user) { create(:user) }
   before do
-    visit '/admin'
+    visit admin_root_path
     login_user_post(user.email, 'secret')
-    visit '/admin/users'
+    visit admin_users_path
   end
 
   scenario 'Link list should work good' do
-    visit '/admin/users/new'
+    visit new_admin_user_path
     click_link('List')
-    expect(current_path).to eq '/admin/users'
+    expect(current_path).to eq admin_users_path
   end
 
   scenario 'Link new should work good' do
     click_link('New')
-    expect(current_path).to eq '/admin/users/new'
+    expect(current_path).to eq new_admin_user_path
   end
 
   scenario 'Users root path should have list of users' do
@@ -29,10 +29,10 @@ feature 'Users in admin panel.' do
 
   scenario 'Users root path links show, edit should work' do
     click_link ('Show')
-    expect(current_path).to eq "/admin/users/#{user.id}"
-    visit '/admin/users'
+    expect(current_path).to eq admin_user_path(user.id)
+    visit admin_users_path
     click_link ('Edit')
-    expect(current_path).to eq "/admin/users/#{user.id}/edit"
+    expect(current_path).to eq edit_admin_user_path(user.id)
   end
 
   scenario 'link delete should delete user' do
@@ -52,7 +52,7 @@ feature 'Users in admin panel.' do
     fill_in 'user[password]', with: 'password123'
     fill_in 'user[password_confirmation]', with: 'password123'
     click_button 'Save'
-    visit '/admin/users'
+    visit admin_users_path
     expect(page).to have_content 'TestUser@test.com'
   end
 
@@ -90,7 +90,7 @@ feature 'Users in admin panel.' do
     fill_in 'user[email]', with: 'wery wronk@@@emaiL.com.com.e'
     fill_in 'user[password]', with: 'bad'
     click_button 'Save'
-    visit '/admin/users'
+    visit admin_users_path
     expect(page).to have_no_content 'wery wronk@@@emaiL.com.com.e'
   end
 end

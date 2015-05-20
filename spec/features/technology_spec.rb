@@ -5,27 +5,32 @@ feature 'Technology in admin panel.' do
   let!(:technology_group) { create(:technology_group)}
 
   before do
-    visit '/admin'
+    visit admin_root_path
     login_user_post(user.email, 'secret')
-    visit '/admin/technologies'
+    visit admin_technology_groups_path
+    click_link ('New')
+    fill_in 'technology_group[title]', with: 'TestGroup'
+    fill_in 'technology_group[description]', with: 'Test Description'
+    click_button 'Save'
+    visit admin_technologies_path
     click_link ('New')
     find('#technology_technology_group_id').find(:xpath, 'option[1]').select_option
     fill_in 'technology[title]', with: 'TestTitle'
     fill_in 'technology[link]', with: 'http://example_tech.com/link'
     fill_in 'technology[description]', with: 'TestDesc'
     click_button 'Save'
-    visit '/admin/technologies'
+    visit admin_technologies_path
   end
 
   scenario 'Link list should work good' do
-    visit '/admin/technologies/new'
+    visit new_admin_technology_path
     click_link('List')
-    expect(current_path).to eq '/admin/technologies'
+    expect(current_path).to eq admin_technologies_path
   end
 
   scenario 'Link new should work good' do
     click_link('New')
-    expect(current_path).to eq '/admin/technologies/new'
+    expect(current_path).to eq new_admin_technology_path
   end
 
   scenario 'Page root path should have list of pages' do
@@ -40,10 +45,10 @@ feature 'Technology in admin panel.' do
 
   scenario 'Page root path links show, edit should work' do
     page.all(:link,'Show')[0].click
-    expect(current_path).to eq "/admin/technologies/#{Technology.last.id}"
-    visit '/admin/technologies'
+    expect(current_path).to eq admin_technology_path(Technology.last.id)
+    visit admin_technologies_path
     page.all(:link,'Edit')[0].click
-    expect(current_path).to eq "/admin/technologies/#{Technology.last.id}/edit"
+    expect(current_path).to eq edit_admin_technology_path(Technology.last.id)
   end
 
   scenario 'Link delete should delete page' do
@@ -65,7 +70,7 @@ feature 'Technology in admin panel.' do
     fill_in 'technology[link]', with: 'https://example.com/tech'
     fill_in 'technology[description]', with: 'PewPewPew'
     click_button 'Save'
-    visit '/admin/technologies'
+    visit admin_technologies_path
     expect(page).to have_content 'TestTitleFull'
   end
 
