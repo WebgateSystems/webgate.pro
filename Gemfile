@@ -29,6 +29,7 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'chosen-rails'
 gem 'ranked-model'
+gem 'select2-rails'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'sidekiq'
 gem 'sinatra', require: nil

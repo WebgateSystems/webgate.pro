@@ -15,6 +15,7 @@
 //= require foundation
 //= require cocoon
 //= require chosen-jquery
+//= require select2
 //= require jquery.minicolors
 //= require jquery.minicolors.simple_form
 //= require jquery-ui/sortable
