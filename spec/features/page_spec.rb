@@ -3,9 +3,9 @@ require 'rails_helper'
 feature 'Page in admin panel.' do
   let(:user) { create(:user) }
   before do
-    visit '/admin'
+    visit admin_root_path
     sign_in(user)
-    visit '/admin/pages'
+    visit admin_pages_path
     3.times do |t|
       click_link ('New')
       fill_in 'page[title]', with: "TestTitle#{t}"
@@ -14,19 +14,19 @@ feature 'Page in admin panel.' do
       fill_in 'page[keywords]', with: "TestKeyWord#{t}"
       fill_in 'page[content]', with: "TestContent#{t}"
       click_button 'Save'
-      visit '/admin/pages'
+      visit admin_pages_path
     end
   end
 
   scenario 'Link list should work good' do
-    visit '/admin/pages/new'
+    visit new_admin_page_path
     click_link('List')
-    expect(current_path).to eq '/admin/pages'
+    expect(current_path).to eq admin_pages_path
   end
 
   scenario 'Link new should work good' do
     click_link('New')
-    expect(current_path).to eq '/admin/pages/new'
+    expect(current_path).to eq new_admin_page_path
   end
 
   scenario 'Page root path should have list of pages' do
@@ -39,10 +39,10 @@ feature 'Page in admin panel.' do
 
   scenario 'Page root path links show, edit should work' do
     page.all(:link, 'Show')[0].click
-    expect(current_path).to eq "/admin/pages/#{Page.first.id}"
-    visit '/admin/pages'
+    expect(current_path).to eq admin_page_path(Page.first.id)
+    visit admin_pages_path
     page.all(:link, 'Edit')[0].click
-    expect(current_path).to eq "/admin/pages/#{Page.first.id}/edit"
+    expect(current_path).to eq edit_admin_page_path(Page.first.id)
   end
 
   scenario 'Link delete should delete page' do
@@ -72,7 +72,7 @@ feature 'Page in admin panel.' do
     fill_in 'page[keywords]', with: 'TestKeyWordFull'
     fill_in 'page[content]', with: 'TestContentFull'
     click_button 'Save'
-    visit '/admin/pages'
+    visit admin_pages_path
     expect(page).to have_content 'TestTitleFull'
   end
 
@@ -89,7 +89,7 @@ feature 'Page in admin panel.' do
   scenario 'Dont create page with empty fields' do
     click_link ('New')
     fill_in 'page[title]', with: 'TestTitlekukumba'
-    visit '/admin/pages'
+    visit admin_pages_path
     expect(page).to have_no_content 'TestTitlekukumba'
   end
 end

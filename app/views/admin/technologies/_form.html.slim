@@ -2,6 +2,7 @@
   = f.error_notification
   .form-inputs
     .label = t('technology_group_title')
+    br
     = f.collection_select :technology_group_id, @technology_groups, :id, :title
     = f.input :title, label: t('activerecord.technology.title'), label_html: { class: 'label' }
     = f.input :link, label: t('activerecord.technology.link'), label_html: { class: 'label' }
@@ -35,3 +36,4 @@ javascript:
       reader.readAsDataURL(input.files[0]);
     }
   }
+  $(document).ready(function() { $("#technology_technology_group_id").select2(); });
