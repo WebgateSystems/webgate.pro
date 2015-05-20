@@ -12,7 +12,7 @@ class PagesController < ApplicationController
   end
 
   def not_found
-    @page_title = 'Error 404 - Page not found'
+    @page_title = t(:error_404)
     render status: 404
   end
 

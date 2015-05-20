@@ -21,12 +21,8 @@
         a.link_map target="_blank" rel="nofollow" href="https://www.google.com/maps?ll=50.245722,19.164129&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Konstytucji+19+Sosnowiec+Poland"
           |#{t('click_to_enlarge')}&nbsp;
           span &raquo;
-      .column
-        form.feedback
-          input.text_input placeholder=(t('fist_and_last_name')) type="text"
-          input.text_input placeholder=(t('email_address')) type="text"
-          textarea placeholder=(t('message_content')) rows="5" style="resize:none;"
-          input class="submit" value=(t('submit')) type="submit"
+      .column.form
+        = render 'contacts/form'
         p class="copy valid"
           |#{t('document_compliant_with')}&nbsp;
           = link_to 'HTML', "http://validator.w3.org/check?uri=#{CGI.escape request.original_url}&charset=%28detect+automatically%29&doctype=Inline&group=0", class: 'html5', rel: 'nofollow', target: '_blank'

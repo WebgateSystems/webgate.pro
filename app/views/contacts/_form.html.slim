@@ -1,0 +1,7 @@
+= simple_form_for Contact.new, format: :json, remote: true, authenticity_token: true, html: { class: 'feedback', novalidate: false } do |f|
+  = f.input :name, placeholder: t('fist_and_last_name'), label: false, input_html: { autocomplete: 'off' }
+  = f.text_field :email, placeholder: t('email_address'), autocomplete: 'off'
+  = f.input :content, as: :text, placeholder: t('message_content'), label: false
+  .control_form
+    = f.input :nickname
+  = f.submit t('submit'), class: 'submit'

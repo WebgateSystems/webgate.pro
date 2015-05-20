@@ -1,8 +1,9 @@
 class Admin::TechnologiesController < Admin::HomeController
   before_action :set_technology, only: [:show, :edit, :update, :destroy]
+  before_action :set_technology_groups, only: [:new, :create, :edit, :update]
 
   def index
-    @technologies = Technology.order(:id)
+    @technologies = Technology.order(:id).includes(:technology_group)
   end
 
   def show
@@ -16,7 +17,7 @@ class Admin::TechnologiesController < Admin::HomeController
   def create
     @technology = Technology.new(technology_params)
     if @technology.save
-      redirect_to [:admin, @technology], notice: 'Successfully created admin/technology.'
+      redirect_to [:admin, @technology], notice: "#{t(:technology)} #{t(:was_successfully_created)}."
     else
       render 'new'
     end
@@ -27,7 +28,7 @@ class Admin::TechnologiesController < Admin::HomeController
 
   def update
     if @technology.update_attributes(technology_params)
-      redirect_to [:admin, @technology], notice: 'Successfully updated admin/technology.'
+      redirect_to [:admin, @technology], notice: "#{t(:technology)} #{t(:was_successfully_updated)}."
     else
       render 'edit'
     end
@@ -35,13 +36,17 @@ class Admin::TechnologiesController < Admin::HomeController
 
   def destroy
     @technology.destroy
-    redirect_to :back, notice: 'Successfully destroyed admin/technology.'
+    redirect_to :back, notice: "#{t(:technology)} #{t(:was_successfully_destroyed)}."
   end
 
   private
 
   def set_technology
     @technology = Technology.find(params[:id])
+  end
+
+  def set_technology_groups
+    @technology_groups = TechnologyGroup.includes(:translations)
   end
 
   def technology_params

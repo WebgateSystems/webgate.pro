@@ -1,9 +1,8 @@
-# encoding: utf-8
 class Admin::CategoriesController < Admin::HomeController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Category.rank(:position).all
+    @categories = Category.rank(:position).includes(:translations, page: :translations)
   end
 
   def show
@@ -16,7 +15,7 @@ class Admin::CategoriesController < Admin::HomeController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to [:admin, @category], notice: 'Successfully created admin/category.'
+      redirect_to [:admin, @category], notice: "#{t(:category)} #{t(:was_successfully_created)}."
     else
       render 'new'
     end
@@ -27,7 +26,7 @@ class Admin::CategoriesController < Admin::HomeController
 
   def update
     if @category.update_attributes(category_params)
-      redirect_to [:admin, @category], notice: 'Successfully updated admin/category.'
+      redirect_to [:admin, @category], notice: "#{t(:category)} #{t(:was_successfully_updated)}."
     else
       render 'edit'
     end
@@ -35,7 +34,7 @@ class Admin::CategoriesController < Admin::HomeController
 
   def destroy
     @category.destroy
-    redirect_to admin_categories_url, notice: 'Successfully destroyed admin/category.'
+    redirect_to admin_categories_url, notice: "#{t(:category)} #{t(:was_successfully_destroyed)}."
   end
 
   def update_position

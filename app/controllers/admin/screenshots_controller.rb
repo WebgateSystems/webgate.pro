@@ -17,7 +17,7 @@ class Admin::ScreenshotsController < Admin::HomeController
   def destroy
     @screenshot.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Successfully destroyed screenshot.' }
+      format.html { redirect_to :back, notice: "#{t(:screenshot)} #{t(:was_successfully_destroyed)}." }
       format.json { head :no_content }
       format.js
     end
