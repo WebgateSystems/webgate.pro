@@ -7,4 +7,6 @@ class TechnologiesMember < ActiveRecord::Base
 
   validates_associated :technology
   validates_associated :member
+
+  validates :technology_id, uniqueness: {scope: [:member_id]}
 end

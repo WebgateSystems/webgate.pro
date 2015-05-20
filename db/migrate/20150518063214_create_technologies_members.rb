@@ -5,5 +5,6 @@ class CreateTechnologiesMembers < ActiveRecord::Migration
       t.belongs_to :technology, index: true
       t.integer :position
     end
+    add_index :technologies_members, [:member_id, :technology_id], unique: true
   end
 end

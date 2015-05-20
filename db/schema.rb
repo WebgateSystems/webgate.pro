@@ -205,6 +205,7 @@ ActiveRecord::Schema.define(version: 20150519051358) do
     t.integer "position"
   end
 
+  add_index "technologies_members", ["member_id", "technology_id"], name: "index_technologies_members_on_member_id_and_technology_id", unique: true, using: :btree
   add_index "technologies_members", ["member_id"], name: "index_technologies_members_on_member_id", using: :btree
   add_index "technologies_members", ["technology_id"], name: "index_technologies_members_on_technology_id", using: :btree
 
@@ -214,6 +215,7 @@ ActiveRecord::Schema.define(version: 20150519051358) do
     t.integer "position"
   end
 
+  add_index "technologies_projects", ["project_id", "technology_id"], name: "index_technologies_projects_on_project_id_and_technology_id", unique: true, using: :btree
   add_index "technologies_projects", ["project_id"], name: "index_technologies_projects_on_project_id", using: :btree
   add_index "technologies_projects", ["technology_id"], name: "index_technologies_projects_on_technology_id", using: :btree
 

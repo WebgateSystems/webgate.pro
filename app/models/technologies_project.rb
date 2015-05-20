@@ -7,4 +7,6 @@ class TechnologiesProject < ActiveRecord::Base
 
   validates_associated :technology
   validates_associated :project
+
+  validates :technology_id, uniqueness: {scope: [:project_id]}
 end
