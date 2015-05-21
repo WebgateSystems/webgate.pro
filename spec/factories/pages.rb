@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  factory :page do  
+  factory :page do
     shortlink 'about-test'
     position 1
 

@@ -4,6 +4,7 @@
   a.logo href="#"
 ul.top_nav
   - @menu.each do |m|
+    - next if m.page.present? and m.altlink != m.page.shortlink
     - compare_path = URI.escape m.altlink
     - (request.path == compare_path or request.path == "/"+compare_path ) ? @class = "active" : @class = ""
     li class="#{ @class }"
@@ -12,6 +13,7 @@ ul.top_nav
 span.mob.ico_main
 ul.mob.mob_nav.main
   - @menu.each do |m|
+    - next if m.page.present? and m.altlink != m.page.shortlink
     - compare_path = URI.escape m.altlink
     - (request.path == compare_path or request.path == "/"+compare_path ) ? @class = "active" : @class = ""
     li class="#{ @class }"
@@ -45,7 +47,8 @@ span.mob.ico_lang
 ul.mob.mob_nav
   - other_mobile_langs.each do |l|
     li
-      = link_to root_path(lang: l[0]) do
-        span
-          = l[1]
+      - Globalize.with_locale(l[0]) do
+        = change_mobile_lang_path(l[0], l[1])
+
+
 
