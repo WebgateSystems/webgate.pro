@@ -7,4 +7,5 @@
       = link_to locale, 'javascript:;'
     - other_public_langs.each do |l|
       li
-        = current_page?(root_path) ? link_to(l, root_path(locale: l)) : link_to(l.upcase, locale: l)
+        - Globalize.with_locale(l) do
+          = change_lang_path(l)

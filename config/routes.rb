@@ -34,7 +34,7 @@ WebgatePro::Application.routes.draw do
       resources :technologies do
       end
     end
-    root :to => "home#index"
+    root to: 'home#index'
   end
 
   localized do
@@ -46,9 +46,9 @@ WebgatePro::Application.routes.draw do
 
   get 'contact_complete', to: 'contacts#contact_complete'
 
-  get "logout" => "sessions#destroy", as: "logout"
-  get "login" => "sessions#new", as: "login"
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'login',  to: 'sessions#new', as: 'login'
 
-  get ":shortlink" => "pages#showbyshortlink"
+  get ':shortlink', to: 'pages#showbyshortlink'
   root to: 'home#index'
 end

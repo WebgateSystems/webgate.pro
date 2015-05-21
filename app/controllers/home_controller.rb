@@ -3,12 +3,11 @@ class HomeController < ApplicationController
 
   def index
     @projects = Project.published.rank(:position).all
-    unless params[:locale].nil?
-      I18n.locale = params[:locale]
-    end
-    Rails.logger.info(request.path)
-    Rails.logger.info('----------------------------------------------------------------')
-
+    #unless params[:locale].nil?
+    #  I18n.locale = params[:locale]
+    #end
+    #Rails.logger.info(request.path)
+    #Rails.logger.info('----------------------------------------------------------------')
     render layout: 'main'
   end
 
@@ -23,10 +22,10 @@ class HomeController < ApplicationController
 
   private
 
-  def locale_urls
-    current_locale = I18n.locale
-    path = request.path
-
-  end
+  #def locale_urls
+  #  current_locale = I18n.locale
+  #  path = request.path
+  #
+  #end
 
 end
