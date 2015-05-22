@@ -30,7 +30,6 @@ set :keep_releases, 5
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
 
-=begin
   desc "Run the save_members_technologies rake task"
   task :save_members_technologies do
     on roles(:web) do
@@ -67,7 +66,6 @@ namespace :deploy do
   before :starting, 'save_projects_technologies'
   after :finishing, 'load_members_technologies'
   after :finishing, 'load_projects_technologies'
-=end
 
   task :restart do
     invoke 'unicorn:restart'
