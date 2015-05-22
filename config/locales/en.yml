@@ -131,6 +131,7 @@ en:
   more_information: "More Information"
   hide_information: "Back to team"
   publish: "Publish"
+  error_not_unique: "Error: not unique"
   error_404: "Page not found (error 404)!"
   error_404_message: "If You belive, that isn't correct - please, send this error by email or contact form to us. Thanks."
   add_collage: "Add collage"

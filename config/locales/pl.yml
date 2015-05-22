@@ -131,6 +131,7 @@ pl:
   more_information: "Więcej informacji"
   hide_information: "Wrócić do zespołu"
   publish: "Publikować"
+  error_not_unique: "Error: not unique"
   error_404: "Strona nie znaleziona (błąd 404)!"
   error_404_message: "Jeżeli wydaje się Państwu, że tak nie powinno być - prosimy skorzystać z formularza kontaktowego, albo wysłać email. Dziękujemy."
   add_collage: "Dodaj kolaż"

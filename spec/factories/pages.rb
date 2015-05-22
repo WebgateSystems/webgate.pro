@@ -1,8 +1,12 @@
 FactoryGirl.define do
-
-  factory :page do
-    shortlink 'about-test'
+  factory :page, aliases: [:en_page] do
+    shortlink { Faker::Lorem.word }
     position 1
+    association :category, factory: :en_category
+    title { Faker::Name.title }
+    description { Faker::Lorem.paragraph }
+    keywords { Faker::Lorem.sentence }
+    content { Faker::Lorem.paragraph }
 
     factory :pl_page do
       association :category, factory: :pl_category
@@ -10,14 +14,7 @@ FactoryGirl.define do
       description 'O nas'
       keywords 'O nas'
       content 'O nas'
-    end
-
-    factory :en_page do
-      association :category, factory: :en_category
-      title 'About us'
-      description 'About us'
-      keywords 'About us'
-      content 'About us'
+      shortlink 'pl-about-test'
     end
 
     factory :ru_page do
@@ -26,7 +23,7 @@ FactoryGirl.define do
       description 'О нас'
       keywords 'О нас'
       content 'О нас'
+      shortlink 'о-нас'
     end
-
   end
 end
