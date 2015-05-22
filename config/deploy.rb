@@ -27,46 +27,6 @@ set :sidekiq_config, -> { File.join(shared_path, 'config', 'sidekiq.yml') }
 
 set :keep_releases, 5
 
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-
-  desc "Run the save_members_technologies rake task"
-  task :save_members_technologies do
-    on roles(:web) do
-      rails_env = fetch(:rails_env, 'staging')
-      execute ". ~/.rvm/scripts/rvm && cd #{current_path} && rake db:save_members_techs RAILS_ENV=#{rails_env}"
-    end
-  end
-
-  desc "Run the save_projects_technologies rake task"
-  task :save_projects_technologies do
-    on roles(:web) do
-      rails_env = fetch(:rails_env, 'staging')
-      execute ". ~/.rvm/scripts/rvm && cd #{current_path} && rake db:save_projects_techs RAILS_ENV=#{rails_env}"
-    end
-  end
-
-  desc "Run the load_members_technologies rake task"
-  task :load_members_technologies do
-    on roles(:web) do
-      rails_env = fetch(:rails_env, 'staging')
-      execute ". ~/.rvm/scripts/rvm && cd #{current_path} && rake db:load_members_techs RAILS_ENV=#{rails_env}"
-    end
-  end
-
-  desc "Run the load_projects_technologies rake task"
-  task :load_projects_technologies do
-    on roles(:web) do
-      rails_env = fetch(:rails_env, 'staging')
-      execute ". ~/.rvm/scripts/rvm && cd #{current_path} && rake db:load_projects_techs RAILS_ENV=#{rails_env}"
-    end
-  end
-
-  before :starting, 'save_members_technologies'
-  before :starting, 'save_projects_technologies'
-  after :finishing, 'load_members_technologies'
-  after :finishing, 'load_projects_technologies'
-
   task :restart do
     invoke 'unicorn:restart'
   end
