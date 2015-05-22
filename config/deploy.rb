@@ -27,6 +27,9 @@ set :sidekiq_config, -> { File.join(shared_path, 'config', 'sidekiq.yml') }
 
 set :keep_releases, 5
 
+after 'deploy:publishing', 'deploy:restart'
+namespace :deploy do
+
   task :restart do
     invoke 'unicorn:restart'
   end
