@@ -34,7 +34,7 @@ namespace :deploy do
   task :save_members_technologies do
     on roles(:web) do
       rails_env = fetch(:rails_env, 'staging')
-      execute "~/.rvm/scripts/rvm && cd #{current_path} && rake db:save_members_technologies RAILS_ENV=#{rails_env}"
+      execute ".~/.rvm/scripts/rvm && cd #{current_path} && rake db:save_members_technologies RAILS_ENV=#{rails_env}"
     end
   end
 
@@ -42,7 +42,7 @@ namespace :deploy do
   task :save_projects_technologies do
     on roles(:web) do
       rails_env = fetch(:rails_env, 'staging')
-      execute "~/.rvm/scripts/rvm && cd #{current_path} && rake db:save_projects_technologies RAILS_ENV=#{rails_env}"
+      execute ".~/.rvm/scripts/rvm && cd #{current_path} && rake db:save_projects_technologies RAILS_ENV=#{rails_env}"
     end
   end
 
@@ -50,7 +50,7 @@ namespace :deploy do
   task :load_members_technologies do
     on roles(:web) do
       rails_env = fetch(:rails_env, 'staging')
-      execute "~/.rvm/scripts/rvm && cd #{current_path} && rake db:load_members_technologies RAILS_ENV=#{rails_env}"
+      execute ".~/.rvm/scripts/rvm && cd #{current_path} && rake db:load_members_technologies RAILS_ENV=#{rails_env}"
     end
   end
 
@@ -58,7 +58,7 @@ namespace :deploy do
   task :load_projects_technologies do
     on roles(:web) do
       rails_env = fetch(:rails_env, 'staging')
-      execute "~/.rvm/scripts/rvm && cd #{current_path} && rake db:load_projects_technologies RAILS_ENV=#{rails_env}"
+      execute ".~/.rvm/scripts/rvm && cd #{current_path} && rake db:load_projects_technologies RAILS_ENV=#{rails_env}"
     end
   end
 
