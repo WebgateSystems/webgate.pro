@@ -15,4 +15,16 @@ class HomeController < ApplicationController
     @technology_groups = TechnologyGroup.order(:position)
   end
 
+  def sitemap
+    respond_to do |format|
+      format.xml { render file: 'public/sitemaps/sitemap.xml' }
+      format.html { redirect_to root_url }
+    end
+  end
+
+  def robots
+    #@pages = Page.where(published: false)
+    respond_to :text
+  end
+
 end

@@ -7,7 +7,7 @@ feature 'technology_group in admin panel.' do
 
   before do
     sign_in(user)
-    visit '/admin/technology_groups'
+    visit admin_technology_groups_path
   end
 
   scenario 'Try drag and drop on index', js: true do
@@ -15,27 +15,27 @@ feature 'technology_group in admin panel.' do
     fill_in 'technology_group[title]', with: "TestTitle2"
     fill_in 'technology_group[description]', with: "Test Description2"
     click_button 'Save'
-    visit '/admin/technology_groups'
+    visit admin_technology_groups_path
     dest_element = find('td', text: "TestTitle2")
     source_element = find('td', text: "TestTitle1")
     source_element.drag_to dest_element
     sleep 2 #wait for ajax complete
     page.all(:link, 'Show')[1].click
-    expect(current_path).to eq "/admin/technology_groups/#{TechnologyGroup.last.id}"
-    visit '/admin/technology_groups'
+    expect(current_path).to eq admin_technology_group_path(TechnologyGroup.last.id)
+    visit admin_technology_groups_path
     page.all(:link, 'Show')[2].click
-    expect(current_path).to_not eq "/admin/technology_groups/#{TechnologyGroup.last.id}"
+    expect(current_path).to_not eq admin_technology_group_path(TechnologyGroup.last.id)
   end
 
   scenario 'Link list should work good' do
-    visit '/admin/technology_groups/new'
+    visit new_admin_technology_group_path
     click_link('List')
-    expect(current_path).to eq '/admin/technology_groups'
+    expect(current_path).to eq admin_technology_groups_path
   end
 
   scenario 'Link new should work good' do
     click_link('New')
-    expect(current_path).to eq '/admin/technology_groups/new'
+    expect(current_path).to eq new_admin_technology_group_path
   end
 
   scenario 'Technology_group root path should have list of technology_groups' do
@@ -47,10 +47,10 @@ feature 'technology_group in admin panel.' do
 
   scenario 'Users root path links show, edit should work' do
     page.all(:link, 'Show')[0].click
-    expect(current_path).to eq "/admin/technology_groups/#{TechnologyGroup.first.id}"
+    expect(current_path).to eq admin_technology_group_path(TechnologyGroup.first.id)
     visit '/admin/technology_groups'
     page.all(:link, 'Edit')[0].click
-    expect(current_path).to eq "/admin/technology_groups/#{TechnologyGroup.first.id}/edit"
+    expect(current_path).to eq edit_admin_technology_group_path(TechnologyGroup.first.id)
   end
 
   scenario 'Link delete should delete technology_group' do
@@ -71,7 +71,7 @@ feature 'technology_group in admin panel.' do
     fill_in 'technology_group[title]', with: 'TestTitleBrandNew'
     fill_in 'technology_group[description]', with: 'PewPewPew'
     click_button 'Save'
-    visit '/admin/technology_groups'
+    visit admin_technology_groups_path
     expect(page).to have_content 'TestTitleBrandNew'
   end
 

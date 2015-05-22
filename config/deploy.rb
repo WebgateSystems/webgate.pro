@@ -4,22 +4,15 @@ lock '3.4.0'
 set :application, 'webgate.pro'
 set :deploy_user, 'webgate'
 set :repo_url, 'git@tracker.webgate.pro:internal/webgate.git'
-
 set :scm, :git
-
-# Default value for :format is :pretty
 set :format, :pretty
 
 # Default value for :log_level is :debug
 set :log_level, :info
-
 set :tests, []
-
-# Default value for :pty is false
-# set :pty, true
-
 set :linked_files, %w{config/database.yml config/config.yml config/sidekiq.yml}
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/assets public/uploads}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/assets public/uploads public/sitemaps}
+set :whenever_identifier, ->{ "#{fetch(:deploy_user)}" }
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 

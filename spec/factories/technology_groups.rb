@@ -5,4 +5,9 @@ FactoryGirl.define do
     title { Faker::Name.title }
     description { Faker::Lorem.paragraph }
   end
+  factory :technology_group_seq do
+    sequence (:title) {|n| "tech group#{n}"}
+    description 'tech group'
+  end
+
 end
