@@ -7,7 +7,7 @@ describe Category do
   end
 
   it 'has a valid EN factory' do
-    expect(build(:en_category)).to be_valid
+    expect(build(:category)).to be_valid
   end
 
   it 'has a valid RU factory' do
@@ -17,7 +17,7 @@ describe Category do
   describe "Validations" do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:altlink) }
-    #it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
+    it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
   end
 
   describe "Associations" do

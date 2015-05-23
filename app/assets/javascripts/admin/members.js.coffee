@@ -76,7 +76,7 @@ $ ->
         )
     )
 
-#----------------------MEMBERLINKS REORDERING
+#----------------------MEMBER LINKS REORDERING
 $ ->
   if $('.links#sortable').length > 0
     $('.links#sortable').sortable(
@@ -99,5 +99,31 @@ $ ->
           url: "/admin/members/#{parent_id}" + "/sort_member_links"
           dataType: 'json'
           data: { member: { member_link_id: item_id, row_position: position } }
+        )
+    )
+
+#----------------------MEMBER TECHNOLOGIES REORDERING
+$ ->
+  if $('.technologies#sortable').length > 0
+    $('.technologies#sortable').sortable(
+      axis: 'y'
+      items: '.item'
+      cursor: 'move'
+
+      sort: (e, ui) ->
+        ui.item.addClass('active-item-shadow')
+      stop: (e, ui) ->
+        ui.item.removeClass('active-item-shadow')
+        # highlight the row on drop to indicate an update
+        ui.item.children('td').effect('highlight', {}, 1000)
+      update: (e, ui) ->
+        item_id = ui.item.data('item-id')
+        parent_id = ui.item.data('parent-id')
+        position = ui.item.index()
+        $.ajax(
+          type: 'PUT'
+          url: "/admin/members/#{parent_id}" + "/sort_member_technologies"
+          dataType: 'json'
+          data: { member: { member_technology_id: item_id, row_tech_position: position } }
         )
     )

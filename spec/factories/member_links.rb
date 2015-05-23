@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :member_link do
-    name 'Tested Member_link'
-    link 'http://test.webgate.pro'
-    association :member, factory: :member
+    name { Faker::Name.title }
+    link { Faker::Internet.url }
+    member
   end
 end
