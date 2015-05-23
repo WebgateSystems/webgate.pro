@@ -10,7 +10,6 @@ describe Member do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:job_title) }
     it { is_expected.to validate_presence_of(:description) }
-    it { is_expected.to validate_presence_of(:education) }
     it { is_expected.to validate_presence_of(:motto) }
 
     it 'validates not publish without avatar' do
@@ -23,7 +22,8 @@ describe Member do
 
   describe "Associations" do
     it { is_expected.to have_many(:member_links).dependent(:destroy) }
-    it { is_expected.to have_and_belong_to_many(:technologies) }
+    it { is_expected.to have_many(:technologies).order('technologies_members.position').through(:technologies_members) }
+    it { is_expected.to have_many(:technologies_members) }
   end
 
   describe "Method: technology_groups" do

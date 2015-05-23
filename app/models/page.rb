@@ -7,8 +7,8 @@ class Page < ActiveRecord::Base
   belongs_to :category
   validates_associated :category
 
-  validates_presence_of :title, :shortlink, :description, :keywords, :content
-  validates_uniqueness_of :shortlink, case_sensitive: false
+  validates :title, :shortlink, :description, :keywords, :content, presence: true
+  validates :shortlink, uniqueness: { case_sensitive: false }
 
   translates :title, :shortlink, :description, :keywords, :content, :tooltip
 
