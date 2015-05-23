@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :technology do
-    title 'tech'
-    link 'http://example_tech.com/link'
-    association :technology_group, factory: :technology_group
-    description 'tech'
+    title { Faker::Name.title }
+    link { Faker::Internet.url }
+    technology_group
+    description { Faker::Lorem.paragraph }
     logo { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'ws-logo.png')) }
   end
 end

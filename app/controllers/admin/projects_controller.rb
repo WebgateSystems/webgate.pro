@@ -1,5 +1,5 @@
 class Admin::ProjectsController < Admin::HomeController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :sort_project_technologies]
   before_action :set_technologies, only: [:new, :create, :edit, :update]
 
   def index
@@ -8,6 +8,7 @@ class Admin::ProjectsController < Admin::HomeController
 
   def show
     @screenshots = @project.screenshots.rank(:position)
+    @technologies = @project.technologies.rank(:position)
   end
 
   def new
@@ -62,11 +63,23 @@ class Admin::ProjectsController < Admin::HomeController
     end
   end
 
-  def sort_screenshots
+  def sort_project_screenshots
     @screenshot = Screenshot.find(project_params[:screenshot_id])
     @screenshot.position_position = project_params[:row_position]
     respond_to do |format|
       if @screenshot.save!
+        format.json { head :ok }
+      else
+        format.json { head :error }
+      end
+    end
+  end
+
+  def sort_project_technologies
+    @technologies_project = TechnologiesProject.find_by(project_id: @project.id, technology_id: project_params[:project_technology_id])
+    @technologies_project.position_position = project_params[:row_tech_position]
+    respond_to do |format|
+      if @technologies_project.save!
         format.json { head :ok }
       else
         format.json { head :error }
@@ -86,7 +99,7 @@ class Admin::ProjectsController < Admin::HomeController
 
   def project_params
     params.require(:project).permit(:collage, :collage_cache, :project_id, :screenshot_id, :row_position, :shortlink, :title, :description,
-                                    :keywords, :content, :livelink, :publish, technology_ids: [],
+                                    :row_tech_position, :project_technology_id, :keywords, :content, :livelink, :publish, technology_ids: [],
                                     technologies_attributes: [:id, :title, :technology_group_id],
                                     screenshots_attributes: [:id, :file, :file_cache, :project_id, :position, :_destroy])
   end
