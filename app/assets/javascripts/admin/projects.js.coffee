@@ -76,7 +76,7 @@ $ ->
         )
     )
 
-#----------------------SCREENSHOTS REORDERING
+#----------------------PROJECT SCREENSHOTS REORDERING
 $ ->
   if $('.screenshots#sortable').length > 0
     $('.screenshots#sortable').sortable(
@@ -96,8 +96,34 @@ $ ->
         position = ui.item.index()
         $.ajax(
           type: 'PUT'
-          url: "/admin/projects/#{parent_id}" + "/sort_screenshots"
+          url: "/admin/projects/#{parent_id}" + "/sort_project_screenshots"
           dataType: 'json'
           data: { project: { screenshot_id: item_id, row_position: position } }
+        )
+    )
+
+#----------------------PROJECT TECHNOLOGIES REORDERING
+$ ->
+  if $('.technologies#sortable').length > 0
+    $('.technologies#sortable').sortable(
+      axis: 'y'
+      items: '.item'
+      cursor: 'move'
+
+      sort: (e, ui) ->
+        ui.item.addClass('active-item-shadow')
+      stop: (e, ui) ->
+        ui.item.removeClass('active-item-shadow')
+        # highlight the row on drop to indicate an update
+        ui.item.children('td').effect('highlight', {}, 1000)
+      update: (e, ui) ->
+        item_id = ui.item.data('item-id')
+        parent_id = ui.item.data('parent-id')
+        position = ui.item.index()
+        $.ajax(
+          type: 'PUT'
+          url: "/admin/projects/#{parent_id}" + "/sort_project_technologies"
+          dataType: 'json'
+          data: { project: { project_technology_id: item_id, row_tech_position: position } }
         )
     )

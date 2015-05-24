@@ -17,7 +17,7 @@ gem 'exception_notification', '~> 4.0.1'
 gem 'unicorn'
 gem 'kaminari'
 gem 'faker'
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'jquery-minicolors-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -29,7 +29,10 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'chosen-rails'
 gem 'ranked-model'
+gem 'select2-rails'
 gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'dynamic_sitemaps'
+gem 'whenever', require: false
 gem 'sidekiq'
 gem 'sinatra', require: nil
 
@@ -82,7 +85,7 @@ end
 
 group :test, :development do
   #gem 'selenium-webdriver'
-  gem "capybara-webkit"
+  gem 'capybara-webkit'
   # gem 'webrat'
   gem 'rspec-rails'
   gem 'hpricot'

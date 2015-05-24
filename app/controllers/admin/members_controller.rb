@@ -1,5 +1,5 @@
 class Admin::MembersController < Admin::HomeController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:show, :edit, :update, :destroy, :sort_member_technologies]
   before_action :set_technologies, only: [:new, :edit, :create, :update]
 
   def index
@@ -8,6 +8,7 @@ class Admin::MembersController < Admin::HomeController
 
   def show
     @member_links = @member.member_links.rank(:position)
+    @technologies = @member.technologies.rank(:position)
   end
 
   def new
@@ -63,6 +64,18 @@ class Admin::MembersController < Admin::HomeController
     end
   end
 
+  def sort_member_technologies
+    @technologies_member = TechnologiesMember.find_by(member_id: @member.id, technology_id: member_params[:member_technology_id])
+    @technologies_member.position_position = member_params[:row_tech_position]
+    respond_to do |format|
+      if @technologies_member.save!
+        format.json { head :ok }
+      else
+        format.json { head :error }
+      end
+    end
+  end
+
   private
 
   def set_member
@@ -74,8 +87,8 @@ class Admin::MembersController < Admin::HomeController
   end
 
   def member_params
-    params.require(:member).permit(:member_id, :row_position, :name, :job_title, :education, :description,
-                                    :member_link_id, :avatar, :avatar_cache, :motto, :publish, technology_ids: [],
+    params.require(:member).permit(:member_id, :row_position, :row_tech_position, :name, :job_title, :education, :description,
+                                    :member_link_id, :member_technology_id, :avatar, :avatar_cache, :motto, :publish, technology_ids: [],
                                     technologies_attributes: [:id, :title, :technology_group_id, :_destroy],
                                     member_links_attributes: [:id, :name, :link, :member_id, :position, :_destroy])
   end

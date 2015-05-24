@@ -2,11 +2,11 @@ FactoryGirl.define do
   factory :page, aliases: [:en_page] do
     shortlink { Faker::Lorem.word }
     position 1
-    association :category, factory: :en_category
     title { Faker::Name.title }
     description { Faker::Lorem.paragraph }
     keywords { Faker::Lorem.sentence }
     content { Faker::Lorem.paragraph }
+    category
 
     factory :pl_page do
       association :category, factory: :pl_category

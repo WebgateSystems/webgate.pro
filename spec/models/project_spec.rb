@@ -25,7 +25,8 @@ describe Project do
 
   describe "Associations" do
     it { is_expected.to have_many(:screenshots).dependent(:destroy) }
-    it { is_expected.to have_and_belong_to_many(:technologies) }
+    it { is_expected.to have_many(:technologies).order('technologies_projects.position').through(:technologies_projects) }
+    it { is_expected.to have_many(:technologies_projects) }
   end
 
 end

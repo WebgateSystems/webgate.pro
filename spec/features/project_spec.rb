@@ -10,11 +10,11 @@ feature 'Project in admin panel.' do
 
   before do
     sign_in(user)
-    visit '/admin/projects'
+    visit admin_projects_path
   end
 
   scenario 'Project root path should have list of projects' do
-    visit '/admin/projects'
+    visit admin_projects_path
     expect(page).to have_content 'Title'
     expect(page).to have_content 'Created at'
     expect(page).to have_content 'Publish'
@@ -29,35 +29,35 @@ feature 'Project in admin panel.' do
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
-    visit '/admin/projects'
+    visit admin_projects_path
     dest_element = find('td', text: "TestTitle2")
     source_element = find('td', text: "TestTitle1")
     source_element.drag_to dest_element
     sleep 5 #wait for ajax complete
     page.all(:link, 'Show')[1].click
-    expect(current_path).to eq "/admin/projects/#{Project.last.id}"
-    visit '/admin/projects'
+    expect(current_path).to eq admin_project_path(Project.last.id)
+    visit admin_projects_path
     page.all(:link, 'Show')[2].click
-    expect(current_path).to_not eq "/admin/projects/#{Project.last.id}"
+    expect(current_path).to_not eq admin_project_path(Project.last.id)
   end
 
   scenario 'Link list should work good' do
-    visit '/admin/projects/new'
+    visit new_admin_project_path
     click_link('List')
-    expect(current_path).to eq '/admin/projects'
+    expect(current_path).to eq admin_projects_path
   end
 
   scenario 'Link new should work good' do
     click_link('New')
-    expect(current_path).to eq '/admin/projects/new'
+    expect(current_path).to eq new_admin_project_path
   end
 
   scenario 'Project root path links show, edit should work' do
     page.all(:link, 'Show')[0].click
-    expect(current_path).to eq "/admin/projects/#{Project.first.id}"
-    visit '/admin/projects'
+    expect(current_path).to eq admin_project_path(Project.first.id)
+    visit admin_projects_path
     page.all(:link, 'Edit')[0].click
-    expect(current_path).to eq "/admin/projects/#{Project.first.id}/edit"
+    expect(current_path).to eq edit_admin_project_path(Project.first.id)
   end
 
   scenario 'Link delete should delete project' do
@@ -81,7 +81,7 @@ feature 'Project in admin panel.' do
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
-    visit '/admin/projects'
+    visit admin_projects_path
     click_link ('TestTitleFull')
     expect(page).to have_content 'TestContentFull'
   end
@@ -98,7 +98,7 @@ feature 'Project in admin panel.' do
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     find(:css, "#project_publish").set(true)
     click_button 'Save'
-    visit '/admin/projects'
+    visit admin_projects_path
     expect(page).to have_content 'true'
   end
 
@@ -111,7 +111,7 @@ feature 'Project in admin panel.' do
   scenario 'Dont create project with empty fields' do
     click_link ('New')
     fill_in 'project[title]', with: 'TestTitlekukumba'
-    visit '/admin/projects'
+    visit admin_projects_path
     expect(page).to have_no_content 'TestTitlekukumba'
   end
 

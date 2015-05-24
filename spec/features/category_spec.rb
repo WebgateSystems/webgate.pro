@@ -24,19 +24,19 @@ feature 'Category in admin panel.' do
 
   before do
     sign_in(user)
-    visit '/admin/categories'
+    visit admin_categories_path
     3.times do |t|
       click_link ('New')
       fill_in 'category[name]', with: "TestTitle#{t}"
       fill_in 'category[altlink]', with: "TestLink#{t}"
       fill_in 'category[description]', with: "TestDesc#{t}"
       click_button 'Save'
-      visit '/admin/categories'
+      visit admin_categories_path
     end
   end
 
   scenario 'Category root path should have list of categories' do
-    visit '/admin/categories'
+    visit admin_categories_path
     expect(page).to have_content 'Name'
     expect(page).to have_content 'Altlink'
     expect(page).to have_content 'Created at'
@@ -46,35 +46,35 @@ feature 'Category in admin panel.' do
   end
 
   scenario 'Try drag and drop on index', js: true do
-    visit '/admin/categories'
+    visit admin_categories_path
     dest_element = find('td', text: "TestTitle2")
     source_element = find('td', text: "TestTitle1")
     source_element.drag_to dest_element
     sleep 5 #wait for ajax complete
     page.all(:link, 'Show')[1].click
-    expect(current_path).to eq "/admin/categories/#{Category.last.id}"
-    visit '/admin/categories'
+    expect(current_path).to eq admin_category_path(Category.last.id)
+    visit admin_categories_path
     page.all(:link, 'Show')[2].click
-    expect(current_path).to_not eq "/admin/categories/#{Category.last.id}"
+    expect(current_path).to_not eq admin_category_path(Category.last.id)
   end
 
   scenario 'Link list should work good' do
-    visit '/admin/categories/new'
+    visit new_admin_category_path
     click_link('List')
-    expect(current_path).to eq '/admin/categories'
+    expect(current_path).to eq admin_categories_path
   end
 
   scenario 'Link new should work good' do
     click_link('New')
-    expect(current_path).to eq '/admin/categories/new'
+    expect(current_path).to eq new_admin_category_path
   end
 
   scenario 'Categoryt root path links show, edit should work' do
     page.all(:link,'Show')[0].click
-    expect(current_path).to eq "/admin/categories/#{Category.first.id}"
-    visit '/admin/categories'
+    expect(current_path).to eq admin_category_path(Category.first.id)
+    visit admin_categories_path
     page.all(:link,'Edit')[0].click
-    expect(current_path).to eq "/admin/categories/#{Category.first.id}/edit"
+    expect(current_path).to eq edit_admin_category_path(Category.first.id)
   end
 
   scenario 'Link delete should delete category' do
@@ -98,7 +98,7 @@ feature 'Category in admin panel.' do
     fill_in 'category[altlink]', with: "TestlinkFull"
     fill_in 'category[description]', with: "TestDescFull"
     click_button 'Save'
-    visit '/admin/categories'
+    visit admin_categories_path
     expect(page).to have_content 'TestTitleFull'
   end
 
@@ -111,14 +111,14 @@ feature 'Category in admin panel.' do
   scenario 'Dont create category with empty fields' do
     click_link ('New')
     fill_in 'category[name]', with: 'TestTitlekukumba'
-    visit '/admin/categories'
+    visit admin_categories_path
     expect(page).to have_no_content 'TestTitlekukumba'
   end
 
   scenario 'Now link should be same that we create' do
     ['pl', 'ru'].each do |lang|
       visit root_path
-      click_link(lang) unless I18n.locale.to_s == lang
+      first(:link, lang.upcase).click unless I18n.locale.to_s == lang
       first(:link, Category.last.name).click
       expect(current_path).to eq "/#{Category.last.altlink}"
     end
@@ -127,7 +127,7 @@ feature 'Category in admin panel.' do
   scenario 'Now name should be the same that we create, but in another language' do
     visit root_path
     ['pl', 'ru'].each do |lang|
-      click_link(lang) unless I18n.locale.to_s == lang
+      first(:link, lang.upcase).click unless I18n.locale.to_s == lang
       expect(page).to have_content Category.last.name
     end
   end
@@ -136,7 +136,7 @@ feature 'Category in admin panel.' do
     lang_change
     visit root_path
     ['en', 'pl', 'ru'].each do |lang|
-      click_link(lang) unless I18n.locale.to_s == lang
+      first(:link, lang.upcase).click unless I18n.locale.to_s == lang
       expect(page).to have_content 'PolskaName' if lang == 'pl'
       expect(page).to have_content 'RuskaName' if lang == 'ru'
       expect(page).to have_content 'EnglishName' if lang == 'en'
@@ -147,7 +147,7 @@ feature 'Category in admin panel.' do
     lang_change
     ['en', 'pl', 'ru'].each do |lang|
       visit root_path
-      click_link(lang) unless I18n.locale.to_s == lang
+      first(:link, lang.upcase).click unless I18n.locale.to_s == lang
       first(:link, 'PolskaName').click if lang == 'pl'
       first(:link, 'RuskaName').click if lang == 'ru'
       first(:link, 'EnglishName').click if lang == 'en'

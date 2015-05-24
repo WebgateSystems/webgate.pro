@@ -31,13 +31,13 @@
                       i.fa.fa-check-circle
                       = tg.title
                     p
-                      - (tg.technologies.includes(:translations) & member.technologies).each do |tech|
+                      - (member.technologies & tg.technologies.includes(:translations)).each do |tech|
                         span
-                          -if tech.logo.file
+                          - if tech.logo.file
                             = link_to tech.title, tech_link(tech), data: { img: tech.logo.url(:thumb), title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'
-                          -else
+                          - else
                             = link_to tech.title, tech_link(tech), data: { title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'
-                          - unless tech == (tg.technologies & member.technologies).last
+                          - unless tech == (member.technologies & tg.technologies).last
                             |,
             span.mob.more_info= t(:more_information)
             span.mob.service_block_btn= t(:hide_information)

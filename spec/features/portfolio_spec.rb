@@ -8,7 +8,7 @@ feature 'Adding projects to portfolio.' do
       publish: true, collage: nil) }
 
   before do
-    visit '/portfolio'
+    visit portfolio_path
   end
 
   scenario 'Should show projects with collage' do

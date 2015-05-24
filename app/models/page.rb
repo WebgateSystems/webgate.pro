@@ -1,4 +1,3 @@
-# encoding: utf-8
 class Page < ActiveRecord::Base
 
   before_save :remove_translation_link
@@ -7,7 +6,7 @@ class Page < ActiveRecord::Base
   belongs_to :category
   validates_associated :category
 
-  validates_presence_of :title, :shortlink, :description, :keywords, :content
+  validates :title, :shortlink, :description, :keywords, :content, presence: true
   validates :shortlink, uniqueness: { case_sensitive: false }
   validate :check_shortlink_unique
 
