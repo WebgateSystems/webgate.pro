@@ -7,12 +7,11 @@ class HomeController < ApplicationController
   end
 
   def portfolio
-    @projects = Project.published.rank(:position).includes(:translations, :screenshots).page(params[:page]).per(10)
+    @projects = Project.published.includes(:translations, :screenshots).page(params[:page]).per(10)
   end
 
   def team
-    @members = Member.published.rank(:position).includes(:translations, :member_links).page(params[:page]).per(9)
-    @technology_groups = TechnologyGroup.order(:position)
+    @members = Member.published.rank(:position).includes(:translations, :member_links, member_links: :translations).page(params[:page]).per(12)
   end
 
   def sitemap

@@ -1,44 +1,46 @@
 - provide(:title, t(:team))
 - if @members.any?
-  .team_page
-    h1.page_title= t(:team)
-    - @members.in_groups_of(3, false).each do |member_array|
-      .row
-        - member_array.each do |member|
-          .team_block
-            = image_tag member.avatar.url(:avatar)
-            span.team_name= member.name
-            span.specialization= member.job_title
-            p.motto= truncate(member.motto, length: 100)
-            .columns_container.mob
-              .worker_column
-                h2= t(:basic_information)
-                = member.description.try(:html_safe)
-                - if member.education.present?
-                  h2= t('activerecord.member.education')
-                  = member.education.try(:html_safe)
-                - if member.member_links.any?
-                  h2= t(:online_portfolio)
-                  - member.member_links.each do |ml|
-                    h3.blue
-                      i.fa.fa-check-circle
-                      = link_to ml.name, ml.link, target: '_blank', rel: 'nofollow', class: 'profile_links'
-              .worker_column
-                - if member.technology_groups.any?
-                  h2= t(:technologies)
-                  - member.technology_groups.each do |tg|
-                    h3 style=("color: #{tg.color}")
-                      i.fa.fa-check-circle
-                      = tg.title
-                    p
-                      - (member.technologies & tg.technologies.includes(:translations)).each do |tech|
-                        span
-                          - if tech.logo.file
-                            = link_to tech.title, tech_link(tech), data: { img: tech.logo.url(:thumb), title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'
-                          - else
-                            = link_to tech.title, tech_link(tech), data: { title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'
-                          - unless tech == (member.technologies & tg.technologies).last
-                            |,
-            span.mob.more_info= t(:more_information)
-            span.mob.service_block_btn= t(:hide_information)
-    = paginate @members
+  - cache cache_key_for_members
+    .team_page
+      h1.page_title= t(:team)
+      - @members.in_groups_of(3, false).each do |member_array|
+        .row
+          - member_array.each do |member|
+            - cache member
+              .team_block
+                = image_tag member.avatar.url(:avatar)
+                span.team_name= member.name
+                span.specialization= member.job_title
+                p.motto= truncate(member.motto, length: 100)
+                .columns_container.mob
+                  .worker_column
+                    h2= t(:basic_information)
+                    = member.description.try(:html_safe)
+                    - if member.education.present?
+                      h2= t('activerecord.member.education')
+                      = member.education.try(:html_safe)
+                    - if member.member_links.any?
+                      h2= t(:online_portfolio)
+                      - member.member_links.each do |ml|
+                        h3.blue
+                          i.fa.fa-check-circle
+                          = link_to ml.name, ml.link, target: '_blank', rel: 'nofollow', class: 'profile_links'
+                  .worker_column
+                    - if member.technology_groups.any?
+                      h2= t(:technologies)
+                      - member.technology_groups.each do |tg|
+                        h3 style=("color: #{tg.color}")
+                          i.fa.fa-check-circle
+                          = tg.title
+                        p
+                          - (member.technologies & tg.technologies).each do |tech|
+                            span
+                              - if tech.logo.file
+                                = link_to tech.title, tech_link(tech), data: { img: tech.logo.url(:thumb), title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'
+                              - else
+                                = link_to tech.title, tech_link(tech), data: { title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'
+                              - unless tech == (member.technologies & tg.technologies).last
+                                |,
+                span.mob.more_info= t(:more_information)
+                span.mob.service_block_btn= t(:hide_information)
+      = paginate @members

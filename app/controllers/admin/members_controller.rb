@@ -1,5 +1,5 @@
 class Admin::MembersController < Admin::HomeController
-  before_action :set_member, only: [:show, :edit, :update, :destroy, :sort_member_technologies]
+  before_action :set_member, only: [:show, :update, :destroy, :sort_member_technologies]
   before_action :set_technologies, only: [:new, :edit, :create, :update]
 
   def index
@@ -7,7 +7,7 @@ class Admin::MembersController < Admin::HomeController
   end
 
   def show
-    @member_links = @member.member_links.rank(:position)
+    @member_links = @member.member_links.rank(:position).includes(:translations)
     @technologies = @member.technologies.rank(:position)
   end
 
@@ -25,6 +25,7 @@ class Admin::MembersController < Admin::HomeController
   end
 
   def edit
+    @member = Member.includes(:member_links, member_links: :translations).find(params[:id])
   end
 
   def update

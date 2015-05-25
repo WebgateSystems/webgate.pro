@@ -19,4 +19,14 @@ class Technology < ActiveRecord::Base
 
   mount_uploader :logo, LogoUploader
 
+  after_update :update_members_cache
+
+  protected
+
+  def update_members_cache
+    Member.all.each do |m|
+      m.touch if m.technologies.include?(self)
+    end
+  end
+
 end
