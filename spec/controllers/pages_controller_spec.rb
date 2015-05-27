@@ -17,11 +17,10 @@ describe PagesController do
       expect(response).to render_template('showbyshortlink')
     end
 
-    it 'render not_found template when page is not found' do
-      @page.shortlink = 'blablabla'
-      get :showbyshortlink, shortlink: @page.shortlink
-      expect(response).to render_template('not_found')
-      expect(response).to have_http_status(404)
+    it 'redirect to not_found url when page is not found' do
+      get :showbyshortlink, shortlink: 'blabla'
+      expect(response).to redirect_to('/not-found')
+      expect(response).to have_http_status(302)
     end
   end
 end
