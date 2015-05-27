@@ -44,7 +44,7 @@ WebgatePro::Application.routes.draw do
 
   localized do
     get 'main',         to: 'home#index', as: :main
-    get 'notfound',     to: 'errors#not_found', as: :notfound
+    get :not_found,     to: 'errors#not_found', as: :not_found
     get 'portfolio',    to: 'home#portfolio', as: :portfolio
     get 'team',         to: 'home#team', as: :team
   end

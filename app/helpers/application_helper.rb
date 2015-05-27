@@ -17,12 +17,23 @@ module ApplicationHelper
     (link and !link.blank?) ? link : 'javascript:;'
   end
 
+  def not_found_url(lang)
+    case lang
+    when 'pl'
+      not_found_pl_url
+    when 'ru'
+      not_found_ru_url
+    else
+      not_found_url
+    end
+  end
+
   def change_lang_path(lang)
     if current_page?(root_path)
       link_to(lang.upcase, root_path(lang: lang))
     elsif params[:action] == 'showbyshortlink'
       page = Page.with_translations(locale).find_by(shortlink: params[:shortlink])
-      link_to(lang.upcase, (page.nil? or page.shortlink == params[:shortlink]) ? eval("notfound_#{lang}_url") : page.shortlink)
+      link_to(lang.upcase, (page.nil? or page.shortlink == params[:shortlink]) ? not_found_url(lang) : page.shortlink)
     else
       link_to(lang.upcase, locale: lang)
     end
@@ -35,7 +46,7 @@ module ApplicationHelper
       end
     elsif params[:action] == 'showbyshortlink'
       page = Page.with_translations(locale).find_by(shortlink: params[:shortlink])
-      link_to((page.nil? or page.shortlink == params[:shortlink]) ? eval("notfound_#{lang}_url") : page.shortlink) do
+      link_to((page.nil? or page.shortlink == params[:shortlink]) ? not_found_url(lang) : page.shortlink) do
         raw("<span> #{label}</span>")
       end
     else

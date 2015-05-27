@@ -36,7 +36,8 @@ feature 'Change language' do
       within '.lang' do
         click_link(lang.upcase)
       end
-      expect(current_path).to eq eval("team_#{lang}_path")
+      expect(current_path).to eq team_pl_path if lang == 'pl'
+      expect(current_path).to eq team_ru_path if lang == 'ru'
     end
   end
 

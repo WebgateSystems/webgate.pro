@@ -3,25 +3,25 @@ en:
     main: main
     team: team
     portfolio: portfolio
-    notfound: not-found
+    not_found: not-found
 
 pl:
   routes:
     main: główna
     team: zespół
     portfolio: wybrane-realizacje
-    notfound: nie-znalieziono
+    not_found: nie-znalieziono
 
 ru:
   routes:
     main: главная
     team: команда
     portfolio: портфолио
-    notfound: не-найдено
+    not_found: не-найдено
 
 fr:
   routes:
     main: principal
     team: équipe
     portfolio: portefeuille
-    notfound: pas-trouvé
+    not_found: pas-trouvé
