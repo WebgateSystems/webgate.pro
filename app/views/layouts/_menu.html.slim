@@ -4,7 +4,6 @@
   a.logo href="#"
 ul.top_nav
   - @menu.each do |m|
-    - next if m.page.present? and m.altlink != m.page.shortlink
     - compare_path = URI.escape m.altlink
     - (request.path == compare_path or request.path == "/"+compare_path ) ? @class = "active" : @class = ""
     li class="#{ @class }"
@@ -13,7 +12,6 @@ ul.top_nav
 span.mob.ico_main
 ul.mob.mob_nav.main
   - @menu.each do |m|
-    - next if m.page.present? and m.altlink != m.page.shortlink
     - compare_path = URI.escape m.altlink
     - (request.path == compare_path or request.path == "/"+compare_path ) ? @class = "active" : @class = ""
     li class="#{ @class }"
