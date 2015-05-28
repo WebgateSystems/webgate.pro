@@ -43,10 +43,10 @@ WebgatePro::Application.routes.draw do
   get 'robots.:format' => 'home#robots', format: :text
 
   localized do
-    get 'main',         to: 'home#index', as: :main
-    get :not_found,     to: 'errors#not_found', as: :not_found
-    get 'portfolio',    to: 'home#portfolio', as: :portfolio
-    get 'team',         to: 'home#team', as: :team
+    get :main,      to: 'home#index', as: :main
+    get :not_found, to: 'errors#not_found', as: :not_found
+    get :portfolio, to: 'home#portfolio', as: :portfolio
+    get :team,      to: 'home#team', as: :team
   end
 
   get 'contact_complete', to: 'contacts#contact_complete'

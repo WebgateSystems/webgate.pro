@@ -20,11 +20,11 @@ module ApplicationHelper
   def main_url(lang)
     case lang
     when 'pl'
-      main_pl_url
+      link_to(lang.upcase, main_pl_url)
     when 'ru'
-      main_ru_url
+      link_to(lang.upcase, main_ru_url)
     else
-      root_url
+      link_to(lang.upcase, locale: lang)
     end
   end
 
@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def change_lang_path(lang)
     if current_page?(root_path)
-      link_to(lang.upcase, main_url(lang))
+      main_url(lang)
     elsif params[:action] == 'showbyshortlink'
       page = Page.with_translations(locale).find_by(shortlink: params[:shortlink])
       link_to(lang.upcase, (page.nil? or page.shortlink == params[:shortlink]) ? not_found_url(lang) : page.shortlink)
@@ -52,7 +52,7 @@ module ApplicationHelper
 
   def change_mobile_lang_path(lang, label)
     if current_page?(root_path)
-      link_to(root_path(lang: lang)) do
+      main_url(lang) do
         raw("<span> #{label}</span>")
       end
     elsif params[:action] == 'showbyshortlink'

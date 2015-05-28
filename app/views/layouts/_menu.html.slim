@@ -5,7 +5,8 @@
 ul.top_nav
   - @menu.each do |m|
     - compare_path = URI.escape m.altlink
-    - (request.path == compare_path or request.path == "/"+compare_path ) ? @class = "active" : @class = ""
+    - main_path = URI.escape(m.name.mb_chars.downcase.to_s)
+    - (request.path == compare_path or request.path == "/" + compare_path or request.path == "/" + main_path ) ? @class = "active" : @class = ""
     li class="#{ @class }"
       = link_to m.name, m.altlink
 
@@ -13,7 +14,8 @@ span.mob.ico_main
 ul.mob.mob_nav.main
   - @menu.each do |m|
     - compare_path = URI.escape m.altlink
-    - (request.path == compare_path or request.path == "/"+compare_path ) ? @class = "active" : @class = ""
+    - main_path = URI.escape(m.name.mb_chars.downcase.to_s)
+    - (request.path == compare_path or request.path == "/" + compare_path or request.path == "/" + main_path ) ? @class = "active" : @class = ""
     li class="#{ @class }"
       = link_to m.altlink do
         span

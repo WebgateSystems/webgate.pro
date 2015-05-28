@@ -21,12 +21,16 @@ feature 'Change language' do
 
   scenario 'User change language on root url' do
     other_public_langs.each do |lang|
-      visit root_path
-      within '.lang' do
-        click_link(lang.upcase)
+      visit(main_en_path)
+      click_link(lang.upcase)
+      case lang
+      when 'pl'
+        expect(current_path).to eq main_pl_path
+      when 'ru'
+        expect(current_path).to eq main_ru_path
+      else
+        expect(page).to have_text 'add new language to this test' if lang
       end
-      expect(page).to have_text 'Zmień język' if lang == 'pl'
-      expect(page).to have_text 'Изменить язык' if lang == 'ru'
     end
   end
 
