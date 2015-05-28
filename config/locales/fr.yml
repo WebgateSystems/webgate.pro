@@ -46,6 +46,10 @@ fr:
       category_id: "Menu items page belongs to"
       category_id_main: "Main menu"
       subcategory_id: "Submenu"
+    link_translation:
+      link: "Link"
+      locale: "Locale"
+      link_type: "Type"
     subcategory:
       name: "Name"
       altlink: "Altlink"
@@ -106,6 +110,7 @@ fr:
   users: "Utilisateurs"
   categories: "Menu"
   pages: "Pages"
+  link_translations: "Links"
   projects: "Les projets"
   team: "Équipe"
   members: "Membres de l'équipe"
