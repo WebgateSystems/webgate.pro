@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe PagesController do
-
   before :each do
     @page = create(:en_page)
   end

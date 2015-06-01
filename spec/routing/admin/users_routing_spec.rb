@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe Admin::UsersController do
   describe 'routing' do
-
     it 'routes to #index' do
       expect(get: '/admin/users').to route_to('admin/users#index')
     end
@@ -30,6 +29,5 @@ describe Admin::UsersController do
     it 'routes to #destroy' do
       expect(delete: '/admin/users/1').to route_to('admin/users#destroy', id: '1')
     end
-
   end
 end

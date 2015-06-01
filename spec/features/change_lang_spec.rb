@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'sass'
 
 feature 'Change language' do
-
   ['pl', 'en', 'ru'].each do |lang|
     scenario "User change to #{lang} language" do
       visit root_path
@@ -12,5 +11,4 @@ feature 'Change language' do
       expect(page).to have_text 'Изменить язык'   if lang == 'ru'
     end
   end
-
 end

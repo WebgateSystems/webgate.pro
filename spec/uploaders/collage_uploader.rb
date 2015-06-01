@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'carrierwave/test/matchers'
 
 describe CollageUploader do
-
   include CarrierWave::Test::Matchers
 
   let!(:project) { create(:project) }
@@ -23,5 +22,4 @@ describe CollageUploader do
       expect(@uploader.collage).to have_dimensions(940, 244)
     end
   end
-
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Project do
-
   it 'has a valid factory' do
     expect(build(:project)).to be_valid
   end
@@ -28,5 +27,4 @@ describe Project do
     it { is_expected.to have_many(:technologies).order('technologies_projects.position').through(:technologies_projects) }
     it { is_expected.to have_many(:technologies_projects) }
   end
-
 end

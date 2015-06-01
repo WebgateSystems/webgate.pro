@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Admin panel' do
-
   let(:user) { create(:user) }
 
   scenario 'forbid access to dashboard without fill the correct login/password' do
@@ -79,6 +78,5 @@ feature 'Admin panel' do
         expect(page).to have_content 'Выйти'
       end
     end
-
   end
 end

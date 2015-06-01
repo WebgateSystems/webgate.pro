@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Project in admin panel.' do
-
   let(:user) { create(:user) }
   let!(:project0) { Project.create(title: 'TestTitle0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
       collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) }
@@ -114,5 +113,4 @@ feature 'Project in admin panel.' do
     visit admin_projects_path
     expect(page).to have_no_content 'TestTitlekukumba'
   end
-
 end

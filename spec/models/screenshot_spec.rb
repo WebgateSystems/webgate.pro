@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Screenshot do
-
   it 'has a valid factory' do
     expect(build(:screenshot)).to be_valid
   end
@@ -13,5 +12,4 @@ describe Screenshot do
   describe 'Associations' do
     it { is_expected.to belong_to(:project) }
   end
-
 end

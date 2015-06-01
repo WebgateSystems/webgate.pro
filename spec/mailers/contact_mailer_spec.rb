@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe ContactMailer, type: :mailer do
-
   let(:contact) { build(:contact) }
   let(:bot) { build(:bot) }
 
@@ -20,5 +19,4 @@ describe ContactMailer, type: :mailer do
       expect(last_email.subject).to include 'SPAM'
     end
   end
-
 end

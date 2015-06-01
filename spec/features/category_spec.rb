@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Category in admin panel.' do
-
   def lang_change
     I18n.locale = 'pl'
     c = Category.last
@@ -155,12 +154,10 @@ feature 'Category in admin panel.' do
       expect(current_path).to eq '/RuskaAltlink' if lang == 'ru'
       expect(current_path).to eq '/EnglishAltlink' if lang == 'en'
     end
-
   end
 
   scenario 'Check active class on current page' do
     visit "/#{Category.last.altlink}"
     expect(page).to have_css ('.top_nav li.active')
   end
-
 end

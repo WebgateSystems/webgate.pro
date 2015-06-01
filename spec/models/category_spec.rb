@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Category do
-
   it 'has a valid PL factory' do
     expect(build(:pl_category)).to be_valid
   end
@@ -23,5 +22,4 @@ describe Category do
   describe 'Associations' do
     it { is_expected.to have_one(:page) }
   end
-
 end

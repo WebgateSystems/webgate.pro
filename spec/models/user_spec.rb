@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe User do
-
   it 'has a valid PL factory' do
     expect(build(:user)).to be_valid
   end
@@ -14,5 +13,4 @@ describe User do
     it { is_expected.to_not allow_value('@webgate.pro').for(:email) }
     it { is_expected.to_not allow_value('webgate.pro').for(:email) }
   end
-
 end

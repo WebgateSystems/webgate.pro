@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Project in admin panel.' do
-
   let(:user) { create(:user) }
   let!(:project) { create(:project) }
 

@@ -9,5 +9,4 @@ FactoryGirl.define do
     sequence (:title) {|n| "tech group#{n}"}
     description 'tech group'
   end
-
 end

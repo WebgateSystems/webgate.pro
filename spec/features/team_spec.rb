@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Adding team to site.' do
-
   let!(:member1) { Member.create(name: 'TestName1', job_title: 'TestJobTitle1',
       description: 'TestDesc1', education: 'TestEduc1', motto: 'TestMotto1', publish: true,
       avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) }
@@ -31,5 +30,4 @@ feature 'Adding team to site.' do
     page.execute_script("$('span.mob.service_block_btn').click()")
     expect(page).to_not have_content 'Technologies'
   end
-
 end

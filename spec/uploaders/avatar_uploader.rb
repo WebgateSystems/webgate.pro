@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'carrierwave/test/matchers'
 
 describe AvatarUploader do
-
   include CarrierWave::Test::Matchers
 
   let!(:project) { create(:project) }
@@ -23,5 +22,4 @@ describe AvatarUploader do
       expect(@uploader.avatar).to have_dimensions(180, 180)
     end
   end
-
 end

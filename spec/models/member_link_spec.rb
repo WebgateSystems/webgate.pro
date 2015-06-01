@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe MemberLink do
-
   it 'has a valid factory' do
     expect(build(:member_link)).to be_valid
   end
@@ -18,5 +17,4 @@ describe MemberLink do
   describe 'Associations' do
     it { is_expected.to belong_to(:member) }
   end
-
 end

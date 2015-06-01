@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   factory :contact do
     name 'client'
     email 'client@example.com'
@@ -9,5 +8,4 @@ FactoryGirl.define do
       nickname 'bot'
     end
   end
-
 end

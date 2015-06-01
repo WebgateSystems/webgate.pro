@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   factory :page, aliases: [:en_page] do
     title 'About us'
     description 'About us'
@@ -26,6 +25,5 @@ FactoryGirl.define do
       content 'О нас'
       shortlink 'о-нас'
     end
-
   end
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Member in admin panel.' do
-
   let(:user) { create(:user) }
   let!(:member) { create(:member) }
 

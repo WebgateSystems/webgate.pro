@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   factory :category, aliases: [:en_category] do
     name { Faker::Name.name }
     altlink 'main'

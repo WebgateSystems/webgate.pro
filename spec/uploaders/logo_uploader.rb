@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'carrierwave/test/matchers'
 
 describe LogoUploader do
-
   include CarrierWave::Test::Matchers
 
   let!(:member) { create(:member) }
@@ -23,5 +22,4 @@ describe LogoUploader do
       expect(@uploader.thumb).to have_dimensions(64, 64)
     end
   end
-
 end

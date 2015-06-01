@@ -22,7 +22,6 @@ set :keep_releases, 5
 
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
-
   task :restart do
     invoke 'unicorn:restart'
   end
@@ -34,5 +33,4 @@ namespace :deploy do
       # end
     end
   end
-
 end

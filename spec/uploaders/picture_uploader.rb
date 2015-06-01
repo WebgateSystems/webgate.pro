@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'carrierwave/test/matchers'
 
 describe PictureUploader do
-
   include CarrierWave::Test::Matchers
 
   let!(:project) { create(:project) }
@@ -29,5 +28,4 @@ describe PictureUploader do
       expect(@uploader.air).to have_dimensions(182, 114)
     end
   end
-
 end

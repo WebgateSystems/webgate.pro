@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Page do
-
   it 'has a valid PL factory' do
     expect(build(:pl_page)).to be_valid
   end
@@ -26,5 +25,4 @@ describe Page do
   describe 'Associations' do
     it { is_expected.to belong_to(:category) }
   end
-
 end
