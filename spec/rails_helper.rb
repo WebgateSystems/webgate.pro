@@ -9,7 +9,7 @@ require 'sidekiq/testing'
 
 Sidekiq::Testing.inline!
 
-Capybara.javascript_driver = :webkit #default selenium
+Capybara.javascript_driver = :webkit # default selenium
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -40,10 +40,10 @@ RSpec.configure do |config|
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
   #
-  #config.mock_with :mocha
+  # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
-  #Capybara.default_wait_time = 10
+  # Capybara.default_wait_time = 10
 
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL, type: :feature
@@ -58,7 +58,7 @@ RSpec.configure do |config|
   config.before :each, :js, type: :feature do |example|
     if example.metadata[:js]
       page.driver.block_unknown_urls if Capybara.javascript_driver == :webkit
-      #page.driver.allow_url('api.stripe.com')
+      # page.driver.allow_url('api.stripe.com')
     end
   end
 

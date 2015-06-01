@@ -23,23 +23,23 @@ class ApplicationController < ActionController::Base
     @logged_to_admin = true if current_user
   end
 
-  #rescue_from CanCan::AccessDenied do |exception|
+  # rescue_from CanCan::AccessDenied do |exception|
   #  flash[:error] = exception.message
   #  redirect_to root_url
-  #end
+  # end
 
   def not_authenticated
     redirect_to login_url, alert: t('first_login_to_access')
   end
 
-  #def set_layout
+  # def set_layout
   #  case request.user_agent # or use nginx and params[] flag
   #  when /iPhone/i, /Android/i && /mobile/i, /Windows Phone/i
   #    "mobile"
   #  else
   #    "main"
   #  end
-  #end
+  # end
 
   private
   def prepare_lang

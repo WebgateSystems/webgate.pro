@@ -19,7 +19,7 @@ feature 'technology_group in admin panel.' do
     dest_element = find('td', text: 'TestTitle2')
     source_element = find('td', text: 'TestTitle1')
     source_element.drag_to dest_element
-    sleep 2 #wait for ajax complete
+    sleep 2 # wait for ajax complete
     page.all(:link, 'Show')[1].click
     expect(current_path).to eq admin_technology_group_path(TechnologyGroup.last.id)
     visit admin_technology_groups_path

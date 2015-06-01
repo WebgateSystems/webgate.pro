@@ -8,10 +8,10 @@ sitemap :site do
   ApplicationController::PUBLIC_LANGS.map do |l|
     url eval('portfolio_' + "#{l.first.to_s}" + '_url'), last_mod: Time.now, change_freq: 'daily', priority: 1.0
     url eval('team_' + "#{l.first.to_s}" + '_url'), last_mod: Time.now, change_freq: 'daily', priority: 1.0
-    #url pages_url(locale: l.first.to_s)
-    #Page.published.each do |page|
+    # url pages_url(locale: l.first.to_s)
+    # Page.published.each do |page|
     #  url page(locale: l.first.to_s)
-    #end
+    # end
   end
 end
 # You can have multiple sitemaps like the above – just make sure their names are different.

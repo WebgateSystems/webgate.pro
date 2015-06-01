@@ -9,8 +9,8 @@ DynamicSitemaps.configure do |config|
   config.per_page = 50000
 
   # Default is Google and Bing
-  #config.search_engine_ping_urls << "http://customsearchengine.com/ping?url=%s"
+  # config.search_engine_ping_urls << "http://customsearchengine.com/ping?url=%s"
 
   # Default is pinging only in production
-  #config.ping_environments << "staging"
+  # config.ping_environments << "staging"
 end

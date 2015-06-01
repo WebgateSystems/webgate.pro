@@ -49,7 +49,7 @@ feature 'Category in admin panel.' do
     dest_element = find('td', text: 'TestTitle2')
     source_element = find('td', text: 'TestTitle1')
     source_element.drag_to dest_element
-    sleep 5 #wait for ajax complete
+    sleep 5 # wait for ajax complete
     page.all(:link, 'Show')[1].click
     expect(current_path).to eq admin_category_path(Category.last.id)
     visit admin_categories_path

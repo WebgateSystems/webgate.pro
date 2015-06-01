@@ -23,7 +23,7 @@ if Member.count == 0
   member.save!
 
   I18n.locale = 'en'
-  #todo
+  # todo
 
   member = Member.find 1
   member.name = 'Yuri Skurikhin'
@@ -34,7 +34,7 @@ if Member.count == 0
   member.save
 
   I18n.locale = 'pl'
-  #todo
+  # todo
 
   member = Member.find 1
   member.name = 'Yuri Skurikhin'
@@ -57,7 +57,7 @@ if Project.count == 0
 
 
   I18n.locale = 'en'
-  #todo
+  # todo
 
   project = Project.find 1
   project.title = 'Auto Service Centrum'
@@ -65,7 +65,7 @@ if Project.count == 0
   project.save
 
   I18n.locale = 'pl'
-  #todo
+  # todo
 
   project = Project.find 1
   project.title = 'Auto Centrum Serwis'
@@ -83,7 +83,7 @@ if TechnologyGroup.count == 0
   TechnologyGroup.create title: 'Mobile platforms', description: 'Mobile technologies'
 
   I18n.locale = 'pl'
-  #todo
+  # todo
 
   I18n.locale = 'ru'
   t = TechnologyGroup.find 1
@@ -124,10 +124,10 @@ if Technology.count == 0
   Technology.create title: 'Apache Cassandra', description: 'Cassandra', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/Apache_Cassandra'
 
   I18n.locale = 'pl'
-  #todo
+  # todo
 
   I18n.locale = 'ru'
-  #todo
+  # todo
 end
 
 

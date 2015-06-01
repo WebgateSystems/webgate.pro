@@ -27,7 +27,7 @@ feature 'Member in admin panel.' do
     dest_element = find('td', text: 'TestName2')
     source_element = find('td', text: 'TestName1')
     source_element.drag_to dest_element
-    sleep 5 #wait for ajax complete
+    sleep 5 # wait for ajax complete
     page.all(:link, 'Show')[1].click
     expect(current_path).to eq admin_member_path(Member.last.id)
     visit admin_members_path
