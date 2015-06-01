@@ -11,7 +11,7 @@ describe PagesController do
       get :showbyshortlink, shortlink: @page.shortlink
       expect(response).to be_success
     end
-    
+
     it 'renders the template' do
       get :showbyshortlink, shortlink: @page.shortlink
       expect(response).to render_template('showbyshortlink')

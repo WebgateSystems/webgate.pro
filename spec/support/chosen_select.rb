@@ -8,5 +8,5 @@ module ChosenSelect
     page.execute_script("$('##{field[:id]}').val(#{option_value})")
     page.execute_script("$('##{field[:id]}').trigger('chosen:updated')")
     page.execute_script("$('##{field[:id]}').change()")
-  end  
+  end
 end
