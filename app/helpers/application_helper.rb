@@ -14,6 +14,6 @@ module ApplicationHelper
 
   def tech_link(technology)
     link = technology.link
-    (link and !link.blank?) ? link : 'javascript:;'
+    (link && !link.blank?) ? link : 'javascript:;'
   end
 end

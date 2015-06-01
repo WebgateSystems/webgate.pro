@@ -25,7 +25,7 @@ class Member < ActiveRecord::Base
   protected
 
   def check_avatar
-    if self.publish? and self.avatar.to_s.empty?
+    if self.publish? && self.avatar.to_s.empty?
       errors.add :publish, I18n.t(:can_not_publish_without_avatar)
     end
   end
