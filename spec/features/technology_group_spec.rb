@@ -11,7 +11,7 @@ feature 'technology_group in admin panel.' do
   end
 
   scenario 'Try drag and drop on index', js: true do
-    click_link ('New')
+    click_link('New')
     fill_in 'technology_group[title]', with: 'TestTitle2'
     fill_in 'technology_group[description]', with: 'Test Description2'
     click_button 'Save'
@@ -59,7 +59,7 @@ feature 'technology_group in admin panel.' do
   end
 
   scenario 'Show should display our technology_group info' do
-    click_link ('TestTitle0')
+    click_link('TestTitle0')
     expect(page).to have_content 'Title:'
     expect(page).to have_content 'TestTitle0'
     expect(page).to have_content 'Description:'
@@ -67,7 +67,7 @@ feature 'technology_group in admin panel.' do
   end
 
   scenario 'Create technology_group should create technology_groups' do
-    click_link ('New')
+    click_link('New')
     fill_in 'technology_group[title]', with: 'TestTitleBrandNew'
     fill_in 'technology_group[description]', with: 'PewPewPew'
     click_button 'Save'

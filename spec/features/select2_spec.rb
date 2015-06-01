@@ -11,7 +11,7 @@ feature 'Select2 in technologies.', js: true do
     visit admin_technologies_path
   end
   scenario 'Select2 script should work correct. Should choose first' do
-    click_link ('New')
+    click_link('New')
     fill_in 'technology[title]', with: 'TestTitleFull'
     fill_in 'technology[link]', with: 'https://example.com/tech'
     select2(TechnologyGroup.first.title, '#s2id_technology_technology_group_id')
@@ -20,7 +20,7 @@ feature 'Select2 in technologies.', js: true do
     page.should have_content technology_group0.title
   end
   scenario 'Select2 script should work correct. Should choose last' do
-    click_link ('New')
+    click_link('New')
     fill_in 'technology[title]', with: 'TestTitleFull'
     fill_in 'technology[link]', with: 'https://example.com/tech'
     select2(TechnologyGroup.last.title, '#s2id_technology_technology_group_id')

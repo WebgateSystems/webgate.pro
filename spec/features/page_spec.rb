@@ -7,7 +7,7 @@ feature 'Page in admin panel.' do
     sign_in(user)
     visit admin_pages_path
     3.times do |t|
-      click_link ('New')
+      click_link('New')
       fill_in 'page[title]', with: "TestTitle#{t}"
       fill_in 'page[shortlink]', with: "Testlink#{t}"
       fill_in 'page[description]', with: "TestDesc#{t}"
@@ -51,7 +51,7 @@ feature 'Page in admin panel.' do
   end
 
   scenario 'Show should display our page information' do
-    click_link ('TestTitle0')
+    click_link('TestTitle0')
     expect(page).to have_content 'Title:'
     expect(page).to have_content 'TestTitle0'
     expect(page).to have_content 'Description:'
@@ -65,7 +65,7 @@ feature 'Page in admin panel.' do
   end
 
   scenario 'Create page should create page' do
-    click_link ('New')
+    click_link('New')
     fill_in 'page[title]', with: 'TestTitleFull'
     fill_in 'page[shortlink]', with: 'TestlinkFull'
     fill_in 'page[description]', with: 'TestDescFull'
@@ -77,7 +77,7 @@ feature 'Page in admin panel.' do
   end
 
   scenario 'Validation for new page' do
-    click_link ('New')
+    click_link('New')
     fill_in 'page[title]', with: 'TestTitleFull'
     fill_in 'page[description]', with: 'TestDescFull'
     fill_in 'page[keywords]', with: 'TestKeyWordFull'
@@ -87,7 +87,7 @@ feature 'Page in admin panel.' do
   end
 
   scenario 'Dont create page with empty fields' do
-    click_link ('New')
+    click_link('New')
     fill_in 'page[title]', with: 'TestTitlekukumba'
     visit admin_pages_path
     expect(page).to have_no_content 'TestTitlekukumba'

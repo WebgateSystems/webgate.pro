@@ -19,7 +19,7 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Try drag and drop on index', js: true do
-    click_link ('New')
+    click_link('New')
     fill_in 'member[name]', with: 'TestName2'
     fill_in 'member[job_title]', with: 'TestJobTitle2'
     fill_in_ckeditor 'Description', with: 'TestDesc2'
@@ -71,7 +71,7 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Show should display our member information' do
-    click_link ('TestName0')
+    click_link('TestName0')
     expect(page).to have_content 'Name:'
     expect(page).to have_content 'TestName0'
     expect(page).to have_content 'Description:'
@@ -83,7 +83,7 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Create member should create member' do
-    click_link ('New')
+    click_link('New')
     fill_in 'member[name]', with: 'TestNamePew'
     fill_in 'member[job_title]', with: 'TestJobTitlePew'
     fill_in 'member[description]', with: 'TestDescPew'
@@ -100,7 +100,7 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Check publish. Here should be true', js: true do
-    click_link ('New')
+    click_link('New')
     fill_in 'member[name]', with: 'TestNamePew'
     fill_in 'member[job_title]', with: 'TestJobTitlePew'
     fill_in_ckeditor 'Description', with: 'TestDescPew'
@@ -120,7 +120,7 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Dont create member with empty fields' do
-    click_link ('New')
+    click_link('New')
     fill_in 'member[name]', with: 'Testname'
     visit admin_members_path
     expect(page).to have_no_content 'Testname'

@@ -25,7 +25,7 @@ feature 'Category in admin panel.' do
     sign_in(user)
     visit admin_categories_path
     3.times do |t|
-      click_link ('New')
+      click_link('New')
       fill_in 'category[name]', with: "TestTitle#{t}"
       fill_in 'category[altlink]', with: "TestLink#{t}"
       fill_in 'category[description]', with: "TestDesc#{t}"
@@ -82,7 +82,7 @@ feature 'Category in admin panel.' do
   end
 
   scenario 'Show should display our category information' do
-    click_link ('TestTitle0')
+    click_link('TestTitle0')
     expect(page).to have_content 'Name:'
     expect(page).to have_content 'TestTitle0'
     expect(page).to have_content 'Altlink:'
@@ -92,7 +92,7 @@ feature 'Category in admin panel.' do
   end
 
   scenario 'Create category should create category' do
-    click_link ('New')
+    click_link('New')
     fill_in 'category[name]', with: 'TestTitleFull'
     fill_in 'category[altlink]', with: 'TestlinkFull'
     fill_in 'category[description]', with: 'TestDescFull'
@@ -108,7 +108,7 @@ feature 'Category in admin panel.' do
   end
 
   scenario 'Dont create category with empty fields' do
-    click_link ('New')
+    click_link('New')
     fill_in 'category[name]', with: 'TestTitlekukumba'
     visit admin_categories_path
     expect(page).to have_no_content 'TestTitlekukumba'
@@ -158,6 +158,6 @@ feature 'Category in admin panel.' do
 
   scenario 'Check active class on current page' do
     visit "/#{Category.last.altlink}"
-    expect(page).to have_css ('.top_nav li.active')
+    expect(page).to have_css('.top_nav li.active')
   end
 end

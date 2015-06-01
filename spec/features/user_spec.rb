@@ -28,26 +28,26 @@ feature 'Users in admin panel.' do
   end
 
   scenario 'Users root path links show, edit should work' do
-    click_link ('Show')
+    click_link('Show')
     expect(current_path).to eq admin_user_path(user.id)
     visit admin_users_path
-    click_link ('Edit')
+    click_link('Edit')
     expect(current_path).to eq edit_admin_user_path(user.id)
   end
 
   scenario 'link delete should delete user' do
-    click_link ('Delete')
+    click_link('Delete')
     expect(current_path).to eq current_path
   end
 
   scenario 'Show should display our email' do
-    click_link ('Show')
+    click_link('Show')
     expect(page).to have_content 'Email:'
     expect(page).to have_content user.email
   end
 
   scenario 'Create user should create user' do
-    click_link ('New')
+    click_link('New')
     fill_in 'user[email]', with: 'TestUser@test.com'
     fill_in 'user[password]', with: 'password123'
     fill_in 'user[password_confirmation]', with: 'password123'
@@ -57,14 +57,14 @@ feature 'Users in admin panel.' do
   end
 
   scenario 'validation for new user(no password)' do
-    click_link ('New')
+    click_link('New')
     fill_in 'user[email]', with: 'TestUser@test.com'
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')
   end
 
   scenario 'validation for new user(password and password confirmation mismatch)' do
-    click_link ('New')
+    click_link('New')
     fill_in 'user[email]', with: 'TestUser@test.com'
     fill_in 'user[password]', with: 'password123'
     fill_in 'user[password_confirmation]', with: 'bla1234'
@@ -73,7 +73,7 @@ feature 'Users in admin panel.' do
   end
 
   scenario 'validation for new user(no email)' do
-    click_link ('New')
+    click_link('New')
     fill_in 'user[password]', with: 'TestUser@test.com'
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')
@@ -86,7 +86,7 @@ feature 'Users in admin panel.' do
   end
 
   scenario 'validation for new user. Email should be correct' do
-    click_link ('New')
+    click_link('New')
     fill_in 'user[email]', with: 'wery wronk@@@emaiL.com.com.e'
     fill_in 'user[password]', with: 'bad'
     click_button 'Save'

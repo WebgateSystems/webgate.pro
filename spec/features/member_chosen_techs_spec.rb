@@ -10,7 +10,7 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Member should with assigned technology', js: true do
-    click_link ('New')
+    click_link('New')
     fill_in 'member[name]', with: 'TestNamePew'
     fill_in 'member[job_title]', with: 'TestJobTitlePew'
     fill_in_ckeditor 'Description', with: 'TestDescPew'
@@ -20,7 +20,7 @@ feature 'Member in admin panel.' do
     select technology.title, from: 'member_technology_ids', visible: false
     click_button 'Save'
     visit admin_members_path
-    click_link ('TestNamePew')
+    click_link('TestNamePew')
 
     expect(page).to have_content technology.title
   end

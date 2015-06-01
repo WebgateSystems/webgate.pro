@@ -26,7 +26,7 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Try drag and drop on index', js: true do
-    click_link ('New')
+    click_link('New')
     fill_in 'project[title]', with: 'TestTitle2'
     fill_in_ckeditor 'Content', with: 'TestContent2'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
@@ -69,7 +69,7 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Show should display our project information' do
-    click_link ('TestTitle0')
+    click_link('TestTitle0')
     expect(page).to have_content 'Title:'
     expect(page).to have_content 'TestTitle0'
     expect(page).to have_content 'Content:'
@@ -78,14 +78,14 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Create project should create project' do
-    click_link ('New')
+    click_link('New')
     fill_in 'project[title]', with: 'TestTitleFull'
     fill_in 'project[content]', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
     visit admin_projects_path
-    click_link ('TestTitleFull')
+    click_link('TestTitleFull')
     expect(page).to have_content 'TestContentFull'
   end
 
@@ -94,7 +94,7 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Check publish. Here should be true', js: true do
-    click_link ('New')
+    click_link('New')
     fill_in 'project[title]', with: 'TestTitleFull'
     fill_in_ckeditor 'Content', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
@@ -112,7 +112,7 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Dont create project with empty fields' do
-    click_link ('New')
+    click_link('New')
     fill_in 'project[title]', with: 'TestTitlekukumba'
     visit admin_projects_path
     expect(page).to have_no_content 'TestTitlekukumba'

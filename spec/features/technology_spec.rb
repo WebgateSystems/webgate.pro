@@ -8,12 +8,12 @@ feature 'Technology in admin panel.' do
     visit admin_root_path
     login_user_post(user.email, 'secret')
     visit admin_technology_groups_path
-    click_link ('New')
+    click_link('New')
     fill_in 'technology_group[title]', with: 'TestGroup'
     fill_in 'technology_group[description]', with: 'Test Description'
     click_button 'Save'
     visit admin_technologies_path
-    click_link ('New')
+    click_link('New')
     find('#technology_technology_group_id').find(:xpath, 'option[1]').select_option
     fill_in 'technology[title]', with: 'TestTitle'
     fill_in 'technology[link]', with: 'http://example_tech.com/link'
@@ -57,7 +57,7 @@ feature 'Technology in admin panel.' do
   end
 
   scenario 'Show should display our page information' do
-    click_link ('TestTitle')
+    click_link('TestTitle')
     expect(page).to have_content 'Title:'
     expect(page).to have_content 'TestTitle'
     expect(page).to have_content 'Description:'
@@ -65,7 +65,7 @@ feature 'Technology in admin panel.' do
   end
 
   scenario 'Create technology should create technology with link' do
-    click_link ('New')
+    click_link('New')
     fill_in 'technology[title]', with: 'TestTitleFull'
     fill_in 'technology[link]', with: 'https://example.com/tech'
     fill_in 'technology[description]', with: 'PewPewPew'
