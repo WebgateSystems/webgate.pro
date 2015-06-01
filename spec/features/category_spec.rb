@@ -69,15 +69,15 @@ feature 'Category in admin panel.' do
   end
 
   scenario 'Categoryt root path links show, edit should work' do
-    page.all(:link,'Show')[0].click
+    page.all(:link, 'Show')[0].click
     expect(current_path).to eq admin_category_path(Category.first.id)
     visit admin_categories_path
-    page.all(:link,'Edit')[0].click
+    page.all(:link, 'Edit')[0].click
     expect(current_path).to eq edit_admin_category_path(Category.first.id)
   end
 
   scenario 'Link delete should delete category' do
-    page.all(:link,'Delete')[0].click
+    page.all(:link, 'Delete')[0].click
     expect(current_path).to eq current_path
   end
 

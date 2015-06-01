@@ -44,15 +44,15 @@ feature 'Technology in admin panel.' do
   end
 
   scenario 'Page root path links show, edit should work' do
-    page.all(:link,'Show')[0].click
+    page.all(:link, 'Show')[0].click
     expect(current_path).to eq admin_technology_path(Technology.last.id)
     visit admin_technologies_path
-    page.all(:link,'Edit')[0].click
+    page.all(:link, 'Edit')[0].click
     expect(current_path).to eq edit_admin_technology_path(Technology.last.id)
   end
 
   scenario 'Link delete should delete page' do
-    page.all(:link,'Delete')[0].click
+    page.all(:link, 'Delete')[0].click
     expect(current_path).to eq current_path
   end
 

@@ -46,7 +46,7 @@ feature 'Page in admin panel.' do
   end
 
   scenario 'Link delete should delete page' do
-    page.all(:link,'Delete')[0].click
+    page.all(:link, 'Delete')[0].click
     expect(current_path).to eq current_path
   end
 

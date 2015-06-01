@@ -35,9 +35,9 @@ feature 'Admin panel' do
   scenario 'all link should work' do
     visit admin_root_path
     login_user_post(user.email, 'secret')
-    ['Users','Pages','Technology groups','Technologies','Projects','Team members'].each do |name|
+    ['Users', 'Pages', 'Technology groups', 'Technologies', 'Projects', 'Team members'].each do |name|
       visit admin_root_path
-      page.all(:link,name)[0].click
+      page.all(:link, name)[0].click
       within ('h2') do
         expect(page).to have_content name.pluralize
       end

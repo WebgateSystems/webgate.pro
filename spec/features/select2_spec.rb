@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Select2 in technologies.',:js => true do
+feature 'Select2 in technologies.', :js => true do
   let(:user) { create(:user) }
   let!(:technology_group0) { TechnologyGroup.create!(title: 'TestTitle0', description: 'Test Description0') }
   let!(:technology_group1) { TechnologyGroup.create!(title: 'TestTitle1', description: 'Test Description1') }
@@ -14,7 +14,7 @@ feature 'Select2 in technologies.',:js => true do
     click_link ('New')
     fill_in 'technology[title]', with: 'TestTitleFull'
     fill_in 'technology[link]', with: 'https://example.com/tech'
-    select2(TechnologyGroup.first.title,'#s2id_technology_technology_group_id')
+    select2(TechnologyGroup.first.title, '#s2id_technology_technology_group_id')
     sleep 5
     click_button 'Save'
     page.should have_content technology_group0.title
@@ -23,7 +23,7 @@ feature 'Select2 in technologies.',:js => true do
     click_link ('New')
     fill_in 'technology[title]', with: 'TestTitleFull'
     fill_in 'technology[link]', with: 'https://example.com/tech'
-    select2(TechnologyGroup.last.title,'#s2id_technology_technology_group_id')
+    select2(TechnologyGroup.last.title, '#s2id_technology_technology_group_id')
     sleep 5
     click_button 'Save'
     page.should have_content technology_group3.title
