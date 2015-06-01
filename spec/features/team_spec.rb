@@ -19,7 +19,7 @@ feature 'Adding team to site.' do
     expect(page).to have_xpath("//img[contains(@src, \"/spec/uploads/member/#{member1.id}\")]")
   end
 
-  scenario 'Should not show member without avatar' , js: true do
+  scenario 'Should not show member without avatar', js: true do
     expect(page).to_not have_content member2.name
   end
 
