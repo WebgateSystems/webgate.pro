@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Select2 in technologies.',:js => true do
-  let(:user){ create(:user) }
+  let(:user) { create(:user) }
   let!(:technology_group0) { TechnologyGroup.create!(title: 'TestTitle0', description: 'Test Description0') }
   let!(:technology_group1) { TechnologyGroup.create!(title: 'TestTitle1', description: 'Test Description1') }
   let!(:technology_group2) { TechnologyGroup.create!(title: 'TestTitle2', description: 'Test Description2') }
