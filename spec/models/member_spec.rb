@@ -13,7 +13,7 @@ describe Member do
 
     it 'validates not publish without avatar' do
       member = Member.new(name: 'test', job_title: 'test', description: 'test', education: 'test',
-        publish: true, avatar: nil)
+                          publish: true, avatar: nil)
       expect(member.valid?).to be_falsey
       expect(member.errors[:publish].size).to eq(1)
     end
