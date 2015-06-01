@@ -2,7 +2,7 @@ app_path = '/home/webgate/webgate.pro'
 working_directory "#{app_path}/current"
 pid               "#{app_path}/current/tmp/pids/unicorn.pid"
 
-listen "#{app_path}/current/tmp/sockets/unicorn.sock", :backlog => 2048
+listen "#{app_path}/current/tmp/sockets/unicorn.sock", backlog: 2048
 
 worker_processes 4
 

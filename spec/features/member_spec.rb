@@ -2,15 +2,15 @@ require 'rails_helper'
 
 feature 'Member in admin panel.' do
   let(:user) { create(:user) }
-  let!(:member0) do 
+  let!(:member0) do
     Member.create(name: 'TestName0', job_title: 'TestJobTitle0', education: 'TestEducation0',
                   description: 'TestDesc0', motto: 'TestMotto0',
-                  avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) 
+                  avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png')))
   end
-  let!(:member1) do 
+  let!(:member1) do
     Member.create(name: 'TestName1', job_title: 'TestJobTitle1', education: 'TestEducation1',
                   description: 'TestDesc1', motto: 'TestMotto1',
-                  avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) 
+                  avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png')))
   end
 
   before do

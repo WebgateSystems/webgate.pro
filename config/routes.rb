@@ -36,7 +36,7 @@ WebgatePro::Application.routes.draw do
       resources :technologies do
       end
     end
-    root :to => 'home#index'
+    root to: 'home#index'
   end
 
   get 'sitemap' => 'home#sitemap'

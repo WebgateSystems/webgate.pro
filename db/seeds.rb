@@ -133,7 +133,7 @@ end
 
 if Category.count == 0
   I18n.locale = 'pl'
-  Category.create name: 'Główna', :altlink => '/', position: 1
+  Category.create name: 'Główna', altlink: '/', position: 1
   Category.create name: 'O nas', altlink: 'o-nas', position: 2
   Category.create name: 'Portfolio', altlink: 'wybrane-realizacje', position: 3
   Category.create name: 'Zespół', altlink: 'zespół', position: 4

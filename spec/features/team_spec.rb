@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 feature 'Adding team to site.' do
-  let!(:member1) do 
+  let!(:member1) do
     Member.create(name: 'TestName1', job_title: 'TestJobTitle1',
                   description: 'TestDesc1', education: 'TestEduc1', motto: 'TestMotto1', publish: true,
-                  avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) 
+                  avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png')))
   end
 
-  let!(:member2) do 
+  let!(:member2) do
     Member.create(name: 'TestName2', job_title: 'TestJobTitle2',
                   description: 'TestDesc2', education: 'TestEduc2', motto: 'TestMotto1', publish: true,
-                  avatar: nil) 
+                  avatar: nil)
   end
 
   before do
