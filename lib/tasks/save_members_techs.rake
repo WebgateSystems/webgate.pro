@@ -8,7 +8,7 @@ namespace :db do
       m.technologies.each do |t|
         techs << t.id
       end
-      array_of_hashes << {m.id => techs}
+      array_of_hashes << { m.id => techs }
     end
 
     File.open('lib/member_techs.yml', 'w') do |file|
