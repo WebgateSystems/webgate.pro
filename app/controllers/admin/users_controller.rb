@@ -39,7 +39,7 @@ class Admin::UsersController < Admin::HomeController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_url, notice: "#{t(:user)} #{t(:was_successfully_destroyed)}."}
+      format.html { redirect_to admin_users_url, notice: "#{t(:user)} #{t(:was_successfully_destroyed)}." }
     end
   end
 

@@ -75,7 +75,7 @@ class ApplicationController < ActionController::Base
   end
 
   def lang_by_tag(lng)
-    language = LANGS.detect{|lang| lang.first == lng.downcase}
+    language = LANGS.detect{ |lang| lang.first == lng.downcase }
     language ? language.first : LANGS.first.first
   end
 end

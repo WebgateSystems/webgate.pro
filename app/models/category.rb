@@ -15,7 +15,7 @@ class Category < ActiveRecord::Base
 
   def self.select_all
     res=[[]]
-    Category.all.each {|c| res.push [c.name, c.id] } # todo all.(order: :id).each
+    Category.all.each { |c| res.push [c.name, c.id] } # todo all.(order: :id).each
     res
   end
 

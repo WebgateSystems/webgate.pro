@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Technology in admin panel.' do
   let(:user) { create(:user) }
-  let!(:technology_group) { create(:technology_group)}
+  let!(:technology_group) { create(:technology_group) }
 
   before do
     visit admin_root_path
