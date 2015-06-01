@@ -14,7 +14,7 @@ class Category < ActiveRecord::Base
   after_save :add_translation_link
 
   def self.select_all
-    res=[[]]
+    res = [[]]
     Category.all.each { |c| res.push [c.name, c.id] } # todo all.(order: :id).each
     res
   end
