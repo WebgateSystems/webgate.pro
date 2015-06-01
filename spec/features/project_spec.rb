@@ -2,14 +2,14 @@ require 'rails_helper'
 
 feature 'Project in admin panel.' do
   let(:user) { create(:user) }
-  let!(:project0) { 
+  let!(:project0) do 
     Project.create(title: 'TestTitle0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
-                                   collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) 
-  }
-  let!(:project1) { 
+                   collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) 
+  end
+  let!(:project1) do 
     Project.create(title: 'TestTitle1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
-                                   collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) 
-  }
+                   collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) 
+  end
 
   before do
     sign_in(user)
