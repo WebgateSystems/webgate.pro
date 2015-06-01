@@ -7,7 +7,7 @@ feature 'Project in admin panel.' do
   before do
     sign_in(user)
     3.times do
-      project.technologies << [ create(:technology) ]
+      project.technologies << [create(:technology)]
     end
     visit admin_project_path(project)
   end

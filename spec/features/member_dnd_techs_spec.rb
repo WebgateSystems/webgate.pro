@@ -7,7 +7,7 @@ feature 'Member in admin panel.' do
   before do
     sign_in(user)
     3.times do
-      member.technologies << [ create(:technology) ]
+      member.technologies << [create(:technology)]
     end
     visit admin_member_path(member)
   end
