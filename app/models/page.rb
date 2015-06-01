@@ -15,10 +15,10 @@ class Page < ActiveRecord::Base
   private
 
   def remove_translation_link
-    LinkTranslation.where(link_type: "page", link: self.shortlink, locale: I18n.locale.to_s).first.try(:destroy)
+    LinkTranslation.where(link_type: 'page', link: self.shortlink, locale: I18n.locale.to_s).first.try(:destroy)
   end
 
   def add_translation_link
-    LinkTranslation.create(link: self.shortlink, locale: I18n.locale.to_s, link_type: "page")
+    LinkTranslation.create(link: self.shortlink, locale: I18n.locale.to_s, link_type: 'page')
   end
 end

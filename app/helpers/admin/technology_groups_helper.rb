@@ -3,7 +3,7 @@ module Admin::TechnologyGroupsHelper
     if group.color and !group.color.blank?
       "<i class='fa fa-2x fa-square' style='color:#{group.color};'></i>"
     else
-      "&nbsp;"
+      '&nbsp;'
     end
   end
 end

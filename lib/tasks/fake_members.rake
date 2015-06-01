@@ -10,7 +10,7 @@ namespace :db do
                              shortdesc: shortdesc,
                              description: description,
                              motto: motto
-      src = File.join(Rails.root, "app/assets/images/yuri_skurikhin.png")
+      src = File.join(Rails.root, 'app/assets/images/yuri_skurikhin.png')
       src_file = File.new(src)
       member.avatar = src_file
       member.save!

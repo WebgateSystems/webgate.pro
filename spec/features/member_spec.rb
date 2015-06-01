@@ -17,16 +17,16 @@ feature 'Member in admin panel.' do
 
   scenario 'Try drag and drop on index', js: true do
     click_link ('New')
-    fill_in 'member[name]', with: "TestName2"
-    fill_in 'member[job_title]', with: "TestJobTitle2"
-    fill_in_ckeditor 'Description', with: "TestDesc2"
-    fill_in_ckeditor 'Education', with: "TestEducation2"
-    fill_in 'member[motto]', with: "TestMotto2"
+    fill_in 'member[name]', with: 'TestName2'
+    fill_in 'member[job_title]', with: 'TestJobTitle2'
+    fill_in_ckeditor 'Description', with: 'TestDesc2'
+    fill_in_ckeditor 'Education', with: 'TestEducation2'
+    fill_in 'member[motto]', with: 'TestMotto2'
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     click_button 'Save'
     visit admin_members_path
-    dest_element = find('td', text: "TestName2")
-    source_element = find('td', text: "TestName1")
+    dest_element = find('td', text: 'TestName2')
+    source_element = find('td', text: 'TestName1')
     source_element.drag_to dest_element
     sleep 5 #wait for ajax complete
     page.all(:link, 'Show')[1].click
@@ -100,11 +100,11 @@ feature 'Member in admin panel.' do
     click_link ('New')
     fill_in 'member[name]', with: 'TestNamePew'
     fill_in 'member[job_title]', with: 'TestJobTitlePew'
-    fill_in_ckeditor 'Description', with: "TestDescPew"
-    fill_in_ckeditor 'Education', with: "TestEducPew"
+    fill_in_ckeditor 'Description', with: 'TestDescPew'
+    fill_in_ckeditor 'Education', with: 'TestEducPew'
     fill_in 'member[motto]', with: 'TestMottoPew'
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
-    find(:css, "#member_publish").set(true)
+    find(:css, '#member_publish').set(true)
     click_button 'Save'
     visit admin_members_path
     expect(page).to have_content 'true'

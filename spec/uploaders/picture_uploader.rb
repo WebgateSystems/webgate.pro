@@ -19,13 +19,13 @@ describe PictureUploader do
   end
 
   context 'the thumb version' do
-    it "should scale down a landscape image to be exactly 182 by 114 pixels" do
+    it 'should scale down a landscape image to be exactly 182 by 114 pixels' do
       expect(@uploader.thumb).to have_dimensions(182, 114)
     end
   end
 
   context 'the air version' do
-    it "should scale down a landscape image to be exactly 182 by 114 pixels" do
+    it 'should scale down a landscape image to be exactly 182 by 114 pixels' do
       expect(@uploader.air).to have_dimensions(182, 114)
     end
   end

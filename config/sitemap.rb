@@ -1,13 +1,13 @@
 # Change this to your host. See the readme at https://github.com/lassebunk/dynamic_sitemaps
 # for examples of multiple hosts and folders.
-host "webgate.pro"
+host 'webgate.pro'
 
 sitemap :site do
   url root_url, last_mod: Time.now, change_freq: 'daily', priority: 1.0
 
   ApplicationController::PUBLIC_LANGS.map do |l|
-    url eval("portfolio_" + "#{l.first.to_s}" + "_url"), last_mod: Time.now, change_freq: 'daily', priority: 1.0
-    url eval("team_" + "#{l.first.to_s}" + "_url"), last_mod: Time.now, change_freq: 'daily', priority: 1.0
+    url eval('portfolio_' + "#{l.first.to_s}" + '_url'), last_mod: Time.now, change_freq: 'daily', priority: 1.0
+    url eval('team_' + "#{l.first.to_s}" + '_url'), last_mod: Time.now, change_freq: 'daily', priority: 1.0
     #url pages_url(locale: l.first.to_s)
     #Page.published.each do |page|
     #  url page(locale: l.first.to_s)

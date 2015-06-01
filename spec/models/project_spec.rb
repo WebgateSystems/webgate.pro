@@ -6,7 +6,7 @@ describe Project do
     expect(build(:project)).to be_valid
   end
 
-  describe "Validations" do
+  describe 'Validations' do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:content) }
     it { is_expected.to validate_presence_of(:livelink) }
@@ -23,7 +23,7 @@ describe Project do
     end
   end
 
-  describe "Associations" do
+  describe 'Associations' do
     it { is_expected.to have_many(:screenshots).dependent(:destroy) }
     it { is_expected.to have_many(:technologies).order('technologies_projects.position').through(:technologies_projects) }
     it { is_expected.to have_many(:technologies_projects) }

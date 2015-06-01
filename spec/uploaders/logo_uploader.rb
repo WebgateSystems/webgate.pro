@@ -19,7 +19,7 @@ describe LogoUploader do
   end
 
   context 'the thumb version' do
-    it "should scale down a landscape image to be exactly 64 by 64 pixels" do
+    it 'should scale down a landscape image to be exactly 64 by 64 pixels' do
       expect(@uploader.thumb).to have_dimensions(64, 64)
     end
   end

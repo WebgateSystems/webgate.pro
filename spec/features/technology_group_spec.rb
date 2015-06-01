@@ -12,12 +12,12 @@ feature 'technology_group in admin panel.' do
 
   scenario 'Try drag and drop on index', js: true do
     click_link ('New')
-    fill_in 'technology_group[title]', with: "TestTitle2"
-    fill_in 'technology_group[description]', with: "Test Description2"
+    fill_in 'technology_group[title]', with: 'TestTitle2'
+    fill_in 'technology_group[description]', with: 'Test Description2'
     click_button 'Save'
     visit admin_technology_groups_path
-    dest_element = find('td', text: "TestTitle2")
-    source_element = find('td', text: "TestTitle1")
+    dest_element = find('td', text: 'TestTitle2')
+    source_element = find('td', text: 'TestTitle1')
     source_element.drag_to dest_element
     sleep 2 #wait for ajax complete
     page.all(:link, 'Show')[1].click

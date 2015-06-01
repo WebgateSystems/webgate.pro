@@ -11,7 +11,7 @@ namespace :db do
       array_of_hashes << {m.id => techs}
     end
 
-    File.open("lib/member_techs.yml", "w") do |file|
+    File.open('lib/member_techs.yml', 'w') do |file|
       file.write array_of_hashes.to_yaml
     end
   end

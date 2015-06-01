@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Home page' do
 
   before do
-    visit "/"
+    visit '/'
     reset_email
   end
 

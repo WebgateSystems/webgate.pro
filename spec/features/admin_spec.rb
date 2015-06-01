@@ -39,7 +39,7 @@ feature 'Admin panel' do
     ['Users','Pages','Technology groups','Technologies','Projects','Team members'].each do |name|
       visit admin_root_path
       page.all(:link,name)[0].click
-      within ("h2") do
+      within ('h2') do
         expect(page).to have_content name.pluralize
       end
     end

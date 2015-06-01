@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 
   private
   def prepare_lang
-    path_string = request.fullpath.split("/")
+    path_string = request.fullpath.split('/')
     curr_category = path_string[-2]
     curr_link = path_string.last
     curr_translation = LinkTranslation.find_by_link(CGI::unescape(curr_category)) unless curr_category.nil?
@@ -65,12 +65,12 @@ class ApplicationController < ActionController::Base
     g = GeoIP.new(Rails.root + 'db/GeoIP.dat')
     country_code = g.country(request.remote_ip).country_code2.downcase
     case country_code
-      when "pl"
-        "pl"
-      when "ru", "ua", "by"
-        "ru"
+      when 'pl'
+        'pl'
+      when 'ru', 'ua', 'by'
+        'ru'
       else
-        "en"
+        'en'
     end
   end
 

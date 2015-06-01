@@ -14,7 +14,7 @@ describe Page do
     expect(build(:ru_page)).to be_valid
   end
 
-  describe "Validations" do
+  describe 'Validations' do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:shortlink) }
     it { is_expected.to validate_presence_of(:description) }
@@ -23,7 +23,7 @@ describe Page do
     it { is_expected.to validate_uniqueness_of(:shortlink).case_insensitive }
   end
 
-  describe "Associations" do
+  describe 'Associations' do
     it { is_expected.to belong_to(:category) }
   end
 

@@ -47,8 +47,8 @@ feature 'Category in admin panel.' do
 
   scenario 'Try drag and drop on index', js: true do
     visit admin_categories_path
-    dest_element = find('td', text: "TestTitle2")
-    source_element = find('td', text: "TestTitle1")
+    dest_element = find('td', text: 'TestTitle2')
+    source_element = find('td', text: 'TestTitle1')
     source_element.drag_to dest_element
     sleep 5 #wait for ajax complete
     page.all(:link, 'Show')[1].click
@@ -94,9 +94,9 @@ feature 'Category in admin panel.' do
 
   scenario 'Create category should create category' do
     click_link ('New')
-    fill_in 'category[name]', with: "TestTitleFull"
-    fill_in 'category[altlink]', with: "TestlinkFull"
-    fill_in 'category[description]', with: "TestDescFull"
+    fill_in 'category[name]', with: 'TestTitleFull'
+    fill_in 'category[altlink]', with: 'TestlinkFull'
+    fill_in 'category[description]', with: 'TestDescFull'
     click_button 'Save'
     visit admin_categories_path
     expect(page).to have_content 'TestTitleFull'

@@ -6,7 +6,7 @@ describe User do
     expect(build(:user)).to be_valid
   end
 
-  describe "Validations" do
+  describe 'Validations' do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:password) }
     it { is_expected.to allow_value('test@webgate.pro').for(:email) }

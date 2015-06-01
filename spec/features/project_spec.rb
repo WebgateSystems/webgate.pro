@@ -24,14 +24,14 @@ feature 'Project in admin panel.' do
 
   scenario 'Try drag and drop on index', js: true do
     click_link ('New')
-    fill_in 'project[title]', with: "TestTitle2"
-    fill_in_ckeditor 'Content', with: "TestContent2"
+    fill_in 'project[title]', with: 'TestTitle2'
+    fill_in_ckeditor 'Content', with: 'TestContent2'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
     visit admin_projects_path
-    dest_element = find('td', text: "TestTitle2")
-    source_element = find('td', text: "TestTitle1")
+    dest_element = find('td', text: 'TestTitle2')
+    source_element = find('td', text: 'TestTitle1')
     source_element.drag_to dest_element
     sleep 5 #wait for ajax complete
     page.all(:link, 'Show')[1].click
@@ -96,7 +96,7 @@ feature 'Project in admin panel.' do
     fill_in_ckeditor 'Content', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
-    find(:css, "#project_publish").set(true)
+    find(:css, '#project_publish').set(true)
     click_button 'Save'
     visit admin_projects_path
     expect(page).to have_content 'true'
