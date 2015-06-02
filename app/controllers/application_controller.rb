@@ -57,12 +57,12 @@ class ApplicationController < ActionController::Base
     g = GeoIP.new(Rails.root + 'db/GeoIP.dat')
     country_code = g.country(request.remote_ip).country_code2.downcase
     case country_code
-      when 'pl'
-        'pl'
-      when 'ru', 'ua', 'by'
-        'ru'
-      else
-        'en'
+    when 'pl'
+      'pl'
+    when 'ru', 'ua', 'by'
+      'ru'
+    else
+      'en'
     end
   end
 
