@@ -17,8 +17,8 @@ ExceptionNotification.configure do |config|
   # Email notifier sends notifications by email.
   config.add_notifier :email, {
     email_prefix: Rails.env.production? ? '[webgate.pro - exception]' : '[test.webgate.pro - exception]',
-    sender_address: %{"webgate.pro exception notifier" <notify@webgate.pro>},
-    exception_recipients: %w{devs@webgate.pro}
+    sender_address: %("webgate.pro exception notifier" <notify@webgate.pro>),
+    exception_recipients: %w(devs@webgate.pro)
   }
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
   # config.add_notifier :campfire, {

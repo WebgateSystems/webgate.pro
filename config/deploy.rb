@@ -10,8 +10,8 @@ set :format, :pretty
 # Default value for :log_level is :debug
 set :log_level, :info
 set :tests, []
-set :linked_files, %w{config/database.yml config/config.yml config/sidekiq.yml}
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/assets public/uploads public/sitemaps}
+set :linked_files, %w(config/database.yml config/config.yml config/sidekiq.yml)
+set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets public/assets public/uploads public/sitemaps)
 set :whenever_identifier, -> { "#{fetch(:deploy_user)}" }
 
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
