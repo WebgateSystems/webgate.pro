@@ -21,12 +21,12 @@ class Project < ActiveRecord::Base
   mount_uploader :collage, CollageUploader
 
   def livelink_f
-    URI(self.livelink).host
+    URI(livelink).host
   end
 
   protected
 
   def check_collage
-    errors.add :publish, I18n.t('can_not_publish_without_collage') if self.publish? && self.collage.to_s.empty?
+    errors.add :publish, I18n.t('can_not_publish_without_collage') if publish? && collage.to_s.empty?
   end
 end

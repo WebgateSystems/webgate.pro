@@ -19,12 +19,12 @@ class Member < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   def technology_groups
-    TechnologyGroup.where(id: self.technologies.map(&:technology_group_id).uniq).rank(:position)
+    TechnologyGroup.where(id: technologies.map(&:technology_group_id).uniq).rank(:position)
   end
 
   protected
 
   def check_avatar
-    errors.add :publish, I18n.t(:can_not_publish_without_avatar) if self.publish? && self.avatar.to_s.empty?
+    errors.add :publish, I18n.t(:can_not_publish_without_avatar) if self.publish? && avatar.to_s.empty?
   end
 end

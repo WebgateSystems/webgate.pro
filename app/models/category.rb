@@ -16,10 +16,10 @@ class Category < ActiveRecord::Base
   private
 
   def remove_translation_link
-    LinkTranslation.where(link_type: 'category', link: self.altlink, locale: I18n.locale.to_s).first.try(:destroy)
+    LinkTranslation.where(link_type: 'category', link: altlink, locale: I18n.locale.to_s).first.try(:destroy)
   end
 
   def add_translation_link
-    LinkTranslation.create(link: self.altlink, locale: I18n.locale.to_s, link_type: 'category')
+    LinkTranslation.create(link: altlink, locale: I18n.locale.to_s, link_type: 'category')
   end
 end
