@@ -1,10 +1,7 @@
 class PagesController < ApplicationController
   def showbyshortlink
     @page = Page.where(shortlink: params[:shortlink]).first
-    if @page.nil?
-      render :not_found, status: 404
-      return
-    end
+    render :not_found, status: 404 if @page.nil?
   end
 
   def not_found
