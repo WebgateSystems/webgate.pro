@@ -1,5 +1,5 @@
 namespace :db do
-  desc 'Create 100 fake members to test pagination'
+  desc 'Create 50 fake members to test pagination'
   task populate: :environment do
     50.times do
       Technology.create(title: Faker::Name.title, description: Faker::Lorem.paragraph, technology_group: TechnologyGroup.all.sample, link: Faker::Internet.url)

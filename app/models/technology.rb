@@ -24,9 +24,6 @@ class Technology < ActiveRecord::Base
   protected
 
   def update_members_cache
-    Member.all.each do |m|
-      m.touch if m.technologies.include?(self)
-    end
+    self.members.update_all(updated_at: Time.now)
   end
-
 end

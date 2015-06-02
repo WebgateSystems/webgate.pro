@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   end
 
   def portfolio
-    @projects = Project.published.includes(:translations, :screenshots).page(params[:page]).per(10)
+    @projects = Project.published.rank(:position).includes(:translations, :screenshots).page(params[:page]).per(10)
   end
 
   def team
