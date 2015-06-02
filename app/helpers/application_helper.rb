@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def other_langs
-    (I18n.available_locales.map - [I18n.locale.to_s]).sort
+    (I18n.available_locales.map(&:to_s) - [I18n.locale.to_s]).sort
   end
 
   def tech_link(technology)

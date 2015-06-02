@@ -27,3 +27,4 @@ public/sitemaps
 REVISION
 assets_manifest.yml
 .rubocop.yml
+.slim-lint.yml
