@@ -16,7 +16,7 @@ feature 'Project in admin panel.' do
     dest_element = find('td', text: project.technologies[1].title)
     source_element = find('td', text: project.technologies[0].title)
     source_element.drag_to dest_element
-    sleep 5 # wait for ajax complete
+    sleep 2
     page.all(:link, 'Show')[0].click
     expect(current_path).to eq admin_technology_path(project.technologies[1])
     visit admin_project_path(project)

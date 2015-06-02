@@ -15,4 +15,70 @@ module ApplicationHelper
     link = technology.link
     (link && !link.blank?) ? link : 'javascript:;'
   end
+
+  def main_url(lang)
+    case lang
+    when 'pl'
+      link_to(lang.upcase, main_pl_url)
+    when 'ru'
+      link_to(lang.upcase, main_ru_url)
+    else
+      link_to(lang.upcase, locale: lang)
+    end
+  end
+
+  def mobile_main_url(lang, label)
+    case lang
+    when 'pl'
+      link_to(main_pl_path) do
+        raw("<span> #{label}</span>")
+      end
+    when 'ru'
+      link_to(main_ru_path) do
+        raw("<span> #{label}</span>")
+      end
+    else
+      link_to(locale: lang) do
+        raw("<span> #{label}</span>")
+      end
+    end
+  end
+
+  def not_found_url(lang)
+    case lang
+    when 'pl'
+      not_found_pl_url
+    when 'ru'
+      not_found_ru_url
+    else
+      not_found_url
+    end
+  end
+
+  def change_lang_path(lang)
+    if current_page?(root_path)
+      main_url(lang)
+    elsif params[:action] == 'showbyshortlink'
+      page = Page.with_translations(locale).find_by(shortlink: params[:shortlink])
+      link_to(lang.upcase, (page.nil? or page.shortlink == params[:shortlink]) ? not_found_url(lang) : page.shortlink)
+    else
+      link_to(lang.upcase, locale: lang)
+    end
+  end
+
+  def change_mobile_lang_path(lang, label)
+    if current_page?(root_path)
+      mobile_main_url(lang, label)
+    elsif params[:action] == 'showbyshortlink'
+      page = Page.with_translations(locale).find_by(shortlink: params[:shortlink])
+      link_to((page.nil? or page.shortlink == params[:shortlink]) ? not_found_url(lang) : page.shortlink) do
+        raw("<span> #{label}</span>")
+      end
+    else
+      link_to(locale: lang) do
+        raw("<span> #{label}</span>")
+      end
+    end
+  end
+
 end

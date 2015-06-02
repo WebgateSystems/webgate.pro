@@ -1,11 +1,11 @@
 FactoryGirl.define do
   factory :page, aliases: [:en_page] do
-    title 'About us'
-    description 'About us'
-    keywords 'About us'
-    content 'About us'
-    shortlink 'about-test'
+    shortlink { Faker::Lorem.word }
     position 1
+    title { Faker::Name.title }
+    description { Faker::Lorem.paragraph }
+    keywords { Faker::Lorem.sentence }
+    content { Faker::Lorem.paragraph }
     category
 
     factory :pl_page do

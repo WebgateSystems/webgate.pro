@@ -45,6 +45,10 @@ pl:
       category_id: "Punkt(y) menu do którego(ych) ewentualnie może być dowiązana strona"
       category_id_main: "Punkt menu głównego"
       subcategory_id: "Submenu"
+    link_translation:
+      link: "Link"
+      locale: "Locale"
+      link_type: "Type"
     subcategory:
       name: "Nazwa"
       altlink: "Alternatywny link"
@@ -105,6 +109,7 @@ pl:
   users: "Użytkownicy"
   categories: "Menu"
   pages: "Strony"
+  link_translations: "Links"
   projects: "Projekty"
   team: "Zespół"
   members: "Członkowie zespołu"
@@ -131,6 +136,7 @@ pl:
   more_information: "Więcej informacji"
   hide_information: "Wrócić do zespołu"
   publish: "Publikować"
+  error_not_unique: "Error: not unique"
   error_404: "Strona nie znaleziona (błąd 404)!"
   error_404_message: "Jeżeli wydaje się Państwu, że tak nie powinno być - prosimy skorzystać z formularza kontaktowego, albo wysłać email. Dziękujemy."
   add_collage: "Dodaj kolaż"

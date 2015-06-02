@@ -24,11 +24,6 @@ feature 'Page in admin panel.' do
     expect(current_path).to eq admin_pages_path
   end
 
-  scenario 'Link new should work good' do
-    click_link('New')
-    expect(current_path).to eq new_admin_page_path
-  end
-
   scenario 'Page root path should have list of pages' do
     expect(page).to have_content 'Title'
     expect(page).to have_content 'Created at'

@@ -1,3 +1,4 @@
 class LinkTranslation < ActiveRecord::Base
-  # attr_accessible :link, :locale, :link_type
+  validates :link, :locale, :link_type, presence: true
+  validates :link, uniqueness: { scope: :locale }
 end
