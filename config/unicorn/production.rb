@@ -21,9 +21,7 @@ timeout 120
 user 'webgate', 'webgate'
 
 before_fork do |server, worker|
-  if defined?(ActiveRecord::Base)
-    ActiveRecord::Base.connection.disconnect!
-  end
+  ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
 
   old_pid = "#{server.config[:pid]}.oldbin"
   if File.exist?(old_pid) && server.pid != old_pid
@@ -36,7 +34,5 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  if defined?(ActiveRecord::Base)
-    ActiveRecord::Base.establish_connection
-  end
+  ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
 end
