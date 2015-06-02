@@ -1,6 +1,5 @@
 # encoding: utf-8
 class Page < ActiveRecord::Base
-
   before_save :remove_translation_link
   after_save :add_translation_link
 

@@ -11,5 +11,4 @@ class MemberLink < ActiveRecord::Base
   validates_associated :member
 
   translates :name
-
 end

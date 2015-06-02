@@ -34,6 +34,5 @@ module WebgatePro
       g.test_framework :rspec, fixtures: true, views: false
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
-
   end
 end

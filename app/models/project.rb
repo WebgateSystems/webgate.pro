@@ -29,5 +29,4 @@ class Project < ActiveRecord::Base
   def check_collage
     errors.add :publish, I18n.t('can_not_publish_without_collage') if self.publish? && self.collage.to_s.empty?
   end
-
 end

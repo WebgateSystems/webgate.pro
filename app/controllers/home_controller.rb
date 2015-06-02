@@ -26,5 +26,4 @@ class HomeController < ApplicationController
     # @pages = Page.where(published: false)
     respond_to :text
   end
-
 end

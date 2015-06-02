@@ -93,5 +93,4 @@ class Admin::MembersController < Admin::HomeController
                                    technologies_attributes: [:id, :title, :technology_group_id, :_destroy],
                                    member_links_attributes: [:id, :name, :link, :member_id, :position, :_destroy])
   end
-
 end

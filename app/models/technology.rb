@@ -18,5 +18,4 @@ class Technology < ActiveRecord::Base
   translates :description, :link
 
   mount_uploader :logo, LogoUploader
-
 end

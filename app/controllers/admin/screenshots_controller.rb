@@ -32,5 +32,4 @@ class Admin::ScreenshotsController < Admin::HomeController
   def screenshot_params
     params.require(:screenshot).permit(:file, :file_cache, :project_id, :position)
   end
-
 end

@@ -104,5 +104,4 @@ class Admin::ProjectsController < Admin::HomeController
                                     technologies_attributes: [:id, :title, :technology_group_id],
                                     screenshots_attributes: [:id, :file, :file_cache, :project_id, :position, :_destroy])
   end
-
 end
