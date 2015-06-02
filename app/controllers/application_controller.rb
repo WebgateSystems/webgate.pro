@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_filter :common_prepare
+  before_action :common_prepare
 
   LANGS = [
     ['en', 'English'],
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def common_prepare
     prepare_lang
-    @menu = Category.rank(:position).includes(:translations)
+    @menu = Category.rank(:position).includes(:translations, :page, page: :translations)
     @logged_to_admin = true if current_user
   end
 

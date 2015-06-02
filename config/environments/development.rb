@@ -5,7 +5,8 @@ WebgatePro::Application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
-
+  #config.logger = Logger.new(STDOUT)
+  #config.logger.level = Logger::ERROR
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -32,12 +33,14 @@ WebgatePro::Application.configure do
 
   config.active_record.raise_in_transactional_callbacks = true
 
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
   config.after_initialize do
     Bullet.enable = true
-    Bullet.alert = true
+    Bullet.alert = false
     Bullet.bullet_logger = true
     Bullet.console = true
     Bullet.rails_logger = true
-    Bullet.add_footer = true
+    Bullet.add_footer = false
   end
 end

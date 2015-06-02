@@ -46,6 +46,10 @@ fr:
       category_id: "Menu items page belongs to"
       category_id_main: "Main menu"
       subcategory_id: "Submenu"
+    link_translation:
+      link: "Link"
+      locale: "Locale"
+      link_type: "Type"
     subcategory:
       name: "Name"
       altlink: "Altlink"
@@ -106,6 +110,7 @@ fr:
   users: "Utilisateurs"
   categories: "Menu"
   pages: "Pages"
+  link_translations: "Links"
   projects: "Les projets"
   team: "Équipe"
   members: "Membres de l'équipe"
@@ -131,6 +136,7 @@ fr:
   more_information: "More Information"
   hide_information: "Hide Information"
   publish: "Publish"
+  error_not_unique: "Error: not unique"
   error_404: "Page not found (error 404)!"
   error_404_message: "If You belive, that isn't correct - please, send this error by email or contact form to us. Thanks."
   add_collage: "Add collage"

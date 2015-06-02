@@ -36,24 +36,27 @@ WebgatePro::Application.routes.draw do
       resources :technologies do
       end
     end
-    root :to => "home#index"
+    resources :link_translations
+    root to: 'home#index'
   end
 
   get 'sitemap' => 'home#sitemap'
   get 'robots.:format' => 'home#robots', format: :text
 
   localized do
-    get 'main',         to: 'home#index', as: :main
-    match 'not-found',  to: 'pages#not_found', via: [:get, :post], as: :not_found
-    get 'portfolio',    to: 'home#portfolio', as: :portfolio
-    get 'team',         to: 'home#team', as: :team
+    get :main,      to: 'home#index', as: :main
+    get :not_found, to: 'errors#not_found', as: :not_found
+    get :portfolio, to: 'home#portfolio', as: :portfolio
+    get :team,      to: 'home#team', as: :team
   end
 
   get 'contact_complete', to: 'contacts#contact_complete'
 
-  get "logout" => "sessions#destroy", as: "logout"
-  get "login"  => "sessions#new", as: "login"
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'login',  to: 'sessions#new', as: 'login'
 
-  get ":shortlink" => "pages#showbyshortlink"
+  get ':shortlink', to: 'pages#showbyshortlink'
+  get '*any', via: :all, to: 'errors#not_found'
+
   root to: 'home#index'
 end

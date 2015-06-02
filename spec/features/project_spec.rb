@@ -33,7 +33,7 @@ feature 'Project in admin panel.' do
     dest_element = find('td', text: "TestTitle2")
     source_element = find('td', text: "TestTitle1")
     source_element.drag_to dest_element
-    sleep 5 #wait for ajax complete
+    sleep 2 #wait for ajax complete
     page.all(:link, 'Show')[1].click
     expect(current_path).to eq admin_project_path(Project.last.id)
     visit admin_projects_path
@@ -45,11 +45,6 @@ feature 'Project in admin panel.' do
     visit new_admin_project_path
     click_link('List')
     expect(current_path).to eq admin_projects_path
-  end
-
-  scenario 'Link new should work good' do
-    click_link('New')
-    expect(current_path).to eq new_admin_project_path
   end
 
   scenario 'Project root path links show, edit should work' do
@@ -106,13 +101,6 @@ feature 'Project in admin panel.' do
     click_link('New')
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')
-  end
-
-  scenario 'Dont create project with empty fields' do
-    click_link ('New')
-    fill_in 'project[title]', with: 'TestTitlekukumba'
-    visit admin_projects_path
-    expect(page).to have_no_content 'TestTitlekukumba'
   end
 
 end
