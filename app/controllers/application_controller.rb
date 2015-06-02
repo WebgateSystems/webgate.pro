@@ -5,16 +5,16 @@ class ApplicationController < ActionController::Base
   before_filter :common_prepare
 
   LANGS = [
-    ['en', 'English'],
-    ['pl', 'Polski'],
-    ['ru', 'Русский'],
-    ['fr', 'Français']
+    %w(en English),
+    %w(pl Polski),
+    %w(ru Русский),
+    %w(fr Français)
   ]
 
   PUBLIC_LANGS = [
-    ['en', 'English'],
-    ['pl', 'Polski'],
-    ['ru', 'Русский']
+    %w(en English),
+    %w(pl Polski),
+    %w(ru Русский)
   ]
 
   def common_prepare
