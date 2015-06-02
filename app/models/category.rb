@@ -13,12 +13,6 @@ class Category < ActiveRecord::Base
   before_save :remove_translation_link
   after_save :add_translation_link
 
-  def self.select_all
-    res = [[]]
-    Category.all.each { |c| res.push [c.name, c.id] } # todo all.(order: :id).each
-    res
-  end
-
   private
 
   def remove_translation_link
