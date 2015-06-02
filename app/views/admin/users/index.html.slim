@@ -18,4 +18,4 @@
               td= user.created_at.to_s(:short)
               td= link_to fa_icon('eye'), admin_user_path(user), title: t('web_app_theme.show')
               td= link_to fa_icon('edit'), edit_admin_user_path(user), title: t('web_app_theme.edit'), class: 'edit'
-              td= link_to fa_icon('trash'), admin_user_path(user), title: t('web_app_theme.delete'), method: :delete, data: {confirm: t(:are_you_sure)}, class: 'delete'
+              td= link_to fa_icon('trash'), admin_user_path(user), title: t('web_app_theme.delete'), method: :delete, data: { confirm: t(:are_you_sure) }, class: 'delete'
