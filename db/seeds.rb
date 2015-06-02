@@ -55,7 +55,6 @@ if Project.count == 0
   project.collage = Rails.root.join('app/assets/images/collage1.jpg').open
   project.save!
 
-
   I18n.locale = 'en'
   # todo
 
@@ -130,7 +129,6 @@ if Technology.count == 0
   # todo
 end
 
-
 if Category.count == 0
   I18n.locale = 'pl'
   Category.create name: 'Główna', altlink: '/', position: 1
@@ -203,7 +201,6 @@ if Category.count == 0
   c.save
 end
 
-
 if Page.count == 0
   I18n.locale = 'pl'
   Page.create shortlink: '/', title: 'Główna', description: 'Główna',
@@ -227,7 +224,6 @@ if Page.count == 0
   c.keywords = 'Главная'
   c.content = 'Главная'
   c.save
-
 
   I18n.locale = 'pl'
   Page.create shortlink: 'o-nas', title: 'O nas', description: 'O nas',
