@@ -42,6 +42,7 @@ class ApplicationController < ActionController::Base
   # end
 
   private
+
   def prepare_lang
     path_string = request.fullpath.split('/')
     curr_category = path_string[-2]
