@@ -1,10 +1,10 @@
 doctype html
 html lang="#{locale}"
-  = render "layouts/header"
+  = render 'layouts/header'
   body
     = render 'layouts/form_msg'
     -if %w(staging development).include? Rails.env
-      .edge =image_tag 'edge.png', alt: "edge-badge", id: "edge-badge"
+      .edge =image_tag 'edge.png', alt: 'edge-badge', id: 'edge-badge'
     .header
       = render 'layouts/lang'
       = render 'layouts/menu'
@@ -17,4 +17,4 @@ html lang="#{locale}"
             = yield
           = render 'layouts/slider'
       = render partial: 'layouts/carousel', locals: { projects: @projects }
-    = render "layouts/footer"
+    = render 'layouts/footer'

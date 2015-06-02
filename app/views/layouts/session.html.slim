@@ -1,13 +1,13 @@
 doctype html
-html lang="en"
+html lang="#{locale}"
   head
-    meta charset="utf-8"
-    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta charset='utf-8'
+    meta name='viewport' content='width=device-width, initial-scale=1.0'
     title
-      = content_for?(:title) ? yield(:title) : "Webgate Systems - dashboard login"
+      = content_for?(:title) ? yield(:title) : 'Webgate Systems - dashboard login'
 
-    = stylesheet_link_tag    "admin"
-    = javascript_include_tag "admin"
+    = stylesheet_link_tag    'admin'
+    = javascript_include_tag 'admin'
     = csrf_meta_tags
   body
     = render 'layouts/messages'
