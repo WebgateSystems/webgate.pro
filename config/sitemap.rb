@@ -14,7 +14,7 @@ sitemap :site do
     # end
   end
 end
-# You can have multiple sitemaps like the above – just make sure their names are different.
+# You can have multiple sitemaps like the above - just make sure their names are different.
 
 # Automatically link to all pages using the routes specified
 # using "resources :pages" in config/routes.rb. This will also
