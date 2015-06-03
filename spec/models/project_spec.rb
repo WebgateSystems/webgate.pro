@@ -15,8 +15,8 @@ describe Project do
     it { is_expected.to_not allow_value('://webgate.pro').for(:livelink) }
 
     it 'validates not publish without collage' do
-      project = Project.new(title: 'test', content: 'test', livelink: 'https://test.com',
-                            publish: true, collage: nil)
+      project = described_class.new(title: 'test', content: 'test', livelink: 'https://test.com',
+                                    publish: true, collage: nil)
       expect(project.valid?).to be_falsey
       expect(project.errors[:publish].size).to eq(1)
     end

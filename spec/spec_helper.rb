@@ -30,10 +30,10 @@ RSpec.configure do |config|
   end
 
   config.mock_with :rspec do |c|
-    c.syntax = [:should, :expect]
+    c.syntax = [:expect]
   end
   config.expect_with :rspec do |c|
-    c.syntax = [:should, :expect]
+    c.syntax = [:expect]
   end
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.

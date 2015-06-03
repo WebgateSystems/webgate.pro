@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Page do
-
   it 'has a valid factory' do
     expect(build(:en_page)).to be_valid
   end
