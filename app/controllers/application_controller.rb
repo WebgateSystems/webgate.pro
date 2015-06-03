@@ -44,11 +44,7 @@ class ApplicationController < ActionController::Base
   private
 
   def prepare_lang
-    path_string = request.fullpath.split('/')
-    curr_category = path_string[-2]
-    curr_link = path_string.last
-    curr_translation = LinkTranslation.find_by_link(CGI.unescape(curr_category)) unless curr_category.nil?
-    lang = params[:locale] || params[:lang] || current_locale(curr_translation, curr_link) || cookies[:lang] || geoip_lang
+    lang = params[:locale] || params[:lang] || cookies[:lang] || geoip_lang
     cookies[:lang] = lang_by_tag(lang)
     I18n.locale = lang
   end
@@ -70,14 +66,5 @@ class ApplicationController < ActionController::Base
   def lang_by_tag(lng)
     language = LANGS.detect { |lang| lang.first == lng.downcase }
     language ? language.first : LANGS.first.first
-  end
-
-  def current_locale(curr_translation, curr_link)
-    if curr_translation
-      curr_translation.locale
-    else
-      curr_translation = LinkTranslation.find_by_link(CGI.unescape(curr_link)) unless curr_link.nil?
-      curr_translation.locale if curr_translation
-    end
   end
 end
