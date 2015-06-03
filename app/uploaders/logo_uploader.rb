@@ -1,5 +1,4 @@
 class LogoUploader < CarrierWave::Uploader::Base
-
   include CarrierWave::MiniMagick
 
   storage :file
@@ -15,5 +14,4 @@ class LogoUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(gif png)
   end
-
 end

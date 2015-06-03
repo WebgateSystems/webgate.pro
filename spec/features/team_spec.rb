@@ -1,14 +1,17 @@
 require 'rails_helper'
 
 feature 'Adding team to site.' do
+  let!(:member1) do
+    Member.create(name: 'TestName1', job_title: 'TestJobTitle1',
+                  description: 'TestDesc1', education: 'TestEduc1', motto: 'TestMotto1', publish: true,
+                  avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png')))
+  end
 
-  let!(:member1) { Member.create(name: 'TestName1', job_title: 'TestJobTitle1',
-      description: 'TestDesc1', education: 'TestEduc1', motto: 'TestMotto1', publish: true,
-      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) }
-
-  let!(:member2) { Member.create(name: 'TestName2', job_title: 'TestJobTitle2',
-      description: 'TestDesc2', education: 'TestEduc2', motto: 'TestMotto1', publish: true,
-      avatar: nil) }
+  let!(:member2) do
+    Member.create(name: 'TestName2', job_title: 'TestJobTitle2',
+                  description: 'TestDesc2', education: 'TestEduc2', motto: 'TestMotto1', publish: true,
+                  avatar: nil)
+  end
 
   before do
     visit team_path
@@ -20,7 +23,7 @@ feature 'Adding team to site.' do
     expect(page).to have_xpath("//img[contains(@src, \"/spec/uploads/member/#{member1.id}\")]")
   end
 
-  scenario 'Should not show member without avatar' , js: true do
+  scenario 'Should not show member without avatar', js: true do
     expect(page).to_not have_content member2.name
   end
 
@@ -31,5 +34,4 @@ feature 'Adding team to site.' do
     page.execute_script("$('span.mob.service_block_btn').click()")
     expect(page).to_not have_content 'Technologies'
   end
-
 end

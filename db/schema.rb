@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519051358) do
+ActiveRecord::Schema.define(version: 20150602115349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,19 @@ ActiveRecord::Schema.define(version: 20150519051358) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
+  create_table "feeds", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "fb_publish", default: false
+    t.boolean  "tw_publish", default: false
+    t.boolean  "publish",    default: false
+    t.string   "slug"
+  end
+
+  add_index "feeds", ["slug"], name: "index_feeds_on_slug", unique: true, using: :btree
+
   create_table "link_translations", force: :cascade do |t|
     t.string   "link",       limit: 255
     t.string   "locale",     limit: 255
@@ -81,6 +94,8 @@ ActiveRecord::Schema.define(version: 20150519051358) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "member_links", ["member_id"], name: "index_member_links_on_member_id", using: :btree
 
   create_table "member_translations", force: :cascade do |t|
     t.integer  "member_id",               null: false
@@ -145,6 +160,8 @@ ActiveRecord::Schema.define(version: 20150519051358) do
     t.datetime "updated_at"
   end
 
+  add_index "pages", ["category_id"], name: "index_pages_on_category_id", using: :btree
+
   create_table "project_translations", force: :cascade do |t|
     t.integer  "project_id",             null: false
     t.string   "locale",     limit: 255, null: false
@@ -187,6 +204,8 @@ ActiveRecord::Schema.define(version: 20150519051358) do
     t.datetime "updated_at"
   end
 
+  add_index "screenshots", ["project_id"], name: "index_screenshots_on_project_id", using: :btree
+
   create_table "technologies", force: :cascade do |t|
     t.string   "title",               limit: 255
     t.text     "description"
@@ -198,6 +217,8 @@ ActiveRecord::Schema.define(version: 20150519051358) do
     t.string   "link",                limit: 255
     t.integer  "member_position"
   end
+
+  add_index "technologies", ["technology_group_id"], name: "index_technologies_on_technology_group_id", using: :btree
 
   create_table "technologies_members", force: :cascade do |t|
     t.integer "member_id"

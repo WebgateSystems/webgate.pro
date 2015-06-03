@@ -7,7 +7,7 @@ class CreateCategories < ActiveRecord::Migration
       t.integer :position
       t.timestamps
     end
-    Category.create_translation_table! :name => :string, :altlink => :string, :description => :text
+    Category.create_translation_table! name: :string, altlink: :string, description: :text
   end
 
   def self.down

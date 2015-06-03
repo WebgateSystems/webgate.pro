@@ -17,8 +17,8 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   def resize_and_crop
     manipulate! do |source|
-      source.resize "182"
-      source.crop("182x114+0+0")
+      source.resize '182'
+      source.crop('182x114+0+0')
       source
     end
   end
@@ -26,5 +26,4 @@ class PictureUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
 end

@@ -21,6 +21,6 @@
                 td= project.publish
                 td= link_to fa_icon('eye'), admin_project_path(project), title: t('web_app_theme.show')
                 td= link_to fa_icon('edit'), edit_admin_project_path(project), title: t('web_app_theme.edit'), class: 'edit'
-                td= link_to fa_icon('trash'), admin_project_path(project), title: t('web_app_theme.delete'), method: :delete, data: {confirm: t(:are_you_sure)}, class: 'delete'
+                td= link_to fa_icon('trash'), admin_project_path(project), title: t('web_app_theme.delete'), method: :delete, data: { confirm: t(:are_you_sure) }, class: 'delete'
       - else
         = t('web_app_theme.nothing')

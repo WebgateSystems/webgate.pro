@@ -1,8 +1,8 @@
-app_path = "/home/webgate/webgate.pro"
+app_path = '/home/webgate/webgate.pro'
 working_directory "#{app_path}/current"
 pid               "#{app_path}/current/tmp/pids/unicorn.pid"
 
-listen "#{app_path}/current/tmp/sockets/unicorn.sock", :backlog => 2048
+listen "#{app_path}/current/tmp/sockets/unicorn.sock", backlog: 2048
 
 worker_processes 4
 
@@ -21,14 +21,12 @@ timeout 120
 user 'webgate', 'webgate'
 
 before_fork do |server, worker|
-  if defined?(ActiveRecord::Base)
-    ActiveRecord::Base.connection.disconnect!
-  end
+  ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
 
   old_pid = "#{server.config[:pid]}.oldbin"
-  if File.exists?(old_pid) && server.pid != old_pid
+  if File.exist?(old_pid) && server.pid != old_pid
     begin
-      Process.kill("QUIT", File.read(old_pid).to_i)
+      Process.kill('QUIT', File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH
       # someone else did our job for us
     end
@@ -36,7 +34,5 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
-  if defined?(ActiveRecord::Base)
-    ActiveRecord::Base.establish_connection
-  end
+  ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
 end

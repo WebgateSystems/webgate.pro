@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 feature 'Project in admin panel.' do
-
   let(:user) { create(:user) }
-  let!(:project0) { Project.create(title: 'TestTitle0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
-      collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) }
-  let!(:project1) { Project.create(title: 'TestTitle1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
-      collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg'))) }
+  let!(:project0) do
+    Project.create(title: 'TestTitle0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
+                   collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg')))
+  end
+  let!(:project1) do
+    Project.create(title: 'TestTitle1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
+                   collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg')))
+  end
 
   before do
     sign_in(user)
@@ -23,17 +26,17 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Try drag and drop on index', js: true do
-    click_link ('New')
-    fill_in 'project[title]', with: "TestTitle2"
-    fill_in_ckeditor 'Content', with: "TestContent2"
+    click_link('New')
+    fill_in 'project[title]', with: 'TestTitle2'
+    fill_in_ckeditor 'Content', with: 'TestContent2'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
     visit admin_projects_path
-    dest_element = find('td', text: "TestTitle2")
-    source_element = find('td', text: "TestTitle1")
+    dest_element = find('td', text: 'TestTitle2')
+    source_element = find('td', text: 'TestTitle1')
     source_element.drag_to dest_element
-    sleep 2 #wait for ajax complete
+    sleep 2
     page.all(:link, 'Show')[1].click
     expect(current_path).to eq admin_project_path(Project.last.id)
     visit admin_projects_path
@@ -61,7 +64,7 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Show should display our project information' do
-    click_link ('TestTitle0')
+    click_link('TestTitle0')
     expect(page).to have_content 'Title:'
     expect(page).to have_content 'TestTitle0'
     expect(page).to have_content 'Content:'
@@ -70,14 +73,14 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Create project should create project' do
-    click_link ('New')
+    click_link('New')
     fill_in 'project[title]', with: 'TestTitleFull'
     fill_in 'project[content]', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
     visit admin_projects_path
-    click_link ('TestTitleFull')
+    click_link('TestTitleFull')
     expect(page).to have_content 'TestContentFull'
   end
 
@@ -86,12 +89,12 @@ feature 'Project in admin panel.' do
   end
 
   scenario 'Check publish. Here should be true', js: true do
-    click_link ('New')
+    click_link('New')
     fill_in 'project[title]', with: 'TestTitleFull'
     fill_in_ckeditor 'Content', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
     attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
-    find(:css, "#project_publish").set(true)
+    find(:css, '#project_publish').set(true)
     click_button 'Save'
     visit admin_projects_path
     expect(page).to have_content 'true'
@@ -102,5 +105,4 @@ feature 'Project in admin panel.' do
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')
   end
-
 end

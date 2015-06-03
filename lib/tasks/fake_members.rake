@@ -2,7 +2,8 @@ namespace :db do
   desc 'Create 50 fake members to test pagination'
   task populate: :environment do
     50.times do
-      Technology.create(title: Faker::Name.title, description: Faker::Lorem.paragraph, technology_group: TechnologyGroup.all.sample, link: Faker::Internet.url)
+      Technology.create(title: Faker::Name.title, description: Faker::Lorem.paragraph,
+                        technology_group: TechnologyGroup.all.sample, link: Faker::Internet.url)
     end
     20.times do
       name = Faker::Name.name
@@ -12,9 +13,8 @@ namespace :db do
       member = Member.create name: name,
                              job_title: job,
                              description: description,
-                             motto: motto,
-                             publish: true
-      src = File.join(Rails.root, "app/assets/images/yuri_skurikhin.png")
+                             motto: motto
+      src = File.join(Rails.root, 'app/assets/images/yuri_skurikhin.png')
       src_file = File.new(src)
       member.avatar = src_file
       member.save!

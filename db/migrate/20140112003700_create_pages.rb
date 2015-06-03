@@ -10,8 +10,8 @@ class CreatePages < ActiveRecord::Migration
       t.belongs_to :category
       t.timestamps
     end
-    Page.create_translation_table! :title => :string, :shortlink => :string, :description => :text,
-                                   :keywords => :text, :content => :text, :tooltip => :text
+    Page.create_translation_table! title: :string, shortlink: :string, description: :text,
+                                   keywords: :text, content: :text, tooltip: :text
   end
 
   def self.down

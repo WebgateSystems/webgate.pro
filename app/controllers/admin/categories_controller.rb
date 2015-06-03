@@ -58,5 +58,4 @@ class Admin::CategoriesController < Admin::HomeController
   def category_params
     params.require(:category).permit(:category_id, :row_position, :name, :altlink, :description)
   end
-
 end

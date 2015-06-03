@@ -6,10 +6,7 @@ class ContactMailer < ActionMailer::Base
 
   def contact_mail(contact)
     @contact = contact
-    subject = t('contact_form')
-    if contact.nickname.present?
-      subject = 'SPAM'
-    end
+    subject = contact.nickname.present? ? 'SPAM' : t('contact_form')
     mail from: '"Notifier" <notifier@webgate.pro>', reply_to: %("#{@contact.name}" <#{contact.email}>), subject: subject
   end
 end

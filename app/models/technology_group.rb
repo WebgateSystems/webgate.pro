@@ -8,5 +8,4 @@ class TechnologyGroup < ActiveRecord::Base
   validates :title, uniqueness: { case_sensitive: false }
 
   translates :title, :description
-
 end
