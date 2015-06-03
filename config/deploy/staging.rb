@@ -1,5 +1,5 @@
 set :stage, :staging
-set :branch, "feature/issue_48"
+set :branch, "staging"
 
 set :full_app_name, "test.webgate.pro"
 set :server_name, "#{fetch(:full_app_name)}"

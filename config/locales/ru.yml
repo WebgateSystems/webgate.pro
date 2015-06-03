@@ -205,3 +205,4 @@ ru:
   was_successfully_created: "успешно создан(а)"
   was_successfully_updated: "успешно обновлен(а)"
   was_successfully_destroyed: "успешно удален(а)"
+  link_translation: "линк локализации"

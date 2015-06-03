@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
         curr_locale = curr_translation.locale
       end
     end
-    lang = params[:lang] || curr_locale || cookies[:lang] || geoip_lang
+    lang = params[:locale] || params[:lang] || curr_locale || cookies[:lang] || geoip_lang
     cookies[:lang] = lang_by_tag(lang)
     I18n.locale = lang
   end
