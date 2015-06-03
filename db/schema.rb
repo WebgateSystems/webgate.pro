@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602115349) do
+ActiveRecord::Schema.define(version: 20150603125959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,14 +66,6 @@ ActiveRecord::Schema.define(version: 20150602115349) do
   end
 
   add_index "feeds", ["slug"], name: "index_feeds_on_slug", unique: true, using: :btree
-
-  create_table "link_translations", force: :cascade do |t|
-    t.string   "link",       limit: 255
-    t.string   "locale",     limit: 255
-    t.string   "link_type",  limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "member_link_translations", force: :cascade do |t|
     t.integer  "member_link_id",             null: false
