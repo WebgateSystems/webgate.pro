@@ -45,10 +45,6 @@ pl:
       category_id: "Punkt(y) menu do którego(ych) ewentualnie może być dowiązana strona"
       category_id_main: "Punkt menu głównego"
       subcategory_id: "Submenu"
-    link_translation:
-      link: "Link"
-      locale: "Locale"
-      link_type: "Type"
     subcategory:
       name: "Nazwa"
       altlink: "Alternatywny link"
@@ -109,7 +105,6 @@ pl:
   users: "Użytkownicy"
   categories: "Menu"
   pages: "Strony"
-  link_translations: "Links"
   projects: "Projekty"
   team: "Zespół"
   members: "Członkowie zespołu"
@@ -207,4 +202,3 @@ pl:
   was_successfully_created: "was successfully created"
   was_successfully_updated: "was successfully updated"
   was_successfully_destroyed: "was successfully destroyed"
-  link_translation: "link lokalizacyjny"

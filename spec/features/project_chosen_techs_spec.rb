@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'Project in admin panel.' do
-
   let(:user) { create(:user) }
   let!(:technology) { create(:technology) }
 
@@ -12,7 +11,7 @@ feature 'Project in admin panel.' do
 
   scenario 'Project should with assigned technology', js: true do
     visit admin_projects_path
-    click_link ('New')
+    click_link('New')
     fill_in 'project[title]', with: 'TestTitleFull'
     fill_in_ckeditor 'Content', with: 'TestContent'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
@@ -20,7 +19,7 @@ feature 'Project in admin panel.' do
     select technology.title, from: 'project_technology_ids', visible: false
     click_button 'Save'
     visit admin_projects_path
-    click_link ('TestTitleFull')
+    click_link('TestTitleFull')
 
     expect(page).to have_content technology.title
   end

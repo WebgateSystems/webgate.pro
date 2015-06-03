@@ -3,9 +3,9 @@
   .form-inputs
     = f.input :name, label: t('activerecord.member.name'), label_html: { class: 'label' }
     = f.input :job_title, label: t('activerecord.member.job_title'), label_html: { class: 'label' }
-    = f.input :motto, label: t('activerecord.member.motto'), label_html: {class: 'label'}
-    = f.input :description, label: t('activerecord.member.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
-    p= f.input :education, label: t('activerecord.member.education'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: {toolbar: 'mini'} }
+    = f.input :motto, label: t('activerecord.member.motto'), label_html: { class: 'label' }
+    = f.input :description, label: t('activerecord.member.description'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }
+    p= f.input :education, label: t('activerecord.member.education'), label_html: { class: 'label' }, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }
     .label= t(:publish)
     - @member.avatar.to_s.empty? ? disabled = true : disabled = false
     = f.input :publish, label: t('activerecord.member.publish'), disabled: disabled
@@ -34,7 +34,7 @@
 
     p
     .label= t(:technologies)
-    = f.association :technologies, collection: @technologies.map{|t| [t.title,t.id,{"data-color" => t.technology_group.color}]}, include_blank: true, label: false, input_html: {class: 'chosen-select'}
+    = f.association :technologies, collection: @technologies.map { |t| [t.title, t.id, { 'data-color' => t.technology_group.color }] }, include_blank: true, label: false, input_html: { class: 'chosen-select' }
     br
   .form-actions
     = f.submit t('web_app_theme.save'), class: 'button success'

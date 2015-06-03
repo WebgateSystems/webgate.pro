@@ -24,6 +24,6 @@ class Technology < ActiveRecord::Base
   protected
 
   def update_members_cache
-    self.members.update_all(updated_at: Time.now)
+    members.update_all(updated_at: Time.now)
   end
 end

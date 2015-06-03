@@ -8,22 +8,22 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 if User.count == 0
-  User.create email: "admin@webgate.pro", password: "admin789", password_confirmation: "admin789"
+  User.create email: 'admin@webgate.pro', password: 'admin789', password_confirmation: 'admin789'
 end
 
 if Member.count == 0
   I18n.locale = 'ru'
   member = Member.create name: 'Юрий Скурихин',
-                job_title: 'Ruby on Rails разработчик',
-                description: "<p>На рельсах с 2014 года</p>\r\n\r\n<p>- *nix<br />\r\n- ruby<br />\r\n- Rails 4<br />\r\n- PostgreSQL<br />\r\n- тестирование (rspec, capybara)&nbsp;<br />\r\n- Git (git flow)<br />\r\n- Github, Gitlab<br />\r\n- Slim, Haml<br />\r\n- CoffeeScript/JS<br />\r\n- jQuery(UI)<br />\r\n- AJAX<br />\r\n- SASS/CSS<br />\r\n- JSON API<br />\r\n- Heroku<br />\r\n- AWS<br />\r\n- Bootstrap<br />\r\n- Foundation<br />\r\n- Интеграция с внешними веб-сервисами<br />\r\n- Реализация мобильных версий</p>\r\n",
-                education: "<h4><strong>Московский Университет Государственного Управления</strong></h4>\r\n\r\n<p>Инженер-программист -&nbsp;Информационные системы в экономике</p>\r\n\r\n<p>2003 - 2008</p>\r\n",
-                motto: 'Per aspera ad astra',
-                publish: true
+                         job_title: 'Ruby on Rails разработчик',
+                         description: "<p>На рельсах с 2014 года</p>\r\n\r\n<p>- *nix<br />\r\n- ruby<br />\r\n- Rails 4<br />\r\n- PostgreSQL<br />\r\n- тестирование (rspec, capybara)&nbsp;<br />\r\n- Git (git flow)<br />\r\n- Github, Gitlab<br />\r\n- Slim, Haml<br />\r\n- CoffeeScript/JS<br />\r\n- jQuery(UI)<br />\r\n- AJAX<br />\r\n- SASS/CSS<br />\r\n- JSON API<br />\r\n- Heroku<br />\r\n- AWS<br />\r\n- Bootstrap<br />\r\n- Foundation<br />\r\n- Интеграция с внешними веб-сервисами<br />\r\n- Реализация мобильных версий</p>\r\n",
+                         education: "<h4><strong>Московский Университет Государственного Управления</strong></h4>\r\n\r\n<p>Инженер-программист -&nbsp;Информационные системы в экономике</p>\r\n\r\n<p>2003 - 2008</p>\r\n",
+                         motto: 'Per aspera ad astra',
+                         publish: true
   member.avatar = Rails.root.join('app/assets/images/yuri_skurikhin.png').open
   member.save!
 
   I18n.locale = 'en'
-  #todo
+  # todo
 
   member = Member.find 1
   member.name = 'Yuri Skurikhin'
@@ -34,7 +34,7 @@ if Member.count == 0
   member.save
 
   I18n.locale = 'pl'
-  #todo
+  # todo
 
   member = Member.find 1
   member.name = 'Yuri Skurikhin'
@@ -49,15 +49,14 @@ end
 if Project.count == 0
   I18n.locale = 'ru'
   project = Project.create title: 'Сервис Auto Centrum',
-                content: 'Сервис Auto Centrum',
-                livelink: 'http://autocentrumserwis.pl',
-                publish: true
-  project.collage = Rails.root.join("app/assets/images/collage1.jpg").open
+                           content: 'Сервис Auto Centrum',
+                           livelink: 'http://autocentrumserwis.pl',
+                           publish: true
+  project.collage = Rails.root.join('app/assets/images/collage1.jpg').open
   project.save!
 
-
   I18n.locale = 'en'
-  #todo
+  # todo
 
   project = Project.find 1
   project.title = 'Auto Service Centrum'
@@ -65,7 +64,7 @@ if Project.count == 0
   project.save
 
   I18n.locale = 'pl'
-  #todo
+  # todo
 
   project = Project.find 1
   project.title = 'Auto Centrum Serwis'
@@ -83,32 +82,32 @@ if TechnologyGroup.count == 0
   TechnologyGroup.create title: 'Mobile platforms', description: 'Mobile technologies'
 
   I18n.locale = 'pl'
-  #todo
+  # todo
 
   I18n.locale = 'ru'
   t = TechnologyGroup.find 1
-  t.title = "Администрирование"
-  t.description = "Группа административных технологий"
+  t.title = 'Администрирование'
+  t.description = 'Группа административных технологий'
   t.save
 
   t = TechnologyGroup.find 2
-  t.title = "Дизайн"
-  t.description = "Группа технологий дизайна"
+  t.title = 'Дизайн'
+  t.description = 'Группа технологий дизайна'
   t.save
 
   t = TechnologyGroup.find 3
-  t.title = "Фронтенд"
-  t.description = "Группа фронтенд технологий"
+  t.title = 'Фронтенд'
+  t.description = 'Группа фронтенд технологий'
   t.save
 
   t = TechnologyGroup.find 4
-  t.title = "Бэкенд"
-  t.description = "Группа бэкенд технологий"
+  t.title = 'Бэкенд'
+  t.description = 'Группа бэкенд технологий'
   t.save
 
   t = TechnologyGroup.find 5
-  t.title = "Мобильные платформы"
-  t.description = "Мобильные технологии"
+  t.title = 'Мобильные платформы'
+  t.description = 'Мобильные технологии'
   t.save
 end
 
@@ -124,131 +123,128 @@ if Technology.count == 0
   Technology.create title: 'Apache Cassandra', description: 'Cassandra', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/Apache_Cassandra'
 
   I18n.locale = 'pl'
-  #todo
+  # todo
 
   I18n.locale = 'ru'
-  #todo
+  # todo
 end
-
 
 if Category.count == 0
   I18n.locale = 'pl'
-  Category.create name: "Główna", :altlink => "/", position: 1
-  Category.create name: "O nas", altlink: "o-nas", position: 2
-  Category.create name: "Portfolio", altlink: "wybrane-realizacje", position: 3
-  Category.create name: "Zespół", altlink: "zespół", position: 4
-  Category.create name: "Praca", altlink: "praca", position: 5
-  Category.create name: "Kontakt", altlink: "#footer", position: 6
+  Category.create name: 'Główna', altlink: '/', position: 1
+  Category.create name: 'O nas', altlink: 'o-nas', position: 2
+  Category.create name: 'Portfolio', altlink: 'wybrane-realizacje', position: 3
+  Category.create name: 'Zespół', altlink: 'zespół', position: 4
+  Category.create name: 'Praca', altlink: 'praca', position: 5
+  Category.create name: 'Kontakt', altlink: '#footer', position: 6
 
   I18n.locale = 'en'
   c = Category.find 1
-  c.name = "Main"
-  c.altlink = "/"
+  c.name = 'Main'
+  c.altlink = '/'
   c.save
 
   c = Category.find 2
-  c.name = "About"
-  c.altlink = "about"
+  c.name = 'About'
+  c.altlink = 'about'
   c.save
 
   c = Category.find 3
-  c.name = "Portfolio"
-  c.altlink = "portfolio"
+  c.name = 'Portfolio'
+  c.altlink = 'portfolio'
   c.save
 
   c = Category.find 4
-  c.name = "Team"
-  c.altlink = "team"
+  c.name = 'Team'
+  c.altlink = 'team'
   c.save
 
   c = Category.find 5
-  c.name = "Job"
-  c.altlink = "job"
+  c.name = 'Job'
+  c.altlink = 'job'
   c.save
 
   c = Category.find 6
-  c.name = "Contact"
-  c.altlink = "#footer"
+  c.name = 'Contact'
+  c.altlink = '#footer'
   c.save
 
   I18n.locale = 'ru'
   c = Category.find 1
-  c.name = "Главная"
-  c.altlink = "/"
+  c.name = 'Главная'
+  c.altlink = '/'
   c.save
 
   c = Category.find 2
-  c.name = "О нас"
-  c.altlink = "о-нас"
+  c.name = 'О нас'
+  c.altlink = 'о-нас'
   c.save
 
   c = Category.find 3
-  c.name = "Портфолио"
-  c.altlink = "портфолио"
+  c.name = 'Портфолио'
+  c.altlink = 'портфолио'
   c.save
 
   c = Category.find 4
-  c.name = "Команда"
-  c.altlink = "команда"
+  c.name = 'Команда'
+  c.altlink = 'команда'
   c.save
 
   c = Category.find 5
-  c.name = "Работа"
-  c.altlink = "работа"
+  c.name = 'Работа'
+  c.altlink = 'работа'
   c.save
 
   c = Category.find 6
-  c.name = "Контакт"
-  c.altlink = "#footer"
+  c.name = 'Контакт'
+  c.altlink = '#footer'
   c.save
 end
-
 
 if Page.count == 0
   I18n.locale = 'pl'
   Page.create shortlink: '/', title: 'Główna', description: 'Główna',
               keywords: 'Główna', category_id: 1,
-              content: "Główna", position: 1
+              content: 'Główna', position: 1
 
   I18n.locale = 'en'
   c = Page.find 1
-  c.shortlink = "/"
-  c.title = "Main"
-  c.description = "Main"
-  c.keywords = "Main"
-  c.content = "Main"
+  c.shortlink = '/'
+  c.title = 'Main'
+  c.description = 'Main'
+  c.keywords = 'Main'
+  c.content = 'Main'
   c.save
 
   I18n.locale = 'ru'
   c = Page.find 1
-  c.shortlink = "/"
-  c.title = "Главная"
-  c.description = "Главная"
-  c.keywords = "Главная"
-  c.content = "Главная"
+  c.shortlink = '/'
+  c.title = 'Главная'
+  c.description = 'Главная'
+  c.keywords = 'Главная'
+  c.content = 'Главная'
   c.save
-
 
   I18n.locale = 'pl'
   Page.create shortlink: 'o-nas', title: 'O nas', description: 'O nas',
               keywords: 'Webgate Systems', category_id: 2,
-              content: "O nas", position: 2
+              content: 'O nas', position: 2
 
   I18n.locale = 'en'
   c = Page.find 2
-  c.shortlink = "about"
-  c.title = "About"
-  c.description = "About"
-  c.keywords = "About"
-  c.content = "About"
+  c.shortlink = 'about'
+  c.title = 'About'
+  c.description = 'About'
+  c.keywords = 'About'
+  c.content = 'About'
   c.save
 
   I18n.locale = 'ru'
   c = Page.find 2
-  c.shortlink = "о-нас"
-  c.title = "О нас"
-  c.description = "О нас"
-  c.keywords = "О нас"
-  c.content = "О нас"
+  c.shortlink = 'о-нас'
+  c.title = 'О нас'
+  c.description = 'О нас'
+  c.keywords = 'О нас'
+  c.content = 'О нас'
   c.save
 end

@@ -19,7 +19,6 @@ en:
     category: "menu"
     image_catalog: "image catalog"
     page: "page"
-    link_translation: "link translation"
     subcategory: "submenu"
     member: "member"
     project: "project"
@@ -47,10 +46,6 @@ en:
       category_id: "Menu items page belongs to"
       category_id_main: "Main menu"
       subcategory_id: "Submenu"
-    link_translation:
-      link: "Link"
-      locale: "Locale"
-      link_type: "Type"
     subcategory:
       name: "Name"
       altlink: "Altlink"
@@ -111,7 +106,6 @@ en:
   users: "Users"
   categories: "Menu"
   pages: "Pages"
-  link_translations: "Links"
   projects: "Projects"
   team: "Team"
   members: "Team members"
@@ -208,4 +202,3 @@ en:
   was_successfully_created: "was successfully created"
   was_successfully_updated: "was successfully updated"
   was_successfully_destroyed: "was successfully destroyed"
-  link_translation: "link translation"

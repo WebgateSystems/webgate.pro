@@ -9,4 +9,5 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-WebgatePro::Application.config.secret_key_base = 'cbd2e728cca3ca17296828cacf01dea0f76258e0f5eaedd30c0ae8169575850d92f8bbe2c86cc7420077b46d189729a4264e951404f9ebb1750c61d110bdb59d'
+WebgatePro::Application.config.secret_key_base =
+  'cbd2e728cca3ca17296828cacf01dea0f76258e0f5eaedd30c0ae8169575850d92f8bbe2c86cc7420077b46d189729a4264e951404f9ebb1750c61d110bdb59d'

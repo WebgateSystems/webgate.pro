@@ -6,7 +6,7 @@
     = f.input :title, label: t('activerecord.page.title'), label_html: { class: 'label' }
     = f.input :description, label: t('activerecord.page.description'), label_html: { class: 'label' }
     = f.input :keywords, label: t('activerecord.page.keywords'), label_html: { class: 'label' }
-    = f.input :content, label: t('activerecord.page.content'), label_html: { class: 'label' }, as: :ckeditor, input_html: { class: 'ckeditor', ckeditor: {toolbar: 'mini'} }
+    = f.input :content, label: t('activerecord.page.content'), label_html: { class: 'label' }, as: :ckeditor, input_html: { class: 'ckeditor', ckeditor: { toolbar: 'mini' } }
     p
     = f.label :category_id, t('activerecord.page.category_id_main'), class: :label
     = f.collection_select :category_id, @categories, :id, :name

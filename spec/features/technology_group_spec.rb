@@ -11,15 +11,15 @@ feature 'technology_group in admin panel.' do
   end
 
   scenario 'Try drag and drop on index', js: true do
-    click_link ('New')
-    fill_in 'technology_group[title]', with: "TestTitle2"
-    fill_in 'technology_group[description]', with: "Test Description2"
+    click_link('New')
+    fill_in 'technology_group[title]', with: 'TestTitle2'
+    fill_in 'technology_group[description]', with: 'Test Description2'
     click_button 'Save'
     visit admin_technology_groups_path
-    dest_element = find('td', text: "TestTitle2")
-    source_element = find('td', text: "TestTitle1")
+    dest_element = find('td', text: 'TestTitle2')
+    source_element = find('td', text: 'TestTitle1')
     source_element.drag_to dest_element
-    sleep 2 #wait for ajax complete
+    sleep 2 # wait for ajax complete
     page.all(:link, 'Show')[1].click
     expect(current_path).to eq admin_technology_group_path(TechnologyGroup.last.id)
     visit admin_technology_groups_path
@@ -54,7 +54,7 @@ feature 'technology_group in admin panel.' do
   end
 
   scenario 'Show should display our technology_group info' do
-    click_link ('TestTitle0')
+    click_link('TestTitle0')
     expect(page).to have_content 'Title:'
     expect(page).to have_content 'TestTitle0'
     expect(page).to have_content 'Description:'
@@ -62,7 +62,7 @@ feature 'technology_group in admin panel.' do
   end
 
   scenario 'Create technology_group should create technology_groups' do
-    click_link ('New')
+    click_link('New')
     fill_in 'technology_group[title]', with: 'TestTitleBrandNew'
     fill_in 'technology_group[description]', with: 'PewPewPew'
     click_button 'Save'

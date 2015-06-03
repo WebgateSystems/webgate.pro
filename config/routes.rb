@@ -36,7 +36,6 @@ WebgatePro::Application.routes.draw do
       resources :technologies do
       end
     end
-    resources :link_translations
     root to: 'home#index'
   end
 

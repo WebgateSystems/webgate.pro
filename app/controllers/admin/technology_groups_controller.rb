@@ -71,5 +71,4 @@ class Admin::TechnologyGroupsController < Admin::HomeController
   def technology_group_params
     params.require(:technology_group).permit(:technology_group_id, :row_position, :technology_id, :title, :description, :color)
   end
-
 end
