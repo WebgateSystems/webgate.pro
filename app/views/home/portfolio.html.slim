@@ -1,6 +1,6 @@
-- provide(:title, t('portfolio'))
+- provide(:title, t(:portfolio))
 .portfolio
-  h1.page_title= t('portfolio')
+  h1.page_title= t(:portfolio)
   - @projects.each do |project|
     .portfolio_block
       = image_tag project.collage.url, width: 940, height: 244
@@ -15,7 +15,7 @@
           = project.content.try(:html_safe)
           .work_info
             p
-              em = t('used_technologies')
+              em = t(:used_technologies)
               span
                 - project.technologies.each do |tech|
                   = tech.title
