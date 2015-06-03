@@ -19,7 +19,7 @@ en:
     category: "menu"
     image_catalog: "image catalog"
     page: "page"
-    link_translation: "links"
+    link_translation: "link translation"
     subcategory: "submenu"
     member: "member"
     project: "project"
@@ -208,3 +208,4 @@ en:
   was_successfully_created: "was successfully created"
   was_successfully_updated: "was successfully updated"
   was_successfully_destroyed: "was successfully destroyed"
+  link_translation: "link translation"

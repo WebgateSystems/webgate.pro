@@ -19,7 +19,7 @@ class Member < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   def technology_groups
-    TechnologyGroup.where(id: technologies.map(&:technology_group_id).uniq).rank(:position)
+    TechnologyGroup.includes(:technologies, :translations).where(id: self.technologies.includes(:translations).map(&:technology_group_id).uniq).rank(:position)
   end
 
   protected

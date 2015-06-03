@@ -3,7 +3,7 @@ class TechnologiesMember < ActiveRecord::Base
   ranks :position, with_same: :member_id
 
   belongs_to :technology
-  belongs_to :member
+  belongs_to :member, touch: true
 
   validates_associated :technology
   validates_associated :member
