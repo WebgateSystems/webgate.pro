@@ -1,12 +1,12 @@
 - provide(:title, t(:team))
 - if @members.any?
-  - cache cache_key_for_members
+  - cache([cache_key_for_members, locale: I18n.locale])
     .team_page
       h1.page_title= t(:team)
       - @members.in_groups_of(3, false).each do |member_array|
         .row
           - member_array.each do |member|
-            - cache member
+            - cache([member, locale: I18n.locale])
               .team_block
                 = image_tag member.avatar.url(:avatar)
                 span.team_name= member.name
