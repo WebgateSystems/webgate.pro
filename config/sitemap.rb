@@ -5,13 +5,20 @@ host 'webgate.pro'
 sitemap :site do
   url root_url, last_mod: Time.now, change_freq: 'daily', priority: 1.0
 
-  ApplicationController::PUBLIC_LANGS.map do |l|
-    url eval('portfolio_' + "#{l.first.to_s}" + '_url'), last_mod: Time.now, change_freq: 'daily', priority: 1.0
-    url eval('team_' + "#{l.first.to_s}" + '_url'), last_mod: Time.now, change_freq: 'daily', priority: 1.0
-    # url pages_url(locale: l.first.to_s)
-    # Page.published.each do |page|
-    #  url page(locale: l.first.to_s)
-    # end
+  ApplicationController::PUBLIC_LANGS.map(&:first).each do |l|
+    url URI.unescape(eval('portfolio_' + "#{l}" + '_url')), last_mod: Time.now, change_freq: 'daily', priority: 1.0
+    url URI.unescape(eval('team_' + "#{l}" + '_url')), last_mod: Time.now, change_freq: 'daily', priority: 1.0
+
+    Globalize.with_locale(l) do
+      Page.with_translations(l).each do |page|
+        url root_url + page.shortlink
+      end
+    end
+
+    #url feeds_url(locale: l)
+    #Feed.published.each do |feed|
+    #  url feed(locale: l)
+    #end
   end
 end
 # You can have multiple sitemaps like the above - just make sure their names are different.
