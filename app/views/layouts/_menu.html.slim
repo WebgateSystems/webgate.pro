@@ -5,7 +5,8 @@
 ul.top_nav
   - @menu.each do |m|
     - compare_path = URI.escape m.altlink
-    - (request.path == compare_path or request.path == "/"+compare_path ) ? @class = "active" : @class = ""
+    - main_path = URI.escape(m.name.mb_chars.downcase.to_s)
+    - (request.path == compare_path or request.path == "/" + compare_path or request.path == "/" + main_path ) ? @class = "active" : @class = ""
     li class="#{ @class }"
       = link_to m.name, m.altlink
 
@@ -13,7 +14,8 @@ span.mob.ico_main
 ul.mob.mob_nav.main
   - @menu.each do |m|
     - compare_path = URI.escape m.altlink
-    - (request.path == compare_path or request.path == "/"+compare_path ) ? @class = "active" : @class = ""
+    - main_path = URI.escape(m.name.mb_chars.downcase.to_s)
+    - (request.path == compare_path or request.path == "/" + compare_path or request.path == "/" + main_path ) ? @class = "active" : @class = ""
     li class="#{ @class }"
       = link_to m.altlink do
         span
@@ -45,7 +47,8 @@ span.mob.ico_lang
 ul.mob.mob_nav
   - other_mobile_langs.each do |l|
     li
-      = link_to root_path(lang: l[0]) do
-        span
-          = l[1]
+      - Globalize.with_locale(l[0]) do
+        = change_mobile_lang_path(l[0], l[1])
+
+
 

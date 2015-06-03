@@ -1,0 +1,18 @@
+.block
+  .secondary-navigation
+    ul.button-group.radius
+      li= link_to t('web_app_theme.list'), admin_link_translations_path, class: 'button'
+      li= link_to t('web_app_theme.new'), new_admin_link_translation_path, class: 'button'
+      li= link_to t('web_app_theme.edit'), edit_admin_link_translation_path(@link_translation), class: 'button success'
+      li= link_to t('web_app_theme.delete'), admin_link_translation_path(@link_translation), method: :delete, data: {confirm: t(:are_you_sure)}, class: 'button alert'
+  .content
+    .inner
+      p
+        b= t('activerecord.link_translation.link') + ': '
+        = @link_translation.link
+      p
+        b= t('activerecord.link_translation.locale') + ': '
+        = @link_translation.locale
+      p
+        b= t('activerecord.link_translation.link_type') + ': '
+        = @link_translation.link_type

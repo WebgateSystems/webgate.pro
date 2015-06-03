@@ -3,7 +3,7 @@ class Admin::TechnologiesController < Admin::HomeController
   before_action :set_technology_groups, only: [:new, :create, :edit, :update]
 
   def index
-    @technologies = Technology.order(:id).includes(:technology_group)
+    @technologies = Technology.order(:id).includes(:technology_group, technology_group: :translations)
   end
 
   def show

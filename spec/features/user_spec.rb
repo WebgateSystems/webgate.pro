@@ -14,11 +14,6 @@ feature 'Users in admin panel.' do
     expect(current_path).to eq admin_users_path
   end
 
-  scenario 'Link new should work good' do
-    click_link('New')
-    expect(current_path).to eq new_admin_user_path
-  end
-
   scenario 'Users root path should have list of users' do
     expect(page).to have_content 'Email'
   end

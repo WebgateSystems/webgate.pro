@@ -45,6 +45,10 @@ ru:
       category_id: "Меню"
       category_id_main: "Главное меню"
       subcategory_id: "Подменю"
+    link_translation:
+      link: "Линк"
+      locale: "Локаль"
+      link_type: "Тип"
     subcategory:
       name: "Имя"
       altlink: "Альтернативный линк"
@@ -105,6 +109,7 @@ ru:
   users: "Пользователи"
   categories: "Меню"
   pages: "Страницы"
+  link_translations: "Линки"
   projects: "Проекты"
   team: "Kоманда"
   members: "Члены команды"
@@ -129,6 +134,7 @@ ru:
   content: "Контент"
   admin_panel: "Панель администратора"
   publish: "Публиковать"
+  error_not_unique: "Ошибка: поле не уникально"
   error_404: "Страница не найдена (ошибка 404)!"
   error_404_message: "Если Вы считаете, что это ошибка и так не должно быть - пожалуйста, сообщите об этом с помощью контактной формы или с помощью емейл. Спасибо!"
   add_collage: "Загрузить коллаж"
@@ -199,3 +205,4 @@ ru:
   was_successfully_created: "успешно создан(а)"
   was_successfully_updated: "успешно обновлен(а)"
   was_successfully_destroyed: "успешно удален(а)"
+  link_translation: "линк локализации"
