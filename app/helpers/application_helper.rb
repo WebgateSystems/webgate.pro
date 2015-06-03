@@ -16,6 +16,19 @@ module ApplicationHelper
     (link && !link.blank?) ? link : 'javascript:;'
   end
 
+  def compare_path(menu_item)
+    URI.escape menu_item.altlink
+  end
+
+  def main_menu_path(menu_item)
+    URI.escape(menu_item.name.mb_chars.downcase.to_s)
+  end
+
+  def menu_item_active?(menu_item)
+    request.path == compare_path(menu_item) || request.path == '/' + compare_path(menu_item) ||
+      request.path == '/' + main_menu_path(menu_item)
+  end
+
   def main_url(lang)
     case lang
     when 'pl'
