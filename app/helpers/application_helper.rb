@@ -60,7 +60,7 @@ module ApplicationHelper
       main_url(lang)
     elsif params[:action] == 'showbyshortlink'
       page = Page.with_translations(locale).find_by(shortlink: params[:shortlink])
-      link_to(lang.upcase, (page.nil? or page.shortlink == params[:shortlink]) ? not_found_url(lang) : page.shortlink)
+      link_to(lang.upcase, (page.nil? || page.shortlink == params[:shortlink]) ? not_found_url(lang) : page.shortlink)
     else
       link_to(lang.upcase, locale: lang)
     end
@@ -71,7 +71,7 @@ module ApplicationHelper
       mobile_main_url(lang, label)
     elsif params[:action] == 'showbyshortlink'
       page = Page.with_translations(locale).find_by(shortlink: params[:shortlink])
-      link_to((page.nil? or page.shortlink == params[:shortlink]) ? not_found_url(lang) : page.shortlink) do
+      link_to((page.nil? || page.shortlink == params[:shortlink]) ? not_found_url(lang) : page.shortlink) do
         raw("<span> #{label}</span>")
       end
     else
@@ -80,5 +80,4 @@ module ApplicationHelper
       end
     end
   end
-
 end

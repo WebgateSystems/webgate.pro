@@ -46,5 +46,4 @@ class Admin::LinkTranslationsController < Admin::HomeController
   def link_translation_params
     params.require(:link_translation).permit(:link, :locale, :link_type)
   end
-
 end

@@ -59,6 +59,6 @@ feature 'Change language' do
   scenario 'Check active class on current page' do
     en_page.update(shortlink: category.altlink)
     visit "/#{en_page.shortlink}"
-    expect(page).to have_css ('.top_nav li.active')
+    expect(page).to have_css('.top_nav li.active')
   end
 end

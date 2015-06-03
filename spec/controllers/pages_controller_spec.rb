@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe PagesController do
-
   let!(:en_page) { create(:en_page) }
 
   describe "GET 'showbyshortlink'" do

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'LinkTranslation in admin panel.' do
   let(:user) { create(:user) }
-  let!(:link_translation) { create(:link_translation)}
+  let!(:link_translation) { create(:link_translation) }
 
   before do
     sign_in(user)
@@ -37,12 +37,12 @@ feature 'LinkTranslation in admin panel.' do
   end
 
   scenario 'Show should display our link information' do
-    click_link (link_translation.link)
+    click_link(link_translation.link)
     expect(page).to have_content link_translation.link_type
   end
 
   scenario 'Create LinkTranslation should create' do
-    click_link ('New')
+    click_link('New')
     fill_in 'link_translation[link]', with: 'TestLink'
     click_button 'Save'
     visit admin_link_translations_path

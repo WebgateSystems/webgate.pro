@@ -19,10 +19,10 @@ feature 'Category in admin panel.' do
   end
 
   scenario 'Try drag and drop on index', js: true do
-    click_link ('New')
-    fill_in 'category[name]', with: "TestTitleLast"
-    fill_in 'category[altlink]', with: "TestLinkLast"
-    fill_in 'category[description]', with: "TestDescLast"
+    click_link('New')
+    fill_in 'category[name]', with: 'TestTitleLast'
+    fill_in 'category[altlink]', with: 'TestLinkLast'
+    fill_in 'category[description]', with: 'TestDescLast'
     click_button 'Save'
     visit admin_categories_path
     dest_element = find('td', text: 'TestTitleLast')
@@ -43,10 +43,10 @@ feature 'Category in admin panel.' do
   end
 
   scenario 'Category root path links show, edit should work' do
-    page.all(:link,'Show')[0].click
+    page.all(:link, 'Show')[0].click
     expect(current_path).to eq admin_category_path(Category.last.id)
     visit admin_categories_path
-    page.all(:link,'Edit')[0].click
+    page.all(:link, 'Edit')[0].click
     expect(current_path).to eq edit_admin_category_path(Category.last.id)
   end
 

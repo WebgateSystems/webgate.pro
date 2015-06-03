@@ -11,7 +11,8 @@ class HomeController < ApplicationController
   end
 
   def team
-    @members = Member.published.rank(:position).includes(:translations, :member_links, member_links: :translations).page(params[:page]).per(12)
+    @members = Member.published.rank(:position).includes(:translations, :member_links,
+                                                         member_links: :translations).page(params[:page]).per(12)
   end
 
   def sitemap

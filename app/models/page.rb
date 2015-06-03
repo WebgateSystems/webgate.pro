@@ -15,17 +15,14 @@ class Page < ActiveRecord::Base
 
   def check_shortlink_unique
     shortlinks = []
-    Page.where.not(id: self.id).includes(:translations).each do |page|
+    Page.where.not(id: id).includes(:translations).each do |page|
       I18n.available_locales.each do |l|
         Globalize.with_locale(l) do
           shortlinks << page.shortlink.downcase if page.shortlink
         end
       end
     end
-    if self.shortlink && shortlinks.include?(self.shortlink.downcase)
-      errors.add(:shortlink, I18n.t(:error_not_unique))
-      return
-    end
+    errors.add(:shortlink, I18n.t(:error_not_unique)) if shortlink && shortlinks.include?(shortlink.downcase)
   end
 
   def remove_translation_link
