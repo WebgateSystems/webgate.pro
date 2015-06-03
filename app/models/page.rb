@@ -1,7 +1,4 @@
 class Page < ActiveRecord::Base
-  before_save :remove_translation_link
-  after_save :add_translation_link
-
   belongs_to :category
   validates_associated :category
 
@@ -23,13 +20,5 @@ class Page < ActiveRecord::Base
       end
     end
     errors.add(:shortlink, I18n.t(:error_not_unique)) if shortlink && shortlinks.include?(shortlink.downcase)
-  end
-
-  def remove_translation_link
-    LinkTranslation.where(link_type: 'page', link: shortlink, locale: I18n.locale.to_s).first.try(:destroy)
-  end
-
-  def add_translation_link
-    LinkTranslation.create(link: shortlink, locale: I18n.locale.to_s, link_type: 'page')
   end
 end
