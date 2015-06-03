@@ -1,8 +1,8 @@
 - if projects.count >= 3
   .carousel
     .carousel_content
-      h2 = t('recent_projects')
-      = link_to((t('see_more') + ' &raquo;').html_safe, portfolio_path, class: 'carousel_more')
+      h2 = t(:recent_projects)
+      = link_to((t(:see_more) + ' &raquo;').html_safe, portfolio_path, class: 'carousel_more')
       .carousel_block
         ul.bx_carousel
           - projects.each do |project|
