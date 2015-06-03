@@ -28,11 +28,6 @@ feature 'Technology in admin panel.' do
     expect(current_path).to eq admin_technologies_path
   end
 
-  scenario 'Link new should work good' do
-    click_link('New')
-    expect(current_path).to eq new_admin_technology_path
-  end
-
   scenario 'Page root path should have list of pages' do
     expect(page).to have_content 'Technology group title'
     expect(page).to have_content 'Title'
