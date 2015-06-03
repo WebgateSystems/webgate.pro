@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 feature 'Home page' do
-
   before do
-    visit "/"
+    visit '/'
     reset_email
   end
 
@@ -31,5 +30,4 @@ feature 'Home page' do
     expect(ActionMailer::Base.deliveries.count).to_not eq(1)
     expect(last_email).to_not have_content('TestContent')
   end
-
 end

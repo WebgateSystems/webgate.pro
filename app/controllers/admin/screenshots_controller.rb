@@ -7,7 +7,7 @@ class Admin::ScreenshotsController < Admin::HomeController
     if @screenshot.save
       render json: { message: 'success', fileID: @screenshot.id }, status: 200
     else
-      render json: { error: @screenshot.errors.full_messages.join(',')}, status: 400
+      render json: { error: @screenshot.errors.full_messages.join(',') }, status: 400
     end
   end
 
@@ -32,5 +32,4 @@ class Admin::ScreenshotsController < Admin::HomeController
   def screenshot_params
     params.require(:screenshot).permit(:file, :file_cache, :project_id, :position)
   end
-
 end

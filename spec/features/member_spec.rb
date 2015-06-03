@@ -1,14 +1,17 @@
 require 'rails_helper'
 
 feature 'Member in admin panel.' do
-
   let(:user) { create(:user) }
-  let!(:member0) { Member.create(name: 'TestName0', job_title: 'TestJobTitle0', education: 'TestEducation0',
-      description: 'TestDesc0', motto: 'TestMotto0',
-      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) }
-  let!(:member1) { Member.create(name: 'TestName1', job_title: 'TestJobTitle1', education: 'TestEducation1',
-      description: 'TestDesc1', motto: 'TestMotto1',
-      avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png'))) }
+  let!(:member0) do
+    Member.create(name: 'TestName0', job_title: 'TestJobTitle0', education: 'TestEducation0',
+                  description: 'TestDesc0', motto: 'TestMotto0',
+                  avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png')))
+  end
+  let!(:member1) do
+    Member.create(name: 'TestName1', job_title: 'TestJobTitle1', education: 'TestEducation1',
+                  description: 'TestDesc1', motto: 'TestMotto1',
+                  avatar: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png')))
+  end
 
   before do
     sign_in(user)
@@ -16,19 +19,19 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Try drag and drop on index', js: true do
-    click_link ('New')
-    fill_in 'member[name]', with: "TestName2"
-    fill_in 'member[job_title]', with: "TestJobTitle2"
-    fill_in_ckeditor 'Description', with: "TestDesc2"
-    fill_in_ckeditor 'Education', with: "TestEducation2"
-    fill_in 'member[motto]', with: "TestMotto2"
+    click_link('New')
+    fill_in 'member[name]', with: 'TestName2'
+    fill_in 'member[job_title]', with: 'TestJobTitle2'
+    fill_in_ckeditor 'Description', with: 'TestDesc2'
+    fill_in_ckeditor 'Education', with: 'TestEducation2'
+    fill_in 'member[motto]', with: 'TestMotto2'
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
     click_button 'Save'
     visit admin_members_path
-    dest_element = find('td', text: "TestName2")
-    source_element = find('td', text: "TestName1")
+    dest_element = find('td', text: 'TestName2')
+    source_element = find('td', text: 'TestName1')
     source_element.drag_to dest_element
-    sleep 2 #wait for ajax complete
+    sleep 2
     page.all(:link, 'Show')[1].click
     expect(current_path).to eq admin_member_path(Member.last.id)
     visit admin_members_path
@@ -63,7 +66,7 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Show should display our member information' do
-    click_link ('TestName0')
+    click_link('TestName0')
     expect(page).to have_content 'Name:'
     expect(page).to have_content 'TestName0'
     expect(page).to have_content 'Description:'
@@ -75,7 +78,7 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Create member should create member' do
-    click_link ('New')
+    click_link('New')
     fill_in 'member[name]', with: 'TestNamePew'
     fill_in 'member[job_title]', with: 'TestJobTitlePew'
     fill_in 'member[description]', with: 'TestDescPew'
@@ -92,14 +95,14 @@ feature 'Member in admin panel.' do
   end
 
   scenario 'Check publish. Here should be true', js: true do
-    click_link ('New')
+    click_link('New')
     fill_in 'member[name]', with: 'TestNamePew'
     fill_in 'member[job_title]', with: 'TestJobTitlePew'
-    fill_in_ckeditor 'Description', with: "TestDescPew"
-    fill_in_ckeditor 'Education', with: "TestEducPew"
+    fill_in_ckeditor 'Description', with: 'TestDescPew'
+    fill_in_ckeditor 'Education', with: 'TestEducPew'
     fill_in 'member[motto]', with: 'TestMottoPew'
     attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
-    find(:css, "#member_publish").set(true)
+    find(:css, '#member_publish').set(true)
     click_button 'Save'
     visit admin_members_path
     expect(page).to have_content 'true'
@@ -110,5 +113,4 @@ feature 'Member in admin panel.' do
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')
   end
-
 end

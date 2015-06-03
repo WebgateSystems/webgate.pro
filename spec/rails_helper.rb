@@ -1,6 +1,6 @@
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'shoulda/matchers'
 require 'capybara/rails'
@@ -9,11 +9,11 @@ require 'sidekiq/testing'
 
 Sidekiq::Testing.inline!
 
-Capybara.javascript_driver = :webkit #default selenium
+Capybara.javascript_driver = :webkit # default selenium
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -40,10 +40,10 @@ RSpec.configure do |config|
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
   #
-  #config.mock_with :mocha
+  # config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
-  #Capybara.default_wait_time = 10
+  # Capybara.default_wait_time = 10
 
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL, type: :feature
@@ -58,7 +58,7 @@ RSpec.configure do |config|
   config.before :each, :js, type: :feature do |example|
     if example.metadata[:js]
       page.driver.block_unknown_urls if Capybara.javascript_driver == :webkit
-      #page.driver.allow_url('api.stripe.com')
+      # page.driver.allow_url('api.stripe.com')
     end
   end
 
@@ -85,7 +85,7 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = 'random'
 
   config.infer_spec_type_from_file_location!
 end

@@ -8,10 +8,10 @@ namespace :db do
       p.technologies.each do |t|
         techs << t.id
       end
-      array_of_hashes << {p.id => techs}
+      array_of_hashes << { p.id => techs }
     end
 
-    File.open("lib/project_techs.yml", "w") do |file|
+    File.open('lib/project_techs.yml', 'w') do |file|
       file.write array_of_hashes.to_yaml
     end
   end

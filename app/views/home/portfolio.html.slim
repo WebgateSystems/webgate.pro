@@ -1,21 +1,21 @@
-- provide(:title, t('portfolio'))
+- provide(:title, t(:portfolio))
 .portfolio
-  h1.page_title= t('portfolio')
+  h1.page_title= t(:portfolio)
   - @projects.each do |project|
     .portfolio_block
-      = image_tag project.collage.url, width:940, height:244
+      = image_tag project.collage.url, width: 940, height: 244
       - if project.screenshots.any?
         a.zoom data-lightbox="img-#{project.id}" href="#{project.screenshots.first.file.url}"
         - project.screenshots.drop(1).each do |s|
           a.zoom data-lightbox="img-#{project.id}" href="#{s.file.url}" style=('display: none')
       .work_desc
-        = image_tag project.collage.url, width:940, height:244
+        = image_tag project.collage.url, width: 940, height: 244
         .work_content
           = link_to project.title, project.livelink, class: 'work_link', target: '_blank', rel: 'nofollow'
           = project.content.try(:html_safe)
           .work_info
             p
-              em = t('used_technologies')
+              em = t(:used_technologies)
               span
                 - project.technologies.each do |tech|
                   = tech.title

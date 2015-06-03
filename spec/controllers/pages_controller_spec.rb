@@ -1,19 +1,16 @@
 require 'rails_helper'
 
 describe PagesController do
-
-  before :each do
-    @page = create(:en_page)
-  end
+  let!(:en_page) { create(:en_page) }
 
   describe "GET 'showbyshortlink'" do
     it 'returns http success' do
-      get :showbyshortlink, shortlink: @page.shortlink
+      get :showbyshortlink, shortlink: en_page.shortlink
       expect(response).to be_success
     end
 
     it 'renders the template' do
-      get :showbyshortlink, shortlink: @page.shortlink
+      get :showbyshortlink, shortlink: en_page.shortlink
       expect(response).to render_template('showbyshortlink')
     end
 

@@ -2,14 +2,10 @@
   = f.error_notification
   .form-inputs
     = f.input :name, label: t('activerecord.category.name'), label_html: { class: 'label' }
-
     = f.input :altlink, label: t('activerecord.category.altlink'), label_html: { class: 'label' }
-
     = f.input :description, label: t('activerecord.category.description'), label_html: { class: 'label' }
 
   .actions
     = f.submit t('web_app_theme.save'), class: 'button success'
     = ' ' + t('web_app_theme.or') + ' '
     = link_to t('web_app_theme.cancel'), admin_categories_path
-
-  

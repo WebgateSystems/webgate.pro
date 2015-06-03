@@ -11,7 +11,7 @@ gem 'mini_magick'
 gem 'geoip'
 gem 'russian'
 gem 'globalize', '~> 5.0.0'
-#gem 'rails-translate-routes'
+# gem 'rails-translate-routes'
 gem 'route_translator'
 gem 'exception_notification', '~> 4.0.1'
 gem 'unicorn'
@@ -21,7 +21,7 @@ gem 'font-awesome-rails'
 gem 'jquery-minicolors-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-#gem 'jbuilder', '~> 1.2'
+# gem 'jbuilder', '~> 1.2'
 gem 'json'
 gem 'sorcery'
 gem 'foundation-rails'
@@ -80,17 +80,17 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
 
-  #gem 'mocha'
+  # gem 'mocha'
 end
 
 group :test, :development do
-  #gem 'selenium-webdriver'
+  # gem 'selenium-webdriver'
   gem 'capybara-webkit'
   # gem 'webrat'
   gem 'rspec-rails'
   gem 'hpricot'
   gem 'ruby_parser'
-  #gem 'debugger'
+  # gem 'debugger'
   gem 'byebug'
 end
 

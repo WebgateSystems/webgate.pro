@@ -39,17 +39,17 @@ class Admin::UsersController < Admin::HomeController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_url, notice: "#{t(:user)} #{t(:was_successfully_destroyed)}."}
+      format.html { redirect_to admin_users_url, notice: "#{t(:user)} #{t(:was_successfully_destroyed)}." }
     end
   end
 
   private
 
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
 end

@@ -1,5 +1,4 @@
 class CreateMemberLinks < ActiveRecord::Migration
-
   def self.up
     create_table :member_links do |t|
       t.string :name
@@ -16,5 +15,4 @@ class CreateMemberLinks < ActiveRecord::Migration
     MemberLink.drop_translation_table!
     drop_table :member_links
   end
-
 end
