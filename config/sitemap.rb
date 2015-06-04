@@ -20,4 +20,3 @@ ApplicationController::PUBLIC_LANGS.map(&:first).each do |l|
     end
   end
 end
-ping_with "https://#{host}/sitemap.xml"
