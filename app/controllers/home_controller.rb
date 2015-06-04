@@ -15,13 +15,6 @@ class HomeController < ApplicationController
                                                          member_links: :translations).page(params[:page]).per(12)
   end
 
-  def sitemap
-    respond_to do |format|
-      format.xml { render file: "public/sitemaps/#{locale}/sitemap.xml" }
-      format.html { redirect_to root_url }
-    end
-  end
-
   def robots
     # @pages = Page.where(published: false)
     respond_to :text

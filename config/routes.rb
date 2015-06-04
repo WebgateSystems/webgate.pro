@@ -39,9 +39,6 @@ WebgatePro::Application.routes.draw do
     root to: 'home#index'
   end
 
-  scope '/:locale', locale: ApplicationController::PUBLIC_LANGS.map(&:first) do
-    get 'sitemap', to: 'home#sitemap', format: :xml, as: :sitemap
-  end
   get 'robots.:format', to: 'home#robots', format: :text
 
   localized do
