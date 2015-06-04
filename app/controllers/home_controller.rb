@@ -14,9 +14,4 @@ class HomeController < ApplicationController
     @members = Member.published.rank(:position).includes(:translations, :member_links,
                                                          member_links: :translations).page(params[:page]).per(12)
   end
-
-  def robots
-    @pages = Page.where(published: false)
-    respond_to :text
-  end
 end
