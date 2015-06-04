@@ -29,48 +29,29 @@ module ApplicationHelper
       request.path == '/' + main_menu_path(menu_item)
   end
 
-  def main_url(lang)
-    case lang
-    when 'pl'
-      link_to(lang.upcase, main_pl_url)
-    when 'ru'
-      link_to(lang.upcase, main_ru_url)
-    else
-      link_to(lang.upcase, locale: lang)
+  def url_main(lang)
+    I18n.with_locale(lang) do
+      link_to(lang.upcase, main_url)
     end
   end
 
   def mobile_main_url(lang, label)
-    case lang
-    when 'pl'
-      link_to(main_pl_path) do
-        raw("<span> #{label}</span>")
-      end
-    when 'ru'
-      link_to(main_ru_path) do
-        raw("<span> #{label}</span>")
-      end
-    else
-      link_to(locale: lang) do
+    I18n.with_locale(lang) do
+      link_to(main_path) do
         raw("<span> #{label}</span>")
       end
     end
   end
 
   def url_not_found(lang)
-    case lang
-    when 'pl'
-      not_found_pl_url
-    when 'ru'
-      not_found_ru_url
-    else
+    I18n.with_locale(lang) do
       not_found_url
     end
   end
 
   def change_lang_path(lang)
     if current_page?(root_path)
-      main_url(lang)
+      url_main(lang)
     elsif params[:action] == 'showbyshortlink'
       page = Page.with_translations(locale).find_by(shortlink: params[:shortlink])
       link_to(lang.upcase, (page.nil? || page.shortlink == params[:shortlink]) ? url_not_found(lang) : page.shortlink)
