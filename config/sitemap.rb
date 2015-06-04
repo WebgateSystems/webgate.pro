@@ -2,8 +2,8 @@
 # for examples of multiple hosts and folders.
 host 'webgate.pro'
 
-sitemap :root do
-  url root_url
+sitemap :unspecified do
+  url root_url, last_mod: Time.now, change_freq: 'daily', priority: 1.0
 end
 
 ApplicationController::PUBLIC_LANGS.map(&:first).each do |l|
