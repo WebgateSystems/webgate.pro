@@ -49,6 +49,6 @@ class Admin::PagesController < Admin::HomeController
   end
 
   def page_params
-    params.require(:page).permit(:shortlink, :title, :description, :keywords, :content, :position, :category_id)
+    params.require(:page).permit(:shortlink, :title, :description, :keywords, :content, :position, :category_id, :publish)
   end
 end

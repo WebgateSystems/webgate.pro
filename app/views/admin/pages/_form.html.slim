@@ -8,6 +8,8 @@
     = f.input :keywords, label: t('activerecord.page.keywords'), label_html: { class: 'label' }
     = f.input :content, label: t('activerecord.page.content'), label_html: { class: 'label' }, as: :ckeditor, input_html: { class: 'ckeditor', ckeditor: { toolbar: 'mini' } }
     p
+    .label= t(:publish)
+    = f.input :publish, label: t('activerecord.page.publish')
     = f.label :category_id, t('activerecord.page.category_id_main'), class: :label
     = f.collection_select :category_id, @categories, :id, :name, include_blank: true
 
