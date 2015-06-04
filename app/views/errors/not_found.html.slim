@@ -1,5 +1,6 @@
-h1.big
-  = t(:error_404)
+- provide(:title, t(:error_404))
+h1.page_title= t(:error_404)
 br
 p
-  = t(:error_404_message)
+  h4= t(:error_404_message)
+br
