@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'routes for localized name routes' do
+describe 'routes for localized name routes', type: :routing do
   ApplicationController::PUBLIC_LANGS.map(&:first).each do |l|
     it 'localized routes to Home controller' do
       I18n.with_locale(l) do

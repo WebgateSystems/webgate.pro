@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Page in admin panel.' do
   let(:user) { create(:user) }
-  let!(:en_page) { create(:en_page)}
+  let!(:en_page) { create(:en_page) }
 
   before do
     sign_in(user)
