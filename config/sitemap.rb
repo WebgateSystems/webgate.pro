@@ -7,7 +7,7 @@ sitemap :unspecified do
 end
 
 ApplicationController::PUBLIC_LANGS.map(&:first).each do |l|
-  sitemap("sitemap_#{l}").to_sym do
+  sitemap ("sitemap_#{l}").to_sym do
     I18n.with_locale(l) do
       url URI.unescape(main_url), last_mod: Time.now, change_freq: 'daily', priority: 1.0
       url URI.unescape(portfolio_url), last_mod: Time.now, change_freq: 'daily', priority: 1.0
