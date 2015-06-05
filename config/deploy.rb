@@ -21,7 +21,7 @@ set :sidekiq_config, -> { File.join(shared_path, 'config', 'sidekiq.yml') }
 set :keep_releases, 5
 
 after 'deploy:publishing', 'deploy:restart'
-after 'deploy:finishing', invoke['spec:check_links']
+after 'deploy:finishing', 'spec:check_links'
 
 namespace :deploy do
   task :restart do
