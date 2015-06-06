@@ -405,10 +405,28 @@ body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
 		}
 			.text ul li:hover{background-position: 7px center;}
 .content p a:hover{text-decoration: none;}
-.innerContent p {
-  font-size: 16px;
-  padding-bottom: 0.5cm;
-  line-height: 24px;
+.innerContent {
+  p {
+    font-size: 16px;
+    padding-bottom: 0.5cm;
+    line-height: 24px;
+  }
+  ol {
+    padding-bottom: 0.6cm;
+  }
+  ol li {
+    list-style-type: decimal;
+  }
+  li {
+    font-size: 16px;
+    padding-bottom: 0.5cm;
+    padding-left: 0.6cm;
+    line-height: 24px;
+    list-style-position: inside;
+  }
+  a {
+    font-weight: bold;
+  }
 }
 /* END content */
 /* Portfolio */
