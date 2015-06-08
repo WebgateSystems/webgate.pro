@@ -46,6 +46,7 @@ fr:
       category_id: "Menu items page belongs to"
       category_id_main: "Main menu"
       subcategory_id: "Submenu"
+      publish: "Publish"
     subcategory:
       name: "Name"
       altlink: "Altlink"

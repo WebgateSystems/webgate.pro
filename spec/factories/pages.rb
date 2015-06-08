@@ -7,6 +7,7 @@ FactoryGirl.define do
     keywords { Faker::Lorem.sentence }
     content { Faker::Lorem.paragraph }
     category
+    publish true
 
     factory :pl_page do
       association :category, factory: :pl_category

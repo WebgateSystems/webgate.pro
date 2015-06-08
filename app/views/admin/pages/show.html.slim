@@ -8,6 +8,9 @@
   .content
     .inner
       p
+        b= t('activerecord.page.publish') + ': '
+        = @page.publish
+      p
         b= t('activerecord.page.shortlink') + ': '
         = @page.shortlink
       p
