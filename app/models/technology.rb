@@ -20,8 +20,13 @@ class Technology < ActiveRecord::Base
   mount_uploader :logo, LogoUploader
 
   after_update :update_members_cache
+  after_update :update_projects_cache
 
   protected
+
+  def update_projects_cache
+    projects.update_all(updated_at: Time.now)
+  end
 
   def update_members_cache
     members.update_all(updated_at: Time.now)
