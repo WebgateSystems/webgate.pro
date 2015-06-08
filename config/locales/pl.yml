@@ -45,6 +45,7 @@ pl:
       category_id: "Punkt(y) menu do którego(ych) ewentualnie może być dowiązana strona"
       category_id_main: "Punkt menu głównego"
       subcategory_id: "Submenu"
+      publish: "Publikować"
     subcategory:
       name: "Nazwa"
       altlink: "Alternatywny link"

@@ -31,10 +31,11 @@ gem 'chosen-rails'
 gem 'ranked-model'
 gem 'select2-rails'
 gem 'ckeditor', github: 'galetahub/ckeditor'
-gem 'dynamic_sitemaps'
+gem 'dynamic_sitemaps', github: 'WebgateSystems/dynamic_sitemaps'
 gem 'whenever', require: false
 gem 'sidekiq'
 gem 'sinatra', require: nil
+gem 'oga'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

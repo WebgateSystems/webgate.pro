@@ -45,6 +45,7 @@ ru:
       category_id: "Меню"
       category_id_main: "Главное меню"
       subcategory_id: "Подменю"
+      publish: "Опубликована"
     subcategory:
       name: "Имя"
       altlink: "Альтернативный линк"

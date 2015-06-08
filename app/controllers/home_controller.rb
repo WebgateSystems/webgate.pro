@@ -14,16 +14,4 @@ class HomeController < ApplicationController
     @members = Member.published.rank(:position).includes(:translations, :member_links,
                                                          member_links: :translations).page(params[:page]).per(12)
   end
-
-  def sitemap
-    respond_to do |format|
-      format.xml { render file: 'public/sitemaps/sitemap.xml' }
-      format.html { redirect_to root_url }
-    end
-  end
-
-  def robots
-    # @pages = Page.where(published: false)
-    respond_to :text
-  end
 end
