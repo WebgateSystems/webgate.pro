@@ -1,6 +1,7 @@
 # Change this to your host. See the readme at https://github.com/lassebunk/dynamic_sitemaps
 # for examples of multiple hosts and folders.
 host 'webgate.pro'
+protocol 'https'
 
 sitemap :unspecified do
   url root_url, last_mod: Time.now, change_freq: 'daily', priority: 1.0
