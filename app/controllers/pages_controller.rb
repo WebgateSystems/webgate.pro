@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def showbyshortlink
     ApplicationController::PUBLIC_LANGS.map(&:first).each do |lang|
-      @page = Page.with_translations(lang).where(shortlink: params[:shortlink]).first
+      @page = Page.published.with_translations(lang).where(shortlink: params[:shortlink]).first
       unless @page.nil?
         I18n.locale = lang
         break

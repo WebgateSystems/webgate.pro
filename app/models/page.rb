@@ -1,4 +1,6 @@
 class Page < ActiveRecord::Base
+  scope :published, -> { where(publish: true) }
+
   belongs_to :category
   validates_associated :category
 

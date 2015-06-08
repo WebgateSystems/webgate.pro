@@ -39,9 +39,6 @@ WebgatePro::Application.routes.draw do
     root to: 'home#index'
   end
 
-  get 'sitemap' => 'home#sitemap'
-  get 'robots.:format' => 'home#robots', format: :text
-
   localized do
     get :main,      to: 'home#index', as: :main
     get :not_found, to: 'errors#not_found', as: :not_found

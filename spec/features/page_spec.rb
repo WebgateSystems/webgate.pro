@@ -2,20 +2,11 @@ require 'rails_helper'
 
 feature 'Page in admin panel.' do
   let(:user) { create(:user) }
+  let!(:en_page) { create(:en_page) }
+
   before do
-    visit admin_root_path
     sign_in(user)
     visit admin_pages_path
-    3.times do |t|
-      click_link('New')
-      fill_in 'page[title]', with: "TestTitle#{t}"
-      fill_in 'page[shortlink]', with: "Testlink#{t}"
-      fill_in 'page[description]', with: "TestDesc#{t}"
-      fill_in 'page[keywords]', with: "TestKeyWord#{t}"
-      fill_in 'page[content]', with: "TestContent#{t}"
-      click_button 'Save'
-      visit admin_pages_path
-    end
   end
 
   scenario 'Link list should work good' do
@@ -27,9 +18,7 @@ feature 'Page in admin panel.' do
   scenario 'Page root path should have list of pages' do
     expect(page).to have_content 'Title'
     expect(page).to have_content 'Created at'
-    expect(page).to have_content 'TestTitle0'
-    expect(page).to have_content 'TestTitle1'
-    expect(page).to have_content 'TestTitle2'
+    expect(page).to have_content en_page.title
   end
 
   scenario 'Page root path links show, edit should work' do
@@ -46,17 +35,17 @@ feature 'Page in admin panel.' do
   end
 
   scenario 'Show should display our page information' do
-    click_link('TestTitle0')
+    click_link(en_page.title)
     expect(page).to have_content 'Title:'
-    expect(page).to have_content 'TestTitle0'
+    expect(page).to have_content en_page.title
     expect(page).to have_content 'Description:'
-    expect(page).to have_content 'TestDesc0'
+    expect(page).to have_content en_page.description
     expect(page).to have_content 'Shortlink:'
     expect(page).to have_content 'Keywords:'
     expect(page).to have_content 'Content:'
-    expect(page).to have_content 'Testlink0'
-    expect(page).to have_content 'TestKeyWord0'
-    expect(page).to have_content 'TestContent0'
+    expect(page).to have_content en_page.shortlink
+    expect(page).to have_content en_page.keywords
+    expect(page).to have_content en_page.content
   end
 
   scenario 'Create page should create page' do
@@ -73,18 +62,7 @@ feature 'Page in admin panel.' do
 
   scenario 'Validation for new page' do
     click_link('New')
-    fill_in 'page[title]', with: 'TestTitleFull'
-    fill_in 'page[description]', with: 'TestDescFull'
-    fill_in 'page[keywords]', with: 'TestKeyWordFull'
-    fill_in 'page[content]', with: 'TestContentFull'
     click_button 'Save'
-    expect(page).to have_css('#page_title')
-  end
-
-  scenario 'Dont create page with empty fields' do
-    click_link('New')
-    fill_in 'page[title]', with: 'TestTitlekukumba'
-    visit admin_pages_path
-    expect(page).to have_no_content 'TestTitlekukumba'
+    expect(page).to have_css('.alert-box.alert')
   end
 end
