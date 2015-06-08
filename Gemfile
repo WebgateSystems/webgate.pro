@@ -35,6 +35,7 @@ gem 'dynamic_sitemaps'
 gem 'whenever', require: false
 gem 'sidekiq'
 gem 'sinatra', require: nil
+gem 'oga'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

@@ -1,5 +1,5 @@
 require 'net/http'
-require 'nokogiri'
+require 'oga'
 
 include Rails.application.routes.url_helpers
 
@@ -20,16 +20,15 @@ namespace :spec do
   desc 'Check links'
   task check_links: :environment do
     log = ActiveSupport::Logger.new('log/check_links.log')
-    doc = Nokogiri::XML(File.read('public/sitemaps/sitemap.xml'))
+    doc = Oga.parse_xml(File.read('public/sitemaps/sitemap.xml'))
     sitemaps = []
     links = []
-    ns = { 'ns' => 'http://www.sitemaps.org/schemas/sitemap/0.9' }
-    doc.xpath('/ns:sitemapindex/ns:sitemap/ns:loc', ns).each do |s| # get all sitemaps
+    doc.xpath('xmlns:sitemapindex/xmlns:sitemap/xmlns:loc').each do |s| # get all sitemaps
       sitemaps << s.text
     end
     sitemaps.each do |sitemap|
-      doc = Nokogiri::XML(File.read('public' + URI.parse(sitemap).path))
-      doc.xpath('/ns:urlset/ns:url/ns:loc', ns).each do |l| # get all links in sitemap
+      doc = Oga.parse_xml(File.read('public' + URI.parse(sitemap).path))
+      doc.xpath('xmlns:urlset/xmlns:url/xmlns:loc').each do |l| # get all links in sitemap
         links << l.text
       end
     end
