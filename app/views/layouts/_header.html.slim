@@ -9,5 +9,5 @@ head
   = stylesheet_link_tag 'application', media: 'all'
   = stylesheet_link_tag 'style_mob', media: 'only screen and (max-width: 962px)'
   = javascript_include_tag 'application'
-  = javascript_include_tag 'ga' if Rails.env.production?
+  = javascript_include_tag 'ga', async: true if Rails.env.production?
   = csrf_meta_tags
