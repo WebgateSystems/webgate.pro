@@ -1,7 +1,7 @@
 -if @logged_to_admin
   = link_to '', admin_root_path, title: t(:admin_panel), class: :logo
 -else
-  a.logo href="#"
+  a.logo href="/"
 ul.top_nav
   - @menu.each do |menu_item|
     - menu_item_active?(menu_item) ? @class = 'active' : @class = ''
