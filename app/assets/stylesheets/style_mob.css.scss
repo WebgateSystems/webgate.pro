@@ -1,4 +1,4 @@
-﻿.control_form,.tabs_block,.lang,.top_nav,.valid,.tabs_block,.carousel,.carousel_content,.carousel_more,.bx-next,.bx-prev,.up,.bx-wrapper,.tooltipster-base{display: none;}
+﻿.control_form,.tabs_block,.lang,.top_nav,.valid,.carousel,.carousel_content,.carousel_more,.bx-next,.bx-prev,.up,.bx-wrapper,.tooltipster-base{display: none;}
 body,html{
 	background: #fff;
 	min-width: 320px;
@@ -131,6 +131,17 @@ body{padding-top: 40px;}
 	padding: 20px 0 0 0;
 	width: auto;
 }
+.content_mob{
+	display: block;
+	padding: 0 20px;
+}
+	.content_mob h2 {
+	  color: #008ece;
+	  font-size: 18px;
+	  line-height: 22px;
+	  margin-bottom: 30px;
+	  text-align: center;
+	}
 .portfolio{padding: 0 20px;}
 	.portfolio h2{text-align: center;}
 	.portfolio_block,.portfolio_block:hover{
