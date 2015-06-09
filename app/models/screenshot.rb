@@ -4,12 +4,12 @@ class Screenshot < ActiveRecord::Base
   include RankedModel
   ranks :position, with_same: :project_id
 
-  validates_presence_of :file
-
-  belongs_to :project
-  validates_associated :project
-
   default_scope { order('position ASC') }
+
+  belongs_to :project, touch: true
+
+  validates :file, presence: true
+  validates_associated :project
 
   mount_uploader :file, PictureUploader
 end
