@@ -51,8 +51,8 @@ WebgatePro::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'login',  to: 'sessions#new', as: 'login'
 
-  get ':shortlink', to: 'pages#showbyshortlink'
-  get '*any', via: :all, to: 'errors#not_found'
+  get ':shortlink', to: 'pages#showbyshortlink', constraints: { format: 'html' }
+  get '*any', to: 'errors#not_found', via: :all
 
   root to: 'home#index'
 end
