@@ -16,22 +16,22 @@
 		//$(this).removeAttr('href');
 		$('.footer').animatescroll({scrollSpeed:1000,easing:'easeOutExpo'});
 	});
-	$('#to_block1').click(function(){
+	$('#block1').click(function(){
 		$('.block_1').animatescroll({scrollSpeed:1000,easing:'easeOutExpo'});
 	});
-	$('#to_block2').click(function(){
+	$('#block2').click(function(){
 		$('.block_2').animatescroll({scrollSpeed:1000,easing:'easeOutExpo'});
 	});
-	$('#to_block3').click(function(){
+	$('#block3').click(function(){
 		$('.block_3').animatescroll({scrollSpeed:1000,easing:'easeOutExpo'});
 	});
-	$('#to_block4').click(function(){
+	$('#block4').click(function(){
 		$('.block_4').animatescroll({scrollSpeed:1000,easing:'easeOutExpo'});
 	});
-	$('#to_block5').click(function(){
+	$('#block5').click(function(){
 		$('.block_5').animatescroll({scrollSpeed:1000,easing:'easeOutExpo'});
 	});
-	$('#to_block6').click(function(){
+	$('#block6').click(function(){
 		$('.block_6').animatescroll({scrollSpeed:1000,easing:'easeOutExpo'});
 	});
 	$('.carousel_block ul.bx_carousel').bxSlider({

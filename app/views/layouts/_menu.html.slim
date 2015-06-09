@@ -19,24 +19,44 @@ ul.mob.mob_nav.main
 
 span.mob.service_lang
 ul.mob.mob_nav
-  li
-    = link_to root_url + '#block1', id: 'to_block1' do
-      span= t(:network_applications)
-  li
-    = link_to root_url + '#block2', id: 'to_block2' do
-      span= t(:hosting)
-  li
-    = link_to root_url + '#block3', id: 'to_block3' do
-      span= t(:domain_reg)
-  li
-    = link_to root_url + '#block4', id: 'to_block4' do
-      span= t(:ssl_certificates)
-  li
-    = link_to root_url + '#block5', id: 'to_block5' do
-      span= t(:outsourcing)
-  li
-    = link_to root_url + '#block6', id: 'to_block6' do
-      span= t(:design)
+  - if params[:controller] == 'home' && params[:action] == 'index'
+    li
+      = link_to '#block1', id: 'block1' do
+        span= t(:network_applications)
+    li
+      = link_to '#block2', id: 'block2' do
+        span= t(:hosting)
+    li
+      = link_to '#block3', id: 'block3' do
+        span= t(:domain_reg)
+    li
+      = link_to '#block4', id: 'block4' do
+        span= t(:ssl_certificates)
+    li
+      = link_to '#block5', id: 'block5' do
+        span= t(:outsourcing)
+    li
+      = link_to '#block6', id: 'block6' do
+        span= t(:design)
+  - else
+    li
+      = link_to t(:network_applications_link) do
+        span= t(:network_applications)
+    li
+      = link_to t(:hosting_link) do
+        span= t(:hosting)
+    li
+      = link_to t(:domain_reg_link) do
+        span= t(:domain_reg)
+    li
+      = link_to t(:ssl_certificates_link) do
+        span= t(:ssl_certificates)
+    li
+      = link_to t(:outsourcing_link) do
+        span= t(:outsourcing)
+    li
+      = link_to t(:design_link) do
+        span= t(:design)
 
 span.mob.ico_lang
   = locale.upcase
