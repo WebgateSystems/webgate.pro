@@ -1,6 +1,4 @@
 class PagesController < ApplicationController
-  layout 'portfolio'
-
   def showbyshortlink
     ApplicationController::PUBLIC_LANGS.map(&:first).each do |lang|
       @page = Page.published.with_translations(lang).where(shortlink: params[:shortlink]).first
