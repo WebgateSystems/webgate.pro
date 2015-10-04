@@ -1,4 +1,9 @@
-## About webgate.pro
+# webgate.pro
+
+[![Code Climate](https://codeclimate.com/github/WebgateSystems/webgate.pro/badges/gpa.svg)](https://codeclimate.com/github/WebgateSystems/webgate.pro)
+[![Test Coverage](https://codeclimate.com/github/WebgateSystems/webgate.pro/badges/coverage.svg)](https://codeclimate.com/github/WebgateSystems/webgate.pro/coverage)
+
+## About
 
 webgate.pro is a official website of Webgate Systems. Created with Ruby on Rails framework like a multilanguage application
 for our internal purpose and, of course, to show what exactly we do and how.

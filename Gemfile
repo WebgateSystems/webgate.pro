@@ -80,6 +80,7 @@ group :test do
   gem 'spork'
   gem 'launchy'
   gem 'simplecov'
+  gem "codeclimate-test-reporter", require: nil
 
   # gem 'mocha'
 end
