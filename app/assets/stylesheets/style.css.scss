@@ -1,7 +1,7 @@
 @charset 'utf-8';
 
-html{background: asset_url('html.jpg') repeat-x;}
-body{background: #e0e0e0 asset_url('body.jpg') center top no-repeat;}
+html{background: #e0e0e0 asset_url('html.jpg') repeat-x;}
+body{background: asset_url('body.jpg') center top no-repeat;}
 
 .mob, .content_mob{display: none;}
 .control_form{display: none;}
