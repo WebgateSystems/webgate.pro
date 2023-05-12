@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 WebgatePro::Application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
+  # mount Ckeditor::Engine => '/ckeditor'
   resources :sessions
   resources :contacts, only: [:new, :create]
 

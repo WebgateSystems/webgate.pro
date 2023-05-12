@@ -1,4 +1,4 @@
-class CreatePages < ActiveRecord::Migration
+class CreatePages < ActiveRecord::Migration[7.0]
   def self.up
     create_table :pages do |t|
       t.string :shortlink

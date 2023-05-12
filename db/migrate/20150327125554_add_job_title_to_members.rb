@@ -1,4 +1,4 @@
-class AddJobTitleToMembers < ActiveRecord::Migration
+class AddJobTitleToMembers < ActiveRecord::Migration[7.0]
   def up
     Member.add_translation_fields! job_title: :string
   end

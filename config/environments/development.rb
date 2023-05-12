@@ -28,9 +28,9 @@ WebgatePro::Application.configure do
   config.assets.debug = true
 
   # Raises error for missing translations
-  config.action_view.raise_on_missing_translations = true
+  # config.action_view.raise_on_missing_translations = false
 
-  config.active_record.raise_in_transactional_callbacks = true
+  # config.active_record.raise_in_transactional_callbacks = true
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
