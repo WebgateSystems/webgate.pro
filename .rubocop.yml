@@ -1,0 +1,22 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'config/**/*.rb'
+    - 'app/admin/*.rb'
+Layout/LineLength:
+  Exclude:
+    - 'config/initializers/*.rb'
+Metrics/MethodLength:
+  Exclude:
+    - 'db/**/*.rb'
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Metrics/AbcSize:
+  Exclude:
+    - 'db/**/*.rb'
