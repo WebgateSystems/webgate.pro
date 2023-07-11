@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2.1'
 gem 'pg'
+# gem 'pry'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
@@ -30,8 +31,8 @@ gem 'cocoon'
 gem 'chosen-rails'
 gem 'ranked-model'
 gem 'select2-rails'
-gem 'ckeditor', github: 'galetahub/ckeditor'
-gem 'dynamic_sitemaps', github: 'WebgateSystems/dynamic_sitemaps'
+# gem 'ckeditor', github: 'galetahub/ckeditor'
+# gem 'dynamic_sitemaps', github: 'WebgateSystems/dynamic_sitemaps'
 gem 'whenever', require: false
 gem 'sidekiq'
 gem 'sinatra', require: nil
@@ -53,24 +54,36 @@ group :doc do
 end
 
 group :development do
+  gem 'fasterer', require: false
+  gem 'rubocop', require: false
+  gem 'rubocop-i18n', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+
   gem 'thin'
   # Deploy with Capistrano
-  gem 'capistrano', '~> 3.0', require: false
-  gem 'capistrano-rails', '~> 1.1', require: false
-  gem 'capistrano-bundler', '~> 1.1', require: false
-  gem 'capistrano-rvm', '~> 0.1', require: false
-  gem 'capistrano3-unicorn'
+  # gem 'capistrano', '~> 3.0', require: false
+  # gem 'capistrano-rails', '~> 1.1', require: false
+  # gem 'capistrano-bundler', '~> 1.1', require: false
+  # gem 'capistrano-rvm', '~> 0.1', require: false
+  # gem 'capistrano3-unicorn'
   gem 'rack-mini-profiler', '~> 0.9.2'
   # Better errors handler
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
   gem 'web-console', '~> 2.0'
-  gem 'capistrano-sidekiq'
+  # gem 'capistrano-sidekiq'
   gem 'bullet'
 end
 
 group :test do
+#   gem 'capybara'
+#   gem 'selenium-webdriver'
+#   gem 'shoulda-matchers', '~> 5.0'
+#   gem 'simplecov', '~> 0.22.0'
+#   gem 'site_prism'
   gem 'shoulda-matchers', require: false
   gem 'capybara'
   gem 'database_cleaner'
@@ -81,18 +94,16 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
   gem "codeclimate-test-reporter", require: nil
-
-  # gem 'mocha'
 end
 
 group :test, :development do
-  # gem 'selenium-webdriver'
+#   gem 'dotenv-rails'
+#   gem 'factory_bot_rails'
+#   gem 'ffaker'
   gem 'capybara-webkit'
-  # gem 'webrat'
   gem 'rspec-rails'
   gem 'hpricot'
   gem 'ruby_parser'
-  # gem 'debugger'
   gem 'byebug'
 end
 
