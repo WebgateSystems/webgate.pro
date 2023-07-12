@@ -1,4 +1,4 @@
-class CreateMembersAndTechnologies < ActiveRecord::Migration
+class CreateMembersAndTechnologies < ActiveRecord::Migration[5.2]
   def change
     create_table :members_technologies, id: false do |t|
       t.belongs_to :member, index: true

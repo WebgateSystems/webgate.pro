@@ -1,4 +1,4 @@
-class DeleteLinkTranslations < ActiveRecord::Migration
+class DeleteLinkTranslations < ActiveRecord::Migration[5.2]
   def up
     drop_table :link_translations
   end

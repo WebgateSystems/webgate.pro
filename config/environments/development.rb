@@ -1,4 +1,4 @@
-WebgatePro::Application.configure do
+Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -26,11 +26,23 @@ WebgatePro::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  config.assets.quiet = true
+  config.assets.enabled = true
+
+  config.assets.css_compressor = :yui
+  config.assets.js_compressor = Uglifier.new(harmony: true)
+
+  # config.assets.compress = true
+  # config.assets.compile = true
+  # config.assets.digest = true
+  # config.serve_static_assets = false
+  # config.assets.js_compressor  = :uglifier
+  # config.assets.css_compressor = :yui
 
   # Raises error for missing translations
   config.action_view.raise_on_missing_translations = true
 
-  config.active_record.raise_in_transactional_callbacks = true
+  # config.active_record.raise_in_transactional_callbacks = true
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 

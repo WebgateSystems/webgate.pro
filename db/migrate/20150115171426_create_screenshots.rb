@@ -1,4 +1,4 @@
-class CreateScreenshots < ActiveRecord::Migration
+class CreateScreenshots < ActiveRecord::Migration[5.2]
   def change
     create_table :screenshots do |t|
       t.string :file

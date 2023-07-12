@@ -36,5 +36,5 @@ WebgatePro::Application.configure do
 
   config.action_mailer.default_url_options = { host: 'www.example.com' }
 
-  config.active_record.raise_in_transactional_callbacks = true
+  # config.active_record.raise_in_transactional_callbacks = false
 end

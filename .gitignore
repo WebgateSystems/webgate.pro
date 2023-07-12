@@ -30,3 +30,4 @@ REVISION
 assets_manifest.yml
 
 .env
+node_modules

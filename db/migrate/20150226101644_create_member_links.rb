@@ -1,4 +1,4 @@
-class CreateMemberLinks < ActiveRecord::Migration
+class CreateMemberLinks < ActiveRecord::Migration[5.2]
   def self.up
     create_table :member_links do |t|
       t.string :name

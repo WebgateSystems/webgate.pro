@@ -18,9 +18,8 @@
 //= require select2
 //= require jquery.minicolors
 //= require jquery.minicolors.simple_form
-//= require jquery-ui/sortable
-//= require jquery-ui/effect-highlight
-//= require admin/flashes
-//= require ckeditor/init
 
-$(function(){ $(document).foundation(); });
+//= require admin/flashes
+
+
+$(function () { $(document).foundation(); });

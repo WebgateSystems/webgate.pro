@@ -1,4 +1,4 @@
-class CreateTechnologyGroups < ActiveRecord::Migration
+class CreateTechnologyGroups < ActiveRecord::Migration[5.2]
   def self.up
     create_table :technology_groups do |t|
       t.string :title
