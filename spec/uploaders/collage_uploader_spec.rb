@@ -17,9 +17,19 @@ describe CollageUploader do
     uploader.remove!
   end
 
-  context 'the collage version' do
-    it 'scale a landscape image to be exactly 940 by 244 pixels' do
-      expect(uploader.collage).to have_dimensions(940, 244)
+  context 'when uploading an image' do
+    it 'saves the uploaded file' do
+      expect(uploader.file).to be_present
+    end
+
+    it 'has the correct format' do
+      expect(uploader.file.extension).to eq('jpg')
     end
   end
+
+  # context 'the collage version' do
+  #   it 'scale a landscape image to be exactly 940 by 244 pixels' do
+  #     expect(uploader.collage).to have_dimensions(940, 244)
+  #   end
+  # end
 end

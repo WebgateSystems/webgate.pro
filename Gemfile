@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'pg'
-gem 'puma', '~> 3.0'
-gem 'rails', '~> 5.2'
+gem 'puma'
+gem 'rails', '~> 6.1'
 
 gem 'carrierwave'
 gem 'exception_notification', '~> 4.0.1'
@@ -39,7 +39,7 @@ gem 'json'
 gem 'oga'
 gem 'ranked-model'
 gem 'select2-rails'
-gem 'sidekiq', '~> 4.2.2 '
+gem 'sidekiq'
 gem 'simple_form'
 gem 'sinatra', require: nil
 gem 'sorcery'
@@ -94,8 +94,8 @@ group :test do
   gem 'rails-controller-testing'
 
   gem 'launchy'
-  gem 'shoulda-matchers', '~> 5.0'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov'
   gem 'spork'
   gem 'timecop'

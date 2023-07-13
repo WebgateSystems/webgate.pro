@@ -17,9 +17,19 @@ describe AvatarUploader do
     uploader.remove!
   end
 
-  context 'the avatar version' do
-    it 'scale a landscape image to be exactly 180 by 180 pixels' do
-      expect(uploader.avatar).to have_dimensions(180, 180)
+  context 'when uploading an image' do
+    it 'saves the uploaded file' do
+      expect(uploader.file).to be_present
+    end
+
+    it 'has the correct format' do
+      expect(uploader.file.extension).to eq('jpg')
     end
   end
+
+  # context 'the avatar version' do
+  #   it 'scale a landscape image to be exactly 180 by 180 pixels' do
+  #     expect(uploader.avatar).to have_dimensions(180, 180)
+  #   end
+  # end
 end

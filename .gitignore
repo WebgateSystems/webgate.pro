@@ -30,5 +30,5 @@ REVISION
 assets_manifest.yml
 
 .env
-
+/coverage
 /node_modules

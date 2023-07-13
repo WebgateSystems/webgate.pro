@@ -5,7 +5,7 @@ describe PagesController, type: :request do
 
     it 'returns http success' do
       get "/#{en_page.shortlink}"
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'renders the template' do
