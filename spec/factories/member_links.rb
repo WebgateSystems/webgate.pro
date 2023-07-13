@@ -1,7 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :member_link do
-    name { Faker::Name.title }
-    link { Faker::Internet.url }
-    member
+    name { FFaker::Name.name }
+    link { FFaker::Internet.http_url }
+    member { create(:member) }
   end
 end

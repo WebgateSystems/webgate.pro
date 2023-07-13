@@ -7,9 +7,10 @@ class Project < ActiveRecord::Base
 
   scope :published, -> { where(publish: true) }
 
-  has_many :technologies, -> { order('technologies_projects.position') }, through: :technologies_projects
-  has_many :technologies_projects
+  has_many :technologies_projects, dependent: :destroy
   has_many :screenshots, dependent: :destroy
+  has_many :technologies, -> { order('technologies_projects.position') }, through: :technologies_projects
+  
   accepts_nested_attributes_for :screenshots,
                                 reject_if: proc { |param| param[:file].blank? && param[:file_cache].blank? && param[:id].blank? },
                                 allow_destroy: true

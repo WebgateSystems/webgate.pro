@@ -6,9 +6,10 @@ class Member < ActiveRecord::Base
 
   scope :published, -> { where(publish: true) }
 
-  has_many :technologies, -> { order('technologies_members.position') }, through: :technologies_members
-  has_many :technologies_members
+  has_many :technologies_members, dependent: :destroy
   has_many :member_links, dependent: :destroy
+  has_many :technologies, -> { order('technologies_members.position') }, through: :technologies_members
+
   accepts_nested_attributes_for :member_links, allow_destroy: true
 
   validates :name, :job_title, :description, :motto, presence: true

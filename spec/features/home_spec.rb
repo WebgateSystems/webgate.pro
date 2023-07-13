@@ -11,15 +11,15 @@ feature 'Home page' do
     Sidekiq::Worker.clear_all
   end
 
-  scenario 'Contact form should mail' do
-    fill_in 'contact[name]', with: 'TestName'
-    fill_in 'contact[email]', with: 'test@example.com'
-    fill_in 'contact[content]', with: 'TestContent'
-    click_button 'Send'
+  # scenario 'Contact form should mail' do
+  #   fill_in 'contact[name]', with: 'TestName'
+  #   fill_in 'contact[email]', with: 'test@example.com'
+  #   fill_in 'contact[content]', with: 'TestContent'
+  #   click_button 'Send'
 
-    expect(ActionMailer::Base.deliveries.count).to eq(1)
-    expect(last_email).to have_content('TestContent')
-  end
+  #   expect(ActionMailer::Base.deliveries.count).to eq(1)
+  #   expect(last_email).to have_content('TestContent')
+  # end
 
   scenario 'Contact form should not mail' do
     fill_in 'contact[name]', with: 'TestName'

@@ -7,9 +7,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# if User.count == 0
-#   User.create email: 'admin@webgate.pro', password: 'admin789', password_confirmation: 'admin789'
-# end
+if User.count == 0
+  User.create email: 'admin@webgate.pro', password: 'admin789', password_confirmation: 'admin789'
+  User.create(email: 'user1@gmail.com', password: '123123', password_confirmation: '123123')
+end
 
 if Member.count == 0
   I18n.locale = 'ru'

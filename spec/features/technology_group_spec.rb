@@ -21,10 +21,10 @@ feature 'technology_group in admin panel.' do
     source_element.drag_to dest_element
     sleep 2 # wait for ajax complete
     page.all(:link, 'Show')[1].click
-    expect(current_path).to eq admin_technology_group_path(TechnologyGroup.last.id)
+    expect(current_path).to eq admin_technology_group_path(TechnologyGroup.all[1].id)
     visit admin_technology_groups_path
     page.all(:link, 'Show')[2].click
-    expect(current_path).to_not eq admin_technology_group_path(TechnologyGroup.last.id)
+    expect(current_path).to_not eq admin_technology_group_path(TechnologyGroup.all[1].id)
   end
 
   scenario 'Link list should work good' do

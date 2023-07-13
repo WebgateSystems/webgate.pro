@@ -5,10 +5,12 @@ class Technology < ActiveRecord::Base
   ranks :position, with_same: :technology_group_id
 
   belongs_to :technology_group
-  has_many :projects, through: :technologies_projects
   has_many :technologies_projects
-  has_many :members, through: :technologies_members
   has_many :technologies_members
+  
+  has_many :projects, through: :technologies_projects
+  has_many :members, through: :technologies_members
+ 
 
   validates :title, presence: true
   validates :title, uniqueness: { case_sensitive: false }

@@ -11,6 +11,7 @@ WebgatePro::Application.routes.draw do
     resources :categories do
       put :update_position, on: :collection
     end
+
     resources :pages
     resources :members do
       put :update_position, on: :collection
@@ -19,6 +20,7 @@ WebgatePro::Application.routes.draw do
         put 'sort_member_technologies'
       end
     end
+
     resources :projects do
       put :update_position, on: :collection
       member do
@@ -27,6 +29,7 @@ WebgatePro::Application.routes.draw do
       end
       resources :screenshots, only: [:destroy]
     end
+
     resources :technologies
     resources :technology_groups do
       put :update_position, on: :collection
@@ -36,6 +39,7 @@ WebgatePro::Application.routes.draw do
       resources :technologies do
       end
     end
+    
     root to: 'home#index'
   end
 

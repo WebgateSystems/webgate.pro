@@ -1,9 +1,9 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :technology do
-    title { Faker::Name.title }
-    link { Faker::Internet.url }
-    technology_group
-    description { Faker::Lorem.paragraph }
+    title { FFaker::Book.title }
+    link { FFaker::Internet.http_url }
+    technology_group { create(:technology_group) }
+    description { FFaker::Lorem.paragraph }
     logo { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'ws-logo.png')) }
   end
 end

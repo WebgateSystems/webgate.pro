@@ -1,8 +1,6 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
-
-FactoryGirl.define do
+FactoryBot.define do
   factory :technology_group do
-    title { Faker::Name.title }
-    description { Faker::Lorem.paragraph }
+    title { FFaker::Book.title }
+    description { FFaker::Lorem.paragraph }
   end
 end

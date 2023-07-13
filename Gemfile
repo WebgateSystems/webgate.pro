@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 
 gem 'pg'
-gem 'rails', '~> 5.2'
 gem 'puma', '~> 3.0'
+gem 'rails', '~> 5.2'
 
 gem 'carrierwave'
 gem 'exception_notification', '~> 4.0.1'
-gem 'faker'
 gem 'font-awesome-rails'
 gem 'geoip'
 gem 'globalize'
@@ -25,8 +24,8 @@ gem 'russian'
 gem 'slim-rails'
 gem 'unicorn'
 
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
@@ -47,13 +46,13 @@ gem 'sorcery'
 gem 'whenever', require: false
 
 # Use SCSS for stylesheets
-gem 'sass-rails'
-gem 'sprockets-rails'
-gem 'uglifier'
-gem 'yui-compressor'
 gem 'coffee-rails'
 gem 'execjs'
+gem 'sass-rails'
+gem 'sprockets-rails'
 gem 'therubyracer', '~> 0.12.2'
+gem 'uglifier'
+gem 'yui-compressor'
 
 # group :doc do
 #   # bundle exec rake doc:rails generates the API under doc/api.
@@ -77,25 +76,26 @@ group :development do
   # gem 'capistrano-rvm', '~> 0.1', require: false
   # gem 'capistrano3-unicorn'
   # gem 'rack-mini-profiler', '~> 0.9.2'
-  
+
   # Better errors handler
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'spring'
   # gem 'web-console','>= 3.3.0'
-  gem 'capistrano-sidekiq'
   gem 'bullet'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do
-  gem 'rails-controller-testing'
   gem 'capybara'
   gem 'codeclimate-test-reporter', require: nil
   gem 'database_cleaner'
   gem 'email_spec'
-  gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
+
   gem 'launchy'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', '~> 5.0'
+  gem 'selenium-webdriver'
   gem 'simplecov'
   gem 'spork'
   gem 'timecop'
@@ -103,10 +103,10 @@ end
 
 group :test, :development do
   gem 'dotenv-rails'
-  # gem 'factory_bot_rails'
-  # gem 'ffaker'
-  # gem 'capybara-webkit'
+
   gem 'byebug'
+  gem 'factory_bot_rails'
+  gem 'ffaker'
   gem 'hpricot'
   gem 'rspec-rails'
   gem 'ruby_parser'

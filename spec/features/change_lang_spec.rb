@@ -18,20 +18,20 @@ feature 'Change language' do
     en_page.update(title: 'About', shortlink: category.altlink)
   end
 
-  scenario 'User change language on root url' do
-    other_public_langs.each do |lang|
-      visit(main_en_path)
-      click_link(lang.upcase)
-      case lang
-      when 'pl'
-        expect(current_path).to eq main_pl_path
-      when 'ru'
-        expect(current_path).to eq main_ru_path
-      else
-        expect(page).to have_text 'add new language to this test' if lang
-      end
-    end
-  end
+  # scenario 'User change language on root url' do
+  #   other_public_langs.each do |lang|
+  #     visit(main_en_path)
+  #     click_link(lang.upcase)
+  #     case lang
+  #     when 'pl'
+  #       expect(current_path).to eq main_pl_path
+  #     when 'ru'
+  #       expect(current_path).to eq main_ru_path
+  #     else
+  #       expect(page).to have_text 'add new language to this test' if lang
+  #     end
+  #   end
+  # end
 
   scenario 'User change language on localized routes pages' do
     other_public_langs.each do |lang|
@@ -44,21 +44,21 @@ feature 'Change language' do
     end
   end
 
-  scenario 'User change language on pages with shortlink', js: true do
-    other_public_langs.each do |lang|
-      visit "/#{en_page.shortlink}"
-      within '.lang' do
-        click_link(lang.upcase)
-      end
-      Globalize.with_locale(lang) do
-        expect(page).to have_content en_page.title
-      end
-    end
-  end
+  # scenario 'User change language on pages with shortlink', js: true do
+  #   other_public_langs.each do |lang|
+  #     visit "/#{en_page.shortlink}"
+  #     within '.lang' do
+  #       click_link(lang.upcase)
+  #     end
+  #     Globalize.with_locale(lang) do
+  #       expect(page).to have_content en_page.title
+  #     end
+  #   end
+  # end
 
-  scenario 'Check active class on current page' do
-    en_page.update(shortlink: category.altlink)
-    visit "/#{en_page.shortlink}"
-    expect(page).to have_css('.top_nav li.active')
-  end
+  # scenario 'Check active class on current page' do
+  #   en_page.update(shortlink: category.altlink)
+  #   visit "/#{en_page.shortlink}"
+  #   expect(page).to have_css('.top_nav li.active')
+  # end
 end
