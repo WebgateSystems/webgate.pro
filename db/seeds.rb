@@ -1,4 +1,3 @@
-# encoding: utf-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -7,12 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-if User.count == 0
+if User.count.zero?
   User.create email: 'admin@webgate.pro', password: 'admin789', password_confirmation: 'admin789'
   User.create(email: 'user1@gmail.com', password: '123123', password_confirmation: '123123')
 end
 
-if Member.count == 0
+if Member.count.zero?
   I18n.locale = 'ru'
   member = Member.create name: 'Юрий Скурихин',
                          job_title: 'Ruby on Rails разработчик',
@@ -47,7 +46,7 @@ if Member.count == 0
 
 end
 
-if Project.count == 0
+if Project.count.zero?
   I18n.locale = 'ru'
   project = Project.create title: 'Сервис Auto Centrum',
                            content: 'Сервис Auto Centrum',
@@ -74,7 +73,7 @@ if Project.count == 0
 
 end
 
-if TechnologyGroup.count == 0
+if TechnologyGroup.count.zero?
   I18n.locale = 'en'
   TechnologyGroup.create title: 'Administration', description: 'Administartion technologies'
   TechnologyGroup.create title: 'Design', description: 'Design technologies'
@@ -112,7 +111,7 @@ if TechnologyGroup.count == 0
   t.save
 end
 
-if Technology.count == 0
+if Technology.count.zero?
   I18n.locale = 'en'
   Technology.create title: 'Oracle Database', description: 'Oracle Database', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/Oracle'
   Technology.create title: 'Firebird', description: 'Firebird', technology_group_id: 1, logo: '', link: 'https://en.wikipedia.org/wiki/Firebird'
@@ -130,7 +129,7 @@ if Technology.count == 0
   # todo
 end
 
-if Category.count == 0
+if Category.count.zero?
   I18n.locale = 'pl'
   Category.create name: 'Główna', altlink: '/', position: 1
   Category.create name: 'O nas', altlink: 'o-nas', position: 2
@@ -202,7 +201,7 @@ if Category.count == 0
   c.save
 end
 
-if Page.count == 0
+if Page.count.zero?
   I18n.locale = 'pl'
   Page.create shortlink: '/', title: 'Główna', description: 'Główna',
               keywords: 'Główna', category_id: 1,
@@ -247,5 +246,28 @@ if Page.count == 0
   c.description = 'О нас'
   c.keywords = 'О нас'
   c.content = 'О нас'
+  c.save
+
+  I18n.locale = 'en'
+  Page.create(shortlink: :job, title: :job, description: :job,
+              keywords: :job, category_id: 5, content: :job, position: 3,
+              publish: true)
+
+  I18n.locale = 'pl'
+  c = Page.find 3
+  c.shortlink = 'praca'
+  c.title = 'praca'
+  c.description = 'praca'
+  c.keywords = 'praca'
+  c.content = 'praca'
+  c.save
+
+  I18n.locale = 'pl'
+  c = Page.find 3
+  c.shortlink = 'работа'
+  c.title = 'работа'
+  c.description = 'работа'
+  c.keywords = 'работа'
+  c.content = 'работа'
   c.save
 end

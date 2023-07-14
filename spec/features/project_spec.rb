@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-feature 'Project in admin panel.' do
+describe 'Project in admin panel.' do
   let(:user) { create(:user) }
   let!(:project0) do
     Project.create(title: 'TestTitle0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
-                   collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg')))
+                   collage: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/body.jpg').to_s))
   end
   let!(:project1) do
     Project.create(title: 'TestTitle1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
-                   collage: Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'body.jpg')))
+                   collage: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/body.jpg').to_s))
   end
 
   before do
@@ -16,7 +16,7 @@ feature 'Project in admin panel.' do
     visit admin_projects_path
   end
 
-  scenario 'Project root path should have list of projects' do
+  it 'Project root path should have list of projects' do
     visit admin_projects_path
     expect(page).to have_content 'Title'
     expect(page).to have_content 'Created at'
@@ -44,26 +44,26 @@ feature 'Project in admin panel.' do
   #   expect(current_path).to_not eq admin_project_path(Project.last.id)
   # end
 
-  scenario 'Link list should work good' do
+  it 'Link list should work good' do
     visit new_admin_project_path
     click_link('List')
-    expect(current_path).to eq admin_projects_path
+    expect(page).to have_current_path admin_projects_path, ignore_query: true
   end
 
-  scenario 'Project root path links show, edit should work' do
+  it 'Project root path links show, edit should work' do
     page.all(:link, 'Show')[0].click
-    expect(current_path).to eq admin_project_path(Project.first.id)
+    expect(page).to have_current_path admin_project_path(Project.first.id), ignore_query: true
     visit admin_projects_path
     page.all(:link, 'Edit')[0].click
-    expect(current_path).to eq edit_admin_project_path(Project.first.id)
+    expect(page).to have_current_path edit_admin_project_path(Project.first.id), ignore_query: true
   end
 
-  scenario 'Link delete should delete project' do
+  it 'Link delete should delete project' do
     page.all(:link, 'Delete')[0].click
-    expect(current_path).to eq current_path
+    expect(page).to have_current_path current_path, ignore_query: true
   end
 
-  scenario 'Show should display our project information' do
+  it 'Show should display our project information' do
     click_link('TestTitle0')
     expect(page).to have_content 'Title:'
     expect(page).to have_content 'TestTitle0'
@@ -72,19 +72,19 @@ feature 'Project in admin panel.' do
     expect(page).to have_content 'http://test.webgate.pro'
   end
 
-  scenario 'Create project should create project' do
+  it 'Create project should create project' do
     click_link('New')
     fill_in 'project[title]', with: 'TestTitleFull'
     fill_in 'project[content]', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
-    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
+    attach_file('project[collage]', Rails.root.join('/spec/fixtures/projects/tested.jpg').to_s)
     click_button 'Save'
     visit admin_projects_path
     click_link('TestTitleFull')
     expect(page).to have_content 'TestContentFull'
   end
 
-  scenario 'Check publish. Here should be false' do
+  it 'Check publish. Here should be false' do
     expect(page).to have_content 'false'
   end
 
@@ -100,7 +100,7 @@ feature 'Project in admin panel.' do
   #   expect(page).to have_content 'true'
   # end
 
-  scenario 'Validation for new project' do
+  it 'Validation for new project' do
     click_link('New')
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')

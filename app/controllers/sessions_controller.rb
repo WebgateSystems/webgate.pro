@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   layout 'session'
-  def new
-  end
+  def new; end
 
   def create
     user = login(params[:email], params[:password], params[:remember_me])

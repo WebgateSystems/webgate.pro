@@ -3,7 +3,7 @@ module Sorcery
     module Rails
       module Integration
         def login_user_post(email, password)
-          page.driver.post(sessions_url, { email: email, password: password, remember_me: false })
+          page.driver.post(sessions_url, { email:, password:, remember_me: false })
         end
 
         def logout_user_get

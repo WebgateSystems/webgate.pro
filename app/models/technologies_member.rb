@@ -1,4 +1,4 @@
-class TechnologiesMember < ActiveRecord::Base
+class TechnologiesMember < ApplicationRecord
   include RankedModel
   ranks :position, with_same: :member_id
 

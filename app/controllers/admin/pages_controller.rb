@@ -1,54 +1,55 @@
-class Admin::PagesController < Admin::HomeController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
-  before_action :set_categories, only: [:new, :create, :edit, :update]
+module Admin
+  class PagesController < Admin::HomeController
+    before_action :set_page, only: %i[show edit update destroy]
+    before_action :set_categories, only: %i[new create edit update]
 
-  def index
-    @pages = Page.order(:id).includes(:translations)
-  end
-
-  def show
-  end
-
-  def new
-    @page = Page.new
-  end
-
-  def create
-    @page = Page.new(page_params)
-    if @page.save
-      redirect_to [:admin, @page], notice: "#{t(:page)} #{t(:was_successfully_created)}."
-    else
-      render 'new'
+    def index
+      @pages = Page.order(:id).includes(:translations)
     end
-  end
 
-  def edit
-  end
+    def show; end
 
-  def update
-    if @page.update_attributes(page_params)
-      redirect_to [:admin, @page], notice: "#{t(:page)} #{t(:was_successfully_updated)}."
-    else
-      render 'edit'
+    def new
+      @page = Page.new
     end
-  end
 
-  def destroy
-    @page.destroy
-    redirect_to admin_pages_url, notice: "#{t(:page)} #{t(:was_successfully_destroyed)}."
-  end
+    def create
+      @page = Page.new(page_params)
+      if @page.save
+        redirect_to [:admin, @page], notice: "#{t(:page)} #{t(:was_successfully_created)}."
+      else
+        render 'new'
+      end
+    end
 
-  private
+    def edit; end
 
-  def set_page
-    @page = Page.find(params[:id])
-  end
+    def update
+      if @page.update(page_params)
+        redirect_to [:admin, @page], notice: "#{t(:page)} #{t(:was_successfully_updated)}."
+      else
+        render 'edit'
+      end
+    end
 
-  def set_categories
-    @categories = Category.includes(:translations)
-  end
+    def destroy
+      @page.destroy
+      redirect_to admin_pages_url, notice: "#{t(:page)} #{t(:was_successfully_destroyed)}."
+    end
 
-  def page_params
-    params.require(:page).permit(:shortlink, :title, :description, :keywords, :content, :position, :category_id, :publish)
+    private
+
+    def set_page
+      @page = Page.find(params[:id])
+    end
+
+    def set_categories
+      @categories = Category.includes(:translations)
+    end
+
+    def page_params
+      params.require(:page).permit(:shortlink, :title, :description, :keywords, :content, :position, :category_id,
+                                   :publish)
+    end
   end
 end

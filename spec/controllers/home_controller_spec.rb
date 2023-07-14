@@ -1,4 +1,4 @@
-describe HomeController, type: :controller  do
+describe HomeController, type: :controller do
   describe "GET 'index'" do
     it 'returns http success' do
       get :index

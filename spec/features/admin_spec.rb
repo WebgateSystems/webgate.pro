@@ -1,24 +1,24 @@
 require 'rails_helper'
 
-feature 'Admin panel' do
+describe 'Admin panel' do
   let(:user) { create(:user) }
 
-  scenario 'forbid access to dashboard without fill the correct login/password' do
+  it 'forbid access to dashboard without fill the correct login/password' do
     visit admin_root_path
     fill_in 'email', with: user.email
     fill_in 'password', with: 'wrong_password'
     click_button 'Log in'
     visit admin_root_path
 
-    expect(current_path).to eq login_path
+    expect(page).to have_current_path login_path, ignore_query: true
   end
 
-  scenario 'displays dashboard after correct login' do
+  it 'displays dashboard after correct login' do
     visit admin_root_path
     login_user_post(user.email, 'secret')
 
     visit admin_root_path
-    expect(current_path).to eq '/admin'
+    expect(page).to have_current_path '/admin'
     within 'h1' do
       expect(page).to have_content 'Webgate Systems'
     end
@@ -32,7 +32,7 @@ feature 'Admin panel' do
     expect(page).to have_content 'Logout'
   end
 
-  scenario 'all link should work' do
+  it 'all link should work' do
     visit admin_root_path
     login_user_post(user.email, 'secret')
     ['Users', 'Pages', 'Technology groups', 'Technologies', 'Projects', 'Team members'].each do |name|
@@ -44,18 +44,18 @@ feature 'Admin panel' do
     end
   end
 
-  scenario 'webgate systems should link to root' do
+  it 'webgate systems should link to root' do
     visit admin_root_path
     login_user_post(user.email, 'secret')
     visit admin_root_path
     click_link('Webgate Systems')
-    expect(current_path).to eq '/'
+    expect(page).to have_current_path '/'
   end
 
-  scenario 'lang link should work' do
+  it 'lang link should work' do
     visit admin_root_path
     login_user_post(user.email, 'secret')
-    ['PL', 'RU'].each do |lang|
+    %w[PL RU].each do |lang|
       visit admin_root_path
       click_link(lang) unless I18n.locale.to_s == lang
       if lang == 'PL'

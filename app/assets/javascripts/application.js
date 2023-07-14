@@ -23,3 +23,5 @@
 //= require lightbox-video.min.js
 //= require scripts
 //= require contacts
+
+$(function(){ $(document).foundation(); });

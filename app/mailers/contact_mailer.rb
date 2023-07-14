@@ -1,4 +1,4 @@
-class ContactMailer < ActionMailer::Base
+class ContactMailer < ApplicationMailer
   include Sidekiq::Worker
   sidekiq_options queue: :mail
 
@@ -7,6 +7,6 @@ class ContactMailer < ActionMailer::Base
   def contact_mail(contact)
     @contact = contact
     subject = contact.nickname.present? ? 'SPAM' : t(:contact_form)
-    mail from: '"Notifier" <notifier@webgate.pro>', reply_to: %("#{@contact.name}" <#{contact.email}>), subject: subject
+    mail from: '"Notifier" <notifier@webgate.pro>', reply_to: %("#{@contact.name}" <#{contact.email}>), subject:
   end
 end

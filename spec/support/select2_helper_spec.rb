@@ -1,6 +1,6 @@
 module Select2Helper
   def select2(value, element_selector)
-    select2_container = first("#{element_selector}")
+    select2_container = first(element_selector.to_s)
     select2_container.find('.select2-choice').click
 
     find(:xpath, '//body').find('input.select2-input').set(value)

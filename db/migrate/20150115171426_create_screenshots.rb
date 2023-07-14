@@ -1,5 +1,5 @@
 class CreateScreenshots < ActiveRecord::Migration[5.2]
-  def change
+  def self.up
     create_table :screenshots do |t|
       t.string :file
       t.integer :project_id
@@ -7,5 +7,9 @@ class CreateScreenshots < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+  end
+
+  def self.down
+    drop_table :screenshots
   end
 end

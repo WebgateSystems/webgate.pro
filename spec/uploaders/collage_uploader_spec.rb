@@ -9,7 +9,7 @@ describe CollageUploader do
 
   before do
     described_class.enable_processing = true
-    uploader.store!(File.open(File.join(Rails.root, '/spec/fixtures/projects/tested.jpg')))
+    uploader.store!(File.open(Rails.root.join('/spec/fixtures/projects/tested.jpg').to_s))
   end
 
   after do

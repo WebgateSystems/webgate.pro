@@ -2,9 +2,9 @@ set :stage, :production
 set :branch, 'master'
 
 set :full_app_name, 'webgate.pro'
-set :server_name, "#{fetch(:full_app_name)}"
+set :server_name, fetch(:full_app_name).to_s
 
-server "#{fetch(:server_name)}", user: "#{fetch(:deploy_user)}", roles: %w(web app db), primary: true
+server fetch(:server_name).to_s, user: fetch(:deploy_user).to_s, roles: %w[web app db], primary: true
 
 set :deploy_to, "/home/#{fetch(:deploy_user)}/#{fetch(:full_app_name)}"
 

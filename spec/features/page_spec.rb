@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Page in admin panel.' do
+describe 'Page in admin panel.' do
   let(:user) { create(:user) }
   let!(:en_page) { create(:en_page) }
 
@@ -9,32 +9,32 @@ feature 'Page in admin panel.' do
     visit admin_pages_path
   end
 
-  scenario 'Link list should work good' do
+  it 'Link list should work good' do
     visit new_admin_page_path
     click_link('List')
-    expect(current_path).to eq admin_pages_path
+    expect(page).to have_current_path admin_pages_path, ignore_query: true
   end
 
-  scenario 'Page root path should have list of pages' do
+  it 'Page root path should have list of pages' do
     expect(page).to have_content 'Title'
     expect(page).to have_content 'Created at'
     expect(page).to have_content en_page.title
   end
 
-  scenario 'Page root path links show, edit should work' do
+  it 'Page root path links show, edit should work' do
     page.all(:link, 'Show')[0].click
-    expect(current_path).to eq admin_page_path(Page.first.id)
+    expect(page).to have_current_path admin_page_path(Page.first.id), ignore_query: true
     visit admin_pages_path
     page.all(:link, 'Edit')[0].click
-    expect(current_path).to eq edit_admin_page_path(Page.first.id)
+    expect(page).to have_current_path edit_admin_page_path(Page.first.id), ignore_query: true
   end
 
-  scenario 'Link delete should delete page' do
+  it 'Link delete should delete page' do
     page.all(:link, 'Delete')[0].click
-    expect(current_path).to eq current_path
+    expect(page).to have_current_path current_path, ignore_query: true
   end
 
-  scenario 'Show should display our page information' do
+  it 'Show should display our page information' do
     click_link(en_page.title)
     expect(page).to have_content 'Title:'
     expect(page).to have_content en_page.title
@@ -48,7 +48,7 @@ feature 'Page in admin panel.' do
     expect(page).to have_content en_page.content
   end
 
-  scenario 'Create page should create page' do
+  it 'Create page should create page' do
     click_link('New')
     fill_in 'page[title]', with: 'TestTitleFull'
     fill_in 'page[shortlink]', with: 'TestlinkFull'
@@ -60,7 +60,7 @@ feature 'Page in admin panel.' do
     expect(page).to have_content 'TestTitleFull'
   end
 
-  scenario 'Validation for new page' do
+  it 'Validation for new page' do
     click_link('New')
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')

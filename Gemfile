@@ -2,19 +2,12 @@ source 'https://rubygems.org'
 
 gem 'pg'
 gem 'puma'
-gem 'rails', '~> 6.1'
+gem 'rails', '~> 7.0.2', '>= 7.0.2.4'
 
 gem 'carrierwave'
 gem 'exception_notification', '~> 4.0.1'
-gem 'font-awesome-rails'
 gem 'geoip'
 gem 'globalize'
-gem 'jquery-fileupload-rails'
-gem 'jquery-minicolors-rails'
-
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-
 gem 'kaminari'
 gem 'mini_magick'
 gem 'pry'
@@ -29,17 +22,18 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
+gem 'autoprefixer-rails'
 gem 'chosen-rails'
 gem 'ckeditor'
 gem 'cocoon'
 gem 'dynamic_sitemaps'
-gem 'foundation-rails'
 gem 'jbuilder'
 gem 'json'
 gem 'oga'
 gem 'ranked-model'
+gem 'redis'
 gem 'select2-rails'
-gem 'sidekiq'
+gem 'sidekiq', '~> 5.2.8'
 gem 'simple_form'
 gem 'sinatra', require: nil
 gem 'sorcery'
@@ -50,9 +44,17 @@ gem 'coffee-rails'
 gem 'execjs'
 gem 'sass-rails'
 gem 'sprockets-rails'
-gem 'therubyracer', '~> 0.12.2'
+# gem "therubyracer", "~> 0.12"
 gem 'uglifier'
 gem 'yui-compressor'
+
+gem 'font-awesome-rails'
+gem 'foundation-rails', '~> 5.5.1'
+
+gem 'jquery-fileupload-rails'
+gem 'jquery-minicolors-rails'
+gem 'jquery-rails'
+gem 'jquery-ui-rails', '6.0.0'
 
 # group :doc do
 #   # bundle exec rake doc:rails generates the API under doc/api.
@@ -78,12 +80,12 @@ group :development do
   # gem 'rack-mini-profiler', '~> 0.9.2'
 
   # Better errors handler
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'spring'
+  # gem 'better_errors'
+  # gem 'binding_of_caller'
+  # gem 'spring'
   # gem 'web-console','>= 3.3.0'
   gem 'bullet'
-  gem 'capistrano-sidekiq'
+  # gem 'capistrano-sidekiq'
 end
 
 group :test do

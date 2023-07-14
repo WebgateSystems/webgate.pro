@@ -9,8 +9,8 @@ describe User do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:password) }
     it { is_expected.to allow_value('test@webgate.pro').for(:email) }
-    it { is_expected.to_not allow_value('test@webgate').for(:email) }
-    it { is_expected.to_not allow_value('@webgate.pro').for(:email) }
-    it { is_expected.to_not allow_value('webgate.pro').for(:email) }
+    it { is_expected.not_to allow_value('test@webgate').for(:email) }
+    it { is_expected.not_to allow_value('@webgate.pro').for(:email) }
+    it { is_expected.not_to allow_value('webgate.pro').for(:email) }
   end
 end

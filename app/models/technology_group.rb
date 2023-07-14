@@ -1,4 +1,4 @@
-class TechnologyGroup < ActiveRecord::Base
+class TechnologyGroup < ApplicationRecord
   include RankedModel
   ranks :position
 

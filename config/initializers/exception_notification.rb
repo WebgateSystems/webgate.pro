@@ -8,7 +8,7 @@ ExceptionNotification.configure do |config|
 
   # Adds a condition to decide when an exception must be ignored or not.
   # The ignore_if method can be invoked multiple times to add extra conditions.
-  config.ignore_if do |exception, options|
+  config.ignore_if do |_exception, _options|
     Rails.env.development? || Rails.env.test?
   end
 
@@ -18,7 +18,7 @@ ExceptionNotification.configure do |config|
   config.add_notifier :email, {
     email_prefix: Rails.env.production? ? '[webgate.pro - exception]' : '[test.webgate.pro - exception]',
     sender_address: %("webgate.pro exception notifier" <notify@webgate.pro>),
-    exception_recipients: %w(devs@webgate.pro)
+    exception_recipients: %w[devs@webgate.pro]
   }
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
   # config.add_notifier :campfire, {

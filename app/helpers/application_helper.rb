@@ -4,7 +4,9 @@ module ApplicationHelper
   end
 
   def other_mobile_langs
-    (ApplicationController::PUBLIC_LANGS.map { |l| [l.first, l.first.upcase + ' - ' + l.last] if l.first != I18n.locale.to_s }).compact
+    (ApplicationController::PUBLIC_LANGS.map do |l|
+       [l.first, "#{l.first.upcase} - #{l.last}"] if l.first != I18n.locale.to_s
+     end).compact
   end
 
   def other_langs
@@ -13,7 +15,7 @@ module ApplicationHelper
 
   def tech_link(technology)
     link = technology.link
-    (link && !link.blank?) ? link : 'javascript:;'
+    (link.presence || 'javascript:;')
   end
 
   def compare_path(menu_item)
@@ -25,8 +27,8 @@ module ApplicationHelper
   end
 
   def menu_item_active?(menu_item)
-    request.path == compare_path(menu_item) || request.path == '/' + compare_path(menu_item) ||
-      request.path == '/' + main_menu_path(menu_item)
+    request.path == compare_path(menu_item) || request.path == "/#{compare_path(menu_item)}" ||
+      request.path == "/#{main_menu_path(menu_item)}"
   end
 
   def url_main(lang)
@@ -54,7 +56,7 @@ module ApplicationHelper
       url_main(lang)
     elsif params[:action] == 'showbyshortlink'
       page = Page.with_translations(locale).find_by(shortlink: params[:shortlink])
-      link_to(lang.upcase, (page.nil? || page.shortlink == params[:shortlink]) ? url_not_found(lang) : page.shortlink)
+      link_to(lang.upcase, page.nil? || page.shortlink == params[:shortlink] ? url_not_found(lang) : page.shortlink)
     else
       link_to(lang.upcase, locale: lang)
     end
@@ -65,7 +67,7 @@ module ApplicationHelper
       mobile_main_url(lang, label)
     elsif params[:action] == 'showbyshortlink'
       page = Page.with_translations(locale).find_by(shortlink: params[:shortlink])
-      link_to((page.nil? || page.shortlink == params[:shortlink]) ? url_not_found(lang) : page.shortlink) do
+      link_to(page.nil? || page.shortlink == params[:shortlink] ? url_not_found(lang) : page.shortlink) do
         raw("<span> #{label}</span>")
       end
     else

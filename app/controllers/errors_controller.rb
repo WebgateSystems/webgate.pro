@@ -3,8 +3,8 @@ class ErrorsController < ApplicationController
 
   def not_found
     respond_to do |format|
-      format.html { render status: 404 }
-      format.all  { render text: t(:error_404), status: 404 }
+      format.html { render status: :not_found }
+      format.all  { render text: t(:error_404), status: :not_found }
     end
   end
 

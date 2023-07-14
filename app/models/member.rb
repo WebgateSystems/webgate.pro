@@ -1,6 +1,6 @@
 require 'carrierwave/orm/activerecord'
 
-class Member < ActiveRecord::Base
+class Member < ApplicationRecord
   include RankedModel
   ranks :position
 
@@ -21,7 +21,7 @@ class Member < ActiveRecord::Base
 
   def technology_groups
     TechnologyGroup.includes(:technologies, :translations)
-      .where(id: technologies.includes(:translations).map(&:technology_group_id).uniq).rank(:position)
+                   .where(id: technologies.includes(:translations).map(&:technology_group_id).uniq).rank(:position)
   end
 
   protected

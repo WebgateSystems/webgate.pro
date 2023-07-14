@@ -1,4 +1,3 @@
-
 require 'carrierwave/test/matchers'
 
 describe LogoUploader do
@@ -9,7 +8,7 @@ describe LogoUploader do
 
   before do
     described_class.enable_processing = true
-    uploader.store!(File.open(File.join(Rails.root, '/app/assets/images/html5.png')))
+    uploader.store!(File.open(Rails.root.join('/app/assets/images/html5.png').to_s))
   end
 
   after do

@@ -1,4 +1,4 @@
-APP_CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]
+APP_CONFIG = YAML.load_file(Rails.root.join('config/config.yml').to_s)[Rails.env]
 
 ActionMailer::Base.smtp_settings = {
   enable_starttls_auto: APP_CONFIG['smtp_data']['tls'],

@@ -11,7 +11,7 @@ stderr_path "#{app_path}/current/log/unicorn.stderr.log"
 stdout_path "#{app_path}/current/log/unicorn.stdout.log"
 
 # use correct Gemfile on restarts
-before_exec do |server|
+before_exec do |_server|
   ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
 end
 preload_app true
@@ -20,7 +20,7 @@ timeout 120
 # Spawn unicorn master worker for user apps (group: apps)
 user 'webgate', 'webgate'
 
-before_fork do |server, worker|
+before_fork do |server, _worker|
   ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
 
   old_pid = "#{server.config[:pid]}.oldbin"
@@ -33,6 +33,6 @@ before_fork do |server, worker|
   end
 end
 
-after_fork do |server, worker|
+after_fork do |_server, _worker|
   ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
 end

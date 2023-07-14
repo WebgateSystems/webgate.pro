@@ -2,7 +2,6 @@ describe PagesController, type: :request do
   let!(:en_page) { create(:en_page) }
 
   describe "GET 'showbyshortlink'" do
-
     it 'returns http success' do
       get "/#{en_page.shortlink}"
       expect(response).to be_successful

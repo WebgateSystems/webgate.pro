@@ -2,16 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2015_06_04_100352) do
-
+ActiveRecord::Schema[7.0].define(version: 2015_06_04_100352) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,8 +19,8 @@ ActiveRecord::Schema.define(version: 2015_06_04_100352) do
     t.string "altlink"
     t.text "description"
     t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "category_translations", force: :cascade do |t|
@@ -45,8 +44,8 @@ ActiveRecord::Schema.define(version: 2015_06_04_100352) do
     t.string "type", limit: 30
     t.integer "width"
     t.integer "height"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
     t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
   end
@@ -66,8 +65,8 @@ ActiveRecord::Schema.define(version: 2015_06_04_100352) do
     t.string "link"
     t.integer "member_id"
     t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["member_id"], name: "index_member_links_on_member_id"
   end
 
@@ -91,8 +90,8 @@ ActiveRecord::Schema.define(version: 2015_06_04_100352) do
     t.text "description"
     t.text "motto"
     t.string "avatar"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "position"
     t.boolean "publish", default: false
   end
@@ -127,8 +126,8 @@ ActiveRecord::Schema.define(version: 2015_06_04_100352) do
     t.text "content"
     t.integer "position"
     t.bigint "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "publish", default: false
     t.index ["category_id"], name: "index_pages_on_category_id"
   end
@@ -150,8 +149,8 @@ ActiveRecord::Schema.define(version: 2015_06_04_100352) do
     t.text "description"
     t.text "keywords"
     t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "livelink"
     t.boolean "publish", default: false
     t.integer "position"
@@ -169,8 +168,8 @@ ActiveRecord::Schema.define(version: 2015_06_04_100352) do
     t.string "file"
     t.integer "project_id"
     t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "technologies", force: :cascade do |t|
@@ -178,8 +177,8 @@ ActiveRecord::Schema.define(version: 2015_06_04_100352) do
     t.text "description"
     t.bigint "technology_group_id"
     t.string "logo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "position"
     t.string "link"
     t.integer "member_position"
@@ -218,8 +217,8 @@ ActiveRecord::Schema.define(version: 2015_06_04_100352) do
   create_table "technology_groups", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "color"
     t.integer "position"
   end
@@ -239,16 +238,16 @@ ActiveRecord::Schema.define(version: 2015_06_04_100352) do
     t.string "email", null: false
     t.string "crypted_password", null: false
     t.string "salt", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "remember_me_token"
-    t.datetime "remember_me_token_expires_at"
+    t.datetime "remember_me_token_expires_at", precision: nil
     t.integer "failed_logins_count", default: 0
-    t.datetime "lock_expires_at"
+    t.datetime "lock_expires_at", precision: nil
     t.string "unlock_token"
-    t.datetime "last_login_at"
-    t.datetime "last_logout_at"
-    t.datetime "last_activity_at"
+    t.datetime "last_login_at", precision: nil
+    t.datetime "last_logout_at", precision: nil
+    t.datetime "last_activity_at", precision: nil
     t.string "last_login_from_ip_address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["last_logout_at", "last_activity_at"], name: "index_users_on_last_logout_at_and_last_activity_at"

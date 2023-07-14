@@ -1,6 +1,22 @@
 {
+  "name": "app",
+  "private": "true",
   "dependencies": {
-    "jquery": "^3.7.0",
-    "jquery-ui-dist": "^1.13.2"
+    "@popperjs/core": "^2.11.5",
+    "bootstrap": "3.3.7",
+    "coffee-script": "^1.12.7",
+    "jquery": "^3.6.0",
+    "node": "^20.2.0",
+    "sass": "^1.51.0",
+    "webpack": "^5.84.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules"
+  },
+  "devDependencies": {
+    "eslint": ">=5.16.0",
+    "eslint-config-google": "^0.14.0"
   }
 }

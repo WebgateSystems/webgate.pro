@@ -5,6 +5,6 @@ FactoryBot.define do
     education { FFaker::Lorem.paragraph }
     description { FFaker::Lorem.paragraph }
     motto { FFaker::Lorem.sentence }
-    avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'app', 'assets', 'images',  'yuri_skurikhin.png')) }
+    avatar { Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/yuri_skurikhin.png').to_s) }
   end
 end

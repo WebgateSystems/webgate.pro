@@ -10,11 +10,11 @@ namespace :db do
       job = Faker::Lorem.word
       description = Faker::Lorem.paragraph(5)
       motto = Faker::Lorem.sentence(3, true, 4)
-      member = Member.create name: name,
+      member = Member.create(name:,
                              job_title: job,
-                             description: description,
-                             motto: motto
-      src = File.join(Rails.root, 'app/assets/images/yuri_skurikhin.png')
+                             description:,
+                             motto:)
+      src = Rails.root.join('app/assets/images/yuri_skurikhin.png').to_s
       src_file = File.new(src)
       member.avatar = src_file
       member.save!

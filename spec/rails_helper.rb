@@ -1,8 +1,7 @@
-
 require 'simplecov_helper'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
@@ -12,24 +11,24 @@ require 'sidekiq/testing'
 
 Sidekiq::Testing.inline!
 
-
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
-Dir["#{Rails.root}/app/uploaders/*.rb"].each { |file| require file }
+Dir[Rails.root.join('app/uploaders/*.rb').to_s].each { |file| require file }
 if defined?(CarrierWave)
   CarrierWave::Uploader::Base.descendants.each do |klass|
     next if klass.anonymous?
+
     klass.class_eval do
       def cache_dir
-        "#{Rails.root}/public/spec/uploads/cache"
+        Rails.root.join('public/spec/uploads/cache').to_s
       end
 
       def store_dir
-        "#{Rails.root}/public/spec/uploads/#{model.class.to_s.underscore}/#{model.id}/#{mounted_as}"
+        Rails.root.join("public/spec/uploads/#{model.class.to_s.underscore}/#{model.id}/#{mounted_as}").to_s
       end
     end
   end
@@ -56,16 +55,14 @@ RSpec.configure do |config|
   config.include MailerMacros
 
   config.before :each, :js, type: :feature do |example|
-    if example.metadata[:js]
-      page.driver.block_unknown_urls if Capybara.javascript_driver == :webkit
+    if example.metadata[:js] && (Capybara.javascript_driver == :webkit)
+      page.driver.block_unknown_urls
       # page.driver.allow_url('api.stripe.com')
     end
   end
 
   config.after(:all) do
-    if Rails.env.test? || Rails.env.cucumber?
-      FileUtils.rm_rf(Dir["#{Rails.root}/public/spec"])
-    end
+    FileUtils.rm_rf(Dir[Rails.root.join('public/spec').to_s]) if Rails.env.test? || Rails.env.cucumber?
   end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

@@ -5,7 +5,7 @@ FactoryBot.define do
     content { 'help me' }
 
     factory :bot do
-      nickname  { 'bot' }
+      nickname { 'bot' }
     end
   end
 end

@@ -5,17 +5,17 @@ class ApplicationController < ActionController::Base
   before_action :common_prepare
 
   LANGS = [
-    %w(en English),
-    %w(pl Polski),
-    %w(ru Русский),
-    %w(fr Français)
-  ]
+    %w[en English],
+    %w[pl Polski],
+    %w[ru Русский],
+    %w[fr Français]
+  ].freeze
 
   PUBLIC_LANGS = [
-    %w(en English),
-    %w(pl Polski),
-    %w(ru Русский)
-  ]
+    %w[en English],
+    %w[pl Polski],
+    %w[ru Русский]
+  ].freeze
 
   def common_prepare
     prepare_lang
@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
 
   def geoip_lang
     Bundler.require 'geoip'
-    g = GeoIP.new(Rails.root + 'db/GeoIP.dat')
+    g = GeoIP.new("#{Rails.root.join('db/GeoIP.dat')}")
     country_code = g.country(request.remote_ip).country_code2.downcase
     case country_code
     when 'pl'

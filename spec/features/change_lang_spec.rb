@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'sass'
 include ApplicationHelper
 
-feature 'Change language' do
+describe 'Change language' do
   let!(:category) { create(:category) }
   let!(:en_page) { create(:en_page) }
 
@@ -33,14 +33,14 @@ feature 'Change language' do
   #   end
   # end
 
-  scenario 'User change language on localized routes pages' do
+  it 'User change language on localized routes pages' do
     other_public_langs.each do |lang|
       visit team_path
       within '.lang' do
         click_link(lang.upcase)
       end
-      expect(current_path).to eq team_pl_path if lang == 'pl'
-      expect(current_path).to eq team_ru_path if lang == 'ru'
+      expect(page).to have_current_path team_pl_path, ignore_query: true if lang == 'pl'
+      expect(page).to have_current_path team_ru_path, ignore_query: true if lang == 'ru'
     end
   end
 

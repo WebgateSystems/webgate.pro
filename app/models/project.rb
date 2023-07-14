@@ -1,7 +1,7 @@
 require 'carrierwave/orm/activerecord'
 require 'uri'
 
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
   include RankedModel
   ranks :position
 
@@ -10,13 +10,15 @@ class Project < ActiveRecord::Base
   has_many :technologies_projects, dependent: :destroy
   has_many :screenshots, dependent: :destroy
   has_many :technologies, -> { order('technologies_projects.position') }, through: :technologies_projects
-  
+
   accepts_nested_attributes_for :screenshots,
-                                reject_if: proc { |param| param[:file].blank? && param[:file_cache].blank? && param[:id].blank? },
+                                reject_if: proc { |param|
+                                             param[:file].blank? && param[:file_cache].blank? && param[:id].blank?
+                                           },
                                 allow_destroy: true
 
   validates :title, :content, :livelink, presence: true
-  validates :livelink, format: { with: URI.regexp }
+  validates :livelink, format: { with: URI::DEFAULT_PARSER.make_regexp }
   validate  :check_collage
 
   translates :title, :content

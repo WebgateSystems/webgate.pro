@@ -19,7 +19,9 @@
 //= require jquery.minicolors
 //= require jquery.minicolors.simple_form
 
-//= require admin/flashes
+//= require jquery-ui/sortable
+//= require jquery-ui/effects/effect-highlight
 
+//= require admin/flashes
 
 $(function () { $(document).foundation(); });

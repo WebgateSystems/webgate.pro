@@ -1,4 +1,4 @@
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
   scope :published, -> { where(publish: true) }
 
   belongs_to :category
@@ -14,7 +14,7 @@ class Page < ActiveRecord::Base
 
   def check_shortlink_unique
     shortlinks = []
-    Page.where.not(id: id).includes(:translations).each do |page|
+    Page.where.not(id:).includes(:translations).find_each do |page|
       I18n.available_locales.each do |l|
         Globalize.with_locale(l) do
           shortlinks << page.shortlink.downcase if page.shortlink

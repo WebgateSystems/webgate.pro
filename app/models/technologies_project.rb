@@ -1,4 +1,4 @@
-class TechnologiesProject < ActiveRecord::Base
+class TechnologiesProject < ApplicationRecord
   include RankedModel
   ranks :position, with_same: :project_id
 

@@ -3,7 +3,7 @@ require 'sidekiq/web'
 WebgatePro::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   resources :sessions
-  resources :contacts, only: [:new, :create]
+  resources :contacts, only: %i[new create]
 
   namespace :admin do
     mount Sidekiq::Web => '/sidekiq'
@@ -39,7 +39,7 @@ WebgatePro::Application.routes.draw do
       resources :technologies do
       end
     end
-    
+
     root to: 'home#index'
   end
 

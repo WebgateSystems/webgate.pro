@@ -14,7 +14,7 @@ describe Member do
     it 'validates not publish without avatar' do
       member = described_class.new(name: 'test', job_title: 'test', description: 'test', education: 'test',
                                    publish: true, avatar: nil)
-      expect(member.valid?).to be_falsey
+      expect(member).not_to be_valid
       expect(member.errors[:publish].size).to eq(1)
     end
   end
@@ -42,7 +42,7 @@ describe Member do
       tg2 = TechnologyGroup.create!(title: 'Frontend')
       t1 = Technology.create!(title: 'unix', link: 'http://link.com', technology_group: tg1)
       member.technologies << t1
-      expect(member.technology_groups).to_not match_array([tg1, tg2])
+      expect(member.technology_groups).not_to match_array([tg1, tg2])
     end
   end
 end

@@ -1,7 +1,8 @@
-class Admin::HomeController < ApplicationController
-  layout 'admin'
-  before_action  :require_login
+module Admin
+  class HomeController < ApplicationController
+    layout 'admin'
+    before_action :require_login
 
-  def index
+    def index; end
   end
 end
