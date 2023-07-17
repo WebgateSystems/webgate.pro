@@ -40,11 +40,8 @@ module Admin
       @category = Category.find(category_params[:category_id])
       @category.position_position = category_params[:row_position]
       respond_to do |format|
-        if @category.save!
-          format.json { head :ok }
-        else
-          format.json { head :error }
-        end
+        @category.save! ? format.json { head :ok } : format.json { head :error }
+        format.html
       end
     end
 

@@ -55,11 +55,8 @@ module Admin
       @project = Project.find(project_params[:project_id])
       @project.position_position = project_params[:row_position]
       respond_to do |format|
-        if @project.save!
-          format.json { head :ok }
-        else
-          format.json { head :error }
-        end
+        @project.save! ? format.json { head :ok } : format.json { head :error }
+        format.html
       end
     end
 
@@ -67,11 +64,8 @@ module Admin
       @screenshot = Screenshot.find(project_params[:screenshot_id])
       @screenshot.position_position = project_params[:row_position]
       respond_to do |format|
-        if @screenshot.save!
-          format.json { head :ok }
-        else
-          format.json { head :error }
-        end
+        @screenshot.save! ? format.json { head :ok } : format.json { head :error }
+        format.html
       end
     end
 
@@ -80,11 +74,8 @@ module Admin
                                                           technology_id: project_params[:project_technology_id])
       @technologies_project.position_position = project_params[:row_tech_position]
       respond_to do |format|
-        if @technologies_project.save!
-          format.json { head :ok }
-        else
-          format.json { head :error }
-        end
+        @technologies_project.save! ? format.json { head :ok } : format.json { head :error }
+        format.html
       end
     end
 

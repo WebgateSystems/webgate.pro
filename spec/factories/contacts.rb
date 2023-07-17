@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :contact do
-    name { 'client' }
-    email { 'client@example.com' }
-    content { 'help me' }
+    name { FFaker::Name.name }
+    email { FFaker::Internet.email }
+    content { FFaker::Book.description }
+    nickname { '' }
 
     factory :bot do
       nickname { 'bot' }

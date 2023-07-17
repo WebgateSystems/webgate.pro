@@ -8,7 +8,7 @@ describe LogoUploader do
 
   before do
     described_class.enable_processing = true
-    uploader.store!(File.open(Rails.root.join('/app/assets/images/html5.png').to_s))
+    uploader.store!(File.open('spec/fixtures/projects/html5.png'))
   end
 
   after do
@@ -23,6 +23,10 @@ describe LogoUploader do
 
     it 'has the correct format' do
       expect(uploader.file.extension).to eq('png')
+    end
+
+    it 'has a white list of allowed extensions' do
+      expect(uploader.extension_white_list).to eq(%w[gif png])
     end
   end
 

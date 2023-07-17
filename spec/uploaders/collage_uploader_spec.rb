@@ -1,4 +1,3 @@
-require 'rails_helper'
 require 'carrierwave/test/matchers'
 
 describe CollageUploader do
@@ -9,7 +8,7 @@ describe CollageUploader do
 
   before do
     described_class.enable_processing = true
-    uploader.store!(File.open(Rails.root.join('/spec/fixtures/projects/tested.jpg').to_s))
+    uploader.store!(File.open('spec/fixtures/projects/tested.jpg'))
   end
 
   after do
@@ -24,6 +23,10 @@ describe CollageUploader do
 
     it 'has the correct format' do
       expect(uploader.file.extension).to eq('jpg')
+    end
+
+    it 'has a white list of allowed extensions' do
+      expect(uploader.extension_white_list).to eq(%w[jpg jpeg gif png])
     end
   end
 

@@ -35,7 +35,7 @@ module Admin
 
     def destroy
       @technology.destroy
-      redirect_to :back, notice: "#{t(:technology)} #{t(:was_successfully_destroyed)}."
+      redirect_to admin_technologies_path, notice: "#{t(:technology)} #{t(:was_successfully_destroyed)}."
     end
 
     private

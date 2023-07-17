@@ -77,7 +77,7 @@ describe 'Project in admin panel.' do
     fill_in 'project[title]', with: 'TestTitleFull'
     fill_in 'project[content]', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
-    attach_file('project[collage]', Rails.root.join('/spec/fixtures/projects/tested.jpg').to_s)
+    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
     click_button 'Save'
     visit admin_projects_path
     click_link('TestTitleFull')

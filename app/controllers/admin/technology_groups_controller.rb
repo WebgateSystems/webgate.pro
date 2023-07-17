@@ -42,11 +42,8 @@ module Admin
       @technology_group = TechnologyGroup.find(technology_group_params[:technology_group_id])
       @technology_group.position_position = technology_group_params[:row_position]
       respond_to do |format|
-        if @technology_group.save!
-          format.json { head :ok }
-        else
-          format.json { head :error }
-        end
+        @technology_group.save! ? format.json { head :ok } : format.json { head :error }
+        format.html
       end
     end
 
@@ -54,11 +51,8 @@ module Admin
       @technology = Technology.find(technology_group_params[:technology_id])
       @technology.position_position = technology_group_params[:row_position]
       respond_to do |format|
-        if @technology.save!
-          format.json { head :ok }
-        else
-          format.json { head :error }
-        end
+        @technology.save! ? format.json { head :ok } : format.json { head :error }
+        format.html
       end
     end
 

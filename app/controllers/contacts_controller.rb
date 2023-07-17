@@ -1,21 +1,20 @@
 class ContactsController < ApplicationController
   layout 'portfolio'
 
-  def new
-    @contact = Contact.new
-  end
+  # def new
+  #   @contact = Contact.new
+  # end
 
   def create
     @contact = Contact.new(contact_params)
-
     respond_to do |format|
       if @contact.valid?
-        ContactMailer.delay.contact_mail(@contact)
-        format.html { redirect_to contact_complete_path, notice: t(:success) }
+        ContactMailer.contact_mail(@contact.email, @contact.name, @contact.nickname).deliver_later!
         format.json { render json: @contact, status: :created, location: @contact }
+        format.html { redirect_to contact_complete_path, notice: t(:success) }
       else
-        format.html { redirect_to contact_complete_path, notice: t(:errors) }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
+        format.html { redirect_to contact_complete_path, notice: t(:errors) }
       end
     end
   end

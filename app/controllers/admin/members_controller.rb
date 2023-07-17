@@ -46,11 +46,8 @@ module Admin
       @member = Member.find(member_params[:member_id])
       @member.position_position = member_params[:row_position]
       respond_to do |format|
-        if @member.save!
-          format.json { head :ok }
-        else
-          format.json { head :error }
-        end
+        @member.save! ? format.json { head :ok } : format.json { head :error }
+        format.html
       end
     end
 
@@ -58,11 +55,8 @@ module Admin
       @member_link = MemberLink.find(member_params[:member_link_id])
       @member_link.position_position = member_params[:row_position]
       respond_to do |format|
-        if @member_link.save!
-          format.json { head :ok }
-        else
-          format.json { head :error }
-        end
+        @member_link.save! ? format.json { head :ok } : format.json { head :error }
+        format.html
       end
     end
 
