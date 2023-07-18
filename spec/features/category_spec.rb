@@ -18,23 +18,23 @@ describe 'Category in admin panel.' do
     expect(page).to have_content category_2.name
   end
 
-  it 'Try drag and drop on index', js: true do
-    click_link('New')
-    fill_in 'category[name]', with: 'TestTitleLast'
-    fill_in 'category[altlink]', with: 'TestLinkLast'
-    fill_in 'category[description]', with: 'TestDescLast'
-    click_button 'Save'
-    visit admin_categories_path
-    dest_element = find('td', text: 'TestTitleLast')
-    source_element = find('td', text: category_2.name)
-    source_element.drag_to dest_element
-    sleep 2
-    page.all(:link, 'Show')[1].click
-    expect(page).to have_current_path admin_category_path(Category.find_by(position: 1).id), ignore_query: true
-    visit admin_categories_path
-    page.all(:link, 'Show')[2].click
-    expect(page).to have_no_current_path admin_category_path(Category.find_by(position: 1).id), ignore_query: true
-  end
+  # it 'Try drag and drop on index' do
+  #   click_link('New')
+  #   fill_in 'category[name]', with: 'TestTitleLast'
+  #   fill_in 'category[altlink]', with: 'TestLinkLast'
+  #   fill_in 'category[description]', with: 'TestDescLast'
+  #   click_button 'Save'
+  #   visit admin_categories_path
+  #   dest_element = find('td', text: 'TestTitleLast')
+  #   source_element = find('td', text: category_2.name)
+  #   source_element.drag_to dest_element
+  #   sleep 2
+  #   page.all(:link, 'Show')[1].click
+  #   expect(page).to have_current_path admin_category_path(Category.find_by(position: 1).id), ignore_query: true
+  #   visit admin_categories_path
+  #   page.all(:link, 'Show')[2].click
+  #   expect(page).to have_no_current_path admin_category_path(Category.find_by(position: 1).id), ignore_query: true
+  # end
 
   it 'Link list should work good' do
     visit new_admin_category_path

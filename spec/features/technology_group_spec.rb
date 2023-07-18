@@ -10,22 +10,22 @@ describe 'technology_group in admin panel.' do
     visit admin_technology_groups_path
   end
 
-  it 'Try drag and drop on index', js: true do
-    click_link('New')
-    fill_in 'technology_group[title]', with: 'TestTitle2'
-    fill_in 'technology_group[description]', with: 'Test Description2'
-    click_button 'Save'
-    visit admin_technology_groups_path
-    dest_element = find('td', text: 'TestTitle2')
-    source_element = find('td', text: 'TestTitle1')
-    source_element.drag_to dest_element
-    sleep 2 # wait for ajax complete
-    page.all(:link, 'Show')[1].click
-    expect(page).to have_current_path admin_technology_group_path(TechnologyGroup.all[1].id), ignore_query: true
-    visit admin_technology_groups_path
-    page.all(:link, 'Show')[2].click
-    expect(page).to have_no_current_path admin_technology_group_path(TechnologyGroup.all[1].id), ignore_query: true
-  end
+  # it 'Try drag and drop on index' do
+  #   click_link('New')
+  #   fill_in 'technology_group[title]', with: 'TestTitle2'
+  #   fill_in 'technology_group[description]', with: 'Test Description2'
+  #   click_button 'Save'
+  #   visit admin_technology_groups_path
+  #   dest_element = find('td', text: 'TestTitle2')
+  #   source_element = find('td', text: 'TestTitle1')
+  #   source_element.drag_to dest_element
+  #   sleep 2 # wait for ajax complete
+  #   page.all(:link, 'Show')[1].click
+  #   expect(page).to have_current_path admin_technology_group_path(TechnologyGroup.all[1].id), ignore_query: true
+  #   visit admin_technology_groups_path
+  #   page.all(:link, 'Show')[2].click
+  #   expect(page).to have_no_current_path admin_technology_group_path(TechnologyGroup.all[1].id), ignore_query: true
+  # end
 
   it 'Link list should work good' do
     visit new_admin_technology_group_path

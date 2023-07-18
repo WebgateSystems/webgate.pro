@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe 'Adding projects to portfolio.' do
   let!(:project1) do
     Project.create(title: 'TestTitle0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
@@ -20,7 +18,7 @@ describe 'Adding projects to portfolio.' do
     expect(page).to have_xpath("//img[contains(@src, \"/spec/uploads/project/#{project1.id}\")]")
   end
 
-  it 'does not show projects without collage', js: true do
+  it 'does not show projects without collage' do
     expect(page).not_to have_content project2.title
   end
 end

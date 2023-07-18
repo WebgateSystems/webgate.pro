@@ -94,21 +94,20 @@ describe 'Member in admin panel.' do
     expect(page).to have_content 'false'
   end
 
-  # scenario 'Check publish. Here should be true', js: true do
+  # scenario 'Check publish. Here should be true' do
   #   click_link('New')
   #   fill_in 'member[name]', with: 'TestNamePew'
   #   fill_in 'member[job_title]', with: 'TestJobTitlePew'
-  #   fill_in_ckeditor 'Description', with: 'TestDescPew'
-  #   fill_in_ckeditor 'Education', with: 'TestEducPew'
+  #   fill_in 'Description', with: 'TestDescPew'
+  #   fill_in 'Education', with: 'TestEducPew'
   #   fill_in 'member[motto]', with: 'TestMottoPew'
   #   attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
   #   find(:css, '#member_publish').set(true)
   #   click_button 'Save'
-  #   visit admin_members_path
   #   expect(page).to have_content 'true'
   # end
 
-  it 'Validation for new member', js: true do
+  it 'Validation for new member' do
     click_link('New')
     click_button 'Save'
     expect(page).to have_css('.alert-box.alert')
