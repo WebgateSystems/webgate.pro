@@ -5,10 +5,10 @@ html
   body
     p
       strong= t(:contact_name) + ' '
-      = @contact.name
+      = @contact[:name]
     p
       strong= t(:contact_email) + ' '
-      = @contact.email
+      = @contact[:email]
     p
       strong= t(:contact_content) + ' '
-      = simple_format(@contact.content)
+      = simple_format(@contact[:content])

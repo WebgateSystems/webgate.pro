@@ -26,6 +26,8 @@ Rails.application.configure do
   config.eager_load = false
   config.action_dispatch.cookies_serializer = :hybrid
 
+  config.active_job.queue_adapter = :test
+
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.

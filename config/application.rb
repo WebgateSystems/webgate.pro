@@ -6,8 +6,8 @@ require 'action_controller/railtie'
 require 'action_mailer/railtie'
 require 'sprockets/railtie'
 
-require "active_model/railtie"
-require "active_job/railtie"
+require 'active_model/railtie'
+require 'active_job/railtie'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -27,8 +27,6 @@ module WebgatePro
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    config.active_job.queue_adapter = :sidekiq
-
 
     config.i18n.enforce_available_locales = true
     # I18n.config.enforce_available_locales = true

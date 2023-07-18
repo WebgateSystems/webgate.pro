@@ -62,6 +62,7 @@ gem 'jquery-ui-rails', '6.0.0'
 # end
 
 group :development do
+  gem 'letter_opener'
   gem 'fasterer', require: false
   gem 'rubocop', require: false
   gem 'rubocop-i18n', require: false
