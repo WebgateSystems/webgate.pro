@@ -64,7 +64,7 @@ And now you can visit the site with the URL http://localhost:3000
 
 
 
-If you want to use Docker: 
+### If you want to use Docker: 
 
 ##### 1. .env file setup
 
@@ -80,7 +80,7 @@ Next we need to add the PG username and password
 nano .env
 ```
 
-For example: (User must be created locally in Postgresql)
+For example: (User to be created in docker )
 
 ```bash
 POSTGRES_USER: 'your postgres user name'
