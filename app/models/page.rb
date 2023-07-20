@@ -3,8 +3,8 @@ class Page < ApplicationRecord
 
   belongs_to :category
 
-  validates_associated :category
   validates :title, :shortlink, :description, :keywords, :content, presence: true
+  validates_associated :category
   validates :shortlink, uniqueness: { case_sensitive: false }
   validate :check_shortlink_unique
 

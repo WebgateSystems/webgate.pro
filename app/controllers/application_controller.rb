@@ -8,12 +8,14 @@ class ApplicationController < ActionController::Base
     %w[en English],
     %w[pl Polski],
     %w[ru Русский],
-    %w[fr Français]
+    %w[fr Français],
+    %w[ua Українська]
   ].freeze
 
   PUBLIC_LANGS = [
     %w[en English],
     %w[pl Polski],
+    %w[ua Українська],
     %w[ru Русский]
   ].freeze
 
@@ -54,10 +56,9 @@ class ApplicationController < ActionController::Base
     g = GeoIP.new("#{Rails.root.join('db/GeoIP.dat')}")
     country_code = g.country(request.remote_ip).country_code2.downcase
     case country_code
-    when 'pl'
-      'pl'
-    when 'ru', 'ua', 'by'
-      'ru'
+    when 'pl' then 'pl'
+    when 'ua' then 'ua'
+    when 'ru', 'by' then 'ru'
     else
       'en'
     end

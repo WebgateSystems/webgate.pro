@@ -40,12 +40,12 @@ RSpec.describe Admin::PagesController, type: :request do
 
   context 'when params invalid' do
     let!(:page) { create(:page) }
-    let(:params) { { shortlink: '' } }
+    let(:params) { { title: '' } }
 
     it 'is not update page shortlink' do
       expect do
         put("/admin/pages/#{page.id}", params: { page: params })
-      end.not_to(change { Page.first.shortlink })
+      end.not_to(change { Page.first.title })
     end
   end
 end

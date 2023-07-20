@@ -25,3 +25,10 @@ fr:
     team: équipe
     portfolio: portefeuille
     not_found: pas-trouvé
+
+ua:
+  routes:
+    main: головна
+    team: команда
+    portfolio: портфоліо
+    not_found: не знайдено
