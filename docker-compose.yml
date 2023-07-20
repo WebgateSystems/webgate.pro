@@ -14,29 +14,25 @@ services:
     depends_on:
       - postgres
       - redis
-    environment:
-      RAILS_ENV: development
-      DB_HOST: postgres
-      REDIS_URL: redis://redis:6379/0
 
   postgres:
     image: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: user_dev
-      POSTGRES_PASSWORD: 123456
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - 5432
     healthcheck:
-      test: pg_isready -U user_dev -h 127.0.0.1
+      test: pg_isready -U ${POSTGRES_USER} -h 127.0.0.1
       interval: 5s
 
   redis:
     image: redis:latest
     command: redis-server
     ports:
-      - 6379:6379
+      - 6380:6379
 
   sidekiq:
     build: .
@@ -44,10 +40,6 @@ services:
     depends_on:
       - postgres
       - redis
-    environment:
-      RAILS_ENV: development
-      DB_HOST: postgres
-      REDIS_URL: redis://redis:6379/0
     volumes:
       - .:/app
 

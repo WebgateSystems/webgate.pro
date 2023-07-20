@@ -1,29 +1,116 @@
-# webgate.pro
+##### Prerequisites
 
-[![Code Climate](https://codeclimate.com/github/WebgateSystems/webgate.pro/badges/gpa.svg)](https://codeclimate.com/github/WebgateSystems/webgate.pro)
-[![Test Coverage](https://codeclimate.com/github/WebgateSystems/webgate.pro/badges/coverage.svg)](https://codeclimate.com/github/WebgateSystems/webgate.pro/coverage)
+The setups steps expect following tools installed on the system.
 
-## About
+- Git
+- Ruby [3.2.2]
+- Rails [7.0.5]
+- Postgresql [15]
+- redis-server [5.0.7]
 
-webgate.pro is a official website of Webgate Systems. Created with Ruby on Rails framework like a multilanguage application
-for our internal purpose and, of course, to show what exactly we do and how.
+##### 1. Install Gems
 
-Features
---------
+```bash
+bundle exec bundle install
+```
 
-* Edge technologies, for example RoR 4.2.1 caching style, asynchronous JS for SPDY etc.
-* Automatic tests (covering more then 90%) with poltergeist or selenium (if you prefer to observe what's going on) to easy support and upgrade application/environment.
+##### 2. Create .ENV file
 
-## License
+The terminal must be in the root folder of the project
 
-webgate.pro is released under the [GNU General Public License](http://www.gnu.org/licenses/).
+```bash
+cp .env.example .env
+```
+
+Next we need to add the PG username and password
+
+```bash
+nano .env
+```
+
+For example: (User must be created locally in Postgresql)
+
+```bash
+POSTGRES_USER: 'your postgres user name'
+POSTGRES_PASSWORD: 'your postgres user password'
+```
+
+##### 3. Create DB
+
+```ruby
+bundle exec rails db:create
+```
+
+##### 4. Run migration
+
+```ruby
+bundle exec rails db:migrate
+```
+if necessary, you can add basic data
+
+```ruby
+bundle exce rails db:seed
+```
+
+##### 5. Start the Rails server
+
+You can start the rails server using the command given below.
+
+```ruby
+bundle exec rails s
+```
+
+And now you can visit the site with the URL http://localhost:3000
 
 
-## Contributing
 
-Since this is a completely free software under GPL license - **feel free to contribute**, improve its source code or give me constructive criticism.
-Your git pull request will be pleasantly welcome.
+If you want to use Docker: 
 
+##### 1. .env file setup
 
-#####Thanks a lot for feedback!
-**team**
+The terminal must be in the root folder of the project
+
+```bash
+cp .env.example .env
+```
+
+Next we need to add the PG username and password
+
+```bash
+nano .env
+```
+
+For example: (User must be created locally in Postgresql)
+
+```bash
+POSTGRES_USER: 'your postgres user name'
+POSTGRES_PASSWORD: 'your postgres user password'
+```
+Also uncomment these lines
+
+```bash
+  POSTGRES_HOST
+  REDIS_URL
+```
+##### 2. Start Project with Docker
+
+```bash
+docker compose --env-file .env up
+```
+
+##### 3. Create DB
+
+```bash
+docker-compose run app rails db:create
+```
+
+##### 4. Run migration
+
+```bash
+docker-compose run app rails db:migrate
+```
+if necessary, you can add basic data
+
+```bash
+docker-compose run app rails db:seed
+```
