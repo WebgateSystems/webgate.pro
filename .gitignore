@@ -16,11 +16,13 @@
 log
 .DS_Store
 .idea
-config/database.yml
+
+
 config/config.yml
 config/sidekiq.yml
 config/rubocop.yml
 config/slim-lint.yml
+
 tmp/*
 public/assets
 public/system
