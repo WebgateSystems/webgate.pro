@@ -8,6 +8,22 @@ The setups steps expect following tools installed on the system.
 - Postgresql [15]
 - redis-server [5.0.7]
 
+### Initial installation
+
+##### 1. Create config/config.yml file
+
+```bash
+cp config/config.yml.example config/config.yml
+```
+
+##### 2. Create config/sidekiq.yml file
+
+```bash
+cp config/sidekiq.yml.example config/sidekiq.yml
+```
+
+### If you want to use without Docker:
+
 ##### 1. Install Gems
 
 ```bash
