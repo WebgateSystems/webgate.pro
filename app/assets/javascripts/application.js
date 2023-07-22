@@ -23,5 +23,6 @@
 //= require lightbox-video.min.js
 //= require scripts
 //= require contacts
+//= require accept_russian_language
 
-$(function(){ $(document).foundation(); });
+$(function () { $(document).foundation(); });

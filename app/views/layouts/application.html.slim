@@ -15,5 +15,7 @@ html lang="#{locale}"
         .competences
           .content
             = yield
+          = render 'layouts/partials/accept_russian_language' if @accept_ru
+          = render 'layouts/partials/user_decline_text'
           = render 'layouts/slider'
     = render 'layouts/footer'

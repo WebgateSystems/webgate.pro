@@ -1,0 +1,63 @@
+.decline-text {
+  position: fixed;
+  top: 62px;
+  right: 40px;
+  max-width: 500px;
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px 25px 22px;
+}
+
+.decline-header {
+  padding-left: 15%;
+  font-weight: 500;
+}
+
+.decline-text .data {
+  margin-top: 16px;
+}
+
+.decline-text .data p {
+  color: #333;
+  font-size: 16px;
+}
+
+#voennyy-korabl {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+.image-ua {
+  padding-left: 125px;
+}
+
+.hide {
+  display: none;
+}
+
+.decline-button {
+  display: block;
+  text-align: center;
+  margin-left: 35%;
+}
+
+.decline-btn {
+  margin-top: 16px;
+  width: 25%;
+  height: 30px;
+
+  display: flex;
+  padding-left: 25px;
+  padding-top: 12px;
+
+  color: white;
+  border-radius: 4px;
+  background-color: #333;
+  transition: all 0.2 ease;
+}
+
+.decline-button .decline-btn:hover {
+  background-color: #339;
+}

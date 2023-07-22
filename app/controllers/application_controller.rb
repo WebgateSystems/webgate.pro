@@ -46,9 +46,12 @@ class ApplicationController < ActionController::Base
   private
 
   def prepare_lang
+    return user_accept_use_russian_language if params[:user_accepted]
+
     lang = params[:locale] || params[:lang] || cookies[:lang] || geoip_lang
-    cookies[:lang] = lang_by_tag(lang)
-    I18n.locale = lang
+    return check_accept_with_text(lang) if lang.to_s == 'ru'
+
+    cookies_store_locale(lang)
   end
 
   def geoip_lang
@@ -62,6 +65,21 @@ class ApplicationController < ActionController::Base
     else
       'en'
     end
+  end
+
+  def user_accept_use_russian_language
+    cookies[:lang_accepted] = true
+    check_accept_with_text(params[:locale])
+  end
+
+  def check_accept_with_text(lang)
+    @accept_ru = true unless cookies[:lang_accepted]
+    cookies_store_locale(lang)
+  end
+
+  def cookies_store_locale(lang)
+    cookies[:lang] = lang_by_tag(lang)
+    I18n.locale = lang
   end
 
   def lang_by_tag(lng)
