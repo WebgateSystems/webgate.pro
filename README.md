@@ -150,6 +150,15 @@ docker compose --env-file .env up
 ```bash
 docker-compose run app rails db:create
 ```
+OR (this command will create and run migrate your database)
+
+```bash
+chmod +x create_db.sh
+```
+
+```bash 
+./bin/create_db.sh
+```
 
 ##### 4. Run migration
 

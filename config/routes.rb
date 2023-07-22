@@ -6,7 +6,7 @@ WebgatePro::Application.routes.draw do
   resources :contacts, only: %i[new create]
 
   namespace :admin do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => '/sidekiq', constraints: AdminAuthConstraint.new
     resources :users
     resources :categories do
       put :update_position, on: :collection

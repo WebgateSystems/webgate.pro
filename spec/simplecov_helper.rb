@@ -6,6 +6,7 @@ SimpleCov.start 'rails' do
   add_filter '/app/models/ckeditor'
   add_filter 'app/uploaders/ckeditor_picture_uploader'
   add_filter 'app/uploaders/ckeditor_attachment_file_uploader'
+  add_filter 'lib'
 
   minimum_coverage(95)
 end
