@@ -38,6 +38,7 @@ The setups steps expect following tools installed on the system.
 - Rails [7.0.5]
 - Postgresql [15]
 - redis-server [5.0.7]
+- java [11.0.19]
 
 ### Initial installation
 
