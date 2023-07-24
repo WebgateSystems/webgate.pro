@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :member do
-    name { FFaker::Name.name }
-    job_title { FFaker::Book.title }
+    name { FFaker::Lorem.characters(10) }
+    job_title { FFaker::Lorem.characters(10) }
     education { FFaker::Lorem.paragraph }
     description { FFaker::Lorem.paragraph }
     motto { FFaker::Lorem.sentence }
