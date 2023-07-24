@@ -2,6 +2,10 @@ require 'sidekiq/web'
 
 WebgatePro::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+
+  get :blacklist, to: 'blacklists#blacklist', as: :blacklist
+  resource :blacklists, only: %i[create]
+
   resources :sessions
   resources :contacts, only: %i[new create]
 

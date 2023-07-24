@@ -1,25 +1,18 @@
-$(document).ready(function () {
-
-  $('#acceptBtn').click(function () {
+$(document).ready(function() {
+  $('#acceptBtn').click(function() {
     new AcceptRuLanguage().accept();
-  })
+  });
 
-  $('#declineBtn').click(function () {
+  $('#declineBtn').click(function() {
     new AcceptRuLanguage().decline();
-  })
-
-  $('.decline-btn').click(function () {
-    new AcceptRuLanguage().changeLanguageToEn();
-  })
-})
+  });
+});
 
 class AcceptRuLanguage {
-
   constructor() {
-    this.messageBlock = $('.accept-russian')
-    this.declineMessage = $('.decline-text')
+    this.messageBlock = $('.accept-russian');
+    this.declineMessage = $('.decline-text');
   }
-
 
   accept() {
     this.acceptRequest();
@@ -28,8 +21,17 @@ class AcceptRuLanguage {
 
   decline() {
     this.addHideClassToBatton();
-    this.declineMessage.removeClass('hide')
-    setInterval(function () { window.location.replace($('.decline-btn').data().url) }, 3000);
+    this.declineMessage.removeClass('hide');
+    this.declineRequest();
+    setTimeout(this.redirectToBlacklist, 3000);
+  }
+
+  declineRequest() {
+    $.ajax({
+      type: 'POST',
+      url: '/blacklists',
+      contentType: 'application/json',
+    });
   }
 
   removeMessageBlock() {
@@ -37,11 +39,11 @@ class AcceptRuLanguage {
   }
 
   addHideClassToBatton() {
-    $('.next').addClass('hide')
-    $('.bx-next').addClass('hide')
+    $('.next').addClass('hide');
+    $('.bx-next').addClass('hide');
   }
 
-  changeLanguageToEn() {
+  redirectToBlacklist() {
     window.location.replace($('.decline-btn').data().url);
   }
 
@@ -49,7 +51,7 @@ class AcceptRuLanguage {
     $.ajax({
       type: 'get',
       url: '/',
-      data: { 'locale': 'ru', 'user_accepted': true },
+      data: {locale: 'ru', user_accepted: true},
       contentType: 'application/json',
     });
   }

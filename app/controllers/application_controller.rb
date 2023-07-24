@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_action :redirect_to_blacklist_path, except: :blacklist
   before_action :common_prepare
+  
 
   LANGS = [
     %w[en English],
@@ -38,6 +40,15 @@ class ApplicationController < ActionController::Base
     return if cookies[:lang_accepted] || I18n.locale != :ru
 
     redirect_to root_path
+  end
+
+  def redirect_to_blacklist_path
+    redirect_to blacklist_path if user_baned?
+  end
+
+  def user_baned?
+    Blacklist.all.each{ |user| return true if  user.ip == request.remote_ip }
+    false
   end
 
   # def set_layout
