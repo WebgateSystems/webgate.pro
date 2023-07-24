@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :redirect_to_blacklist_path, except: :blacklist
   before_action :common_prepare
-  
 
   LANGS = [
     %w[en English],
@@ -47,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_baned?
-    Blacklist.all.each{ |user| return true if  user.ip == request.remote_ip }
+    Blacklist.all.each { |user| return true if user.ip == request.remote_ip }
     false
   end
 
@@ -96,7 +95,7 @@ class ApplicationController < ActionController::Base
 
   def cookies_store_locale(lang)
     cookies[:lang] = lang_by_tag(lang)
-    I18n.locale = lang
+    I18n.locale = lang_by_tag(lang)
   end
 
   def lang_by_tag(lng)

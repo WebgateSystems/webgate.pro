@@ -33,6 +33,8 @@ describe 'Change language' do
   #   end
   # end
 
+  ############################ IF USE RACK TEST DRIVER
+
   it 'User change language on localized routes pages' do
     other_public_langs.each do |lang|
       visit team_path
@@ -43,6 +45,10 @@ describe 'Change language' do
       expect(page).to have_current_path team_en_path, ignore_query: true if lang == 'en'
     end
   end
+
+  ######################################
+
+  #########################   IF USE SELENIUM DRIVER
 
   # describe 'change language' do
   #   context 'when change language to pl' do
@@ -65,6 +71,8 @@ describe 'Change language' do
   #     it { expect(page).to have_current_path(main_ru_path) }
   #   end
   # end
+
+  ######################################
 
   # scenario 'User change language on pages with shortlink', js: true do
   #   other_public_langs.each do |lang|
