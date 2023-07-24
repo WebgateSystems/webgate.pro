@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe 'Category in admin panel.' do
   let(:user) { create(:user) }
   let!(:category_1) { create(:category) }

@@ -25,7 +25,7 @@ RSpec.describe Admin::CategoriesController, type: :request do
     context 'when invalid params' do
       it 'is not update category name' do
         expect do
-          put "/admin/categories/#{category.id}", params: { category: { name: '' } }
+          put "/admin/categories/#{category.id}", params: { category: { name: nil } }
         end.not_to(change { Category.first.name })
       end
     end

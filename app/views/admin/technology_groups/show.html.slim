@@ -29,7 +29,7 @@
             - @technologies.each do |technology|
               tr.item data-item-id="#{technology.id}" data-parent-id="#{@technology_group.id}"
                 td= link_to technology.title, admin_technology_path(technology)
-                td= technology.created_at.to_s(:short)
+                td= technology.created_at.to_fs(:short)
                 td= link_to fa_icon('eye'), admin_technology_path(technology), title: t('web_app_theme.show')
                 td= link_to fa_icon('edit'), edit_admin_technology_path(technology), title: t('web_app_theme.edit'), class: 'edit'
       - else

@@ -19,7 +19,7 @@
               tr.item data-item-id="#{member.id}"
                 td= link_to member.name, admin_member_path(member)
                 td= link_to member.job_title, admin_member_path(member)
-                td= member.created_at.to_s(:short)
+                td= member.created_at.to_fs(:short)
                 td= member.publish
                 td= link_to fa_icon('eye'), admin_member_path(member), title: t('web_app_theme.show')
                 td= link_to fa_icon('edit'), edit_admin_member_path(member), title: t('web_app_theme.edit'), class: 'edit'

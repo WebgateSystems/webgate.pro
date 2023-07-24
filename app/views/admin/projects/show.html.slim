@@ -39,7 +39,7 @@
             - @screenshots.each do |screenshot|
               tr.item data-item-id="#{screenshot.id}" data-parent-id="#{@project.id}"
                 td= image_tag screenshot.file.url(:thumb) if screenshot
-                td= screenshot.created_at.to_s(:short)
+                td= screenshot.created_at.to_fs(:short)
                 td
                   center= link_to fa_icon('trash'), admin_project_screenshot_path(@project, screenshot), id: screenshot.id, method: :delete, remote: true, class: 'delete'
       - else
@@ -58,7 +58,7 @@
             - @technologies.each do |technology|
               tr.item data-item-id="#{technology.id}" data-parent-id="#{@project.id}"
                 td= link_to technology.title, admin_technology_path(technology)
-                td= technology.created_at.to_s(:short)
+                td= technology.created_at.to_fs(:short)
                 td= link_to fa_icon('eye'), admin_technology_path(technology), title: t('web_app_theme.show')
                 td= link_to fa_icon('edit'), edit_admin_technology_path(technology), title: t('web_app_theme.edit'), class: 'edit'
       - else

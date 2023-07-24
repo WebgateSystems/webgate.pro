@@ -17,7 +17,7 @@
             - @projects.each do |project|
               tr.item data-item-id="#{project.id}"
                 td= link_to project.title, admin_project_path(project)
-                td= project.created_at.to_s(:short)
+                td= project.created_at.to_fs(:short)
                 td= project.publish
                 td= link_to fa_icon('eye'), admin_project_path(project), title: t('web_app_theme.show')
                 td= link_to fa_icon('edit'), edit_admin_project_path(project), title: t('web_app_theme.edit'), class: 'edit'

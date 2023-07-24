@@ -43,7 +43,7 @@ RSpec.describe Admin::MembersController, type: :request do
     context 'when invalid params' do
       it 'is not update member name' do
         expect do
-          put "/admin/members/#{member.id}", params: { member: { name: '' } }
+          put "/admin/members/#{member.id}", params: { member: { name: nil } }
         end.not_to(change { Member.first.name })
       end
     end

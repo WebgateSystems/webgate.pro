@@ -17,7 +17,7 @@
             - @pages.each do |page|
               tr
                 td= link_to page.title, admin_page_path(page)
-                td= page.created_at.to_s(:short)
+                td= page.created_at.to_fs(:short)
                 td= page.publish
                 td= link_to fa_icon('eye'), admin_page_path(page), title: t('web_app_theme.show')
                 td= link_to fa_icon('edit'), edit_admin_page_path(page), title: t('web_app_theme.edit'), class: 'edit'

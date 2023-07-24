@@ -28,6 +28,8 @@ module WebgatePro
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    ActiveRecord.legacy_connection_handling = false
+
     config.autoload_paths << Rails.root.join('lib')
 
     config.i18n.enforce_available_locales = true

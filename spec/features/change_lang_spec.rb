@@ -40,9 +40,31 @@ describe 'Change language' do
         click_link(lang.upcase)
       end
       expect(page).to have_current_path team_pl_path, ignore_query: true if lang == 'pl'
-      expect(page).to have_current_path team_ru_path, ignore_query: true if lang == 'ru'
+      expect(page).to have_current_path team_en_path, ignore_query: true if lang == 'en'
     end
   end
+
+  # describe 'change language' do
+  #   context 'when change language to pl' do
+  #     before do
+  #       visit root_path
+  #       find('.current_lang').hover
+  #       find('a', text: 'PL').click
+  #     end
+
+  #     it { expect(page).to have_current_path(main_pl_path) }
+  #   end
+
+  #   context 'when change language to ru' do
+  #     before do
+  #       visit root_path
+  #       find('.current_lang').hover
+  #       find('a', text: 'RU').click
+  #     end
+
+  #     it { expect(page).to have_current_path(main_ru_path) }
+  #   end
+  # end
 
   # scenario 'User change language on pages with shortlink', js: true do
   #   other_public_langs.each do |lang|

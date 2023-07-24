@@ -43,7 +43,7 @@ RSpec.describe Admin::ProjectsController, type: :request do
     context 'when invalid params' do
       it 'is not update project title' do
         expect do
-          put "/admin/projects/#{project.id}", params: { project: { title: '' } }
+          put "/admin/projects/#{project.id}", params: { project: { title: nil } }
         end.not_to(change { Project.first.title })
       end
     end
@@ -65,7 +65,7 @@ RSpec.describe Admin::ProjectsController, type: :request do
   end
 
   describe '#sort project screenshots' do
-    let!(:screenshot) { create(:screenshot, position: 1) }
+    let!(:screenshot) { create(:screenshot, position: 5) }
 
     context 'when admin run sort project screenshots function' do
       let(:params) { { screenshot_id: screenshot.id, row_position: 0 } }

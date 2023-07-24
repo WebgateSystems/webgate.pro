@@ -12,10 +12,16 @@ describe 'Adding projects to portfolio.' do
     visit portfolio_path
   end
 
-  it 'shows projects with collage' do
-    expect(page).to have_content project1.title
-    expect(page).to have_content project1.content
+  it 'is shows projects with collage' do
     expect(page).to have_xpath("//img[contains(@src, \"/spec/uploads/project/#{project1.id}\")]")
+  end
+
+  it 'is shows project title' do
+    expect(page).to have_content project1.title
+  end
+
+  it 'is shows project content' do
+    expect(page).to have_content project1.content
   end
 
   it 'does not show projects without collage' do

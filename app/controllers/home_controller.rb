@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_action :redirect_if_user_decline_message, only: %i[portfolio team]
   layout 'portfolio', except: :index
 
   def index

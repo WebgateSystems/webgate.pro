@@ -5,8 +5,8 @@ class Technology < ApplicationRecord
   ranks :position, with_same: :technology_group_id
 
   belongs_to :technology_group
-  has_many :technologies_projects
-  has_many :technologies_members
+  has_many :technologies_projects, dependent: :destroy
+  has_many :technologies_members, dependent: :destroy
 
   has_many :projects, through: :technologies_projects
   has_many :members, through: :technologies_members

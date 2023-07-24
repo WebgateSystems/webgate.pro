@@ -19,7 +19,7 @@ RSpec.describe Admin::UsersController, type: :request do
     context 'when invalid params' do
       it 'is not update user name' do
         expect do
-          put "/admin/users/#{user.id}", params: { user: { email: '' } }
+          put "/admin/users/#{user.id}", params: { user: { email: nil } }
         end.not_to(change { User.first.email })
       end
     end

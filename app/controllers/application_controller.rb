@@ -34,6 +34,12 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, alert: t('first_login_to_access')
   end
 
+  def redirect_if_user_decline_message
+    return if cookies[:lang_accepted] || I18n.locale != :ru
+
+    redirect_to root_path
+  end
+
   # def set_layout
   #  case request.user_agent # or use nginx and params[] flag
   #  when /iPhone/i, /Android/i && /mobile/i, /Windows Phone/i

@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :page, aliases: [:en_page] do
     shortlink { FFaker::Lorem.word }
     position { 1 }
-    title { FFaker::Name.name }
+    title { FFaker::Lorem.characters(10) }
     description { FFaker::Lorem.paragraph }
     keywords { FFaker::Lorem.sentence }
     content { FFaker::Lorem.paragraph }

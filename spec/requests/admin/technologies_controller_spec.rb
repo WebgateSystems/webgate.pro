@@ -60,7 +60,7 @@ RSpec.describe Admin::TechnologiesController, type: :request do
     context 'when invalid params' do
       it 'is update technology title' do
         expect do
-          put "/admin/technologies/#{technology.id}", params: { technology: { title: '' } }
+          put "/admin/technologies/#{technology.id}", params: { technology: { title: nil } }
         end.not_to(change { Technology.first.title })
       end
     end

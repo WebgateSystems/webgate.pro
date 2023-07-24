@@ -25,7 +25,7 @@ RSpec.describe Admin::TechnologyGroupsController, type: :request do
     context 'when invalid params' do
       it 'is not update technology_group title' do
         expect do
-          put "/admin/technology_groups/#{technology_group.id}", params: { technology_group: { title: '' } }
+          put "/admin/technology_groups/#{technology_group.id}", params: { technology_group: { title: nil } }
         end.not_to(change { TechnologyGroup.first.title })
       end
     end

@@ -42,7 +42,7 @@
             - @member_links.each do |member_link|
               tr.item data-item-id="#{member_link.id}" data-parent-id="#{@member.id}"
                 td= link_to member_link.name, member_link.link
-                td= member_link.created_at.to_s(:short)
+                td= member_link.created_at.to_fs(:short)
       - else
         = t('web_app_theme.nothing')
 
@@ -59,7 +59,7 @@
             - @technologies.each do |technology|
               tr.item data-item-id="#{technology.id}" data-parent-id="#{@member.id}"
                 td= link_to technology.title, admin_technology_path(technology)
-                td= technology.created_at.to_s(:short)
+                td= technology.created_at.to_fs(:short)
                 td= link_to fa_icon('eye'), admin_technology_path(technology), title: t('web_app_theme.show')
                 td= link_to fa_icon('edit'), edit_admin_technology_path(technology), title: t('web_app_theme.edit'), class: 'edit'
       - else
