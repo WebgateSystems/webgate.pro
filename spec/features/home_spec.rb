@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe 'Home page' do
   before do
     visit '/'

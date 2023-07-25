@@ -94,7 +94,7 @@ describe 'Member in admin panel.' do
     expect(page).to have_content 'false'
   end
 
-  # scenario 'Check publish. Here should be true' do
+  # scenario 'Check publish. Here should be true', js: true do
   #   click_link('New')
   #   fill_in 'member[name]', with: 'TestNamePew'
   #   fill_in 'member[job_title]', with: 'TestJobTitlePew'
