@@ -9,11 +9,11 @@ class ErrorsController < ApplicationController
   end
 
   def server_error
-    render status: :internal_server_error, formats: [:html]
+    render status: :ok, formats: [:html]
   end
 
   def wrong_params
-    render status: :unprocessable_entity, formats: [:html]
+    render status: :ok, formats: [:html]
   end
 
   protected
