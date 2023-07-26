@@ -200,6 +200,10 @@ pl:
   contact_email: "Email:"
   contact_content: "Treść:"
   error_404: "Błąd 404 - Strona nie znaleziona"
+  error_500: 'Przepraszam, coś poszło nie tak.'
+  error_500_message: 'Jeśli jesteś właścicielem aplikacji, sprawdź dzienniki, aby uzyskać więcej informacji.'
+  error_422: 'Zmiana, której chciałeś, została odrzucona.'
+  error_422_message: 'Może próbowałeś zmienić coś, do czego nie miałeś dostępu.'
   was_successfully_created: "został(a) pomyślnie utworzony(a)"
   was_successfully_updated: "został(a) pomyślnie uaktualniony(a)"
   was_successfully_destroyed: "został(a) pomyślnie usunięty(a)"

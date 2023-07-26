@@ -4,8 +4,16 @@ class ErrorsController < ApplicationController
   def not_found
     respond_to do |format|
       format.html { render status: :not_found }
-      format.all  { render text: t(:error_404), status: :not_found }
+      format.all  { render text: t('error_404'), status: :not_found }
     end
+  end
+
+  def server_error
+    render status: :internal_server_error, formats: [:html]
+  end
+
+  def wrong_params
+    render status: :unprocessable_entity, formats: [:html]
   end
 
   protected

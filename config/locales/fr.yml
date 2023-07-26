@@ -200,6 +200,10 @@ fr:
   contact_email: "Email:"
   contact_content: "Content:"
   error_404: "Error 404 - Page not found"
+  error_500: 'Nous sommes désolés, une erreur s est produite.'
+  error_500_message: 'Si vous êtes le propriétaire de l application, consultez les journaux pour plus d informations.'
+  error_422: 'La modification souhaitée a été rejetée.'
+  error_422_message: 'Peut-être avez-vous essayé de modifier quelque chose auquel vous n aviez pas accès.'
   was_successfully_created: "a été créé avec succès"
   was_successfully_updated: "a été mis à jour avec succès"
   was_successfully_destroyed: "a été détruit avec succès"

@@ -3,6 +3,10 @@ require 'sidekiq/web'
 WebgatePro::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
+  get '/404', to: 'errors#not_found'
+  get '/422', to: 'errors#wrong_params'
+  get '/500', to: 'errors#server_error'
+
   get :blacklist, to: 'blacklists#blacklist', as: :blacklist
   resource :blacklists, only: %i[create]
 
