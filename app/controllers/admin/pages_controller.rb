@@ -16,6 +16,7 @@ module Admin
     def create
       @page = Page.new(page_params)
       if @page.save
+        AddTranslation.call(model: @page)
         redirect_to [:admin, @page], notice: "#{t(:page)} #{t(:was_successfully_created)}."
       else
         render 'new'
@@ -25,6 +26,8 @@ module Admin
     def edit; end
 
     def update
+      return add_translate(@page, admin_page_path(@page)) if params[:translation]
+
       if @page.update(page_params)
         redirect_to [:admin, @page], notice: "#{t(:page)} #{t(:was_successfully_updated)}."
       else

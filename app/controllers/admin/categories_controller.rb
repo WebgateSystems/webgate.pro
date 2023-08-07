@@ -15,6 +15,7 @@ module Admin
     def create
       @category = Category.new(category_params)
       if @category.save
+        AddTranslation.call(model: @category)
         redirect_to [:admin, @category], notice: "#{t(:category)} #{t(:was_successfully_created)}."
       else
         render 'new'
@@ -24,6 +25,8 @@ module Admin
     def edit; end
 
     def update
+      return add_translate(@category, admin_category_path(@category)) if params[:translation]
+
       if @category.update(category_params)
         redirect_to [:admin, @category], notice: "#{t(:category)} #{t(:was_successfully_updated)}."
       else

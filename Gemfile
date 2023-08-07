@@ -12,10 +12,13 @@ gem 'kaminari'
 gem 'mini_magick'
 gem 'pry'
 gem 'rails-translate-routes'
-gem 'route_translator'
+gem 'route_translator', '~> 13.1.1'
 gem 'russian'
 gem 'slim-rails'
 gem 'unicorn'
+
+gem 'interactor'
+gem 'easy_access_gpt', git: 'https://github.com/WebgateSystems/EasyAccessGPT.git', branch: 'develop'
 
 gem 'bootsnap', require: false
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
@@ -62,8 +65,8 @@ gem 'jquery-ui-rails', '6.0.0'
 # end
 
 group :development do
-  gem 'letter_opener'
   gem 'fasterer', require: false
+  gem 'letter_opener'
   gem 'rubocop', require: false
   gem 'rubocop-i18n', require: false
   gem 'rubocop-performance', require: false

@@ -17,6 +17,7 @@ module Admin
     def create
       @technology_group = TechnologyGroup.new(technology_group_params)
       if @technology_group.save
+        AddTranslation.call(model: @technology_group)
         redirect_to [:admin, @technology_group], notice: "#{t(:technology_group)} #{t(:was_successfully_created)}."
       else
         render 'new'
@@ -26,6 +27,8 @@ module Admin
     def edit; end
 
     def update
+      return add_translate(@technology_group, admin_technology_group_path(@technology_group)) if params[:translation]
+
       if @technology_group.update(technology_group_params)
         redirect_to [:admin, @technology_group], notice: "#{t(:technology_group)} #{t(:was_successfully_updated)}."
       else

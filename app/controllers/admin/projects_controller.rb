@@ -20,6 +20,7 @@ module Admin
       @project = Project.new(project_params)
       respond_to do |format|
         if @project.save
+          AddTranslation.call(model: @project)
           format.html { redirect_to [:admin, @project], notice: "#{t(:project)} #{t(:was_successfully_created)}." }
           format.json { render json: @project, status: :created, location: [:admin, @project] }
         else
@@ -32,6 +33,8 @@ module Admin
     def edit; end
 
     def update
+      return add_translate(@project, admin_project_path(@project)) if params[:translation]
+
       respond_to do |format|
         if @project.update(project_params)
           format.html { redirect_to [:admin, @project], notice: "#{t(:project)} #{t(:was_successfully_updated)}." }

@@ -19,6 +19,7 @@ module Admin
     def create
       @member = Member.new(member_params)
       if @member.save
+        AddTranslation.call(model: @member)
         redirect_to [:admin, @member], notice: "#{t(:member)} #{t(:was_successfully_created)}."
       else
         render 'new'
@@ -30,6 +31,8 @@ module Admin
     end
 
     def update
+      return add_translate(@member, admin_member_path(@member)) if params[:translation]
+
       if @member.update(member_params)
         redirect_to [:admin, @member], notice: "#{t(:member)} #{t(:was_successfully_updated)}."
       else

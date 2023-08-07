@@ -3,6 +3,7 @@
     ul.button-group.radius
       li= link_to t('web_app_theme.list'), admin_members_path, class: 'button'
       li= link_to t('web_app_theme.new'), new_admin_member_path, class: 'button'
+      li= link_to t('web_app_theme.add_translation'), admin_member_path(translation: true), class: 'button', method: :put
       li= link_to t('web_app_theme.edit'), edit_admin_member_path(@member), class: 'button success'
       li= link_to t('web_app_theme.delete'), admin_member_path(@member), method: :delete, data: { confirm: t(:are_you_sure) }, class: 'button alert'
   .content
