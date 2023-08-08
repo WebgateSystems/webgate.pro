@@ -4,7 +4,16 @@ describe 'Page in admin panel.' do
   let(:user) { create(:user) }
   let!(:en_page) { create(:en_page) }
 
+  let(:return_params) do
+    { 'pl' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'en' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'ru' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'fr' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'ua' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil } }
+  end
+
   before do
+    allow_any_instance_of(AddTranslation).to receive(:answer_gpt).and_return(return_params)
     sign_in(user)
     visit admin_pages_path
   end

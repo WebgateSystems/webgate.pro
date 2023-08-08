@@ -1,11 +1,19 @@
 describe 'Category in admin panel.' do
   let(:user) { create(:user) }
+  let(:return_params) do
+    { 'pl' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'en' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'ru' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'fr' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'ua' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil } }
+  end
   let!(:category_1) { create(:category) }
   let!(:category_2) { create(:category) }
 
   before do
     sign_in(user)
     visit admin_categories_path
+    allow_any_instance_of(AddTranslation).to receive(:answer_gpt).and_return(return_params)
   end
 
   it 'Category root path should have list of categories' do

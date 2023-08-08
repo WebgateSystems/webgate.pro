@@ -22,6 +22,26 @@ RSpec.describe Admin::CategoriesController, type: :request do
       end
     end
 
+    context 'when run add translation button' do
+      let(:return_params) do
+        { 'pl' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+          'en' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+          'ru' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+          'fr' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+          'ua' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil } }
+      end
+
+      before do
+        allow_any_instance_of(AddTranslation).to receive(:answer_gpt).and_return(return_params)
+      end
+
+      it 'is update categoty translation' do
+        expect do
+          put "/admin/categories/#{category.id}", params: { translation: true }
+        end.to(change { Category.first.translations })
+      end
+    end
+
     context 'when invalid params' do
       it 'is not update category name' do
         expect do

@@ -10,8 +10,16 @@ describe 'Project in admin panel.' do
     Project.create(title: 'TestTitle1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
                    collage: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/body.jpg').to_s))
   end
+  let(:return_params) do
+    { 'pl' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'en' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'ru' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'fr' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'ua' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil } }
+  end
 
   before do
+    allow_any_instance_of(AddTranslation).to receive(:answer_gpt).and_return(return_params)
     sign_in(user)
     visit admin_projects_path
   end

@@ -5,7 +5,16 @@ describe 'technology_group in admin panel.' do
   let!(:technology_group0) { TechnologyGroup.create(title: 'TestTitle0', description: 'Test Description0') }
   let!(:technology_group1) { TechnologyGroup.create(title: 'TestTitle1', description: 'Test Description1') }
 
+  let(:return_params) do
+    { 'pl' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'en' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'ru' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'fr' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
+      'ua' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil } }
+  end
+
   before do
+    allow_any_instance_of(AddTranslation).to receive(:answer_gpt).and_return(return_params)
     sign_in(user)
     visit admin_technology_groups_path
   end
