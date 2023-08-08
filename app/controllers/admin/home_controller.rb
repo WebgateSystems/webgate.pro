@@ -6,8 +6,8 @@ module Admin
     def index; end
 
     def add_translate(model, path)
-      AddTranslation.call(model:)
-      redirect_to(path)
+      ::TranslationWorker.perform_async(model.class, model.id)
+      redirect_to(path, notice: 'text is being translated')
     end
   end
 end

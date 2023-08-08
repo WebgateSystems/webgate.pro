@@ -19,7 +19,7 @@ module Admin
     def create
       @member = Member.new(member_params)
       if @member.save
-        AddTranslation.call(model: @member)
+        ::TranslationWorker.perform_async(@member.class, @member.id)
         redirect_to [:admin, @member], notice: "#{t(:member)} #{t(:was_successfully_created)}."
       else
         render 'new'

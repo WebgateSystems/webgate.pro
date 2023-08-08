@@ -20,7 +20,7 @@ module Admin
       @project = Project.new(project_params)
       respond_to do |format|
         if @project.save
-          AddTranslation.call(model: @project)
+          ::TranslationWorker.perform_async(@project.class, @project.id)
           format.html { redirect_to [:admin, @project], notice: "#{t(:project)} #{t(:was_successfully_created)}." }
           format.json { render json: @project, status: :created, location: [:admin, @project] }
         else
