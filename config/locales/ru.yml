@@ -27,6 +27,7 @@ ru:
     nothing: "Нет ни одной записи"
     input: "Файл"
     preview: "Предпросмотр"
+    add_translation: 'Добавить перевод'
   activerecord:
     id: "ID"
     created_at: "Создана"

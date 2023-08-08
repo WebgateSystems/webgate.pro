@@ -27,6 +27,7 @@ pl:
     nothing: "Nie ma żadnego wpisu"
     input: "Plik"
     preview: "Podgląd"
+    add_translation: 'Dodaj tłumaczenie'
   activerecord:
     id: "ID"
     created_at: "Utworzona"

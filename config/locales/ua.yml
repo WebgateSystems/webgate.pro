@@ -28,6 +28,7 @@ ua:
     nothing: "Немає жодного запису"
     input: "Файл"
     preview: "Попередній перегляд"
+    add_translation: 'Додати переклад'
   activerecord:
     id: "ID"
     created_at: "Створена"

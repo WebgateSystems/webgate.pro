@@ -28,6 +28,7 @@ fr:
     nothing: "Nothing"
     input: "Input"
     preview: "Preview"
+    add_translation: 'Ajouter une traduction'
   activerecord:
     id: "ID"
     created_at: "Created at"

@@ -28,6 +28,7 @@ en:
     nothing: "Nothing"
     input: "Input"
     preview: "Preview"
+    add_translation: 'Add Translation'
   activerecord:
     id: "ID"
     created_at: "Created at"
