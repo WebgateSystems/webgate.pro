@@ -16,7 +16,7 @@ module Admin
     def create
       @page = Page.new(page_params)
       if @page.save
-        ::TranslationWorker.perform_async(@page.class, @page.id)
+        ::TranslationWorker.perform_async(@page.class, @page.id, cookies[:lang])
         redirect_to [:admin, @page], notice: "#{t(:page)} #{t(:was_successfully_created)}."
       else
         render 'new'

@@ -13,7 +13,7 @@ describe 'Page in admin panel.' do
   end
 
   before do
-    allow_any_instance_of(AddTranslation).to receive(:answer_gpt).and_return(return_params)
+    allow_any_instance_of(EasyAccessGpt::Translation::SingleLocale).to receive(:call).and_return(return_params)
     sign_in(user)
     visit admin_pages_path
   end

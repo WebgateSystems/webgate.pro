@@ -15,7 +15,7 @@ module Admin
     def create
       @category = Category.new(category_params)
       if @category.save
-        ::TranslationWorker.perform_async(@category.class, @category.id)
+        ::TranslationWorker.perform_async(@category.class, @category.id, cookies[:lang])
         redirect_to [:admin, @category], notice: "#{t(:category)} #{t(:was_successfully_created)}."
       else
         render 'new'

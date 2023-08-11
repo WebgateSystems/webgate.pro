@@ -11,9 +11,9 @@ describe 'Category in admin panel.' do
   let!(:category_2) { create(:category) }
 
   before do
+    allow_any_instance_of(EasyAccessGpt::Translation::SingleLocale).to receive(:call).and_return(return_params)
     sign_in(user)
     visit admin_categories_path
-    allow_any_instance_of(AddTranslation).to receive(:answer_gpt).and_return(return_params)
   end
 
   it 'Category root path should have list of categories' do

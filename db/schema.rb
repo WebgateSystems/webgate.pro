@@ -176,7 +176,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_24_115304) do
     t.integer "position"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.index ["project_id"], name: "index_screenshots_on_project_id"
   end
 
   create_table "technologies", force: :cascade do |t|
