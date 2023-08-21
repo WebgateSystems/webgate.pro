@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/WebgateSystems/EasyAccessGPT.git
-  revision: 8ad93cb00517e107737cbe368f96a44329c419da
-  branch: develop
+  revision: 347d14de96ed1b704a6edeb11264c536bc2ca804
+  branch: main
   specs:
-    easy_access_gpt (0.2.1)
+    easy_access_gpt (0.2.2)
       httparty (~> 0.21.0)
 
 GEM

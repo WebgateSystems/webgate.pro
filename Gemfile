@@ -18,7 +18,7 @@ gem 'slim-rails'
 gem 'unicorn'
 
 gem 'interactor'
-gem 'easy_access_gpt', git: 'https://github.com/WebgateSystems/EasyAccessGPT.git', branch: 'develop'
+gem 'easy_access_gpt', git: 'https://github.com/WebgateSystems/EasyAccessGPT.git', branch: 'main'
 
 gem 'bootsnap', require: false
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
