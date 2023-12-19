@@ -1,0 +1,6 @@
+# db:
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   port: 5432
+#   user: <%= ENV['POSTGRES_USER'] %>
+#   pass: <%= ENV['POSTGRES_PASSWORD'] %>
+#   host: <%= ENV['DB_HOST'] || 'localhost' %>

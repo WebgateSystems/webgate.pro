@@ -34,3 +34,10 @@ assets_manifest.yml
 .env
 /coverage
 /node_modules
+
+/config/master.key
+
+config/settings.local.yml
+config/settings.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

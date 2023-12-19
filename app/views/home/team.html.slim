@@ -33,7 +33,7 @@
                           i.fa.fa-check-circle
                           = tg.title
                         p
-                          - (member.technologies & tg.technologies.includes(:translations)).each do |tech|
+                          - (member.technologies & tg.technologies).each do |tech|
                             span
                               - if tech.logo.file
                                 = link_to tech.title, tech_link(tech), data: { img: tech.logo.url(:thumb), title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'

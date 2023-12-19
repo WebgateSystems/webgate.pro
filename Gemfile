@@ -15,15 +15,13 @@ gem 'rails-translate-routes'
 gem 'route_translator', '~> 13.1.1'
 gem 'russian'
 gem 'slim-rails'
-gem 'unicorn'
 
+gem 'dotenv-rails'
 gem 'interactor'
 gem 'easy_access_gpt', git: 'https://github.com/WebgateSystems/EasyAccessGPT.git', branch: 'main'
 
 gem 'bootsnap', require: false
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 gem 'autoprefixer-rails'
 gem 'chosen-rails'
@@ -41,6 +39,7 @@ gem 'simple_form'
 gem 'sinatra', require: nil
 gem 'sorcery'
 gem 'whenever', require: false
+gem 'config'
 
 # Use SCSS for stylesheets
 gem 'coffee-rails'
@@ -50,7 +49,6 @@ gem 'sprockets-rails'
 # gem "therubyracer", "~> 0.12"
 gem 'uglifier'
 gem 'yui-compressor'
-
 gem 'font-awesome-rails'
 gem 'foundation-rails', '~> 5.5.1'
 
@@ -58,11 +56,6 @@ gem 'jquery-fileupload-rails'
 gem 'jquery-minicolors-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '6.0.0'
-
-# group :doc do
-#   # bundle exec rake doc:rails generates the API under doc/api.
-#   # gem 'sdoc', require: false
-# end
 
 group :development do
   gem 'fasterer', require: false
@@ -73,23 +66,17 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 
-  # gem 'thin'
 
   # Deploy with Capistrano
-  # gem 'capistrano', '~> 3.0', require: false
-  # gem 'capistrano-rails', '~> 1.1', require: false
-  # gem 'capistrano-bundler', '~> 1.1', require: false
-  # gem 'capistrano-rvm', '~> 0.1', require: false
-  # gem 'capistrano3-unicorn'
+  gem 'cape'
+  gem 'capistrano'
+  gem 'capistrano_colors'
+  gem 'capistrano-ext'
+  gem 'capistrano-unicorn'
+  gem 'rvm-capistrano', require: false
   # gem 'rack-mini-profiler', '~> 0.9.2'
-
-  # Better errors handler
-  # gem 'better_errors'
-  # gem 'binding_of_caller'
-  # gem 'spring'
-  # gem 'web-console','>= 3.3.0'
   gem 'bullet'
-  # gem 'capistrano-sidekiq'
+  gem 'capistrano-sidekiq'
 end
 
 group :test do
@@ -108,8 +95,6 @@ group :test do
 end
 
 group :test, :development do
-  gem 'dotenv-rails'
-
   gem 'byebug'
   gem 'factory_bot_rails'
   gem 'ffaker'
@@ -117,6 +102,3 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'ruby_parser'
 end
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby'

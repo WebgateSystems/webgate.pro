@@ -89,6 +89,21 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.1.3)
+    cape (1.8.0)
+    capistrano (2.15.11)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
+    capistrano-ext (1.2.1)
+      capistrano (>= 1.0.0)
+    capistrano-sidekiq (0.10.0)
+      capistrano
+      sidekiq (>= 3.4)
+    capistrano-unicorn (0.2.0)
+      capistrano (< 3.0)
+    capistrano_colors (0.5.5)
     capybara (3.39.2)
       addressable
       matrix
@@ -125,6 +140,9 @@ GEM
     coffee-script-source (1.12.2)
     colorize (0.8.1)
     concurrent-ruby (1.2.2)
+    config (5.1.0)
+      deep_merge (~> 1.2, >= 1.2.1)
+      dry-validation (~> 1.0, >= 1.0.0)
     connection_pool (2.4.1)
     crass (1.0.6)
     database_cleaner (2.0.2)
@@ -134,12 +152,45 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.3.3)
+    deep_merge (1.2.2)
     diff-lcs (1.5.0)
     docile (1.4.0)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    dry-configurable (1.1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-core (1.0.1)
+      concurrent-ruby (~> 1.0)
+      zeitwerk (~> 2.6)
+    dry-inflector (1.0.0)
+    dry-initializer (3.1.1)
+    dry-logic (1.5.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
+    dry-schema (1.13.3)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 1.0, >= 1.0.1)
+      dry-core (~> 1.0, < 2)
+      dry-initializer (~> 3.0)
+      dry-logic (>= 1.4, < 2)
+      dry-types (>= 1.7, < 2)
+      zeitwerk (~> 2.6)
+    dry-types (1.7.1)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
+      zeitwerk (~> 2.6)
+    dry-validation (1.10.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      dry-initializer (~> 3.0)
+      dry-schema (>= 1.12, < 2)
+      zeitwerk (~> 2.6)
     dynamic_sitemaps (2.0.0)
     email_spec (2.2.2)
       htmlentities (~> 4.3.3)
@@ -177,6 +228,7 @@ GEM
       activerecord (>= 4.2, < 7.1)
       request_store (~> 1.0)
     hashie (5.0.0)
+    highline (2.1.0)
     hpricot (0.8.6)
     htmlentities (4.3.4)
     httparty (0.21.0)
@@ -218,7 +270,6 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    kgio (2.11.4)
     language_server-protocol (3.17.0.3)
     launchy (2.5.2)
       addressable (~> 2.8)
@@ -249,8 +300,15 @@ GEM
       net-protocol
     net-protocol (0.2.1)
       timeout
+    net-scp (4.0.0)
+      net-ssh (>= 2.6.5, < 8.0.0)
+    net-sftp (4.0.0)
+      net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.3.3)
       net-protocol
+    net-ssh (7.2.0)
+    net-ssh-gateway (2.0.0)
+      net-ssh (>= 4.0.0)
     nio4r (2.5.9)
     nokogiri (1.15.3-x86_64-linux)
       racc (~> 1.4)
@@ -323,7 +381,6 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
-    raindrops (0.20.1)
     rake (13.0.6)
     ranked-model (0.4.8)
       activerecord (>= 4.2)
@@ -395,6 +452,8 @@ GEM
     rubyzip (2.3.2)
     russian (0.6.0)
       i18n (>= 0.5.0)
+    rvm-capistrano (1.5.6)
+      capistrano (~> 2.15.4)
     sass (3.4.25)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -466,9 +525,6 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.4.2)
-    unicorn (6.1.0)
-      kgio (~> 2.6)
-      raindrops (~> 0.7)
     uniform_notifier (1.16.0)
     version_gem (1.1.3)
     websocket (1.2.9)
@@ -490,6 +546,12 @@ DEPENDENCIES
   bootsnap
   bullet
   byebug
+  cape
+  capistrano
+  capistrano-ext
+  capistrano-sidekiq
+  capistrano-unicorn
+  capistrano_colors
   capybara
   carrierwave
   chosen-rails
@@ -497,6 +559,7 @@ DEPENDENCIES
   cocoon
   codeclimate-test-reporter
   coffee-rails
+  config
   database_cleaner
   dotenv-rails
   dynamic_sitemaps
@@ -541,6 +604,7 @@ DEPENDENCIES
   rubocop-rspec
   ruby_parser
   russian
+  rvm-capistrano
   sass-rails
   select2-rails
   selenium-webdriver
@@ -556,7 +620,6 @@ DEPENDENCIES
   timecop
   tzinfo-data
   uglifier
-  unicorn
   whenever
   yui-compressor
 

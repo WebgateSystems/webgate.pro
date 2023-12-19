@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def common_prepare
     prepare_lang
-    @menu = Category.rank(:position).includes(:translations, :page, page: :translations)
+    @menu = Category.rank(:position).includes(:translations)
     @logged_to_admin = true if current_user
   end
 
