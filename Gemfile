@@ -69,14 +69,13 @@ group :development do
 
   # Deploy with Capistrano
   gem 'cape'
-  gem 'capistrano'
-  gem 'capistrano_colors'
-  gem 'capistrano-ext'
-  gem 'capistrano-unicorn'
-  gem 'rvm-capistrano', require: false
-  # gem 'rack-mini-profiler', '~> 0.9.2'
+  gem 'capistrano-hook', require: false
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
+  gem 'rack-mini-profiler', '~> 0.9.2'
   gem 'bullet'
-  gem 'capistrano-sidekiq'
+  #gem 'capistrano-sidekiq'
 end
 
 group :test do

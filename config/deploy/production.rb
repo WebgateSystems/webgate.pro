@@ -1,5 +1,5 @@
 set :stage, :production
-set :branch, 'master'
+set :branch, 'main'
 
 set :full_app_name, 'webgate.pro'
 set :server_name, fetch(:full_app_name).to_s
