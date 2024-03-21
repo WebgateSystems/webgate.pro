@@ -46,8 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_baned?
-    Blacklist.all.each { |user| return true if user.ip == request.remote_ip }
-    false
+    Blacklist.find_by(ip: request.remote_ip) ? true : false
   end
 
   # def set_layout
