@@ -60,6 +60,7 @@ gem 'jquery-ui-rails', '6.0.0'
 group :development do
   gem 'fasterer', require: false
   gem 'letter_opener'
+  gem 'rack-mini-profiler'
   gem 'rubocop', require: false
   gem 'rubocop-i18n', require: false
   gem 'rubocop-performance', require: false
@@ -73,7 +74,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano3-puma', github: "seuros/capistrano-puma"
-  gem 'rack-mini-profiler', '~> 0.9.2'
   gem 'bullet'
   #gem 'capistrano-sidekiq'
 end
