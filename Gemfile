@@ -59,6 +59,7 @@ gem 'jquery-ui-rails', '6.0.0'
 
 group :development do
   gem 'fasterer', require: false
+  gem 'i18n-tasks', '~> 1.0.13'
   gem 'letter_opener'
   gem 'rack-mini-profiler'
   gem 'rubocop', require: false
@@ -73,7 +74,6 @@ group :development do
   gem 'capistrano-hook', require: false
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
-  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
   gem 'bullet'
   #gem 'capistrano-sidekiq'
 end

@@ -6,17 +6,17 @@ class ApplicationController < ActionController::Base
   before_action :common_prepare
 
   LANGS = [
+    %w[de Deutsch],
     %w[en English],
+    %w[fr Français],
     %w[pl Polski],
     %w[ru Русский],
-    %w[fr Français],
     %w[ua Українська]
   ].freeze
 
   PUBLIC_LANGS = [
     %w[en English],
     %w[pl Polski],
-    %w[ua Українська],
     %w[ru Русский]
   ].freeze
 

@@ -1,9 +1,23 @@
+de:
+  routes:
+    main: hauptseite
+    team: mannschaft
+    portfolio: mappe
+    not_found: nicht-gefunden
+
 en:
   routes:
     main: main
     team: team
     portfolio: portfolio
     not_found: not-found
+
+fr:
+  routes:
+    main: principal
+    team: équipe
+    portfolio: portefeuille
+    not_found: pas-trouvé
 
 pl:
   routes:
@@ -15,16 +29,9 @@ pl:
 ru:
   routes:
     main: главная
-    team: команда
+    team: коллектив
     portfolio: портфолио
     not_found: не-найдено
-
-fr:
-  routes:
-    main: principal
-    team: équipe
-    portfolio: portefeuille
-    not_found: pas-trouvé
 
 ua:
   routes:

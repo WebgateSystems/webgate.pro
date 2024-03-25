@@ -1,0 +1,11 @@
+de:
+  errors:
+    messages:
+      carrierwave_processing_error: kann nicht verarbeitet werden
+      carrierwave_integrity_error: unzulässiger Dateityp
+      carrierwave_download_error: Datei kann nicht heruntergeladen werden
+      extension_white_list_error: "Datei mit der Erweiterung %{extension} kann nicht hochgeladen werden, erlaubte Dateitypen: %{allowed_types}"
+      extension_black_list_error: "Datei mit der Erweiterung %{extension} kann nicht hochgeladen werden, verbotene Dateitypen: %{prohibited_types}"
+      rmagick_processing_error: "Datei konnte nicht mit rmagick verarbeitet werden, ist es vielleicht kein Bild? Originalfehlermeldung: %{e}"
+      mime_types_processing_error: "Datei konnte nicht mit MIME::Types verarbeitet werden, ist der Content-Typ falsch? Originalfehlermeldung: %{e}"
+      mini_magick_processing_error: "Datei konnte nicht mit MiniMagick verarbeitet werden, ist es vielleicht kein Bild? Originalfehlermeldung: %{e}"
