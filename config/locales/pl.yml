@@ -1,210 +1,233 @@
+---
 pl:
-  change_language: "Zmień język"
-  web_app_theme:
-    save: "Zachowaj"
-    or: "albo"
-    cancel: "Cofnij"
-    main: "Główna"
-    users: "Użytkownicy"
-    categories: "Menu"
-    subcategories: "Submenu"
-    pages: "Strony"
-    logout: "Wyloguj"
-    list: "Lista"
-    new: "Nowy(a)"
-    edit: "Redaguj"
-    show: "Pokaż"
-    delete: "Usuń"
-    user: "użytkownik"
-    category: "menu"
-    page: "strona"
-    subcategory: "submenu"
-    member: "członek zespołu"
-    project: "projekt"
-    technology_group: "grupa technologii"
-    technology: "technologia"
-    confirm: "Jesteś pewien?"
-    nothing: "Nie ma żadnego wpisu"
-    input: "Plik"
-    preview: "Podgląd"
-    add_translation: 'Dodaj tłumaczenie'
+  about: O nas
+  actions: Akcje
   activerecord:
-    id: "ID"
-    created_at: "Utworzona"
-    title: "Tytuł"
     category:
-      name: "Nazwa"
-      altlink: "Alternatywny link"
-      description: "Opis"
-    page:
-      shortlink: "Krótki link"
-      title: "Tytuł"
-      description: "Opis"
-      keywords: "Słowa kluczowe"
-      content: "Treść"
-      tooltip: "Dobre rady"
-      category_id: "Punkt(y) menu do którego(ych) ewentualnie może być dowiązana strona"
-      category_id_main: "Punkt menu głównego"
-      subcategory_id: "Submenu"
-      publish: "Publikować"
-    subcategory:
-      name: "Nazwa"
-      altlink: "Alternatywny link"
-      description: "Opis"
-      category_id: "Kategoria"
-    technology_group:
-      title: "Tytuł"
-      description: "Opis"
-      color: "Kolor"
-    technology:
-      title: "Tytuł"
-      link: "Link"
-      description: "Opis"
-      logo: "Logo"
-    project:
-      title: "Tytuł"
-      content: "Treść"
-      livelink: "Link na żywo"
-      publish: "Publikować"
-      collage: "Kolaż"
-    member:
-      name: "Imię"
-      job_title: "specjalizacja"
-      education: "Edukacja"
-      description: "Opis"
-      avatar: "Awatar"
-      publish: "Publikować"
-      motto: "Motto"
-      watch_profile: "Zobacz profil"
-    member_link:
-      name: "Imię"
-      logo: "Logo"
-      link: "Link"
+      altlink: Alternatywny link
+      description: Opis
+      name: Nazwa
+    created_at: Utworzona
     errors:
       messages:
-        blank: "Nie może być puste"
-        taken: "Już wykorzystane"
+        blank: Nie może być puste
+        taken: Już wykorzystane
+    id: ID
+    member:
+      avatar: Awatar
+      description: Opis
+      education: Edukacja
+      job_title: specjalizacja
+      motto: Motto
+      name: Imię
+      publish: Publikować
+      watch_profile: Zobacz profil
+    member_link:
+      link: Link
+      logo: Logo
+      name: Imię
+    page:
+      category_id: Punkt(y) menu do którego(ych) ewentualnie może być dowiązana strona
+      category_id_main: Punkt menu głównego
+      content: Treść
+      description: Opis
+      keywords: Słowa kluczowe
+      publish: Publikować
+      shortlink: Krótki link
+      subcategory_id: Submenu
+      title: Tytuł
+      tooltip: Dobre rady
+    project:
+      collage: Kolaż
+      content: Treść
+      livelink: Link na żywo
+      publish: Publikować
+      title: Tytuł
+    subcategory:
+      altlink: Alternatywny link
+      category_id: Kategoria
+      description: Opis
+      name: Nazwa
+    technology:
+      description: Opis
+      link: Link
+      logo: Logo
+      title: Tytuł
+    technology_group:
+      color: Kolor
+      description: Opis
+      title: Tytuł
+    title: Tytuł
     user:
-      email: "Email"
-      password: "Hasło"
-      password_confirmation: "Nie zgadza się"
+      email: Email
+      password: Hasło
+      password_confirmation: Nie zgadza się
+  add_avatar: Dodaj awatar
+  add_collage: Dodaj kolaż
+  add_files: Dodaj pliki
+  add_link: Dodaj link
+  add_logo: Dodaj logo
+  add_screenshot: Dodaj zrzut ekranu
+  add_technology: Dodaj technologie
+  admin_panel: Panel administracyjny
+  all_rights_reserved: Wszelkie prawa zastrzeżone
+  are_you_sure: Jesteś pewien?
+  back_to_team: Wrócić do zespołu
+  background_jobs: Procesy w tle
+  basic_information: Podstawowa informacja
+  can_not_publish_without_avatar: Nie można publikować bez awataru
+  can_not_publish_without_collage: Nie można publikować bez kolażu
+  cannot_be_empty: Nie może być pusty
+  categories: Menu
+  category: Menu
+  change_language: Zmień język
+  check_on_line: 'Sprawdź on-line:'
+  click_to_enlarge: Kliknij aby powiększyć
+  contact_content: 'Treść:'
+  contact_email: 'Email:'
+  contact_form: Formularz kontaktowy
+  contact_name: 'Imię:'
+  content: Zawartość strony
+  design: Kreatywny design
+  design_about: Słów kilka o designie
+  design_description: Nie macie Państwo strony lub aktualna identyfikacja wizualna
+    «daleka od wymarzonej» i chcielibyście zrobić rebranding? Nadać świeżości własnej
+    marce według nowoczesnych kanonów i trendów? Albo jesteście zmęczeni typowymi
+    wzorcami stron, standardowymi zdjęciami, zakupionymi na giełdach obrazków i potrzebujecie
+    absolutnie unikalnego wyglądu który zapewni kwalifikowany ilustrator? To dobry
+    dzień, bo dzisiaj dobrze trafiliście.
+  design_link: "/kreatywny-design"
+  document_compliant_with: Dokument zgodny z
+  domain_description: Jesteśmy rejestratorem domen. W teorii takim samym, jak inne
+    rejestratorzy. Jednak wyróżniamy się spośród konkurencji poziomem świadczonych
+    usług, funkcjonalnością i intuicyjnością panelu klienta oraz atrakcyjnymi cenami.
+    W polączeniu z minimum formalności i łatwością przyjmowania płatności online.
+  domain_details: Szczegóły i wybór domen
+  domain_pricing: cennik domen
+  domain_reg: Rejestracja domen
+  domain_reg_link: "/rejestracja-domen"
+  email: Email
+  email_address: Twój adres email
+  email_format: Email format
+  email_or_password_invalid: Email albo hasło nieprawidłowe
+  error_404: Błąd 404 - Strona nie znaleziona
+  error_404_message: Jeżeli wydaje się Państwu, że tak nie powinno być - prosimy skorzystać
+    z formularza kontaktowego, albo wysłać email. Dziękujemy.
+  error_422: Zmiana, której chciałeś, została odrzucona.
+  error_422_message: Może próbowałeś zmienić coś, do czego nie miałeś dostępu.
+  error_500: Przepraszam, coś poszło nie tak.
+  error_500_message: Jeśli jesteś właścicielem aplikacji, sprawdź dzienniki, aby uzyskać
+    więcej informacji.
+  error_not_unique: 'Błąd: nie unikalny'
+  first_login_to_access: Najpierw się zaloguj, aby uzyskać dostęp do tej strony.
+  fist_and_last_name: 'Imię i Nazwisko:'
+  hide_information: Wrócić do zespołu
+  hosting: Backupy i hosting
+  hosting_description: Dla naszych klientów oferujemy pełny cykl rozwoju i utrzymania
+    aplikacji, od specyfikacji technicznej po hosting gotowej aplikacji z ciągłym
+    backupowaniem danych. W tym replikacje baz danych na macierze dyskowe o poziomie
+    RAID 6. Jednakże hosting oraz backupowanie danych można zamówić również jako oddzielną
+    usługę.
+  hosting_details: Szczegóły oferty
+  hosting_link: "/backupy-i-hosting"
+  log_in: Wejść
+  logged_in: Zalogowałeś się pomyślnie!
+  logged_out: Udane wylogowanie.
+  member: Członek zespołu
+  member_links: Odnośniki
+  members: Członkowie zespołu
+  message_content: Treśc wiadomości
+  more_information: Więcej informacji
+  net_apps_description: Tworzymy aplikacje internetowe o dowolnej złożoności z uwzględnieniem
+    Państwa potrzeb. Dzięki wieloletniemu doświadczeniu proponujemy najbardziej optymalne
+    technologicznie oraz biznesowo rozwiązania, aplikacje o wymaganej wydajności,
+    skalowalności i poziomie bezpieczeństwa. Tworzymy dobrze przetestowany, klarowny
+    kod który łatwo utrzymywać i rozwijać w przyszłości.
+  net_apps_learn_more: Dowiedz się więcej
+  network_applications: Aplikacje sieciowe
+  network_applications_link: aplikacje-sieciowe
+  online_portfolio: Online portfolio
+  outsourcing: Outsourcing IT
+  outsourcing_about: Więcej o outsourcingu
+  outsourcing_description: Jeżeli potrzebujecie Państwo stałego lub okresowego wsparcia
+    infrastruktury IT udzielanego przez ekspertów w tej branży a utrzymanie własnego
+    działu IT nie do końca się opłaca, lub po prostu chcecie mieć przewidywalny i
+    odgórnie zaplanowany budżet przy jednoczesnym zachowaniu wysokiej jakości obsługi
+    – jesteśmy pewni, że trafiliście pod właściwy adres.
+  outsourcing_link: "/it-outsourcing"
+  page: Strona
+  page_link: Link strona
+  page_title: Tytuł strony
+  pages: Strony
+  password: Hasło
+  phone: 'Telefon:'
+  portfolio: Portfolio
+  project: Projekt
+  projects: Projekty
+  publish: Publikować
+  recent_projects: 'Ostatnie realizacje:'
+  remember_me: Zapamiętaj mnie
+  screenshot: Zrzut ekranu
+  screenshots: Zrzuty ekranu
+  see_more: zobacz więcej realizacji
+  ssl_certificates: Certyfikaty SSL
+  ssl_certificates_description: Oferujemy wszystkie rodzaje certyfikatów SSL (DV /
+    OV / EV) pochodzące od największych centrum certyfikacji na rynku w konkurencyjnych
+    cenach.
+  ssl_certificates_link: "/certyfikaty-ssl"
+  ssl_certificates_more_info: Więcej o certyfikatach
+  subcategory: Submenu
+  submit: Wyślij
+  system: System
+  team: Zespół
+  technologies: Technologie
+  technology: Technologia
+  technology_group: grupa technologii
+  technology_group_title: Nazwa grupy technologicznej
+  technology_groups: Grupy technologii
+  thank_you_for_your_message: Dziękujemy za wiadomość!
+  three_chars_minimum: co najmniej 3 znaki
+  to_top: do góry
+  use_our_form_or_call: za pomocą email, formularza na stronie lub po prostu zadzwoń.
+  used_technologies: 'Użyte technologie:'
+  user: Użytkownik
+  users: Użytkownicy
   views:
     pagination:
-      previous: "&lt; Popr."
-      next: "Nast. &lt;"
-      truncate: "..."
       first: "&laquo; Pierwszy"
-      last: "Ostatni &raquo;"
-  user: "Użytkownik"
-  category: "Menu"
-  page: "Strona"
-  subcategory: "Submenu"
-  member: "Członek zespołu"
-  project: "Projekt"
-  technology_group: "grupa technologii"
-  technology: "Technologia"
-  screenshot: "Zrzut ekranu"
-  users: "Użytkownicy"
-  categories: "Menu"
-  pages: "Strony"
-  projects: "Projekty"
-  team: "Zespół"
-  members: "Członkowie zespołu"
-  screenshots: "Zrzuty ekranu"
-  add_screenshot: "Dodaj zrzut ekranu"
-  technologies: "Technologie"
-  add_technology: "Dodaj technologie"
-  technology_groups: "Grupy technologii"
-  technology_group_title: "Nazwa grupy technologicznej"
-  actions: "Akcje"
-  portfolio: "Portfolio"
-  check_on_line: "Sprawdź on-line:"
-  used_technologies: "Użyte technologie:"
-  recent_projects: "Ostatnie realizacje:"
-  see_more: "zobacz więcej realizacji"
-  member_links: "Odnośniki"
-  add_link: "Dodaj link"
-  content: "Zawartość"
-  admin_panel: "Panel administracyjny"
-  content: "Zawartość strony"
-  back_to_team: "Wrócić do zespołu"
-  about: "O nas"
-  basic_information: "Podstawowa informacja"
-  more_information: "Więcej informacji"
-  hide_information: "Wrócić do zespołu"
-  publish: "Publikować"
-  error_not_unique: "Błąd: nie unikalny"
-  error_404: "Strona nie znaleziona (błąd 404)!"
-  error_404_message: "Jeżeli wydaje się Państwu, że tak nie powinno być - prosimy skorzystać z formularza kontaktowego, albo wysłać email. Dziękujemy."
-  add_collage: "Dodaj kolaż"
-  add_files: "Dodaj pliki"
-  add_avatar: "Dodaj awatar"
-  add_logo: "Dodaj logo"
-  to_top: "do góry"
-  we_invite_you_to_contact_us: 'Masz pytania? Zapraszamy do kontaktu'
-  use_our_form_or_call: "za pomocą email, formularza na stronie lub po prostu zadzwoń."
-  phone: "Telefon:"
-  all_rights_reserved: "Wszelkie prawa zastrzeżone"
-  click_to_enlarge: "Kliknij aby powiększyć"
-  fist_and_last_name: "Imię i Nazwisko:"
-  email_address: "Twój adres email"
-  message_content: "Treśc wiadomości"
-  document_compliant_with: "Dokument zgodny z"
-  submit: "Wyślij"
-  network_applications: "Aplikacje sieciowe"
-  network_applications_link: "aplikacje-sieciowe"
-  hosting: "Backupy i hosting"
-  hosting_link: "/backupy-i-hosting"
-  domain_reg: "Rejestracja domen"
-  domain_reg_link: "/rejestracja-domen"
-  ssl_certificates: "Certyfikaty SSL"
-  ssl_certificates_link: "/certyfikaty-ssl"
-  outsourcing: "Outsourcing IT"
-  outsourcing_link: "/it-outsourcing"
-  design: "Kreatywny design"
-  design_link: "/kreatywny-design"
-  net_apps_description: "Tworzymy aplikacje internetowe o dowolnej złożoności z uwzględnieniem Państwa potrzeb. Dzięki wieloletniemu doświadczeniu proponujemy najbardziej optymalne technologicznie oraz biznesowo rozwiązania, aplikacje o wymaganej wydajności, skalowalności i poziomie bezpieczeństwa. Tworzymy dobrze przetestowany, klarowny kod który łatwo utrzymywać i rozwijać w przyszłości."
-  net_apps_learn_more: "Dowiedz się więcej"
-  hosting_description: "Dla naszych klientów oferujemy pełny cykl rozwoju i utrzymania aplikacji, od specyfikacji technicznej po hosting gotowej aplikacji z ciągłym backupowaniem danych. W tym replikacje baz danych na macierze dyskowe o poziomie RAID 6. Jednakże hosting oraz backupowanie danych można zamówić również jako oddzielną usługę."
-  hosting_details: "Szczegóły oferty"
-  domain_description: "Jesteśmy rejestratorem domen. W teorii takim samym, jak inne rejestratorzy. Jednak wyróżniamy się spośród konkurencji poziomem świadczonych usług, funkcjonalnością i intuicyjnością panelu klienta oraz atrakcyjnymi cenami. W polączeniu z minimum formalności i łatwością przyjmowania płatności online."
-  domain_details: "Szczegóły i wybór domen"
-  domain_pricing: "cennik domen"
-  ssl_certificates_description: "Oferujemy wszystkie rodzaje certyfikatów SSL (DV / OV / EV) pochodzące od największych centrum certyfikacji na rynku w konkurencyjnych cenach."
-  ssl_certificates_more_info: "Więcej o certyfikatach"
-  outsourcing_description: "Jeżeli potrzebujecie Państwo stałego lub okresowego wsparcia infrastruktury IT udzielanego przez ekspertów w tej branży a utrzymanie własnego działu IT nie do końca się opłaca, lub po prostu chcecie mieć przewidywalny i odgórnie zaplanowany budżet przy jednoczesnym zachowaniu wysokiej jakości obsługi – jesteśmy pewni, że trafiliście pod właściwy adres."
-  outsourcing_about: "Więcej o outsourcingu"
-  design_description: "Nie macie Państwo strony lub aktualna identyfikacja wizualna «daleka od wymarzonej» i chcielibyście zrobić rebranding? Nadać świeżości własnej marce według nowoczesnych kanonów i trendów? Albo jesteście zmęczeni typowymi wzorcami stron, standardowymi zdjęciami, zakupionymi na giełdach obrazków i potrzebujecie absolutnie unikalnego wyglądu który zapewni kwalifikowany ilustrator? To dobry dzień, bo dzisiaj dobrze trafiliście."
-  design_about: "Słów kilka o designie"
-  email_or_password_invalid: "Email albo hasło nieprawidłowe"
-  logged_in: "Zalogowałeś się pomyślnie!"
-  logged_out: "Udane wylogowanie."
-  first_login_to_access: "Najpierw się zaloguj, aby uzyskać dostęp do tej strony."
-  log_in: "Wejść"
-  email: "Email"
-  password: "Hasło"
-  remember_me: "Zapamiętaj mnie"
-  contact_form: "Formularz kontaktowy"
-  system: "System"
-  background_jobs: "Procesy w tle"
-  are_you_sure: "Jesteś pewien?"
-  thank_you_for_your_message: "Dziękujemy za wiadomość!"
-  page_title: "Tytuł strony"
-  page_link: "Link strona"
-  three_chars_minimum: "co najmniej 3 znaki"
-  cannot_be_empty: "Nie może być pusty"
-  email_format: "Email format"
-  online_portfolio: "Online portfolio"
-  can_not_publish_without_avatar: "Nie można publikować bez awataru"
-  can_not_publish_without_collage: "Nie można publikować bez kolażu"
-  contact_name: "Imię:"
-  contact_email: "Email:"
-  contact_content: "Treść:"
-  error_404: "Błąd 404 - Strona nie znaleziona"
-  error_500: 'Przepraszam, coś poszło nie tak.'
-  error_500_message: 'Jeśli jesteś właścicielem aplikacji, sprawdź dzienniki, aby uzyskać więcej informacji.'
-  error_422: 'Zmiana, której chciałeś, została odrzucona.'
-  error_422_message: 'Może próbowałeś zmienić coś, do czego nie miałeś dostępu.'
-  was_successfully_created: "został(a) pomyślnie utworzony(a)"
-  was_successfully_updated: "został(a) pomyślnie uaktualniony(a)"
-  was_successfully_destroyed: "został(a) pomyślnie usunięty(a)"
+      last: Ostatni &raquo;
+      next: Nast. &lt;
+      previous: "&lt; Popr."
+      truncate: "..."
+  was_successfully_created: został(a) pomyślnie utworzony(a)
+  was_successfully_destroyed: został(a) pomyślnie usunięty(a)
+  was_successfully_updated: został(a) pomyślnie uaktualniony(a)
+  we_invite_you_to_contact_us: Masz pytania? Zapraszamy do kontaktu
+  web_app_theme:
+    add_translation: Dodaj tłumaczenie
+    cancel: Cofnij
+    categories: Menu
+    category: menu
+    confirm: Jesteś pewien?
+    delete: Usuń
+    edit: Redaguj
+    input: Plik
+    list: Lista
+    logout: Wyloguj
+    main: Główna
+    member: członek zespołu
+    new: Nowy(a)
+    nothing: Nie ma żadnego wpisu
+    or: albo
+    page: strona
+    pages: Strony
+    preview: Podgląd
+    project: projekt
+    save: Zachowaj
+    show: Pokaż
+    subcategories: Submenu
+    subcategory: submenu
+    technology: technologia
+    technology_group: grupa technologii
+    user: użytkownik
+    users: Użytkownicy

@@ -1,208 +1,229 @@
+---
 ru:
-  change_language: "Изменить язык"
-  web_app_theme:
-    save: "Сохранить"
-    or: "или"
-    cancel: "Отменить"
-    main: "Главная"
-    users: "Пользователи"
-    categories: "Меню"
-    subcategories: "Подменю"
-    pages: "Страницы"
-    logout: "Выйти"
-    list: "Список"
-    new: "Новый(ая)"
-    edit: "Редактировать"
-    show: "Показ."
-    delete: "Удалить"
-    user: "пользователь"
-    category: "меню"
-    page: "страница"
-    subcategory: "подкатегория"
-    technology_group: "группа(у) технологий"
-    technology: "технология(ю)"
-    project: "проект"
-    member: "член(а) команды"
-    confirm: "Вы уверены?"
-    nothing: "Нет ни одной записи"
-    input: "Файл"
-    preview: "Предпросмотр"
-    add_translation: 'Добавить перевод'
+  actions: Действия
   activerecord:
-    id: "ID"
-    created_at: "Создана"
-    title: "Название"
     category:
-      name: "Имя"
-      altlink: "Альтернативный линк"
-      description: "Описание"
-    page:
-      shortlink: "Короткий линк"
-      title: "Название"
-      description: "Описание"
-      keywords: "Ключевые слова"
-      content: "Содержимое"
-      tooltip: "Подсказка"
-      category_id: "Меню"
-      category_id_main: "Главное меню"
-      subcategory_id: "Подменю"
-      publish: "Опубликована"
-    subcategory:
-      name: "Имя"
-      altlink: "Альтернативный линк"
-      description: "Описание"
-      category_id: "Меню"
-    technology_group:
-      title: "Название"
-      description: "Описание"
-      color: "Цвет"
-    technology:
-      title: "Название"
-      link: "Ссылка"
-      description: "Описание"
-      logo: "Лого"
-    project:
-      title: "Название"
-      content: "Содержимое"
-      livelink: "Ссылка на проект"
-      publish: "Опубликован"
-      collage: "Коллаж"
-    member:
-      name: "Имя"
-      job_title: "Специализация"
-      education: "Образование"
-      description: "Описание"
-      avatar: "Аватар"
-      publish: "Опубликован"
-      motto: "Девиз"
-      watch_profile: "Открыть профиль"
-    member_link:
-      name: "Название"
-      logo: "Лого"
-      link: "Ссылка"
-    user:
-      email: "Email"
-      password: "Пароль"
-      password_confirmation: "Повторите пароль"
+      altlink: Альтернативный линк
+      description: Описание
+      name: Имя
+    created_at: Создана
     errors:
       messages:
-        blank: "Не может быть пустым"
-        taken: "Уже использован"
-        confirmation: "Не совпадает"
-  views:
-      pagination:
-        previous: "&lt; Пред."
-        next: "След. &lt;"
-        first: "&laquo; Первая"
-        last: "Послед. &raquo;"
-        truncate: "..."
-  user: "Пользователь"
-  category: "Меню"
-  page: "Страница"
-  technology_group: "Группа технологий"
-  technology: "Технология"
-  project: "Проект"
-  member: "Член команды"
-  screenshot: "Скриншот"
-  users: "Пользователи"
-  categories: "Меню"
-  pages: "Страницы"
-  projects: "Проекты"
-  team: "Kоманда"
-  members: "Члены команды"
-  screenshots: "Скриншоты"
-  add_screenshot: "Добавить скриншот"
-  technologies: "Технологии"
-  add_technology: "Добавить технологию"
-  technology_groups: "Группы технологий"
-  technology_group_title: "Название технологической группы"
-  actions: "Действия"
-  portfolio: "Портфолио"
-  check_on_line: "Проверить on-line:"
-  used_technologies: "Используемые технологии:"
-  recent_projects: "Последние проекты:"
-  see_more: "посмотреть другие проекты"
-  member_links: "Ссылки"
-  add_link: "Добавить ссылку"
-  back_to_team: "Назад к Команде"
-  basic_information: "Основное"
-  more_information: "Информация"
-  hide_information: "Назад к команде"
-  content: "Контент"
-  admin_panel: "Панель администратора"
-  publish: "Публиковать"
-  error_not_unique: "Ошибка: поле не уникально"
-  error_404: "Страница не найдена (ошибка 404)!"
-  error_404_message: "Если Вы считаете, что это ошибка и так не должно быть - пожалуйста, сообщите об этом с помощью контактной формы или с помощью емейл. Спасибо!"
-  add_collage: "Загрузить коллаж"
-  add_files: "Добавить файлы"
-  add_avatar: "Загрузить аватар"
-  add_logo: "Загрузить лого"
-  to_top: "наверх"
-  we_invite_you_to_contact_us: 'У Вас есть вопросы? Cвяжитесь с нами'
-  use_our_form_or_call: "с помощью электронной почты, контактной формы или просто позвоните."
-  phone: "Телефон:"
-  all_rights_reserved: "Все права защищены"
-  click_to_enlarge: "Нажмите для увеличения"
-  fist_and_last_name: "Имя и фамилия:"
-  email_address: "Ваш email"
-  message_content: "Текст сообщения"
-  document_compliant_with: "Cоответствует"
-  submit: "Отправить"
-  network_applications: "Сетевые приложения"
-  network_applications_link: "/cетевые-приложения"
-  hosting: "Бэкапы и хостинг"
-  hosting_link: "/бэкапы-и-хостинг"
-  domain_reg: "Регистрация доменов"
-  domain_reg_link: "/регистрация-доменов"
-  ssl_certificates: "Сертификаты SSL"
-  ssl_certificates_link: "/сертификаты-ssl"
-  outsourcing: "Аутсорсинг IT"
-  outsourcing_link: "/aутсорсинг-it"
-  design: "Креативный дизайн"
+        blank: Не может быть пустым
+        confirmation: Не совпадает
+        taken: Уже использован
+    id: ID
+    member:
+      avatar: Аватар
+      description: Описание
+      education: Образование
+      job_title: Специализация
+      motto: Девиз
+      name: Имя
+      publish: Опубликован
+      watch_profile: Открыть профиль
+    member_link:
+      link: Ссылка
+      logo: Лого
+      name: Название
+    page:
+      category_id: Меню
+      category_id_main: Главное меню
+      content: Содержимое
+      description: Описание
+      keywords: Ключевые слова
+      publish: Опубликована
+      shortlink: Короткий линк
+      subcategory_id: Подменю
+      title: Название
+      tooltip: Подсказка
+    project:
+      collage: Коллаж
+      content: Содержимое
+      livelink: Ссылка на проект
+      publish: Опубликован
+      title: Название
+    subcategory:
+      altlink: Альтернативный линк
+      category_id: Меню
+      description: Описание
+      name: Имя
+    technology:
+      description: Описание
+      link: Ссылка
+      logo: Лого
+      title: Название
+    technology_group:
+      color: Цвет
+      description: Описание
+      title: Название
+    title: Название
+    user:
+      email: Email
+      password: Пароль
+      password_confirmation: Повторите пароль
+  add_avatar: Загрузить аватар
+  add_collage: Загрузить коллаж
+  add_files: Добавить файлы
+  add_link: Добавить ссылку
+  add_logo: Загрузить лого
+  add_screenshot: Добавить скриншот
+  add_technology: Добавить технологию
+  admin_panel: Панель администратора
+  all_rights_reserved: Все права защищены
+  are_you_sure: Вы уверены?
+  back_to_team: Назад к Команде
+  background_jobs: Фоновые задачи
+  basic_information: Основное
+  can_not_publish_without_avatar: Нельзя опубликовать без аватара
+  can_not_publish_without_collage: Нельзя обубликовать без коллажа
+  cannot_be_empty: Не может быть пустым
+  categories: Меню
+  category: Меню
+  change_language: Изменить язык
+  check_on_line: 'Проверить on-line:'
+  click_to_enlarge: Нажмите для увеличения
+  contact_content: 'Сообщение:'
+  contact_email: 'Email:'
+  contact_form: Форма обратной связи
+  contact_name: 'Имя:'
+  content: Контент
+  design: Креативный дизайн
+  design_about: Чуть шире о дизайне
+  design_description: У Вас нет сайта или текущая визуальная идентификация «далека
+    от идеала» и хочется сделать ребрендинг, вдохнуть больше свежести согласно современным
+    канонам и трендам? Или Вы устали от однотипных дизайнов, стандартных картинок,
+    покупаемых на биржах изображений и нуждаетесь в работе квалифицированного иллюстратора?
+    Сегодня Вам точно повезло!
   design_link: "/креативный-дизайн"
-  net_apps_description: "Мы создаём веб-приложения любой сложности с учётом Ваших потребностей. Благодаря многолетнему опыту предлагаем технологически наиболее оправданные решения при необходимых производительности, масштабируемости, безопасности, чистоте кода и лёгкости его поддержки в дальнейшем."
-  net_apps_learn_more: "Подробнее"
-  hosting_description: "Для наших клиентов предлагаем полный цикл разработки и сопровождения приложений от технического задания до хостинга готового приложения с постоянным бэкапированием данных. В том числе репликацию баз данных на дисковые массивы уровня RAID 6. Хостинг и бекапирование данных можно также заказать как отдельную услугу."
-  hosting_details: "Подробнее о предложении"
-  domain_description: "Мы являемся регистратором доменов. По идее таким же как другие регистраторы. Однако выгодно отличаемся от конкуренции уровнем обслуживания, функциональностью панели управления клиента и ценами при минимуме формальностей в сочетании с лёгкостью онлайн платежей."
-  domain_details: "Подробности и выбор доменов"
-  domain_pricing: "Цены доменов"
-  ssl_certificates_description: "Предлагаем любые разновидности сертификатов SSL (DV / OV / EV) от ведущих вендоров на рынке сертификации в привлекательных ценах."
-  ssl_certificates_more_info: "Подробнее о сертификатах"
-  outsourcing_description: "Если Ваша организация нуждается в постоянном обслуживании грамотными специалистами от IT, но содержание штата высококвалифицированных сотрудников – непозволительная роскошь, либо Вы просто хотите иметь предсказуемый и заранее запланированный бюджет при сохранении высокого качества обслуживания – Вы точно пришли по адресу."
-  outsourcing_about: "Более детально об аутсорсинге"
-  design_description: "У Вас нет сайта или текущая визуальная идентификация «далека от идеала» и хочется сделать ребрендинг, вдохнуть больше свежести согласно современным канонам и трендам? Или Вы устали от однотипных дизайнов, стандартных картинок, покупаемых на биржах изображений и нуждаетесь в работе квалифицированного иллюстратора? Сегодня Вам точно повезло!"
-  design_about: "Чуть шире о дизайне"
-  email_or_password_invalid: "Емейл и/или пароль неправильные"
-  logged_in: "Успешный вход в систему!"
-  logged_out: "Успешный выход из системы!"
-  first_login_to_access: "Для начала введите логин и пароль, чтобы получить доступ к этой странице."
-  log_in: "Войти"
-  email: "Емейл"
-  password: "Пароль"
-  remember_me: "Запомнить меня"
-  contact_form: "Форма обратной связи"
-  system: "Система"
-  background_jobs: "Фоновые задачи"
-  are_you_sure: "Вы уверены?"
-  thank_you_for_your_message: "Спасибо за обращение"
-  page_title: "Название страницы"
-  page_link: "Линк страницы"
-  three_chars_minimum: "Минимум 3 символа"
-  cannot_be_empty: "Не может быть пустым"
-  email_format: "Email формат"
-  online_portfolio: "Онлайн портфолио"
-  can_not_publish_without_avatar: "Нельзя опубликовать без аватара"
-  can_not_publish_without_collage: "Нельзя обубликовать без коллажа"
-  contact_name: "Имя:"
-  contact_email: "Email:"
-  contact_content: "Сообщение:"
-  error_404: "Ошибка 404 - Страница не найдена"
-  error_500: 'Нам очень жаль, но что-то пошло не так.'
-  error_500_message: 'Если вы являетесь владельцем приложения, проверьте журналы для получения дополнительной информации.'
-  error_422: 'Требуемое изменение было отклонено.'
-  error_422_message: 'Возможно, вы пытались изменить что-то, к чему у вас не было доступа.'
-  was_successfully_created: "успешно создан(а)"
-  was_successfully_updated: "успешно обновлен(а)"
-  was_successfully_destroyed: "успешно удален(а)"
+  document_compliant_with: Cоответствует
+  domain_description: Мы являемся регистратором доменов. По идее таким же как другие
+    регистраторы. Однако выгодно отличаемся от конкуренции уровнем обслуживания, функциональностью
+    панели управления клиента и ценами при минимуме формальностей в сочетании с лёгкостью
+    онлайн платежей.
+  domain_details: Подробности и выбор доменов
+  domain_pricing: Цены доменов
+  domain_reg: Регистрация доменов
+  domain_reg_link: "/регистрация-доменов"
+  email: Емейл
+  email_address: Ваш email
+  email_format: Email формат
+  email_or_password_invalid: Емейл и/или пароль неправильные
+  error_404: Ошибка 404 - Страница не найдена
+  error_404_message: Если Вы считаете, что это ошибка и так не должно быть - пожалуйста,
+    сообщите об этом с помощью контактной формы или с помощью емейл. Спасибо!
+  error_422: Требуемое изменение было отклонено.
+  error_422_message: Возможно, вы пытались изменить что-то, к чему у вас не было доступа.
+  error_500: Нам очень жаль, но что-то пошло не так.
+  error_500_message: Если вы являетесь владельцем приложения, проверьте журналы для
+    получения дополнительной информации.
+  error_not_unique: 'Ошибка: поле не уникально'
+  first_login_to_access: Для начала введите логин и пароль, чтобы получить доступ
+    к этой странице.
+  fist_and_last_name: 'Имя и фамилия:'
+  hide_information: Назад к команде
+  hosting: Бэкапы и хостинг
+  hosting_description: Для наших клиентов предлагаем полный цикл разработки и сопровождения
+    приложений от технического задания до хостинга готового приложения с постоянным
+    бэкапированием данных. В том числе репликацию баз данных на дисковые массивы уровня
+    RAID 6. Хостинг и бекапирование данных можно также заказать как отдельную услугу.
+  hosting_details: Подробнее о предложении
+  hosting_link: "/бэкапы-и-хостинг"
+  log_in: Войти
+  logged_in: Успешный вход в систему!
+  logged_out: Успешный выход из системы!
+  member: Член команды
+  member_links: Ссылки
+  members: Члены команды
+  message_content: Текст сообщения
+  more_information: Информация
+  net_apps_description: Мы создаём веб-приложения любой сложности с учётом Ваших потребностей.
+    Благодаря многолетнему опыту предлагаем технологически наиболее оправданные решения
+    при необходимых производительности, масштабируемости, безопасности, чистоте кода
+    и лёгкости его поддержки в дальнейшем.
+  net_apps_learn_more: Подробнее
+  network_applications: Сетевые приложения
+  network_applications_link: "/cетевые-приложения"
+  online_portfolio: Онлайн портфолио
+  outsourcing: Аутсорсинг IT
+  outsourcing_about: Более детально об аутсорсинге
+  outsourcing_description: Если Ваша организация нуждается в постоянном обслуживании
+    грамотными специалистами от IT, но содержание штата высококвалифицированных сотрудников
+    – непозволительная роскошь, либо Вы просто хотите иметь предсказуемый и заранее
+    запланированный бюджет при сохранении высокого качества обслуживания – Вы точно
+    пришли по адресу.
+  outsourcing_link: "/aутсорсинг-it"
+  page: Страница
+  page_link: Линк страницы
+  page_title: Название страницы
+  pages: Страницы
+  password: Пароль
+  phone: 'Телефон:'
+  portfolio: Портфолио
+  project: Проект
+  projects: Проекты
+  publish: Публиковать
+  recent_projects: 'Последние проекты:'
+  remember_me: Запомнить меня
+  screenshot: Скриншот
+  screenshots: Скриншоты
+  see_more: посмотреть другие проекты
+  ssl_certificates: Сертификаты SSL
+  ssl_certificates_description: Предлагаем любые разновидности сертификатов SSL (DV
+    / OV / EV) от ведущих вендоров на рынке сертификации в привлекательных ценах.
+  ssl_certificates_link: "/сертификаты-ssl"
+  ssl_certificates_more_info: Подробнее о сертификатах
+  submit: Отправить
+  system: Система
+  team: Коллектив
+  technologies: Технологии
+  technology: Технология
+  technology_group: Группа технологий
+  technology_group_title: Название технологической группы
+  technology_groups: Группы технологий
+  thank_you_for_your_message: Спасибо за обращение
+  three_chars_minimum: Минимум 3 символа
+  to_top: наверх
+  use_our_form_or_call: с помощью электронной почты, контактной формы или просто позвоните.
+  used_technologies: 'Используемые технологии:'
+  user: Пользователь
+  users: Пользователи
+  views:
+    pagination:
+      first: "&laquo; Первая"
+      last: Послед. &raquo;
+      next: След. &lt;
+      previous: "&lt; Пред."
+      truncate: "..."
+  was_successfully_created: успешно создан(а)
+  was_successfully_destroyed: успешно удален(а)
+  was_successfully_updated: успешно обновлен(а)
+  we_invite_you_to_contact_us: У Вас есть вопросы? Cвяжитесь с нами
+  web_app_theme:
+    add_translation: Добавить перевод
+    cancel: Отменить
+    categories: Меню
+    category: меню
+    confirm: Вы уверены?
+    delete: Удалить
+    edit: Редактировать
+    input: Файл
+    list: Список
+    logout: Выйти
+    main: Главная
+    member: член(а) команды
+    new: Новый(ая)
+    nothing: Нет ни одной записи
+    or: или
+    page: страница
+    pages: Страницы
+    preview: Предпросмотр
+    project: проект
+    save: Сохранить
+    show: Показ.
+    subcategories: Подменю
+    subcategory: подкатегория
+    technology: технология(ю)
+    technology_group: группа(у) технологий
+    user: пользователь
+    users: Пользователи

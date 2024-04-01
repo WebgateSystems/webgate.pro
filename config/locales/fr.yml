@@ -1,0 +1,210 @@
+---
+fr:
+  about: À propos
+  actions: Actions
+  activerecord:
+    category:
+      altlink: Lien alternatif
+      description: Description
+      name: Nom
+    created_at: Créé le
+    errors:
+      messages:
+        blank: Ne peut pas être vide
+        confirmation: Le mot de passe ne correspond pas à la confirmation
+        taken: Déjà pris
+    id: ID
+    member:
+      avatar: Avatar
+      description: Description
+      education: Éducation
+      job_title: Spécialisation
+      motto: Devise
+      name: Nom
+      publish: Publier
+      watch_profile: Voir le profil
+    member_link:
+      link: Lien
+      logo: Logo
+      name: Nom
+    page:
+      category_id: Appartient aux éléments de menu
+      category_id_main: Menu principal
+      content: Contenu
+      description: Description
+      keywords: Mots-clés
+      publish: Publier
+      shortlink: Lien court
+      subcategory_id: Sous-menu
+      title: Titre
+      tooltip: Astuce
+    project:
+      collage: Collage
+      content: Contenu
+      livelink: Lien en direct
+      publish: Publier
+      title: Titre
+    subcategory:
+      altlink: Lien alternatif
+      category_id: Catégorie
+      description: Description
+      name: Nom
+    technology:
+      description: Description
+      link: Lien
+      logo: Logo
+      title: Titre
+    technology_group:
+      color: Couleur
+      description: Description
+      title: Titre
+    title: Titre
+    user:
+      email: Email
+      password: Mot de passe
+      password_confirmation: Répéter le mot de passe
+  add_avatar: Ajouter un avatar
+  add_collage: Ajouter un collage
+  add_files: Ajouter des fichiers
+  add_link: Ajouter un lien
+  add_logo: Ajouter un logo
+  add_screenshot: Ajouter une capture d'écran
+  add_technology: Ajouter une technologie
+  admin_panel: Panneau d'administration
+  all_rights_reserved: Tous droits réservés
+  are_you_sure: Êtes-vous sûr ?
+  back_to_team: Retour à l'équipe
+  background_jobs: Tâches en arrière-plan
+  basic_information: Informations de base
+  can_not_publish_without_avatar: Impossible de publier sans avatar
+  can_not_publish_without_collage: Impossible de publier sans collage
+  cannot_be_empty: Ne peut pas être vide
+  categories: Catégories
+  category: Catégorie
+  change_language: Changer de langue
+  check_on_line: 'Vérifier en ligne:'
+  click_to_enlarge: Cliquez pour agrandir
+  contact_content: 'Contenu:'
+  contact_email: 'Email:'
+  contact_form: Formulaire de contact
+  contact_name: 'Nom:'
+  content: Contenu
+  design: Design créatif
+  design_about: Quelques mots sur le design
+  design_description: Vous n'avez pas de site web ? Ou votre identité visuelle actuelle est « loin du rêve » et vous souhaitez faire un rebranding ? Ou peut-être en avez-vous assez de voir toujours les mêmes modèles de sites web, photos standard, achetées sur les banques d'images, mais vous avez besoin d'un aspect totalement unique pour votre identité qui sera fourni par un illustrateur qualifié ? Vous avez de la chance car vous êtes au bon endroit.
+  design_link: "/conception-creative"
+  document_compliant_with: Conforme à
+  domain_description: Nous sommes un registraire de domaines. En théorie, comme une douzaine d'autres registraires. Cependant, nous nous distinguons de la concurrence par le niveau de service, l'utilisabilité et la fonctionnalité du panneau de contrôle client, les bons prix et un minimum de formalités, combiné avec la facilité des paiements en ligne.
+  domain_details: Détails et recherche de domaine
+  domain_pricing: Tarification des domaines
+  domain_reg: Enregistrement de domaines
+  domain_reg_link: "/enregistrement-de-domaines"
+  email: Email
+  email_address: Votre adresse email
+  email_format: Format de l'email
+  email_or_password_invalid: Email ou mot de passe inval
+  error_404: Erreur 404 - Page non trouvée
+  error_404_message: Si vous pensez que cette situation n'est pas correcte, veuillez nous envoyer une petite description par email ou via le formulaire de contact. Merci beaucoup.
+  error_422: Le changement que vous vouliez a été rejeté.
+  error_422_message: Peut-être avez-vous essayé de changer quelque chose à quoi vous n'aviez pas accès.
+  error_500: Nous sommes désolés, mais quelque chose a mal tourné.
+  error_500_message: Si vous êtes le propriétaire de l'application, vérifiez les journaux pour plus d'informations.
+  error_not_unique: 'Erreur : pas unique'
+  first_login_to_access: Connectez-vous d'abord pour accéder à cette page.
+  fist_and_last_name: 'Prénom et nom :'
+  hide_information: Retour à l'équipe
+  hosting: Sauvegardes et hébergement
+  hosting_description: Pour nos clients, nous offrons un cycle complet de développement et de maintenance des applications. De la spécification technique à l'hébergement des applications prêtes à l'emploi avec la sauvegarde constante de vos données. Y compris la réplication des bases de données sur des stockages de données RAID 6. L'hébergement et la sauvegarde des données peuvent également être commandés comme un service séparé.
+  hosting_details: Détails
+  hosting_link: "/sauvegardes-et-hebergement"
+  log_in: Se connecter
+  logged_in: Connecté !
+  logged_out: Déconnecté !
+  member: Membre
+  member_links: Liens
+  members: Membres de l'équipe
+  message_content: Contenu du message
+  more_information: Plus d'informations
+  net_apps_description: Nous créons des applications web de toute complexité, en nous concentrant toujours sur vos besoins. Grâce à des années d'expérience, nous offrons la solution technologiquement la plus optimale avec la performance, la scalabilité et la sécurité requises. Nous créons uniquement du code source propre et bien testé qui est facile à prendre en charge à l'avenir.
+  net_apps_learn_more: En savoir plus
+  network_applications: Applications réseau
+  network_applications_link: "/applications-reseau"
+  online_portfolio: Portfolio en ligne
+  outsourcing: Externalisation IT
+  outsourcing_about: À propos de l'externalisation
+  outsourcing_description: Si votre organisation nécessite une maintenance constante ou périodique par des experts IT compétents, mais que le maintien de votre propre département IT est « trop » pour votre entreprise, ou si vous souhaitez simplement avoir un budget prévisible et pré-planifié, tout en maintenant un haut niveau de qualité de service - vous pouvez être sûr que si vous nous contactez, vous ne le regretterez jamais.
+  outsourcing_link: "/externalisation-it"
+  page: Page
+  page_link: Lien de la page
+  page_title: Titre de la page
+  pages: Pages
+  password: Mot de passe
+  phone: 'Numéros de téléphone:'
+  portfolio: Portefeuille
+  project: Projet
+  projects: Projets
+  publish: Publier
+  recent_projects: 'Projets récents:'
+  remember_me: Se souvenir de moi
+  screenshot: Capture d'écran
+  screenshots: Captures d'écran
+  see_more: voir plus de projets
+  ssl_certificates: Certificats SSL
+  ssl_certificates_description: Nous sommes revendeurs de certificats SSL et offrons tous les types de certificats (DV / OV / EV) de presque toutes les principales AC (Autorités de Certification) sur le marché à des prix attractifs.
+  ssl_certificates_link: "/certificats-ssl"
+  ssl_certificates_more_info: Plus d'informations sur les certificats
+  submit: Envoyer
+  system: Système
+  team: Équipe
+  technologies: Technologies
+  technology: Technologie
+  technology_group: Groupe technologique
+  technology_group_title: Titre du groupe technologique
+  technology_groups: Groupes technologiques
+  thank_you_for_your_message: Merci pour votre message
+  three_chars_minimum: Minimum 3 caractères
+  to_top: en haut
+  use_our_form_or_call: Vous pouvez utiliser l'email, notre formulaire de contact ou simplement appeler.
+  used_technologies: 'Technologies utilisées:'
+  user: Utilisateur
+  users: Utilisateurs
+  views:
+    pagination:
+      first: "&laquo; Premier"
+      last: "Dernier &raquo;"
+      next: "Suivant &raquo;"
+      previous: "&laquo; Précédent"
+      truncate: "..."
+  was_successfully_created: a été créé avec succès
+  was_successfully_destroyed: a été supprimé avec succès
+  was_successfully_updated: a été mis à jour avec succès
+  we_invite_you_to_contact_us: Si vous avez des questions, n'hésitez pas à nous contacter.
+  web_app_theme:
+    add_translation: Ajouter une traduction
+    cancel: Annuler
+    categories: Menu
+    category: menu
+    confirm: Êtes-vous sûr ?
+    delete: Supprimer
+    edit: Modifier
+    image_catalog: catalogue d'images
+    input: Entrée
+    list: Liste
+    logout: Se déconnecter
+    main: Principal
+    member: membre
+    new: Nouveau
+    nothing: Rien
+    or: ou
+    page: page
+    pages: Pages
+    preview: Aperçu
+    project: projet
+    save: Sauvegarder
+    show: Montrer
+    subcategories: Sous-menu
+    subcategory: sous-menu
+    technology: technologie
+    technology_group: groupe technologique
+    user: utilisateur
+    users: Utilisateurs
