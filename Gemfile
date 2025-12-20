@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'pg'
-gem 'puma'
-gem 'rails', '~> 7.0.2', '>= 7.0.2.4'
+gem 'puma', '>= 6.4.3'
+gem 'rails', '~> 7.0.8', '>= 7.0.8.7'
 
-gem 'carrierwave'
+gem 'carrierwave', '~> 3.0', '>= 3.0.7'
 gem 'exception_notification', '~> 4.0.1'
 gem 'geoip'
 gem 'globalize'
@@ -25,7 +25,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'autoprefixer-rails'
 gem 'chosen-rails'
-gem 'ckeditor'
+# ckeditor has known XSS vulnerabilities (CVE-2023-4771, CVE-2024-24815, etc.)
+# but no patch is available yet. Consider migrating to CKEditor 5 or another editor.
+gem 'ckeditor', '>= 5.1.2'
 gem 'cocoon'
 gem 'config'
 gem 'dynamic_sitemaps'
@@ -34,10 +36,11 @@ gem 'json'
 gem 'oga'
 gem 'ranked-model'
 gem 'redis'
+gem 'rexml', '>= 3.3.9'
 gem 'select2-rails'
-gem 'sidekiq', '~> 5.2.8'
+gem 'sidekiq', '~> 6.5', '>= 6.5.10'
 gem 'simple_form'
-gem 'sinatra', require: nil
+# sinatra is managed by sidekiq as a dependency
 gem 'sorcery'
 gem 'whenever', require: false
 
@@ -55,9 +58,10 @@ gem 'yui-compressor'
 gem 'jquery-fileupload-rails'
 gem 'jquery-minicolors-rails'
 gem 'jquery-rails'
-gem 'jquery-ui-rails', '6.0.0'
+gem 'jquery-ui-rails', '>= 8.0.0'
 
 group :development do
+  gem 'bundler-audit'
   gem 'fasterer', require: false
   gem 'i18n-tasks', '~> 1.0.13'
   gem 'letter_opener'

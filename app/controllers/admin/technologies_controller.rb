@@ -17,7 +17,7 @@ module Admin
     def create
       @technology = Technology.new(technology_params)
       if @technology.save
-        ::TranslationWorker.perform_async(@technology.class, @technology.id, cookies[:lang])
+        ::TranslationWorker.perform_async(@technology.class.name, @technology.id, cookies[:lang])
         redirect_to [:admin, @technology], notice: "#{t(:technology)} #{t(:was_successfully_created)}."
       else
         render 'new'
