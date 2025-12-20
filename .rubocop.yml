@@ -26,6 +26,7 @@ Rails/SkipsModelValidations:
     # when only updating position, which is safe and necessary for RankedModel
     - 'app/controllers/admin/members_controller.rb'
     - 'app/controllers/admin/projects_controller.rb'
+    - 'app/controllers/admin/categories_controller.rb'
     # update_all is intentionally used to update timestamps without callbacks
     - 'app/models/technology.rb'
 RSpec/MultipleExpectations:

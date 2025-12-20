@@ -41,9 +41,9 @@ module Admin
 
     def update_position
       @category = Category.find(category_params[:category_id])
-      @category.position_position = category_params[:row_position]
+      @category.update_column(:position, category_params[:row_position])
       respond_to do |format|
-        @category.save! ? format.json { head :ok } : format.json { head :error }
+        format.json { head :ok }
         format.html
       end
     end

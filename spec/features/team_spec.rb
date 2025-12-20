@@ -1,18 +1,23 @@
 describe 'Adding team to site.', type: :feature do
   let!(:member1) do
-    Member.create(name: 'TestName1', job_title: 'TestJobTitle1',
-                  description: 'TestDesc1', education: 'TestEduc1', motto: 'TestMotto1', publish: true,
-                  avatar: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/yuri_skurikhin.png').to_s))
+    I18n.with_locale(:en) do
+      Member.create(name: 'TestName1', job_title: 'TestJobTitle1',
+                    description: 'TestDesc1', education: 'TestEduc1', motto: 'TestMotto1', publish: true,
+                    avatar: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/yuri_skurikhin.png').to_s))
+    end
   end
 
   let!(:member2) do
-    Member.create(name: 'TestName2', job_title: 'TestJobTitle2',
-                  description: 'TestDesc2', education: 'TestEduc2', motto: 'TestMotto1', publish: true,
-                  avatar: nil)
+    I18n.with_locale(:en) do
+      Member.create(name: 'TestName2', job_title: 'TestJobTitle2',
+                    description: 'TestDesc2', education: 'TestEduc2', motto: 'TestMotto1', publish: true,
+                    avatar: nil)
+    end
   end
 
   before do
-    visit team_path
+    I18n.locale = :en
+    visit team_en_path
   end
 
   it 'shows list of team members' do
