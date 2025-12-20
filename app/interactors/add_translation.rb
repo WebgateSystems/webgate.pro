@@ -1,10 +1,11 @@
 class AddTranslation < BaseInteractor
   LOCALES = {
+    de: 'German',
     en: 'English',
+    fr: 'French',
     pl: 'Polish',
     ru: 'Russian',
-    ua: 'Ukraine',
-    fr: 'France'
+    ua: 'Ukrainian'
   }.freeze
 
   def call
