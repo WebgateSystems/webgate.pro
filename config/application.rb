@@ -9,6 +9,8 @@ require 'sprockets/railtie'
 require 'active_model/railtie'
 require 'active_job/railtie'
 # require "rails/test_unit/railtie"
+# ActiveStorage is not used - all uploads use CarrierWave
+# require 'activestorage/engine'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

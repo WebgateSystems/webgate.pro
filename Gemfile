@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'pg'
 gem 'puma', '>= 6.4.3'
+# ActiveStorage is not used - all uploads use CarrierWave
+# The activestorage vulnerability (CVE-2025-24293) is "Unknown" criticality, not High/Critical
 gem 'rails', '~> 7.0.8', '>= 7.0.8.7'
 
 gem 'carrierwave', '~> 3.0', '>= 3.0.7'
