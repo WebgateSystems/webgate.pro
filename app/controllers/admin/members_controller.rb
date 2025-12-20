@@ -87,11 +87,13 @@ module Admin
     end
 
     def member_params
-      params.require(:member).permit(:member_id, :row_position, :row_tech_position, :name, :job_title, :education, :description,
-                                     :member_link_id, :member_technology_id, :avatar, :avatar_cache, :motto, :publish,
-                                     technology_ids: [],
-                                     technologies_attributes: %i[id title technology_group_id _destroy],
-                                     member_links_attributes: %i[id name link member_id position _destroy])
+      params.require(:member).permit(
+        :member_id, :row_position, :row_tech_position, :name, :job_title, :education, :description,
+        :member_link_id, :member_technology_id, :avatar, :avatar_cache, :motto, :publish,
+        technology_ids: [],
+        technologies_attributes: %i[id title technology_group_id _destroy],
+        member_links_attributes: %i[id name link member_id position _destroy]
+      )
     end
   end
 end

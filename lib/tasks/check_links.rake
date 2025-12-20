@@ -32,7 +32,8 @@ namespace :spec do
       end
     end
     links.each do |link|
-      unless url_exist?(URI.escape(link))
+      # Links from sitemap are already valid URLs, no encoding needed
+      unless url_exist?(link)
         log.error "Link not found: #{link}"
         puts "Link not found: #{link}"
       end

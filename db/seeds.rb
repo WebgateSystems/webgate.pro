@@ -13,10 +13,40 @@ end
 
 if Member.count.zero?
   I18n.locale = 'ru'
+  description_ru = <<~HTML
+    <p>На рельсах с 2014 года</p>
+
+    <p>- *nix<br />
+    - ruby<br />
+    - Rails 4<br />
+    - PostgreSQL<br />
+    - тестирование (rspec, capybara)&nbsp;<br />
+    - Git (git flow)<br />
+    - Github, Gitlab<br />
+    - Slim, Haml<br />
+    - CoffeeScript/JS<br />
+    - jQuery(UI)<br />
+    - AJAX<br />
+    - SASS/CSS<br />
+    - JSON API<br />
+    - Heroku<br />
+    - AWS<br />
+    - Bootstrap<br />
+    - Foundation<br />
+    - Интеграция с внешними веб-сервисами<br />
+    - Реализация мобильных версий</p>
+  HTML
+  education_ru = <<~HTML
+    <h4><strong>Московский Университет Государственного Управления</strong></h4>
+
+    <p>Инженер-программист -&nbsp;Информационные системы в экономике</p>
+
+    <p>2003 - 2008</p>
+  HTML
   member = Member.create name: 'Юрий Скурихин',
                          job_title: 'Ruby on Rails разработчик',
-                         description: "<p>На рельсах с 2014 года</p>\r\n\r\n<p>- *nix<br />\r\n- ruby<br />\r\n- Rails 4<br />\r\n- PostgreSQL<br />\r\n- тестирование (rspec, capybara)&nbsp;<br />\r\n- Git (git flow)<br />\r\n- Github, Gitlab<br />\r\n- Slim, Haml<br />\r\n- CoffeeScript/JS<br />\r\n- jQuery(UI)<br />\r\n- AJAX<br />\r\n- SASS/CSS<br />\r\n- JSON API<br />\r\n- Heroku<br />\r\n- AWS<br />\r\n- Bootstrap<br />\r\n- Foundation<br />\r\n- Интеграция с внешними веб-сервисами<br />\r\n- Реализация мобильных версий</p>",
-                         education: "<h4><strong>Московский Университет Государственного Управления</strong></h4>\r\n\r\n<p>Инженер-программист -&nbsp;Информационные системы в экономике</p>\r\n\r\n<p>2003 - 2008</p>",
+                         description: description_ru,
+                         education: education_ru,
                          motto: 'Per aspera ad astra',
                          publish: true
   member.avatar = Rails.root.join('app/assets/images/yuri_skurikhin.png').open
@@ -28,8 +58,27 @@ if Member.count.zero?
   member = Member.find 1
   member.name = 'Yuri Skurikhin'
   member.job_title = 'Ruby on Rails Developer'
-  member.description = "<ul>\r\n\t<li>With Rails in 2014</li>\r\n\t<li>Programming languages: Ruby, JavaScript</li>\r\n\t<li>DMSs: PostgreSQL, MongoDB</li>\r\n\t<li>Web frameworks: Ruby on Rails</li>\r\n\t<li>JavaScript libraries: JQuery, Ember</li>\r\n\t<li>Markup languages, template engines: HTML, XML, ERB, Haml, Slim, Markdown</li>\r\n\t<li>SCMs: Git (git flow)</li>\r\n\t<li>Operating systems: Linux, Windows</li>\r\n</ul>"
-  member.education = "<h4><strong>Moscow University Governance</strong></h4>\r\n\r\n<p>Engineer&#39;s degree -&nbsp;Programming and Economy</p>\r\n\r\n<p>2003 - 2008</p>"
+  description_en = <<~HTML
+    <ul>
+    <li>With Rails in 2014</li>
+    <li>Programming languages: Ruby, JavaScript</li>
+    <li>DMSs: PostgreSQL, MongoDB</li>
+    <li>Web frameworks: Ruby on Rails</li>
+    <li>JavaScript libraries: JQuery, Ember</li>
+    <li>Markup languages, template engines: HTML, XML, ERB, Haml, Slim, Markdown</li>
+    <li>SCMs: Git (git flow)</li>
+    <li>Operating systems: Linux, Windows</li>
+    </ul>
+  HTML
+  education_en = <<~HTML
+    <h4><strong>Moscow University Governance</strong></h4>
+
+    <p>Engineer&#39;s degree -&nbsp;Programming and Economy</p>
+
+    <p>2003 - 2008</p>
+  HTML
+  member.description = description_en
+  member.education = education_en
   member.motto = 'Per aspera ad astra'
   member.save
 
@@ -39,8 +88,27 @@ if Member.count.zero?
   member = Member.find 1
   member.name = 'Yuri Skurikhin'
   member.job_title = 'Ruby on Rails Developer'
-  member.description = "<ul>\r\n\t<li>With Rails in 2014</li>\r\n\t<li>Programming languages: Ruby, JavaScript</li>\r\n\t<li>DMSs: PostgreSQL, MongoDB</li>\r\n\t<li>Web frameworks: Ruby on Rails</li>\r\n\t<li>JavaScript libraries: JQuery, Ember</li>\r\n\t<li>Markup languages, template engines: HTML, XML, ERB, Haml, Slim, Markdown</li>\r\n\t<li>SCMs: Git (git flow)</li>\r\n\t<li>Operating systems: Linux, Windows</li>\r\n</ul>"
-  member.education = "<h4><strong>Moscow University Governance</strong></h4>\r\n\r\n<p>Engineer&#39;s degree -&nbsp;Programming and Economy</p>\r\n\r\n<p>2003 - 2008</p>"
+  description_pl = <<~HTML
+    <ul>
+    <li>With Rails in 2014</li>
+    <li>Programming languages: Ruby, JavaScript</li>
+    <li>DMSs: PostgreSQL, MongoDB</li>
+    <li>Web frameworks: Ruby on Rails</li>
+    <li>JavaScript libraries: JQuery, Ember</li>
+    <li>Markup languages, template engines: HTML, XML, ERB, Haml, Slim, Markdown</li>
+    <li>SCMs: Git (git flow)</li>
+    <li>Operating systems: Linux, Windows</li>
+    </ul>
+  HTML
+  education_pl = <<~HTML
+    <h4><strong>Moscow University Governance</strong></h4>
+
+    <p>Engineer&#39;s degree -&nbsp;Programming and Economy</p>
+
+    <p>2003 - 2008</p>
+  HTML
+  member.description = description_pl
+  member.education = education_pl
   member.motto = 'Per aspera ad astra'
   member.save
 

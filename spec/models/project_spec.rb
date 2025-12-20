@@ -26,7 +26,9 @@ describe Project do
     it { is_expected.to have_many(:screenshots).dependent(:destroy) }
 
     it {
-      expect(subject).to have_many(:technologies).order('technologies_projects.position').through(:technologies_projects)
+      expect(subject).to have_many(:technologies)
+        .order('technologies_projects.position')
+        .through(:technologies_projects)
     }
 
     it { is_expected.to have_many(:technologies_projects) }

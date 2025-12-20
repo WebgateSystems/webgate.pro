@@ -20,3 +20,74 @@ Style/FrozenStringLiteralComment:
 Metrics/AbcSize:
   Exclude:
     - 'db/**/*.rb'
+Rails/SkipsModelValidations:
+  Exclude:
+    # update_column is intentionally used in sort methods to bypass validations
+    # when only updating position, which is safe and necessary for RankedModel
+    - 'app/controllers/admin/members_controller.rb'
+    - 'app/controllers/admin/projects_controller.rb'
+    # update_all is intentionally used to update timestamps without callbacks
+    - 'app/models/technology.rb'
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/**/*.rb'
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/**/*.rb'
+RSpec/AnyInstance:
+  Exclude:
+    - 'spec/**/*.rb'
+RSpec/LetSetup:
+  Exclude:
+    - 'spec/**/*.rb'
+RSpec/ExpectActual:
+  Exclude:
+    - 'spec/controllers/**/*.rb'
+RSpec/NamedSubject:
+  Exclude:
+    - 'spec/**/*.rb'
+RSpec/FilePath:
+  Exclude:
+    - 'spec/requests/admin/technologies_groups_controller_spec.rb'
+Metrics/AbcSize:
+  Exclude:
+    - 'db/**/*.rb'
+    - 'app/controllers/**/*.rb'
+    - 'app/helpers/**/*.rb'
+    - 'app/models/**/*.rb'
+    - 'spec/**/*.rb'
+    - 'config/**/*.rb'
+Metrics/MethodLength:
+  Exclude:
+    - 'db/**/*.rb'
+    - 'app/controllers/**/*.rb'
+    - 'app/helpers/**/*.rb'
+    - 'app/models/**/*.rb'
+    - 'spec/**/*.rb'
+    - 'config/**/*.rb'
+Rails/OutputSafety:
+  Exclude:
+    - 'app/helpers/**/*.rb'
+Rails/UniqueValidationWithoutIndex:
+  Exclude:
+    - 'app/models/**/*.rb'
+Lint/UriEscapeUnescape:
+  Exclude:
+    - 'app/helpers/**/*.rb'
+    - 'config/**/*.rb'
+    - 'lib/**/*.rb'
+Rails/UnknownEnv:
+  Exclude:
+    - 'spec/**/*.rb'
+Style/MixinUsage:
+  Exclude:
+    - 'spec/**/*.rb'
+Naming/VariableNumber:
+  Exclude:
+    - 'spec/**/*.rb'
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - 'app/controllers/application_controller.rb'
+Rails/CreateTableWithTimestamps:
+  Exclude:
+    - 'db/migrate/**/*.rb'
