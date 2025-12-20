@@ -93,7 +93,7 @@ describe 'Member in admin panel.' do
     fill_in 'member[description]', with: 'TestDescPew'
     fill_in 'member[education]', with: 'TestducPew'
     fill_in 'member[motto]', with: 'TestMottoPew'
-    attach_file('member[avatar]', File.join(Rails.root, '/spec/fixtures/members/yuri_skurikhin.png'))
+    attach_file('member[avatar]', Rails.root.join('spec/fixtures/members/yuri_skurikhin.png').to_s)
     click_button 'Save'
     visit admin_members_path
     expect(page).to have_content 'TestNamePew'

@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
 
   def geoip_lang
     Bundler.require 'geoip'
-    g = GeoIP.new("#{Rails.root.join('db/GeoIP.dat')}")
+    g = GeoIP.new(Rails.root.join('db/GeoIP.dat').to_s)
     country_code = g.country(request.remote_ip).country_code2.downcase
     case country_code
     when 'de', 'at' then 'de'

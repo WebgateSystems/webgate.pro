@@ -56,9 +56,9 @@ module Admin
 
     def sort_member_links
       @member_link = MemberLink.find(member_params[:member_link_id])
-      @member_link.position_position = member_params[:row_position]
+      @member_link.update_column(:position, member_params[:row_position])
       respond_to do |format|
-        @member_link.save! ? format.json { head :ok } : format.json { head :error }
+        format.json { head :ok }
         format.html
       end
     end

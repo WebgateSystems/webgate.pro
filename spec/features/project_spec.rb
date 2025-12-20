@@ -72,7 +72,8 @@ describe 'Project in admin panel.' do
   end
 
   it 'Show should display our project information' do
-    click_link('TestTitle0')
+    # Use the link from the table row (project title is a link in the table)
+    page.all(:link, 'TestTitle0').first.click
     expect(page).to have_content 'Title:'
     expect(page).to have_content 'TestTitle0'
     expect(page).to have_content 'Content:'
@@ -85,7 +86,7 @@ describe 'Project in admin panel.' do
     fill_in 'project[title]', with: 'TestTitleFull'
     fill_in 'project[content]', with: 'TestContentFull'
     fill_in 'project[livelink]', with: 'http://test.webgate.pro'
-    attach_file('project[collage]', File.join(Rails.root, '/spec/fixtures/projects/tested.jpg'))
+    attach_file('project[collage]', Rails.root.join('spec/fixtures/projects/tested.jpg').to_s)
     click_button 'Save'
     visit admin_projects_path
     click_link('TestTitleFull')

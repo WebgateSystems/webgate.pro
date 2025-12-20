@@ -10,7 +10,7 @@ RSpec.describe Admin::ScreenshotsController, type: :request do
     it 'is update page shortlink' do
       expect do
         delete "/admin/projects/#{screenshot.project.id}/screenshots/#{screenshot.id}"
-      end.to(change { Screenshot.count }.from(1).to(0))
+      end.to(change(Screenshot, :count).from(1).to(0))
     end
   end
 end

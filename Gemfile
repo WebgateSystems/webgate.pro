@@ -9,7 +9,7 @@ gem 'exception_notification', '~> 4.0.1'
 gem 'geoip'
 gem 'globalize'
 gem 'kaminari'
-gem 'mini_magick'
+gem 'mini_magick', '~> 4.12'
 gem 'pry'
 gem 'rails-translate-routes'
 gem 'route_translator', '~> 13.1.1'
@@ -17,8 +17,8 @@ gem 'russian'
 gem 'slim-rails'
 
 gem 'dotenv-rails'
-gem 'interactor'
 gem 'easy_access_gpt', git: 'https://github.com/WebgateSystems/EasyAccessGPT.git', branch: 'main'
+gem 'interactor'
 
 gem 'bootsnap', require: false
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
@@ -27,6 +27,7 @@ gem 'autoprefixer-rails'
 gem 'chosen-rails'
 gem 'ckeditor'
 gem 'cocoon'
+gem 'config'
 gem 'dynamic_sitemaps'
 gem 'jbuilder'
 gem 'json'
@@ -39,7 +40,6 @@ gem 'simple_form'
 gem 'sinatra', require: nil
 gem 'sorcery'
 gem 'whenever', require: false
-gem 'config'
 
 # Use SCSS for stylesheets
 gem 'coffee-rails'
@@ -47,10 +47,10 @@ gem 'execjs'
 gem 'sass-rails'
 gem 'sprockets-rails'
 # gem "therubyracer", "~> 0.12"
-gem 'uglifier'
-gem 'yui-compressor'
 gem 'font-awesome-rails'
 gem 'foundation-rails', '~> 5.5.1'
+gem 'uglifier'
+gem 'yui-compressor'
 
 gem 'jquery-fileupload-rails'
 gem 'jquery-minicolors-rails'
@@ -68,14 +68,13 @@ group :development do
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
 
-
   # Deploy with Capistrano
+  gem 'bullet'
   gem 'cape'
   gem 'capistrano-hook', require: false
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
-  gem 'bullet'
-  #gem 'capistrano-sidekiq'
+  # gem 'capistrano-sidekiq'
 end
 
 group :test do
@@ -97,7 +96,6 @@ group :test, :development do
   gem 'byebug'
   gem 'factory_bot_rails'
   gem 'ffaker'
-  gem 'hpricot'
   gem 'rspec-rails'
   gem 'ruby_parser'
 end

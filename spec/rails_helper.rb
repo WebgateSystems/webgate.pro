@@ -34,6 +34,15 @@ if defined?(CarrierWave)
   end
 end
 
+# Suppress ImageMagick deprecation warnings in tests
+if Rails.env.test?
+  Warning[:deprecated] = false
+
+  # With :imagemagick7 CLI configured in carrierwave.rb, MiniMagick should use 'magick' command
+  # which doesn't produce deprecation warnings. If warnings still appear from ImageMagick,
+  # they can be safely ignored in test environment as they don't affect functionality.
+end
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -68,7 +77,7 @@ RSpec.configure do |config|
   end
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{Rails.root.join('spec/fixtures')}"
+  config.fixture_path = Rails.root.join('spec/fixtures').to_s
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

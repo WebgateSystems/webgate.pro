@@ -65,9 +65,9 @@ module Admin
 
     def sort_project_screenshots
       @screenshot = Screenshot.find(project_params[:screenshot_id])
-      @screenshot.position_position = project_params[:row_position]
+      @screenshot.update_column(:position, project_params[:row_position])
       respond_to do |format|
-        @screenshot.save! ? format.json { head :ok } : format.json { head :error }
+        format.json { head :ok }
         format.html
       end
     end
