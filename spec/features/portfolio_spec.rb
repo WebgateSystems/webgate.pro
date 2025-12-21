@@ -1,17 +1,22 @@
 describe 'Adding projects to portfolio.' do
   let!(:project1) do
-    Project.create(
-      title: 'TestTitle0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
-      publish: true,
-      collage: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/body.jpg').to_s)
-    )
+    I18n.with_locale(:en) do
+      Project.create(
+        title: 'TestTitle0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
+        publish: true,
+        collage: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/body.jpg').to_s)
+      )
+    end
   end
   let!(:project2) do
-    Project.create(title: 'TestTitle1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
-                   publish: true, collage: nil)
+    I18n.with_locale(:en) do
+      Project.create(title: 'TestTitle1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
+                     publish: true, collage: nil)
+    end
   end
 
   before do
+    I18n.locale = :en
     visit portfolio_path
   end
 

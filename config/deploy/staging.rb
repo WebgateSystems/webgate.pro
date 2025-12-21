@@ -1,5 +1,5 @@
 set :stage, :staging
-set :branch, 'staging'
+set :branch, ENV.fetch('BRANCH', 'staging')
 
 set :full_app_name, 'test.webgate.pro'
 set :server_name, fetch(:full_app_name).to_s

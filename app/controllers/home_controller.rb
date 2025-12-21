@@ -3,6 +3,8 @@ class HomeController < ApplicationController
   layout 'portfolio', except: :index
 
   def index
+    # Disable caching for development to see changes immediately
+    expires_now if Rails.env.development?
     @projects = Project.includes(:screenshots).published.rank(:position)
     render layout: 'main'
   end
@@ -18,5 +20,15 @@ class HomeController < ApplicationController
                                                          { member_links: :translations },
                                                          { technologies_members: :technology },
                                                          :technologies).page(params[:page]).per(12)
+  end
+
+  def version
+    return render(json: { version: AppIdService.version }, status: :ok) if request.format.json?
+
+    render plain: AppIdService.version, status: :ok
+  end
+
+  def spinup_status
+    render plain: 'OK', status: :ok
   end
 end

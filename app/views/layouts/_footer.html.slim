@@ -15,6 +15,8 @@
             =link_to '', 'https://www.facebook.com/WebgateSystems', class: 'fb', rel: 'nofollow', target: '_blank'
         p.copy
           |&copy; #{Date.today.year} webgate.pro  #{t('all_rights_reserved')}
+        p.copy
+          |App version: ##{AppIdService.version}
       .column.map
         = link_to image_tag(asset_url('map.jpg'), width: 290, height: 233), 'https://www.google.com/maps?ll=50.245722,19.164129&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Konstytucji+19+Sosnowiec+Poland', target: '_blank', rel: 'nofollow'
         a.link_map target="_blank" rel="nofollow" href="https://www.google.com/maps?ll=50.245722,19.164129&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Konstytucji+19+Sosnowiec+Poland"
@@ -27,3 +29,5 @@
           = link_to 'HTML', "http://validator.w3.org/check?uri=#{CGI.escape request.original_url}&charset=%28detect+automatically%29&doctype=Inline&group=0", class: 'html5', rel: 'nofollow', target: '_blank'
         p class="copy mob"
           |&copy; #{Date.today.year}  webgate.pro #{t('all_rights_reserved')}
+        p class="copy mob"
+          |App version: ##{AppIdService.version}

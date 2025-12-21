@@ -7,6 +7,9 @@ WebgatePro::Application.routes.draw do
   get '/422', to: 'errors#wrong_params'
   get '/500', to: 'errors#server_error'
 
+  get 'health', to: 'home#spinup_status'
+  get 'version', to: 'home#version'
+
   get :blacklist, to: 'blacklists#blacklist', as: :blacklist
   resource :blacklists, only: %i[create]
 
@@ -66,5 +69,7 @@ WebgatePro::Application.routes.draw do
   get ':shortlink', to: 'pages#showbyshortlink', constraints: { format: 'html' }
   get '*any', to: 'errors#not_found', via: :all
 
+  get 'health', to: 'home#spinup_status'
+  get 'version', to: 'home#version'
   root to: 'home#index'
 end

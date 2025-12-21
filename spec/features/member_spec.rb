@@ -3,14 +3,18 @@ require 'rails_helper'
 describe 'Member in admin panel.' do
   let(:user) { create(:user) }
   let!(:member0) do
-    Member.create(name: 'TestName0', job_title: 'TestJobTitle0', education: 'TestEducation0',
-                  description: 'TestDesc0', motto: 'TestMotto0',
-                  avatar: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/yuri_skurikhin.png').to_s))
+    I18n.with_locale(:en) do
+      Member.create(name: 'TestName0', job_title: 'TestJobTitle0', education: 'TestEducation0',
+                    description: 'TestDesc0', motto: 'TestMotto0',
+                    avatar: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/yuri_skurikhin.png').to_s))
+    end
   end
   let!(:member1) do
-    Member.create(name: 'TestName1', job_title: 'TestJobTitle1', education: 'TestEducation1',
-                  description: 'TestDesc1', motto: 'TestMotto1',
-                  avatar: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/yuri_skurikhin.png').to_s))
+    I18n.with_locale(:en) do
+      Member.create(name: 'TestName1', job_title: 'TestJobTitle1', education: 'TestEducation1',
+                    description: 'TestDesc1', motto: 'TestMotto1',
+                    avatar: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/yuri_skurikhin.png').to_s))
+    end
   end
 
   let(:return_params) do
@@ -22,6 +26,7 @@ describe 'Member in admin panel.' do
   end
 
   before do
+    I18n.locale = :en
     allow_any_instance_of(EasyAccessGpt::Translation::SingleLocale).to receive(:call).and_return(return_params)
     sign_in(user)
     visit admin_members_path

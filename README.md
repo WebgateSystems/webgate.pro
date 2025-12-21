@@ -1,7 +1,9 @@
 # webgate.pro
 
-[![Code Climate](https://codeclimate.com/github/WebgateSystems/webgate.pro/badges/gpa.svg)](https://codeclimate.com/github/WebgateSystems/webgate.pro)
-[![Test Coverage](https://codeclimate.com/github/WebgateSystems/webgate.pro/badges/coverage.svg)](https://codeclimate.com/github/WebgateSystems/webgate.pro/coverage)
+[![CI](https://github.com/WebgateSystems/webgate.pro/actions/workflows/rubyonrails.yml/badge.svg)](https://github.com/WebgateSystems/webgate.pro/actions/workflows/rubyonrails.yml)
+![Coverage](https://img.shields.io/badge/coverage-95.9%25-brightgreen)
+[![Ruby](https://img.shields.io/badge/Ruby-3.2.2-CC342D?logo=ruby&logoColor=white)](https://www.ruby-lang.org/)
+[![Rails](https://img.shields.io/badge/Rails-7.0.10-D30001?logo=rubyonrails&logoColor=white)](https://rubyonrails.org/)
 
 ## About
 

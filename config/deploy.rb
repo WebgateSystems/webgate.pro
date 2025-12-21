@@ -1,10 +1,10 @@
 # config valid only for current version of Capistrano
-lock '3.18.0'
+lock '3.18.1'
 
+set :ssh_options, { forward_agent: true, port: 39_168 }
 set :application, 'webgate.pro'
 set :deploy_user, 'webgate'
 set :repo_url, 'git@github.com:WebgateSystems/webgate.pro.git'
-set :scm, :git
 set :format, :pretty
 
 # Default value for :log_level is :debug

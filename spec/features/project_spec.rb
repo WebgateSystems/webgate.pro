@@ -3,12 +3,16 @@ require 'rails_helper'
 describe 'Project in admin panel.' do
   let(:user) { create(:user) }
   let!(:project0) do
-    Project.create(title: 'TestTitle0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
-                   collage: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/body.jpg').to_s))
+    I18n.with_locale(:en) do
+      Project.create(title: 'TestTitle0', content: 'TestContent0', livelink: 'http://test.webgate.pro',
+                     collage: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/body.jpg').to_s))
+    end
   end
   let!(:project1) do
-    Project.create(title: 'TestTitle1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
-                   collage: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/body.jpg').to_s))
+    I18n.with_locale(:en) do
+      Project.create(title: 'TestTitle1', content: 'TestContent1', livelink: 'http://test.webgate.pro',
+                     collage: Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/body.jpg').to_s))
+    end
   end
   let(:return_params) do
     { 'pl' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
@@ -19,6 +23,7 @@ describe 'Project in admin panel.' do
   end
 
   before do
+    I18n.locale = :en
     allow_any_instance_of(EasyAccessGpt::Translation::SingleLocale).to receive(:call).and_return(return_params)
     sign_in(user)
     visit admin_projects_path

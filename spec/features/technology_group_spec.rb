@@ -2,8 +2,16 @@ require 'rails_helper'
 
 describe 'technology_group in admin panel.' do
   let(:user) { create(:user) }
-  let!(:technology_group0) { TechnologyGroup.create(title: 'TestTitle0', description: 'Test Description0') }
-  let!(:technology_group1) { TechnologyGroup.create(title: 'TestTitle1', description: 'Test Description1') }
+  let!(:technology_group0) do
+    I18n.with_locale(:en) do
+      TechnologyGroup.create(title: 'TestTitle0', description: 'Test Description0')
+    end
+  end
+  let!(:technology_group1) do
+    I18n.with_locale(:en) do
+      TechnologyGroup.create(title: 'TestTitle1', description: 'Test Description1')
+    end
+  end
 
   let(:return_params) do
     { 'pl' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
@@ -14,6 +22,7 @@ describe 'technology_group in admin panel.' do
   end
 
   before do
+    I18n.locale = :en
     allow_any_instance_of(EasyAccessGpt::Translation::SingleLocale).to receive(:call).and_return(return_params)
     sign_in(user)
     visit admin_technology_groups_path
