@@ -36,6 +36,7 @@ assets_manifest.yml
 /node_modules
 
 /config/master.key
+/config/credentials.yml.enc
 
 config/settings.local.yml
 config/settings.yml

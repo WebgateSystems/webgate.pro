@@ -7,6 +7,9 @@ Rails.application.configure do
   # and recreated between test runs.  Don't rely on the data there!
   config.cache_classes = true
 
+  # Don't require master key in test environment (we use Settings/config.yml instead of credentials)
+  config.require_master_key = false
+
   # Configure static asset server for tests with Cache-Control for performance
   config.serve_static_assets = false
   config.static_cache_control = 'public, max-age=3600'

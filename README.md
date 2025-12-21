@@ -4,172 +4,193 @@
 ![Coverage](https://img.shields.io/badge/coverage-95.9%25-brightgreen)
 [![Ruby](https://img.shields.io/badge/Ruby-3.2.2-CC342D?logo=ruby&logoColor=white)](https://www.ruby-lang.org/)
 [![Rails](https://img.shields.io/badge/Rails-7.0.10-D30001?logo=rubyonrails&logoColor=white)](https://rubyonrails.org/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## About
 
-webgate.pro is a official website of Webgate Systems. Created with Ruby on Rails framework like a multilanguage application
-for our internal purpose and, of course, to show what exactly we do and how.
+webgate.pro is the official website of Webgate Systems. Created with Ruby on Rails framework as a multilingual application
+for our internal purposes and, of course, to showcase what exactly we do and how.
 
-Features
---------
+## Features
 
-* Edge technologies, for example RoR 4.2.1 caching style, asynchronous JS for SPDY etc.
-* Automatic tests (covering more then 90%) with poltergeist or selenium (if you prefer to observe what's going on) to easy support and upgrade application/environment.
+* Modern Ruby on Rails 7.0 application with latest best practices
+* Multilingual support (DE, EN, FR, PL, RU, UA) using Globalize gem
+* Comprehensive test coverage (over 95%) with RSpec, Capybara, and Selenium WebDriver
+* Background job processing with Sidekiq
+* Image uploads and processing with CarrierWave
+* Admin panel for content management
+* SEO-friendly sitemap generation
+* Docker support for easy development setup
+
 
 ## License
 
-webgate.pro is released under the [GNU General Public License](http://www.gnu.org/licenses/).
-
+webgate.pro is released under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0).
 
 ## Contributing
 
-Since this is a completely free software under GPL license - **feel free to contribute**, improve its source code or give me constructive criticism.
-Your git pull request will be pleasantly welcome.
+Since this is free software under GPL license - **feel free to contribute**, improve its source code or provide constructive feedback.
+Your pull requests are welcome!
+
+Thanks a lot for feedback!
+
+**Webgate Systems Team**
 
 
-#####Thanks a lot for feedback!
-**team**
+## Prerequisites
 
-
-##### Prerequisites
-
-The setups steps expect following tools installed on the system.
+The setup steps expect the following tools installed on the system:
 
 - Git
-- Ruby [3.2.2]
-- Rails [7.0.5]
-- Postgresql [15]
-- redis-server [5.0.7]
-- java [11.0.19]
+- Ruby 3.2.2
+- Rails 7.0.10
+- PostgreSQL 15
+- Redis 5.0.7+
+- Java 11+ (for image processing with ImageMagick)
 
-### Initial installation
+## Installation
 
-##### 1. Create config/config.yml file
+### Initial Setup
+
+1. **Create config/config.yml file**
 
 ```bash
 cp config/config.yml.example config/config.yml
 ```
 
-##### 2. Create config/sidekiq.yml file
+2. **Create config/sidekiq.yml file**
 
 ```bash
 cp config/sidekiq.yml.example config/sidekiq.yml
 ```
 
-### If you want to use without Docker:
+### Local Development (without Docker)
 
-##### 1. Install Gems
+1. **Install Gems**
 
 ```bash
-bundle exec bundle install
+bundle install
 ```
 
-##### 2. Create .ENV file
+2. **Create .env file**
 
-The terminal must be in the root folder of the project
+The terminal must be in the root folder of the project.
 
 ```bash
 cp .env.example .env
 ```
 
-Next we need to add the PG username and password
+Edit the `.env` file and add your PostgreSQL credentials:
 
 ```bash
 nano .env
 ```
 
-For example: (User must be created locally in Postgresql)
+For example (user must be created locally in PostgreSQL):
 
 ```bash
-POSTGRES_USER: 'your postgres user name'
-POSTGRES_PASSWORD: 'your postgres user password'
+POSTGRES_USER='your_postgres_username'
+POSTGRES_PASSWORD='your_postgres_password'
 ```
 
-##### 3. Create DB
+3. **Create Database**
 
-```ruby
+```bash
 bundle exec rails db:create
 ```
 
-##### 4. Run migration
+4. **Run Migrations**
 
-```ruby
+```bash
 bundle exec rails db:migrate
 ```
-if necessary, you can add basic data
 
-```ruby
-bundle exce rails db:seed
+If necessary, you can add basic data:
+
+```bash
+bundle exec rails db:seed
 ```
 
-##### 5. Start the Rails server
+5. **Start the Rails Server**
 
-You can start the rails server using the command given below.
-
-```ruby
+```bash
 bundle exec rails s
 ```
 
-And now you can visit the site with the URL http://localhost:3000
+Visit the site at http://localhost:3000
 
 
 
-### If you want to use Docker: 
+### Docker Development
 
-##### 1. .env file setup
+1. **.env file setup**
 
-The terminal must be in the root folder of the project
+The terminal must be in the root folder of the project.
 
 ```bash
 cp .env.example .env
 ```
 
-Next we need to add the PG username and password
+Edit the `.env` file and add your PostgreSQL credentials:
 
 ```bash
 nano .env
 ```
 
-For example: (User to be created in docker )
+For example:
 
 ```bash
-POSTGRES_USER: 'your postgres user name'
-POSTGRES_PASSWORD: 'your postgres user password'
+POSTGRES_USER='your_postgres_username'
+POSTGRES_PASSWORD='your_postgres_password'
 ```
-Also uncomment these lines
+
+Also uncomment these lines:
 
 ```bash
-  POSTGRES_HOST
-  REDIS_URL
+POSTGRES_HOST=postgres
+REDIS_URL=redis://redis:6379/0
 ```
-##### 2. Start Project with Docker
+
+2. **Start Project with Docker**
 
 ```bash
 docker compose --env-file .env up
 ```
 
-##### 3. Create DB
+3. **Create Database**
 
 ```bash
 docker-compose run app rails db:create
 ```
-OR (this command will create and run migrate your database)
+
+OR use the provided script (this command will create and migrate your database):
 
 ```bash
-chmod +x create_db.sh
-```
-
-```bash 
+chmod +x bin/create_db.sh
 ./bin/create_db.sh
 ```
 
-##### 4. Run migration
+4. **Run Migrations**
 
 ```bash
 docker-compose run app rails db:migrate
 ```
-if necessary, you can add basic data
+
+If necessary, you can add basic data:
 
 ```bash
 docker-compose run app rails db:seed
 ```
+
+## Running Tests
+
+```bash
+bundle exec rspec
+```
+
+## Additional Information
+
+- Admin panel is available at `/admin` (requires authentication)
+- Default languages: DE, EN, FR, PL, RU, UA
+- Background jobs are processed by Sidekiq
+- Sitemaps are generated automatically

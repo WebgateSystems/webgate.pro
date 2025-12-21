@@ -18,7 +18,6 @@ gem 'route_translator', '~> 13.1.1'
 gem 'russian'
 gem 'slim-rails'
 
-gem 'dotenv-rails'
 gem 'easy_access_gpt', git: 'https://github.com/WebgateSystems/EasyAccessGPT.git', branch: 'main'
 gem 'interactor'
 

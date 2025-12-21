@@ -4,3 +4,5 @@
 #   user: <%= ENV['POSTGRES_USER'] %>
 #   pass: <%= ENV['POSTGRES_PASSWORD'] %>
 #   host: <%= ENV['DB_HOST'] || 'localhost' %>
+
+# secret_key_base: <%= ENV['SECRET_KEY_BASE'] || ENV['secret_key_base'] %>

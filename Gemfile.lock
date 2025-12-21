@@ -178,10 +178,6 @@ GEM
     deep_merge (1.2.2)
     diff-lcs (1.5.0)
     docile (1.4.0)
-    dotenv (2.8.1)
-    dotenv-rails (2.8.1)
-      dotenv (= 2.8.1)
-      railties (>= 3.2)
     drb (2.2.3)
     dry-configurable (1.1.0)
       dry-core (~> 1.0, < 2)
@@ -606,7 +602,6 @@ DEPENDENCIES
   coffee-rails
   config
   database_cleaner
-  dotenv-rails
   dynamic_sitemaps
   easy_access_gpt!
   email_spec
