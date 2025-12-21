@@ -1069,12 +1069,16 @@ body {
 
 .footer_columns {
 	overflow: hidden;
+	display: flex;
+	align-items: stretch;
 }
 
 .column {
-	float: left;
 	margin: 23px 16px 0 14px;
 	width: 290px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
 }
 
 .column img {
@@ -1095,6 +1099,10 @@ body {
 
 .contacts {
 	margin-bottom: 35px;
+}
+
+.column.form {
+	position: relative;
 }
 
 .contacts li {
@@ -1232,11 +1240,20 @@ p.copy {
 	margin: 0px;
 }
 
+p.copy.copy_left {
+	margin-top: auto;
+	line-height: 18px;
+}
+
+.column.form {
+	position: relative;
+}
+
 p.copy.valid {
-	float: right;
-	margin-top: 34px;
+	margin-top: auto;
 	text-align: right;
-	width: 150px;
+	width: 100%;
+	align-self: flex-end;
 }
 
 p.copy.valid:hover {

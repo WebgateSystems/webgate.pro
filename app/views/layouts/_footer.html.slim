@@ -7,15 +7,9 @@
       .column
         ul.contacts
           = render "layouts/contacts_#{locale}"
-          li
-            span skype:
-            a.skype href="skype:sladkowski" sladkowski
-            a.rss href="#"
-            =link_to '', 'https://twitter.com/WebgateSystems', class: 'twi', rel: 'nofollow', target: '_blank'
-            =link_to '', 'https://www.facebook.com/WebgateSystems', class: 'fb', rel: 'nofollow', target: '_blank'
-        p.copy
+        p.copy.copy_left
           |&copy; #{Date.today.year} webgate.pro  #{t('all_rights_reserved')}
-        p.copy
+          br
           |App version: ##{AppIdService.version}
       .column.map
         = link_to image_tag(asset_url('map.jpg'), width: 290, height: 233), 'https://www.google.com/maps?ll=50.245722,19.164129&z=15&t=m&hl=en&gl=US&mapclient=embed&q=Konstytucji+19+Sosnowiec+Poland', target: '_blank', rel: 'nofollow'
