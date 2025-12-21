@@ -46,5 +46,16 @@ module WebgatePro
     end
 
     config.exceptions_app = routes
+
+    # Set secret_key_base from Settings or ENV before configuration
+    # This needs to be set early, before Rails tries to use it
+    config.before_configuration do
+      # Try to set from ENV first (available immediately)
+      if ENV['SECRET_KEY_BASE'].present?
+        config.secret_key_base = ENV['SECRET_KEY_BASE']
+      elsif ENV['secret_key_base'].present?
+        config.secret_key_base = ENV['secret_key_base']
+      end
+    end
   end
 end
