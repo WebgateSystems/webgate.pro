@@ -1,10 +1,15 @@
 RSpec.describe Admin::PagesController, type: :request do
   before do
+    I18n.locale = :en
     allow_any_instance_of(Admin::HomeController).to receive(:require_login).and_return(nil)
   end
 
   context 'when valid params' do
-    let!(:page) { create(:page) }
+    let!(:page) do
+      I18n.with_locale(:en) do
+        create(:page)
+      end
+    end
     let(:params) { attributes_for(:page).except(:category) }
 
     it 'is update page shortlink' do
@@ -39,13 +44,21 @@ RSpec.describe Admin::PagesController, type: :request do
   end
 
   context 'when params invalid' do
-    let!(:page) { create(:page) }
+    let!(:page) do
+      I18n.with_locale(:en) do
+        create(:page)
+      end
+    end
     let(:params) { { title: nil } }
 
-    it 'is not update page shortlink' do
-      expect do
+    it 'is not update page title' do
+      I18n.with_locale(:en) do
+        original_title = Page.find(page.id).title
         put("/admin/pages/#{page.id}", params: { page: params })
-      end.not_to(change { Page.first.title })
+        I18n.with_locale(:en) do
+          expect(Page.find(page.id).title).to eq(original_title)
+        end
+      end
     end
   end
 end
