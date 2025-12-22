@@ -3,6 +3,8 @@ require 'uri'
 module URI
   class << self
     def escape(str)
+      return (+'').force_encoding(Encoding::US_ASCII) if str.nil?
+
       alpha = 'a-zA-Z'
       alnum = "#{alpha}\\d"
       unreserved = "\\-_.!~*'()#{alnum}"

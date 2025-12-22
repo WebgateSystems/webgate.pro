@@ -8,7 +8,7 @@ SimpleCov.start 'rails' do
   add_filter 'app/uploaders/ckeditor_attachment_file_uploader'
   add_filter 'lib'
 
-  minimum_coverage(90)
+  minimum_coverage(95)
 
   # Update coverage badge in README after tests complete
   at_exit do

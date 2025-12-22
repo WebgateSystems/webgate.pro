@@ -1,6 +1,7 @@
 RSpec.describe Admin::ProjectsController, type: :request do
   before do
     allow_any_instance_of(Admin::HomeController).to receive(:require_login).and_return(nil)
+    allow_any_instance_of(ApplicationController).to receive(:geoip_lang).and_return('en')
   end
 
   describe '#update' do
@@ -79,21 +80,25 @@ RSpec.describe Admin::ProjectsController, type: :request do
   end
 
   # describe '#sort project technologies' do
-  #   let(:technology) { create(:technology, position: 1) }
-  #   let!(:technologies_project) { create(:technologies_project, position: 0, technology:) }
+  describe '#sort project technologies' do
+    it 'sorts project technologies' do
+      project = create(:project)
+      technology = I18n.with_locale(:en) { create(:technology, position: 0) }
+      second_technology = I18n.with_locale(:en) { create(:technology, position: 1) }
+      technologies_project = create(:technologies_project, project:, position: 0, technology:)
+      second_technologies_project = create(:technologies_project, project:, position: 1, technology: second_technology)
 
-  #   context 'when admin run sort technologies' do
-  #     let(:params) do
-  #       { project_technology_id: technologies_project.technology.id,
-  #         row_tech_position: technology.position.next }
-  #     end
+      params = {
+        project_technology_id: technologies_project.technology.id,
+        row_tech_position: second_technologies_project.position
+      }
 
-  #     it 'is sort project technologies' do
-  #       expect do
-  #         put "/admin/projects/#{technologies_project.project.id}/sort_project_technologies",
-  #             params: { project: params }
-  #       end.to(change { TechnologiesProject.first.position })
-  #     end
-  #   end
-  # end
+      expect do
+        put "/admin/projects/#{project.id}/sort_project_technologies",
+            params: { project: params }, as: :json
+      end.to(change { technologies_project.reload.position }.from(0))
+
+      expect(technologies_project.reload.position).not_to eq(0)
+    end
+  end
 end

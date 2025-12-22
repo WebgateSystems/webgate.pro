@@ -160,6 +160,63 @@ RSpec.describe MemberTranslation, type: :interactor do
         expect(result).to be_failure
         expect(result.error).to eq('Invalid locale: invalid')
       end
+
+      it 'skips when target locale is the same as base locale' do
+        result = described_class.call(
+          model: member,
+          current_locale:,
+          force_locale: :pl
+        )
+
+        expect(result).to be_success
+        member.reload
+        expect(member.translations.find_by(locale: 'de')).to be_nil
+      end
+    end
+
+    context 'when a locale translation exists and is unique' do
+      before do
+        I18n.with_locale(:de) do
+          member.update!(
+            name: 'Einzigartig',
+            job_title: 'Entwickler',
+            description: 'Beschreibung',
+            motto: 'Motto',
+            education: 'Ausbildung'
+          )
+        end
+      end
+
+      it 'keeps the existing translation' do
+        described_class.call(model: member, current_locale:)
+        member.reload
+        de_translation = member.translations.find_by(locale: 'de')
+        expect(de_translation).to be_present
+        expect(de_translation.name).to eq('Einzigartig')
+      end
+    end
+
+    context 'when all fields are very long' do
+      let(:long_text) { 'A' * 2500 }
+
+      before do
+        I18n.with_locale(:pl) do
+          member.update!(
+            name: long_text,
+            job_title: long_text,
+            description: long_text,
+            motto: long_text,
+            education: long_text
+          )
+        end
+      end
+
+      it 'translates long fields separately and creates a translation' do
+        result = described_class.call(model: member, current_locale:, force_locale: :de)
+        expect(result).to be_success
+        member.reload
+        expect(member.translations.find_by(locale: 'de')).to be_present
+      end
     end
 
     context 'when base translation does not exist' do

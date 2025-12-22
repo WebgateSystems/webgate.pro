@@ -1,6 +1,7 @@
 RSpec.describe Admin::MembersController, type: :request do
   before do
     allow_any_instance_of(Admin::HomeController).to receive(:require_login).and_return(nil)
+    allow_any_instance_of(ApplicationController).to receive(:geoip_lang).and_return('en')
   end
 
   describe '#update' do
@@ -79,21 +80,25 @@ RSpec.describe Admin::MembersController, type: :request do
   end
 
   # describe '#sort member technologies' do
-  #   let(:technology) { create(:technology, position: 1) }
-  #   let!(:technologies_member) { create(:technologies_member, position: 0, technology:) }
+  describe '#sort member technologies' do
+    it 'sorts member technologies' do
+      member = create(:member)
+      technology = I18n.with_locale(:en) { create(:technology, position: 0) }
+      second_technology = I18n.with_locale(:en) { create(:technology, position: 1) }
+      technologies_member = TechnologiesMember.create!(member:, technology:, position: 0)
+      second_technologies_member = TechnologiesMember.create!(member:, technology: second_technology, position: 1)
 
-  #   context 'when admin run sort technologies' do
-  #     let(:params) do
-  #       { member_technology_id: technologies_member.technology.id,
-  #         row_tech_position: technology.position.next }
-  #     end
+      params = {
+        member_technology_id: technologies_member.technology.id,
+        row_tech_position: second_technologies_member.position
+      }
 
-  #     it 'is sort member technologies' do
-  #       expect do
-  #         put "/admin/members/#{technologies_member.member.id}/sort_member_technologies",
-  #             params: { member: params }
-  #       end.to(change { Technologiesmember.first.position })
-  #     end
-  #   end
-  # end
+      expect do
+        put "/admin/members/#{member.id}/sort_member_technologies",
+            params: { member: params }, as: :json
+      end.to(change { technologies_member.reload.position }.from(0))
+
+      expect(technologies_member.reload.position).not_to eq(0)
+    end
+  end
 end

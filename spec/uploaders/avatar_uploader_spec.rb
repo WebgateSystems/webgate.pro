@@ -28,6 +28,10 @@ describe AvatarUploader do
     it 'has a white list of allowed extensions' do
       expect(uploader.extension_white_list).to eq(%w[jpg jpeg gif png])
     end
+
+    it 'builds store_dir' do
+      expect(uploader.store_dir).to include("/public/spec/uploads/member/#{member.id}/image")
+    end
   end
 
   # context 'the avatar version' do

@@ -166,5 +166,31 @@ RSpec.describe ProjectTranslation, type: :interactor do
         expect(translation.content).to include('B') # From long_mock_response
       end
     end
+
+    context 'when chunk translation fails once and then succeeds' do
+      let(:long_content) { "<p>#{'A' * 3000}</p>" }
+
+      before do
+        I18n.with_locale(:pl) do
+          project.update!(content: long_content)
+        end
+
+        calls = 0
+        allow_any_instance_of(EasyAccessGpt::Translation::SingleLocale)
+          .to receive(:call) do
+            calls += 1
+            raise JSON::ParserError, 'bad' if calls == 1
+
+            { 'content' => "<p>#{'B' * 1500}</p>" }
+          end
+      end
+
+      it 'retries chunk translation and still creates a translation' do
+        result = described_class.call(model: project, current_locale:)
+        expect(result).to be_success
+        project.reload
+        expect(project.translations.find_by(locale: 'en')).to be_present
+      end
+    end
   end
 end

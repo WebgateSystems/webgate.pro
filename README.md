@@ -1,7 +1,7 @@
 # webgate.pro
 
 [![CI](https://github.com/WebgateSystems/webgate.pro/actions/workflows/rubyonrails.yml/badge.svg)](https://github.com/WebgateSystems/webgate.pro/actions/workflows/rubyonrails.yml)
-![Coverage](https://img.shields.io/badge/coverage-90.1%25-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-95.3%25-brightgreen)
 [![Ruby](https://img.shields.io/badge/Ruby-3.2.2-CC342D?logo=ruby&logoColor=white)](https://www.ruby-lang.org/)
 [![Rails](https://img.shields.io/badge/Rails-7.0.10-D30001?logo=rubyonrails&logoColor=white)](https://rubyonrails.org/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
@@ -15,7 +15,7 @@ for our internal purposes and, of course, to showcase what exactly we do and how
 
 * Modern Ruby on Rails 7.0 application with latest best practices
 * Multilingual support (DE, EN, FR, PL, RU, UA) using Globalize gem
-* Comprehensive test coverage (over 90%) with RSpec, Capybara, and Selenium WebDriver
+* Comprehensive test coverage (over 95%) with RSpec, Capybara, and Selenium WebDriver
 * Background job processing with Sidekiq
 * Image uploads and processing with CarrierWave
 * Admin panel for content management

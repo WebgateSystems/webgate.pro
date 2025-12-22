@@ -230,10 +230,12 @@ class ProjectTranslation < BaseInteractor
 
   def translate_chunks(target_locale, chunks)
     translated_chunks = []
-    chunks.each_with_index do |chunk, index|
+    index = 0
+    while index < chunks.length
+      chunk = chunks[index]
       Rails.logger.debug "  Translating chunk #{index + 1}/#{chunks.count} (#{chunk.length} chars)..."
-      translated_chunk = translate_single_chunk(target_locale, chunk, index)
-      translated_chunks << translated_chunk
+      translated_chunks << translate_single_chunk(target_locale, chunk, index)
+      index += 1
     end
     translated_chunks
   end
