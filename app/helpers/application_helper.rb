@@ -23,7 +23,9 @@ module ApplicationHelper
   end
 
   def main_menu_path(menu_item)
-    URI.escape(menu_item.name.mb_chars.downcase.to_s)
+    name = menu_item&.name
+    slug_source = name.presence || menu_item&.altlink.presence || ''
+    URI.escape(slug_source.to_s.mb_chars.downcase.to_s)
   end
 
   def menu_item_active?(menu_item)
