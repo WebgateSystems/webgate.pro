@@ -20,7 +20,10 @@
                   em = t(:used_technologies)
                   span
                     - project.technologies.each do |tech|
-                      = tech.title
+                      - if tech.logo.url.present?
+                        = link_to tech.title, tech_link(tech), data: { img: tech.logo.url(:thumb), title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'
+                      - else
+                        = link_to tech.title, tech_link(tech), data: { title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'
                       - unless tech == project.technologies.last
                         |,&nbsp;
       = paginate @projects

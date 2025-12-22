@@ -11,7 +11,10 @@
       p
         b= t('activerecord.technology.logo') + ': '
         br
-        = image_tag @technology.logo.url(:thumb)
+        - if @technology.logo.url.present?
+          = image_tag @technology.logo.url(:thumb)
+        - else
+          = t('web_app_theme.nothing')
       p
         b= t('technology_group_title') + ': '
         = @technology.technology_group.title

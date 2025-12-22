@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     # Disable caching for development to see changes immediately
     expires_now if Rails.env.development?
-    @projects = Project.includes(:screenshots).published.rank(:position)
+    @projects = Project.includes(:translations, :screenshots).published.rank(:position)
     render layout: 'main'
   end
 
