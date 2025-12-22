@@ -292,6 +292,7 @@ class ProjectTranslation < BaseInteractor
 
   def save_translation(target_locale, answer_gpt)
     I18n.with_locale(target_locale) do
+      answer_gpt = normalize_answer_hash(answer_gpt)
       return unless answer_gpt.is_a?(Hash) && answer_gpt['content'].present?
 
       save_content_translation(target_locale, answer_gpt)

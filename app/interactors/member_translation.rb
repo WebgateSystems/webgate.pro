@@ -365,7 +365,8 @@ class MemberTranslation < BaseInteractor
 
   def save_translation(target_locale, answer_gpt)
     I18n.with_locale(target_locale) do
-      return unless answer_gpt.is_a?(Hash)
+      answer_gpt = normalize_answer_hash(answer_gpt)
+      return unless answer_gpt.is_a?(Hash) && answer_gpt.any?
 
       assign_translation_fields(answer_gpt)
       save_and_verify_translation(target_locale)

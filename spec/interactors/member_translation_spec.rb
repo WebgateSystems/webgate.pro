@@ -17,6 +17,16 @@ RSpec.describe MemberTranslation, type: :interactor do
     }
   end
 
+  let(:mock_translation_response_symbol_keys) do
+    {
+      name: 'John Doe',
+      job_title: 'Developer',
+      description: 'Description in English',
+      motto: 'Motto in English',
+      education: 'Education in English'
+    }
+  end
+
   before do
     # Mock EasyAccessGpt::Translation::SingleLocale
     # Use allow_any_instance_of for more reliable mocking in tests
@@ -101,6 +111,23 @@ RSpec.describe MemberTranslation, type: :interactor do
         expect(result).to be_success
         member.reload
         expect(member.translations.find_by(locale: 'de')).to be_present
+      end
+    end
+
+    context 'when translation API returns symbol keys' do
+      before do
+        allow_any_instance_of(EasyAccessGpt::Translation::SingleLocale)
+          .to receive(:call).and_return(mock_translation_response_symbol_keys)
+      end
+
+      it 'persists translated fields (does not fallback to Polish)' do
+        result = described_class.call(model: member, current_locale:, force_locale: :de)
+        expect(result).to be_success
+
+        member.reload
+        de_translation = member.translations.find_by(locale: 'de')
+        expect(de_translation).to be_present
+        expect(de_translation.name).to eq('John Doe')
       end
     end
 
