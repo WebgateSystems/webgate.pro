@@ -54,5 +54,7 @@ Config.setup do |config|
 
   # Evaluate ERB in YAML config files at load time.
   #
-  # config.evaluate_erb_in_yaml = true
+  # We rely on ERB in `config/settings.yml` (e.g. for db pool defaults and optional keys like `gpt_key`).
+  # Without this, CI/test can end up loading only `config/settings/test.yml`, and `Settings.gpt_key` won't exist.
+  config.evaluate_erb_in_yaml = true
 end

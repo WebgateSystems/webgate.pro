@@ -1,2 +1,6 @@
 db:
   name: webgate_pro_test
+
+# Keep this key present (even blank) so RSpec verified partial doubles can stub it safely.
+# Tests must never call external GPT APIs.
+gpt_key: ''
