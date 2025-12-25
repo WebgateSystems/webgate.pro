@@ -83,6 +83,10 @@ module OnTheFlyTranslationCallbacks
         education: :html
       }
       [fields, types]
+    when TechnologyGroup
+      fields = %i[title description]
+      types = { title: :plain, description: :plain }
+      [fields, types]
     else
       [[], {}]
     end
