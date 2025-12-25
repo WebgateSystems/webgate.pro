@@ -42,6 +42,7 @@ pl:
       content: Treść
       livelink: Link na żywo
       publish: Publikować
+      published_on: Data publikacji
       title: Tytuł
     subcategory:
       altlink: Alternatywny link
@@ -231,3 +232,4 @@ pl:
     technology_group: grupa technologii
     user: użytkownik
     users: Użytkownicy
+  year: "Rok:"

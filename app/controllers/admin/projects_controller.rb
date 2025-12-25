@@ -95,7 +95,7 @@ module Admin
     def project_params
       params.require(:project).permit(
         :collage, :collage_cache, :project_id, :screenshot_id, :row_position, :shortlink, :title, :description,
-        :row_tech_position, :project_technology_id, :keywords, :content, :livelink, :publish,
+        :row_tech_position, :project_technology_id, :keywords, :content, :livelink, :publish, :published_on,
         technology_ids: [],
         technologies_attributes: %i[id title technology_group_id],
         screenshots_attributes: %i[id file file_cache project_id position _destroy]

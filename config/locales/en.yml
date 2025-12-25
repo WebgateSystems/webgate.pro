@@ -43,6 +43,7 @@ en:
       content: Content
       livelink: Live link
       publish: Publish
+      published_on: Publication date
       title: Title
     subcategory:
       altlink: Altlink
@@ -229,3 +230,4 @@ en:
     technology_group: technology group
     user: user
     users: Users
+  year: "Year:"

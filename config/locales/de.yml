@@ -42,6 +42,7 @@ de:
       content: Inhalt
       livelink: Live-Link
       publish: Veröffentlichen
+      published_on: Veröffentlichungsdatum
       title: Titel
     subcategory:
       altlink: Alternativlink
@@ -192,7 +193,7 @@ de:
   to_top: Nach oben
   use_our_form_or_call: per E-Mail, über das Kontaktformular auf der Website oder
     rufen Sie einfach an.
-  used_technologies: 'Verwendete Technologien:'
+  used_technologies: 'Technologien:'
   user: Benutzer
   users: Benutzer
   views:
@@ -234,3 +235,4 @@ de:
     technology_group: Technologiegruppe
     user: Benutzer
     users: Benutzer
+  year: "Jahr:"

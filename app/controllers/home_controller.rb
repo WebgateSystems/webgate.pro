@@ -10,10 +10,13 @@ class HomeController < ApplicationController
   end
 
   def portfolio
-    @projects = Project.published.rank(:position).includes(:translations, :screenshots,
-                                                           { technologies_projects: :technology },
-                                                           { technologies: :translations },
-                                                           :technologies).page(params[:page]).per(10)
+    @projects = Project.published
+                       .includes(:translations, :screenshots,
+                                 { technologies_projects: :technology },
+                                 { technologies: :translations },
+                                 :technologies)
+                       .order(Arel.sql('COALESCE(projects.published_on, projects.created_at) DESC'))
+                       .page(params[:page]).per(10)
   end
 
   def team

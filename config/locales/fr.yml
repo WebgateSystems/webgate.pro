@@ -43,6 +43,7 @@ fr:
       content: Contenu
       livelink: Lien en direct
       publish: Publier
+      published_on: Date de publication
       title: Titre
     subcategory:
       altlink: Lien alternatif
@@ -165,7 +166,7 @@ fr:
   three_chars_minimum: Minimum 3 caractères
   to_top: en haut
   use_our_form_or_call: Vous pouvez utiliser l'email, notre formulaire de contact ou simplement appeler.
-  used_technologies: 'Technologies utilisées:'
+  used_technologies: 'Technologies:'
   user: Utilisateur
   users: Utilisateurs
   views:
@@ -208,3 +209,4 @@ fr:
     technology_group: groupe technologique
     user: utilisateur
     users: Utilisateurs
+  year: "Année:"

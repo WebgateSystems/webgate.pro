@@ -42,6 +42,7 @@ ua:
       content: Зміст
       livelink: Посилання на проект
       publish: Опубліковано
+      published_on: Дата публікації
       title: Назва
     subcategory:
       altlink: Альтернативне посилання
@@ -185,7 +186,7 @@ ua:
   to_top: нагору
   use_our_form_or_call: за допомогою електронної пошти, контактної форми або просто
     зателефонуйте.
-  used_technologies: 'Використані технології:'
+  used_technologies: 'Технології:'
   user: Користувач
   users: Користувачі
   views:
@@ -228,3 +229,4 @@ ua:
     technology_group: група(у) технологій
     user: користувач
     users: Користувачі
+  year: "Рік:"

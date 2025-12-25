@@ -16,10 +16,17 @@
               = link_to project.title, project.livelink, class: 'work_link', target: '_blank', rel: 'nofollow'
               - full_html = HtmlTranslationNormalizer.call(project.content.to_s)
               - full_id = "project_full_#{project.id}"
-              p.project-content-tooltip data-full-id="##{full_id}"
-                = truncate_plain_text(full_html, length: 270)
-              .project_full_content id=full_id
-                = full_html.html_safe
+              - plain_full = ActionView::Base.full_sanitizer.sanitize(full_html.to_s)
+              - plain_full = CGI.unescapeHTML(plain_full.to_s).tr("\u00A0", ' ').gsub('&nbsp;', ' ').gsub(/\s+/, ' ').strip
+              - show_full_tooltip = plain_full.length > 270
+              - truncated_plain = truncate(plain_full, length: 270, omission: '...')
+              - if show_full_tooltip
+                p.project-content-tooltip data-full-id="##{full_id}"
+                  = truncated_plain
+                .project_full_content id=full_id
+                  = full_html.html_safe
+              - else
+                p = truncated_plain
               .work_info
                 p
                   em = t(:used_technologies)
@@ -31,6 +38,9 @@
                         = link_to tech.title, tech_link(tech), data: { title: tech.title, desc: tech.description }, class: 'tooltipstered', rel: 'nofollow', target: '_blank'
                       - unless tech == project.technologies.last
                         |,&nbsp;
+                - if project.published_on
+                  p
+                    = "#{t(:year)} #{project.published_on.strftime('%Y')}"
       = paginate @projects
 
 javascript:

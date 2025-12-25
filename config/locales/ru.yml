@@ -42,6 +42,7 @@ ru:
       content: Содержимое
       livelink: Ссылка на проект
       publish: Опубликован
+      published_on: Дата публикации
       title: Название
     subcategory:
       altlink: Альтернативный линк
@@ -185,7 +186,7 @@ ru:
   three_chars_minimum: Минимум 3 символа
   to_top: наверх
   use_our_form_or_call: с помощью электронной почты, контактной формы или просто позвоните.
-  used_technologies: 'Используемые технологии:'
+  used_technologies: 'Технологии:'
   user: Пользователь
   users: Пользователи
   views:
@@ -227,3 +228,4 @@ ru:
     technology_group: группа(у) технологий
     user: пользователь
     users: Пользователи
+  year: "Год:"
