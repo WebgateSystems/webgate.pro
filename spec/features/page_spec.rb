@@ -2,7 +2,17 @@ require 'rails_helper'
 
 describe 'Page in admin panel.' do
   let(:user) { create(:user) }
-  let!(:en_page) { create(:en_page) }
+  let!(:en_page) do
+    I18n.with_locale(:en) do
+      create(
+        :page,
+        title: 'Test EN Page',
+        description: 'Test EN Description',
+        keywords: 'Test EN Keywords',
+        content: 'Test EN Content'
+      )
+    end
+  end
 
   let(:return_params) do
     { 'pl' => { 'name' => 'Main', 'altlink' => '/', 'description' => nil },
@@ -13,9 +23,11 @@ describe 'Page in admin panel.' do
   end
 
   before do
+    I18n.locale = :en
+    allow_any_instance_of(ApplicationController).to receive(:geoip_lang).and_return('en')
     allow_any_instance_of(EasyAccessGpt::Translation::SingleLocale).to receive(:call).and_return(return_params)
     sign_in(user)
-    visit admin_pages_path
+    visit admin_pages_path(lang: 'en')
   end
 
   it 'Link list should work good' do
@@ -44,7 +56,7 @@ describe 'Page in admin panel.' do
   end
 
   it 'Show should display our page information' do
-    click_link(en_page.title)
+    click_link(en_page.title, exact: true)
     expect(page).to have_content 'Title:'
     expect(page).to have_content en_page.title
     expect(page).to have_content 'Description:'
