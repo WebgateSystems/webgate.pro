@@ -17,7 +17,10 @@ module Admin
     def create
       @technology = Technology.new(technology_params)
       if @technology.save
-        ::TranslationWorker.perform_async(@technology.class.name, @technology.id, cookies[:lang])
+        unless GptSettings.enabled?
+          ::TranslationWorker.perform_async(@technology.class.name, @technology.id,
+                                            cookies[:lang])
+        end
         redirect_to [:admin, @technology], notice: "#{t(:technology)} #{t(:was_successfully_created)}."
       else
         render 'new'

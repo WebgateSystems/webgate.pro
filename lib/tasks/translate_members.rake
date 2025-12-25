@@ -9,7 +9,7 @@ namespace :members do
     if member_id && locale
       # Translate specific member and locale
       puts "Translating member ID: #{member_id} to locale: #{locale}"
-      puts "ChatGPT API Key configured: #{Settings.gpt_key.present? ? 'YES' : 'NO'}"
+      puts "ChatGPT API Key configured: #{GptSettings.key.present? ? 'YES' : 'NO'}"
       puts ''
 
       member = Member.find_by(id: member_id)
@@ -50,7 +50,7 @@ namespace :members do
     else
       # Translate all members to missing locales (original behavior)
       puts 'Starting translation of members...'
-      puts "ChatGPT API Key configured: #{Settings.gpt_key.present? ? 'YES' : 'NO'}"
+      puts "ChatGPT API Key configured: #{GptSettings.key.present? ? 'YES' : 'NO'}"
       puts "Available locales: #{I18n.available_locales.join(', ')}"
       puts ''
 

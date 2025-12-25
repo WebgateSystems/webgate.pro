@@ -32,6 +32,10 @@ describe LogoUploader do
     it 'builds store_dir' do
       expect(uploader.store_dir).to include("/public/spec/uploads/technology/#{technology.id}/image")
     end
+
+    it 'exposes original store_dir implementation' do
+      expect(uploader.store_dir_original).to eq("uploads/logos/#{technology.id}/image")
+    end
   end
 
   # context 'the thumb version' do

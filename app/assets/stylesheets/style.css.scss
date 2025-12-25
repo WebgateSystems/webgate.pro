@@ -686,6 +686,14 @@ body {
 	z-index: 9;
 }
 
+.project_full_content {
+	display: none;
+}
+
+.project-content-tooltip {
+	cursor: pointer;
+}
+
 .work_link {
 	color: #000;
 	display: block;
@@ -1008,6 +1016,15 @@ body {
 	width: 340px;
 }
 
+.tooltip_block.tooltip_project {
+	width: 460px;
+}
+
+.tooltip_block.tooltip_project .tooltip_desc {
+	max-height: 240px;
+	overflow: auto;
+}
+
 .tooltip_block p {
 	color: #595959;
 	font-size: 13px;
@@ -1020,7 +1037,9 @@ body {
 	margin: 0 17px 4px 0;
 }
 
-.tooltip_desc p:first-child {
+/* This negative margin was designed for technology tooltips.
+   For project description tooltips it can visually "cut" the beginning of the text. */
+.tooltip_block:not(.tooltip_project) .tooltip_desc p:first-child {
 	margin: -20px 0px 20px 0;
 }
 

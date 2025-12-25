@@ -91,6 +91,29 @@
       }
   });
 
+  /* Project description tooltip (portfolio) */
+  var isTouch = ('ontouchstart' in window) || (navigator && navigator.maxTouchPoints > 0);
+  $('.project-content-tooltip').tooltipster({
+    position: 'bottom',
+    minWidth: 300,
+    maxWidth: 500,
+    interactive: true,
+    onlyOne: true,
+    trigger: isTouch ? 'click' : 'hover',
+    functionBefore: function(origin, content) {
+      var selector = $(this).attr('data-full-id');
+      var html = $(selector).html() || '';
+      var data = '<div class="tooltip_block tooltip_project"><div class="tooltip_desc">' + html + '</div></div>';
+      origin.tooltipster('content', $(data));
+      content();
+    }
+    ,
+    functionReady: function() {
+      // Ensure we always show from the beginning (avoid any retained scroll position)
+      $('.tooltip_block.tooltip_project .tooltip_desc').scrollTop(0);
+    }
+  });
+
   $('#overlay, #form_msg').on('click', function(){
   	$('#overlay, #form_msg').hide();
   });

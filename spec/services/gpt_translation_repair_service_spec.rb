@@ -5,17 +5,17 @@ require 'rails_helper'
 RSpec.describe GptTranslationRepairService do
   describe '#call' do
     it 'disables SSL verification for the underlying Net::HTTP client' do
-      http = instance_double(Net::HTTP)
+      http = instance_double(Net::HTTP, request: nil)
       allow(Net::HTTP).to receive(:new).and_return(http)
       allow(http).to receive(:use_ssl=)
       allow(http).to receive(:verify_mode=)
 
-      body_json = '{"choices":[{"message":{"content":"{\\"html\\":\\"<p>OK</p>\\"}"}}]}'
+      body_json = '{"choices":[{"message":{"content":"{\\"lang\\":\\"de\\",\\"html\\":\\"<p>OK</p>\\"}"}}]}'
       response = instance_double(Net::HTTPSuccess, body: body_json, code: '200')
       allow(response).to receive(:is_a?).with(Net::HTTPSuccess).and_return(true)
       allow(http).to receive(:request).and_return(response)
 
-      allow(Settings).to receive(:gpt_key).and_return('test')
+      allow(GptSettings).to receive(:key).and_return('test')
 
       described_class.new.call(
         base_html: '<p>Źródło</p>',

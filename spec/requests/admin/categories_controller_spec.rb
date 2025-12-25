@@ -1,10 +1,12 @@
 RSpec.describe Admin::CategoriesController, type: :request do
   before do
     allow_any_instance_of(Admin::HomeController).to receive(:require_login).and_return(nil)
+    allow_any_instance_of(ApplicationController).to receive(:geoip_lang).and_return('en')
+    I18n.locale = :en
   end
 
   describe '#update' do
-    let!(:category) { create(:category) }
+    let!(:category) { I18n.with_locale(:en) { create(:category) } }
 
     context 'when params valid' do
       let(:params) { attributes_for(:category) }
@@ -12,13 +14,13 @@ RSpec.describe Admin::CategoriesController, type: :request do
       it 'is update category name' do
         expect do
           put "/admin/categories/#{category.id}", params: { category: params }
-        end.to(change { Category.first.name })
+        end.to(change { I18n.with_locale(:en) { Category.find(category.id).name } })
       end
 
       it 'is update category description' do
         expect do
           put "/admin/categories/#{category.id}", params: { category: params }
-        end.to(change { Category.first.altlink })
+        end.to(change { I18n.with_locale(:en) { Category.find(category.id).altlink } })
       end
     end
 
@@ -43,12 +45,12 @@ RSpec.describe Admin::CategoriesController, type: :request do
     end
 
     context 'when invalid params' do
-      let!(:category) { create(:category) }
+      let!(:category) { I18n.with_locale(:en) { create(:category) } }
 
       it 'is not update category name' do
         expect do
           put "/admin/categories/#{category.id}", params: { category: { name: '' } }
-        end.not_to(change { Category.first.name })
+        end.not_to(change { I18n.with_locale(:en) { Category.find(category.id).name } })
       end
     end
   end

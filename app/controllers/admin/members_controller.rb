@@ -19,7 +19,7 @@ module Admin
     def create
       @member = Member.new(member_params)
       if @member.save
-        ::TranslationWorker.perform_async(@member.class.name, @member.id, cookies[:lang])
+        ::TranslationWorker.perform_async(@member.class.name, @member.id, cookies[:lang]) unless GptSettings.enabled?
         redirect_to [:admin, @member], notice: "#{t(:member)} #{t(:was_successfully_created)}."
       else
         render 'new'

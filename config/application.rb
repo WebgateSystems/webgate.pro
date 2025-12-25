@@ -33,6 +33,9 @@ module WebgatePro
     ActiveRecord.legacy_connection_handling = false
 
     config.autoload_paths << Rails.root.join('lib')
+    # This app relies on classes in app/services being available during initializers.
+    # Make it an explicit autoload/eager_load path.
+    config.paths.add 'app/services', eager_load: true
 
     config.i18n.enforce_available_locales = true
     # I18n.config.enforce_available_locales = true

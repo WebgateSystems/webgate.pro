@@ -32,6 +32,10 @@ describe PictureUploader do
     it 'builds store_dir' do
       expect(uploader.store_dir).to include("/public/spec/uploads/project/#{project.id}/image")
     end
+
+    it 'exposes original store_dir implementation' do
+      expect(uploader.store_dir_original).to eq("uploads/pictures/project/#{project.id}/image")
+    end
   end
 
   # context 'the thumb version' do

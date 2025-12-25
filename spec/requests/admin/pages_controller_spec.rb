@@ -2,6 +2,7 @@ RSpec.describe Admin::PagesController, type: :request do
   before do
     I18n.locale = :en
     allow_any_instance_of(Admin::HomeController).to receive(:require_login).and_return(nil)
+    allow_any_instance_of(ApplicationController).to receive(:geoip_lang).and_return('en')
   end
 
   context 'when valid params' do
@@ -15,31 +16,31 @@ RSpec.describe Admin::PagesController, type: :request do
     it 'is update page shortlink' do
       expect do
         put("/admin/pages/#{page.id}", params: { page: params })
-      end.to(change { Page.first.shortlink })
+      end.to(change { I18n.with_locale(:en) { Page.find(page.id).shortlink } })
     end
 
     it 'is update page title' do
       expect do
         put("/admin/pages/#{page.id}", params: { page: params })
-      end.to(change { Page.first.title })
+      end.to(change { I18n.with_locale(:en) { Page.find(page.id).title } })
     end
 
     it 'is update page description' do
       expect do
         put("/admin/pages/#{page.id}", params: { page: params })
-      end.to(change { Page.first.description })
+      end.to(change { I18n.with_locale(:en) { Page.find(page.id).description } })
     end
 
     it 'is update page keywords' do
       expect do
         put("/admin/pages/#{page.id}", params: { page: params })
-      end.to(change { Page.first.keywords })
+      end.to(change { I18n.with_locale(:en) { Page.find(page.id).keywords } })
     end
 
     it 'is update page content' do
       expect do
         put("/admin/pages/#{page.id}", params: { page: params })
-      end.to(change { Page.first.content })
+      end.to(change { I18n.with_locale(:en) { Page.find(page.id).content } })
     end
   end
 

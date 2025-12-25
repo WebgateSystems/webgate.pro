@@ -22,7 +22,7 @@ RSpec.describe 'members:normalize_translations', type: :task do
       t.save!
     end
 
-    allow(Settings).to receive(:gpt_key).and_return('test')
+    allow(GptSettings).to receive(:key).and_return('test')
     allow_any_instance_of(GptTranslationRepairService).to receive(:call)
       .and_return('<p style="color:red">Polski</p>')
   end

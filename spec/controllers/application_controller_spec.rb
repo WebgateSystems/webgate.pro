@@ -33,14 +33,18 @@ RSpec.describe ApplicationController, type: :controller do
       calls = 0
       allow_any_instance_of(GeoIP).to receive(:country) do
         calls += 1
-        code = %w[DE PL UA RU].fetch(calls - 1)
+        code = %w[DE AT PL UA RU BY].fetch(calls - 1)
         country_struct.new(code)
       end
+      expect(controller.send(:geoip_lang)).to eq('de')
+
       expect(controller.send(:geoip_lang)).to eq('de')
 
       expect(controller.send(:geoip_lang)).to eq('pl')
 
       expect(controller.send(:geoip_lang)).to eq('ua')
+
+      expect(controller.send(:geoip_lang)).to eq('ru')
 
       expect(controller.send(:geoip_lang)).to eq('ru')
     end

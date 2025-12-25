@@ -7,5 +7,11 @@
 
 # secret_key_base: <%= ENV['SECRET_KEY_BASE'] || ENV['secret_key_base'] %>
 
-# ChatGPT API key for translations
+# Services configuration
+# services:
+#   gpt:
+#     enabled: true
+#     key: <%= ENV['CHAT_GPT_API_KEY'] %>
+
+# Backward-compatible key (deprecated)
 # gpt_key: <%= ENV['CHAT_GPT_API_KEY'] %>

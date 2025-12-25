@@ -20,7 +20,7 @@ namespace :projects do
     puts 'Starting normalization of project translations...'
     puts "Dry run: #{dry_run}"
     puts "Locales: #{locales.join(', ')}"
-    puts "ChatGPT API Key configured: #{Settings.gpt_key.present? ? 'YES' : 'NO'}"
+    puts "ChatGPT API Key configured: #{GptSettings.key.present? ? 'YES' : 'NO'}"
     puts ''
 
     service = GptTranslationRepairService.new

@@ -3,7 +3,7 @@ namespace :projects do
   desc 'Translate all projects to missing locales using Polish as base'
   task translate_missing: :environment do
     puts 'Starting translation of projects...'
-    puts "ChatGPT API Key configured: #{Settings.gpt_key.present? ? 'YES' : 'NO'}"
+    puts "ChatGPT API Key configured: #{GptSettings.key.present? ? 'YES' : 'NO'}"
     puts "Available locales: #{I18n.available_locales.join(', ')}"
     puts ''
 

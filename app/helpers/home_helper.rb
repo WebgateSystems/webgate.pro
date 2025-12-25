@@ -1,4 +1,14 @@
 module HomeHelper
+  def truncate_plain_text(html, length: 270)
+    text = ActionView::Base.full_sanitizer.sanitize(html.to_s)
+    text = CGI.unescapeHTML(text.to_s)
+    text = text.tr("\u00A0", ' ')
+    text = text.gsub('&nbsp;', ' ')
+    text = text.gsub(/\s+/, ' ').strip
+
+    truncate(text, length:, omission: '...')
+  end
+
   def cache_key_for_projects
     count          = Project.count
     max_updated_at = Project.maximum(:updated_at).try(:utc).try(:to_fs, :number)

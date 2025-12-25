@@ -23,6 +23,15 @@ if defined?(CarrierWave)
     next if klass.anonymous?
 
     klass.class_eval do
+      if method_defined?(:cache_dir) && !method_defined?(:cache_dir_original)
+        alias_method :cache_dir_original,
+                     :cache_dir
+      end
+      if method_defined?(:store_dir) && !method_defined?(:store_dir_original)
+        alias_method :store_dir_original,
+                     :store_dir
+      end
+
       def cache_dir
         Rails.root.join('public/spec/uploads/cache').to_s
       end

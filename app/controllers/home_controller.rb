@@ -12,6 +12,7 @@ class HomeController < ApplicationController
   def portfolio
     @projects = Project.published.rank(:position).includes(:translations, :screenshots,
                                                            { technologies_projects: :technology },
+                                                           { technologies: :translations },
                                                            :technologies).page(params[:page]).per(10)
   end
 

@@ -1,7 +1,7 @@
 # webgate.pro
 
 [![CI](https://github.com/WebgateSystems/webgate.pro/actions/workflows/rubyonrails.yml/badge.svg)](https://github.com/WebgateSystems/webgate.pro/actions/workflows/rubyonrails.yml)
-![Coverage](https://img.shields.io/badge/coverage-95.2%25-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-95.3%25-brightgreen)
 [![Ruby](https://img.shields.io/badge/Ruby-3.2.2-CC342D?logo=ruby&logoColor=white)](https://www.ruby-lang.org/)
 [![Rails](https://img.shields.io/badge/Rails-7.0.10-D30001?logo=rubyonrails&logoColor=white)](https://rubyonrails.org/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)

@@ -1,3 +1,4 @@
 exclude_paths:
   - 'config/**/*'
   - 'vendor/**/*'
+  - 'app/services/on_the_fly_translator.rb'

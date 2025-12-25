@@ -32,6 +32,10 @@ describe AvatarUploader do
     it 'builds store_dir' do
       expect(uploader.store_dir).to include("/public/spec/uploads/member/#{member.id}/image")
     end
+
+    it 'exposes original store_dir implementation' do
+      expect(uploader.store_dir_original).to eq("uploads/pictures/member/#{member.id}/image")
+    end
   end
 
   # context 'the avatar version' do

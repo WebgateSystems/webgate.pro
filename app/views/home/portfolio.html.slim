@@ -14,7 +14,12 @@
             = image_tag project.collage.url, width: 940, height: 244
             .work_content
               = link_to project.title, project.livelink, class: 'work_link', target: '_blank', rel: 'nofollow'
-              = project.content.try(:html_safe)
+              - full_html = HtmlTranslationNormalizer.call(project.content.to_s)
+              - full_id = "project_full_#{project.id}"
+              p.project-content-tooltip data-full-id="##{full_id}"
+                = truncate_plain_text(full_html, length: 270)
+              .project_full_content id=full_id
+                = full_html.html_safe
               .work_info
                 p
                   em = t(:used_technologies)

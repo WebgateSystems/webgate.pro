@@ -33,4 +33,21 @@ describe Project do
 
     it { is_expected.to have_many(:technologies_projects) }
   end
+
+  describe '#livelink_f' do
+    it 'returns host part of livelink' do
+      project = build(:project, livelink: 'https://example.com/path?q=1')
+      expect(project.livelink_f).to eq('example.com')
+    end
+  end
+
+  describe 'screenshots nested attributes' do
+    it 'rejects blank screenshot attributes' do
+      project = create(:project)
+
+      expect do
+        project.update!(screenshots_attributes: [{ file: nil, file_cache: nil }])
+      end.not_to(change { project.screenshots.count })
+    end
+  end
 end
