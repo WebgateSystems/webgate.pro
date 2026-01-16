@@ -4,7 +4,7 @@ gem 'pg'
 gem 'puma', '>= 6.4.3'
 # ActiveStorage is not used - all uploads use CarrierWave
 # The activestorage vulnerability (CVE-2025-24293) is "Unknown" criticality, not High/Critical
-gem 'rails', '~> 7.0.8', '>= 7.0.8.7'
+gem 'rails', '~> 7.2.0'
 
 gem 'carrierwave', '~> 3.0', '>= 3.0.7'
 gem 'exception_notification', '~> 4.0.1'
@@ -14,7 +14,7 @@ gem 'kaminari'
 gem 'mini_magick', '~> 4.12'
 gem 'pry'
 gem 'rails-translate-routes'
-gem 'route_translator', '~> 13.1.1'
+gem 'route_translator', '>= 14.0'
 gem 'russian'
 gem 'slim-rails'
 
@@ -48,8 +48,8 @@ gem 'whenever', require: false
 # Use SCSS for stylesheets
 gem 'coffee-rails'
 gem 'execjs'
-gem 'sass-rails'
-gem 'sprockets-rails'
+gem 'sassc-rails'
+gem 'sprockets-rails', '>= 3.5.0'
 # gem "therubyracer", "~> 0.12"
 gem 'font-awesome-rails'
 gem 'foundation-rails', '~> 5.5.1'
@@ -60,6 +60,11 @@ gem 'jquery-fileupload-rails'
 gem 'jquery-minicolors-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '>= 8.0.0'
+
+gem 'drb', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
+gem 'net-smtp', require: false
 
 group :development do
   gem 'bundler-audit'
@@ -85,7 +90,8 @@ end
 group :test do
   gem 'capybara'
   gem 'codeclimate-test-reporter', require: nil
-  gem 'database_cleaner'
+  gem 'database_cleaner', '>= 2.1'
+  gem 'database_cleaner-active_record', '>= 2.2'
   gem 'email_spec'
   gem 'rails-controller-testing'
 

@@ -5,7 +5,7 @@ Rails.application.configure do
   # test suite.  You never need to work with it otherwise.  Remember that
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs.  Don't rely on the data there!
-  config.cache_classes = true
+  config.enable_reloading = true
 
   # Don't require master key in test environment (we use Settings/config.yml instead of credentials)
   config.require_master_key = false
