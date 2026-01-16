@@ -4,7 +4,7 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  config.enable_reloading = true
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -34,8 +34,8 @@ Rails.application.configure do
   config.assets.quiet = true
   config.assets.enabled = true
 
-  config.assets.css_compressor = :yui
-  config.assets.js_compressor = Uglifier.new(harmony: true)
+  # config.assets.css_compressor = :yui
+  # config.assets.js_compressor = Uglifier.new(harmony: true)
 
   config.active_job.queue_adapter = :sidekiq
 

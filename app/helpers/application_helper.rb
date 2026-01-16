@@ -15,7 +15,7 @@ module ApplicationHelper
 
   def tech_link(technology)
     link = technology.link
-    (link.presence || 'javascript:;')
+    link.presence || 'javascript:;'
   end
 
   def compare_path(menu_item)
@@ -29,8 +29,8 @@ module ApplicationHelper
   end
 
   def menu_item_active?(menu_item)
-    request.path == compare_path(menu_item) || request.path == "/#{compare_path(menu_item)}" ||
-      request.path == "/#{main_menu_path(menu_item)}"
+    request.path == compare_path(menu_item) || ["/#{compare_path(menu_item)}",
+                                                "/#{main_menu_path(menu_item)}"].include?(request.path)
   end
 
   def url_main(lang)

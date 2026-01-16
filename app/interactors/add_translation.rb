@@ -29,7 +29,7 @@ class AddTranslation < BaseInteractor
   end
 
   def translation_attribute(answer_gpt)
-    prepare_request.each do |attribute, _value|
+    prepare_request.each_key do |attribute|
       context.model[attribute] = answer_gpt[attribute.to_s]
     end
     context.model.save

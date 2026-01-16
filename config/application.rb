@@ -16,6 +16,15 @@ require 'active_job/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+if Rails.version >= '7.1'
+  require 'action_mailer/base'
+  ActionMailer::Base.class_eval do
+    def self.preview_path=(val)
+      preview_paths << val
+    end
+  end
+end
+
 module WebgatePro
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -29,10 +38,11 @@ module WebgatePro
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    #
+    config.action_mailer.preview_paths = [Rails.root.join('test/mailers/previews').to_s]
 
-    ActiveRecord.legacy_connection_handling = false
-
-    config.autoload_paths << Rails.root.join('lib')
+    # config.autoload_paths << Rails.root.join('lib')
+    config.eager_load_paths << Rails.root.join('lib')
     # This app relies on classes in app/services being available during initializers.
     # Make it an explicit autoload/eager_load path.
     config.paths.add 'app/services', eager_load: true
@@ -45,7 +55,7 @@ module WebgatePro
     config.generators do |g|
       g.template_engine :slim
       g.test_framework :rspec, fixtures: true, views: false
-      g.fixture_replacement :factory_girl, dir: 'spec/factories'
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
 
     config.exceptions_app = routes
